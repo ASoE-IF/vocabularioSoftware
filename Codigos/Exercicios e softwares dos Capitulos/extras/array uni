@@ -1,0 +1,16 @@
+#include<stdio.h>
+#include<time.h>
+main(){
+int gh, w, y, x, z, zz;
+int a[10]={1,2,3,4,5,6,7,8,9,10};
+srand((unsigned)time(NULL));
+for (gh=0; gh<=5; gh++){
+w=rand()%10;
+y=rand()%10;
+x=rand()%10;
+z=rand()%10;
+zz=rand()%10;
+printf("[%d][%d][%d][%d][%d]\n", a[w], a[y], a[x], a[z], a[zz]);
+}
+return 0;
+}

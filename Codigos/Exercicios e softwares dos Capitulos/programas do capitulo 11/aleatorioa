@@ -1,0 +1,11 @@
+#include <stdio.h>
+
+int main()
+{
+	FILE *fp;
+	printf("Este texto é redirecionada para stdout \n");
+	fp = freopen("arquivo.txt", "w +", stdout);
+	printf("Este texto é redirecionado para arquivo.txt \n");
+	fclose(fp);
+	return (0);
+}

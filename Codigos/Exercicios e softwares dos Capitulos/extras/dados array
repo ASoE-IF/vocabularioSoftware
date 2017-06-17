@@ -1,0 +1,18 @@
+/*Escreva um programa em C que simule a jogada de dois dados. O programa deve usar rand para rolar o primeiro dado e de ve usar rand novamente para rolar o segundo dado. A soma dos dois valores deve então ser calculada. Nota: mostrar um valor inteiro de 1 a 6, a soma dos dois valores \ Como cada dado pode de 2 a 12 com 7 sendo a soma mais freqüente e 2 e 12 sendo as somas m enos freqüentes. A Fig. 6.23 mostra as 36 combinações possíveis dos dois dados. Seu programa deve rolar os dados 36.000 vezes. Use um array unidimensional para registrar o número de vezes que cada soma possível é obtida. Imprima os em um formato resultados de tabela. Além disso, determine se as somas são razoáveis, i.e., há seis maneiras de obter 7, portanto, aproximadamente um sexto do total de jogadas deve ser 7.*/
+#include<stdio.h>
+#include<time.h>
+int dados(){
+int dado[6]={1,2,3,4,5,6}, x, y, soma;
+srand((unsigned)time(NULL));
+x=rand()%6;
+y=rand()%6;
+printf("%s%3s%8s     %s     %8s", "dado1", "+", "dado2", "soma", "frequencia\n");
+printf("%5d%3s%3d", dado[x], "+", dado[y]);
+printf("%11d", dado[x]+dado[y]);
+soma=dado[x]+dado[y];
+if(soma==7)
+printf("muitas vezez");
+}
+int main(){
+dados();
+}

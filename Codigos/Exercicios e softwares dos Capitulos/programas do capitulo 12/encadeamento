@@ -1,0 +1,25 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+int main(void)
+{
+	struct livro
+	{
+		int arma;
+		struct livro *abre;
+	} abre1, abre2, abre3;
+
+	struct livro *brelivro = &abre1;
+	abre1.arma = 10;
+	abre2.arma = 20;
+	abre3.arma = 30;
+
+	abre1.arma = abre2;
+	abre2.arma = abre3;
+	abre3.arma = 0;
+	while (brelivro != 0)
+	{
+		printf("%d\n", brelivro->arma);
+		brelivro->arma = brelivro;
+	}
+}

@@ -1,0 +1,10 @@
+#include<stdio.h>
+
+int main(){
+float x=1.37283530005; //inicializa uma variavel float
+printf("%f e igual a %f em ponto flutuant.\n", x, x);
+printf("%f e igual a %e em ponto exponencial.\n", x, x);
+printf("%f e igual a %E em ponto exponencial.\n", x, x);
+printf("%f e igual a %g em notação exponendial.\n", x, x);
+printf("%f e igual a %G em notação exponencial.\n", x, x);
+}

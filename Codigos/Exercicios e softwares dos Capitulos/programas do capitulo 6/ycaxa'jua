@@ -1,0 +1,9 @@
+#include<stdio.h>
+#include<time.h>
+main()
+{
+	int x, y[10]={57, 98, 45, 87, 65, 91, 38, 23, 10};
+	srand((unsigned)time(NULL));
+	x=rand()%10;
+	printf("Numero aleatorio %d\n", y[x]);
+	}

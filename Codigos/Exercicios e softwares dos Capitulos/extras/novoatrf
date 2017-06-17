@@ -1,0 +1,9 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+main(){
+char a;
+printf("Digite: ");
+scanf("%s", &a);
+printf("%s", &a);
+}

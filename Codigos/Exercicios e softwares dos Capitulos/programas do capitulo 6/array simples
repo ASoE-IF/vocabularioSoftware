@@ -1,0 +1,11 @@
+#include<stdio.h>
+void valores(int va[], int x5){
+int i;
+for (i=0; i<x5; i++){
+printf("[%d]\n", va[i]);
+}
+}
+void main(){
+int notas[5]={1,2,5,3,6};
+valores(notas, 5);
+}

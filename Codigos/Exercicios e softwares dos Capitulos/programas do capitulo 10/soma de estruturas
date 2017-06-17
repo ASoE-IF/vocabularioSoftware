@@ -1,0 +1,16 @@
+#include<stdio.h>
+
+int main(void)
+{
+	struct distancia{
+	int x;
+	int y;
+	int dist;
+	}ponto;
+	ponto.x=10;
+	ponto.y=20;
+	ponto.dist=ponto.y-ponto.x;
+	printf("A distancia entre o ponto %d e o ponto %d é %d\n", ponto.x, ponto.y, ponto.dist);
+	ponto.dist=ponto.x-ponto.y;
+	printf("A distancia entre o ponto %d e o ponto %d é %+d\n", ponto.y, ponto.x, ponto.dist);
+	}

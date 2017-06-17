@@ -1,0 +1,19 @@
+/*Converter letras maiusculas para minusculas */
+/* usando um ponteiro nao-constante para um dado nao-constante*/
+#include <stdio.h>
+void converteParaminusculas(char *);
+main() {
+char x, string[1];
+printf("A string antes da conversão e: ");
+scanf("%s", &string[x]);
+converteParaminusculas(string);
+printf("A string depois da conversão e: %s\n", string);
+return 0;
+}
+void converteParaminusculas(char *s) {
+while  (*s !=   '\0')
+{
+if  (*s>='A' && *s<='Z')
+*s += 32;
+--s;
+}}

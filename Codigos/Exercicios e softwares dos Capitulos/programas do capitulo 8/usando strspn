@@ -1,0 +1,6 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+int main(){
+printf("abcgi em abcefghi.%d", strspn("abcgi", "abcefhghi"));
+}

@@ -1,0 +1,8 @@
+/* Imprimir com o sinalizador 0 (zero) insere zeros iniciais */
+#include <stdio.h>
+main()
+{
+	printf("%+09d", 452);
+	printf("\n%09d", 452);
+	return 0;
+}

@@ -1,0 +1,21 @@
+#include<stdio.h>
+
+int main(void)
+{
+	FILE *senha;
+	int me_senha;
+	char conta[8];
+	printf("Digite sua conta: ");
+	scanf("%s", conta);
+	senha=fopen(conta, "r");
+	fscanf(senha, "%d", &me_senha);
+	printf("%d", me_senha);
+	int x;
+	printf("Digite sua senha: ");
+	scanf("%d", &x);
+	if(x==me_senha){
+	printf("Ola meu nome é israel, \ne o seu\?");
+	return 0;
+	}
+	else printf("senha incorreta.");
+	}

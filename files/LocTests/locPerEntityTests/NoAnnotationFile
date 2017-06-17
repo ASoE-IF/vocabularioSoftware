@@ -1,0 +1,110 @@
+
+import java.util.*;
+/**
+ * This class is part of the physical loc count test set
+ */
+public class NoAnnotationFile {
+	
+	/**
+	 * Simple Javadoc
+	 */
+	protected static int inheritableVariable;  /* Block comment written in one line */
+	private String fileName = "FirstClass.java"; // Keeps the file name for no good reason
+
+	private static List<String> ordinaryList;
+
+	/**
+	 * This is a constructor
+	 */
+	public NoAnnotationFile() {
+		this.ordinaryList = new LinkedList<String>();
+	}
+
+	/**
+	 * Useless method's javadoc
+	 */
+	private void doesNothing() {
+		// Ordinary Comment
+
+		System.out.printf("This file has %d lines", this.inheritableVariable);
+		/* Formated output
+		printed by printf */
+	}
+
+	private class NoAnnotationFileFirstLevelInnerClass {
+	
+		/**
+		 * Simple Javadoc
+		 */
+		protected static int inheritableVariable;  /* Block comment written in one line */
+		private String fileName = "FirstClass.java"; // Keeps the file name for no good reason
+	
+		private static List<String> ordinaryList;
+	
+		/**
+		 * This is a constructor
+		 */
+		public NoAnnotationFileFirstLevelInnerClass() {
+			this.ordinaryList = new LinkedList<String>();
+		}
+	
+		/**
+		 * Useless method's javadoc
+		 */
+		private void doesNothing() {
+			// Ordinary Comment
+	
+			System.out.printf("This file has %d lines", this.inheritableVariable);
+			/* Formated output
+			printed by printf */
+		}
+
+		private class NoAnnotationFileSecondLevelInnerClass {
+				
+			/**
+			 * Simple Javadoc
+			 */
+			protected static int inheritableVariable;  /* Block comment written in one line */
+			private String fileName = "FirstClass.java"; // Keeps the file name for no good reason
+		
+			private static List<String> ordinaryList;
+		
+			/**
+			 * This is a constructor
+			 */
+			public NoAnnotationFileSecondLevelInnerClass() {
+				this.ordinaryList = new LinkedList<String>();
+			}
+		
+			/**
+			 * Useless method's javadoc
+			 */
+			private void doesNothing() {
+				// Ordinary Comment
+		
+				System.out.printf("This file has %d lines", this.inheritableVariable);
+				/* Formated output
+				printed by printf */
+			}
+	
+			private enum SomeConstants {
+				THIS, IS, AN, ENUMERATION
+			}
+	
+			// No comment, javadoc, or blank lines are physical line
+		}
+		private enum SomeConstants {
+			THIS, IS, AN, ENUMERATION
+		}
+		
+		// No comment, javadoc, or blank lines are physical line
+	}
+	
+	private enum SomeConstants {
+		THIS, IS, AN, ENUMERATION
+	}
+
+	// No comment, javadoc, or blank lines are physical line
+}
+
+

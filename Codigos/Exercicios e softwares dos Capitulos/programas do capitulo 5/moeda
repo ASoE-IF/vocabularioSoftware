@@ -1,0 +1,88 @@
+#include<stdio.h>
+#include<time.h>
+denovo(){
+	register int y;
+	printf("1)Cara.\n2)Coroa.\nDigite: ");
+	scanf("%d", &y);
+	if(y>2)
+	printf("Aposta inesistente.\nTente novamente");
+	if(y>2)
+	denovo();
+	if(y<1)
+	printf("Aposta inesistente.\nTente novamente");
+	if(y<1)
+	denovo();
+}
+aposta(){
+	int saldo, x, y, z, creditos;
+	saldo=10;
+	printf("Você tem %d reais em saudo de aposta.\n", saldo);
+	printf("Digie o total a ser apostado: ");
+	scanf("%d", &x);
+	printf("1)Cara.\n2)Coroa.\nDigite: ");
+	scanf("%d", &y);
+	if(y>2)
+	printf("Aposta inesistente.\nTente novamente");
+	if(y>2)
+	denovo();
+	if(y<1)
+	printf("Aposta inesistente.\nTente novamente");
+	if(y<1)
+	denovo();
+	srand((unsigned)time(NULL));
+	z=rand()%2;
+	if(y==z)
+	printf("Você acertou.\ncontinue.");
+	if(y==z)
+	creditos=saldo+x;
+	if(y==z)
+	printf("Você tem %d rais em saldo de aposta", creditos);
+	if(y==z)
+	printf("Tente denovo.");
+	if(y==z)
+	mais();
+	if(y!=z)
+	printf("Você errou.");
+	if(y!=z)
+	creditos=saldo-x;
+	if(y!=z)
+	printf("você tem %d reais em saldo de aposta", creditos);
+	if(y!=z)
+	printf("Tente denovo.");
+	if(y!=z)
+	mais();
+}
+mais(){
+	register int saldo, x, y, z, creditos;
+	saldo=10;
+	printf("Você tem %d reais em saudo de aposta.\n", saldo);
+	printf("Digie o total a ser apostado: ");
+	scanf("%d", &x);
+	printf("1)Cara.\n2)Coroa.\nDigite: ");
+	scanf("%d", &y);
+	if(y>2)
+	printf("Aposta inesistente.\nTente novamente");
+	if(y>2)
+	denovo();
+	if(y<1)
+	printf("Aposta inesistente.\nTente novamente");
+	if(y<1)
+	denovo();
+	srand((unsigned)time(NULL));
+	z=rand()%2;
+	if(y==z)
+	printf("Você acertou.\ncontinue.");
+	if(y==z)
+	creditos=saldo+x;
+	if(y==x)
+	printf("Você tem %d rais em saldo de aposta", creditos);
+	if(y!=z)
+	printf("Você errou.");
+	if(y!=z)
+	creditos=saldo-x;
+	if(y!=z)
+	printf("você tem %d reais em saldo de aposta", creditos);
+}
+main(){
+	aposta();
+}

@@ -1,0 +1,11 @@
+#include<stdio.h>
+#include<math.h>
+main(){
+int x, y;
+printf("Programa de calculo de potencias.\n");
+printf("Digite a base: ");
+scanf("%d", &x);
+printf("Digite o expoente:  ");
+scanf("%d", &y);
+printf("%.f", pow(x, y));
+}

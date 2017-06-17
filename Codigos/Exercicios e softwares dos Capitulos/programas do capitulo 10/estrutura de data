@@ -1,0 +1,16 @@
+#include<stdio.h>
+
+void main(void)
+{
+	struct date
+	{
+		char mes_nome[64];
+		char mes;
+		char dia;
+		char ano;
+		}data_atual={"setembro", 9, 7, 2014};
+		
+		int i;
+		for(i=0; data_atual.mes_nome[i]; i++)
+		putchar(data_atual.mes_nome[i]);
+}

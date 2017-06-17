@@ -1,0 +1,20 @@
+#include<stdio.h>
+#include<time.h>
+main(){
+int x[8]={1,2,3,4,5,6,7,8}, y, a, b, c, d, f, g, h, z;
+srand((unsigned)time(NULL)); 
+y=rand()%8;
+for (z=0; z<=8; z++){
+y=rand()%8;
+a=rand()%8;
+b=rand()%8;
+c=rand()%8;
+d=rand()%8;
+f=rand()%8;
+g=rand()%8;
+h=rand()%8;
+printf("[%d][%d][%d][%d][%d][%d][%d][%d]\n", x[y], x[a], x[b], x[c], x[d], x[f], x[g], x[h]);
+}
+return 0;
+}
+

@@ -1,0 +1,10 @@
+#include<stdio.h>
+#define D 1
+int gomes(int x[D], int y){
+int x[D]={45};
+printf("%d", x[y]);
+}
+main(){
+int x[D], y;
+gomes(x[D], y);
+}

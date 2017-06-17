@@ -1,0 +1,23 @@
+#include<stdio.h>
+#include<time.h>
+gomes(){
+int a, b, z;
+srand((unsigned)time(NULL));
+a=rand()%20;
+printf("(%d)\n", a);
+if(a==10)
+printf("Você chegou lá.");
+if(a==10)
+return 0;
+else
+while(a!=10){
+a=rand()%100;
+printf("(%d)\n", a);
+if(a==10)
+printf("10 Você chegou lá.");
+if(a==10)
+return 0;
+}}
+main(){
+gomes();
+}

@@ -1,0 +1,15 @@
+#include<stdio.h>
+
+int main(void)
+{
+	FILE *senh;
+	int senha;
+	char conta[8];
+	printf("Digite sua conta: ");
+	scanf("%s", conta);
+	senh=fopen(conta, "w");
+	printf("Digite sua senha: ");
+	scanf("%d", &senha);
+	fprintf(senh, "%d", senha);
+	fclose(senh);
+}

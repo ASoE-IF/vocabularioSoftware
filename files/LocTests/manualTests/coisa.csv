@@ -1,0 +1,17 @@
+,Entity's Name,LOC Count,Header Count,Annotation Count,Inner Entities Lines,Total
+,com.xml2xsd.GenericClass,20,4,0,11,35
+,com.xml2xsd.GenericClass$Interna,10,0,0,0,10
+,com.xml2xsd.GenericClass$Interna2,1,0,0,0,1
+,com.xml2xsd.GenericClass,16,4,0,11,31
+,com.xml2xsd.GenericClass$Interna,10,0,0,0,10
+,com.xml2xsd.GenericClass$Interna2,1,0,0,0,1
+,com.xml2xsd.GenericClass,20,4,0,11,35
+,com.xml2xsd.GenericClass$Interna,10,0,0,0,10
+,com.xml2xsd.GenericClass$Interna2,1,0,0,0,1
+,com.xml2xsd.GenericClass,16,4,0,11,31
+,com.xml2xsd.GenericClass$Interna,10,0,0,0,10
+,com.xml2xsd.GenericClass$Interna2,1,0,0,0,1
+,com.xml2xsd.GenericClass,16,4,0,11,31
+,com.xml2xsd.GenericClass$Interna,10,0,0,0,10
+,com.xml2xsd.GenericClass$Interna2,1,0,0,0,1
+Total,,143,20,0,55,218

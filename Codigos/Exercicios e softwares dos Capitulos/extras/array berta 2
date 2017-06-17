@@ -1,0 +1,20 @@
+#include<stdio.h>
+
+int gomes(){
+   char x[5][5][5][5][5][5];
+   char a, b, c, d, e, f;
+   for (a=0; a<5; a++){
+      printf("digite: ");
+      scanf("%s", &x[a]);
+   }
+   printf("
+      ");
+      {
+      for (a=0; a<5; a++)
+         printf("[%s]", &x[a]);
+   }
+   return 0;
+}
+main(){
+   gomes();
+}

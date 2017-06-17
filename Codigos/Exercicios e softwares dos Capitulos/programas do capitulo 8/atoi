@@ -1,0 +1,10 @@
+#include <stdio.h>
+#include <stdlib.h>
+main()
+{
+	int i;
+	i = atoi("2593");
+	printf("%s%d\n%s%d\n", "A string \"2593\" convertida em int e ", i,
+		   "0 valor convertido menos 593 e ", i - 593);
+	return 0;
+}

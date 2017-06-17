@@ -1,0 +1,10 @@
+#include<stdio.h>
+#define D 10
+gomes(){
+int x[D]={23, 76, 58, 94, 37, 46, 10, 68, 87, 90}, y;
+for (y=1; y<=9; y++)
+printf("%d%5d\n", y, x[y]);
+}
+main(){
+gomes();
+}

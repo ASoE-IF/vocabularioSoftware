@@ -1,0 +1,31 @@
+#include<stdio.h>
+#include<time.h>
+
+int main(void)
+{
+	srand((unsigned)time(NULL));
+	struct tipo
+	{
+		int horas;
+		int minutos;
+		int segundos;
+	};
+	struct tipo matriz[5];
+	int x;
+	int ale;
+	for (x = 0; x < 5; x++)
+	{
+		ale = rand() % 24;
+		matriz[x].horas = ale;
+		ale = rand() % 24;
+		matriz[x].minutos = ale;
+		ale = rand() % 24;
+		matriz[x].segundos = ale;
+	printf("%d:%d:%d\n", matriz[x].horas,
+									matriz[x].minutos,
+									matriz[x].segundos);
+									}
+									
+						getchar( );
+			return 0;
+	}

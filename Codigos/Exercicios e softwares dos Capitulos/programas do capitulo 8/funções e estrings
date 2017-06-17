@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <ctype.h>
+main()
+{
+	printf("%s\n%s%s\n%s%s\n\n", "De acordo com isdigit: ",
+		   isdigit('8') ? "8 e um " : "8 nao e um ", "digito",
+		   isdigit('#') ? "# e um " : "# nao e um ", "digito");
+	printf("%s\n%s%s\n%s%s\n%s%s\n%s%s\n\n", "De acordo com isalpha: ",
+		   isalpha('A') ? "A e uma " : "A nao e uma ", "letra",
+		   isalpha('b') ? "b e uma " : "b nao e uma ", "letra",
+		   isalpha('&') ? "& e uma " : "& nao e uma ", "letra",
+		   isalpha('4') ? "4 e uma " : "4 nao e uma ", "letra");
+
+	printf("%n%s%s\n%s%s\n%s%s\n\n", "De acordo com isalnum: ",
+		   isalnum('A') ? "A e um " : "A nao e um ", "digito ou uma letra",
+		   isalnum('8') ? "8 e um " : "8 nao e um ", "digito ou uma letra",
+		   isalnum('#') ? "# e um " : "# nao e um ", "digito ou uma letra");
+	printf("%s\n%s%s\n%s%s\n%s%s\n%s%s\n%s%s\n",
+		   "De acordo com isxdigit:",
+		   isxdigit('F') ? "F e um " : "F nao e um ",
+		   "digito hexadecimal",
+		   isxdigit('J') ? "J e um " : "J nao e um ",
+		   "digito hexadecimal",
+		   isxdigit('7') ? "7 e um " : "7 nao e um ",
+		   "digito hexadecimal",
+		   isxdigit('$') ? "$ e um " : "$ nao e um ",
+		   "digito hexadecimal",
+		   isxdigit('f') ? "f e um " : "f nao e um ", "digito hexadecimal");
+	return 0;
+}

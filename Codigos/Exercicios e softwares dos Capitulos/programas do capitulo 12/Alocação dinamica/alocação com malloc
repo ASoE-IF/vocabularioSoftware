@@ -1,0 +1,12 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+int main(void)
+{
+	int *ptr;
+	ptr = (int *)malloc(5 * sizeof(int));
+	*ptr = 100;
+	printf("%d\n", *ptr);
+	free(ptr);
+	printf("%d", *ptr);
+}

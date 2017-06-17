@@ -1,0 +1,14 @@
+#include <stdio.h>
+int cuboPorValor(int *);
+main() {
+int numero = 5;
+printf("0 valor original do numero e %d\n", numero);
+numero = cuboPorValor(&numero);
+printf("0 novo valor do numero e %d\n", numero);
+return 0;
+}
+int cuboPorValor(int *nPtr)
+{
+*nPtr= *nPtr * *nPtr * *nPtr;
+return (*nPtr);
+}

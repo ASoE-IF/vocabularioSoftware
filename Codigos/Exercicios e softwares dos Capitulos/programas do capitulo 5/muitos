@@ -1,0 +1,9 @@
+#include<stdio.h>
+#include<math.h>
+main(){
+float x, y;
+printf("Programa de calculo de potencias.\n");
+printf("Digite a base: ");
+scanf("%d", &x);
+printf("%.f\n", log10(x));
+}

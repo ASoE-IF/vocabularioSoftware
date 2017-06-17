@@ -1,0 +1,35 @@
+/* Escrevendo em um arquivo de acesso aleatório */
+#include <stdio.h>
+struct dadosCliente
+{
+	int numConta;
+	char sobrenome[15];
+	char primNome[10];
+	float saldo;
+ };
+main()
+{
+	FILE * cfPtr;
+	struct dadosCliente cliente;
+	if ((cfPtr = fopen("credito.txt", "r+")) == NULL)
+		printf("Arquivo nao pode ser aberto.\n");
+		
+	else
+	{
+		printf("Digite o numero da conta"
+				   "	(1 a 100,   0 para encerrar dados)\n? ");
+		scanf("dV, &cliente.numConta");
+
+		while (cliente.numConta != 0)
+		{
+			printf("Digite sobrenome, primeiro nome e saldo\n? ");
+			scanf("%s%s%f", &cliente.sobrenome, &cliente.primNome, &cliente.saldo);
+			fseek(cfPtr, (cliente.numConta - 1) * sizeof(struct dadosCliente), SEEK_SET);
+			fwrite(&cliente, sizeof(struct dadosCliente), 1, cfPtr);
+			printf("Digite o numero da conta\n? ");
+			scanf("%d", &cliente.numConta);
+			}
+		}
+	fclose(cfPtr);
+return 0;
+}

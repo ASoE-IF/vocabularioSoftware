@@ -1,0 +1,12 @@
+#include<stdio.h>
+int main(){
+		char string[20], string2[] = "string literal";
+		int i;
+		printf("entre com uma string: ");
+		scanf("%s", string);
+		printf("\nstring 1 e: %s\n\nstring2 e: %s\n", "\nstring1 com espaços entre caracteres e:\n", string,  string2, string);
+		for (i = 1; string[i] != '\0'; i++)
+		printf("%c", string[i]);
+		printf("\n");
+return 0;
+}

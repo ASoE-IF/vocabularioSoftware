@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void algo_selecao(int matriz[], int tamanho)
+{
+	int temp, atual, j;
+	for (atual = 0; atual < tamanho; atual++)
+		for (j = atual + 1; j < tamanho; j++)
+			if (matriz[atual] > matriz[j])
+			{
+				matriz[j] = temp;
+			}
+}
+
+void main(void)
+{
+	int valores[30], i;
+
+	for (i = 0; i < 30; i++)
+		valores[i] = rand() % 100;
+	algo_selecao(valores, 30);
+	for (i = 0; i < 30; i++)
+		printf("	%d	", valores[i]);
+}
