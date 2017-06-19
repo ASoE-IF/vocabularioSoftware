@@ -1,0 +1,45 @@
+/* Exemplo usando um campo de bits */
+#include <stdio.h>
+
+struct bitCarta
+{
+	unsigned face:4;
+	unsigned naipe:2;
+	unsigned cor:1;
+};
+typedef struct bitCarta Carta;
+void completaBaralho(Carta *);
+void distribuir(Carta *);
+int main(void)
+{
+	Carta baralho[52];
+	completaBaralho(baralho);
+	distribuir(baralho);
+	return 0;
+}
+
+void completaBaralho(Carta * wBaralho)
+{
+	int i;
+	for (i = 0; i <= 51; i++)
+	{
+		wBaralho[i].face = i % 13;
+		wBaralho[i].naipe = i / 13;
+		wBaralho[i].cor = i / 26;
+	}
+}
+
+/* A funcao distribuir imprime as cartas no formato de duas colunas */
+/* A coluna 1 contem as cartas de 0-25 com subscrito kl */
+/* A coluna 2 contem as cartas de 26-51 com subscrito k2 */
+
+void distribuir(Carta * wBaralho)
+{
+	int kl, k2;
+	for (kl = 0, k2 = kl + 26; kl <= 25; kl++, k2++)
+	{
+		printf("Carta:%3d Naipe:%2d Cor:%2d ", wBaralho[kl].face, wBaralho[kl].naipe, wBaralho[kl].cor);
+		printf("Carta:%3d Naipe:%2d Cor:%2d\n", wBaralho[k2].face,
+				   wBaralho[k2].naipe, wBaralho[k2].cor);
+			}
+}

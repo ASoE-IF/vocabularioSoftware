@@ -1,0 +1,40 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+int main(void)
+{
+	int i;
+	
+	struct listaent
+	{
+		int numero;
+		struct listaent *proximo;
+	}inicio, *nodo;
+	
+	inicio.proximo=NULL;	//Lista vazia.
+	nodo=&inicio;				//Aponta para o inicio da lista.
+	
+	for(i=1; i<=10; i++)
+		{
+			nodo->proximo=(struct listaent *) malloc(sizeof(struct listaent));
+			nodo=nodo->proximo;
+			nodo->numero=i;
+			nodo->proximo=NULL;
+		}
+		
+		//exibe o inicio da lista.
+		 nodo=inicio.proximo;
+		 while(nodo)
+		 {
+		 	printf("%d", nodo->numero);
+		 	nodo=nodo->proximo;
+		 }
+		 nodo=&inicio;
+		 while(nodo->proximo){
+		  nodo->proximo=malloc(sizeof (int));
+		 nodo = nodo->proximo;
+		 nodo->numero=5;
+		 nodo->proximo=NULL;
+		 printf("\n%d", nodo->numero);
+		 }
+}

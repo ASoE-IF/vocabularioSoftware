@@ -1,0 +1,14 @@
+/* Usando o sinalizador # com os especificadores de conversão: o, x, X e
+   qualquer outro especificador de ponto flutuante */
+#include <stdio.h>
+main()
+{
+	int c = 1427;
+	float p = 1427.0;
+	printf("%#o\n", c);
+	printf("%#x\n", c);
+	printf("%#X\n", c);
+	printf("\n%g\n", p);
+	printf("%#g\n", p);
+	return 0;
+}

@@ -1,0 +1,10 @@
+#include<stdio.h>
+
+int main(void)
+{
+#ifdef __STDC__
+printf("estou no modo ansi C\n");
+#else
+printf("Não estou no modo ansi C\n");
+#endif
+}

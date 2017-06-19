@@ -1,0 +1,11 @@
+#include <stdio.h>
+#include <stdlib.h>
+main()
+{
+	double d;
+	d = atof("99.0");
+	printf("%s%.3f\n%s%.3f\n",
+			   "A string \"99.0\" convertida em double e ", d,
+			   "O valor convertido dividido por 2 e %1f", d / 2.0);
+	return 0;
+}

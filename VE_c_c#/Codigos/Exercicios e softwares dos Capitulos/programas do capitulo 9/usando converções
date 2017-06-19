@@ -1,0 +1,16 @@
+// Usando os especificadores de conversão p, n e %
+#include <stdio.h>
+main()
+{
+	int *ptr;
+	int x = 12345, y;
+	ptr = &x;
+	printf("O valor de ptr e %p\n", ptr);
+	printf("O endereço de x e %p\n\n", &x);
+	printf("O total de caracteres impresso nesta linha e:%n", &y);
+	printf(" %d\n\n", y);
+	y = printf("Esta linha tem 28 caracteres\n");
+	printf("%d caracteres foram impressos\n\n", y);
+	printf("Imprimindo um %% em um formato de string de controle\n");
+	return 0;
+}

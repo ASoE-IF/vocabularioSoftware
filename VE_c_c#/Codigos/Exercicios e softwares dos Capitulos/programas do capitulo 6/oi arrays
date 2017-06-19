@@ -1,0 +1,21 @@
+#include<stdio.h>
+#include<time.h>
+main(){
+int x[4]={45,54,82,45}, y, z, a;
+srand((unsigned)time(NULL));
+y=rand()%4;
+for (a=0; a<=4; a++)
+{
+		for (z=0; z<=4; z++){
+		y=rand()%444;
+		printf("[%d]", y);
+}
+printf("\n");
+{
+				for (z=0; z<=4; z++){
+				y=rand()%444;
+				printf("[%d]", y);
+}
+}
+return 0;
+}}

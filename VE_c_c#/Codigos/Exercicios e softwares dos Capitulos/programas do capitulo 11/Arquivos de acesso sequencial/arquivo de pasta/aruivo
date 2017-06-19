@@ -1,0 +1,12 @@
+//abre arquivos de todos os tipor
+#include<stdio.h>
+
+void main(void){
+FILE *cfPtr;
+cfPtr = fopen("clientes.dat",   "r");
+cfPtr = fopen("clientes.txt",   "w");
+cfPtr = fopen("clientes.docx",   "a");
+cfPtr = fopen("clientes.bin",   "r+");
+cfPtr = fopen("clientes.pdf",   "w+");
+cfPtr = fopen("clientes.c",   "a+");
+}

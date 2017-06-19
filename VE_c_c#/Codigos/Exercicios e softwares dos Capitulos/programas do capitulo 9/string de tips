@@ -1,0 +1,13 @@
+#include <stdio.h>
+
+main()
+{
+	char character = 'A';
+	char string[] = "Isto e uma string";
+	char *stringPtr = "Isto também e uma string";
+	printf("%c\n", character);
+	printf("%s\n", "Isto e uma string");
+	printf("%s\n", string);
+	printf("%s\n", stringPtr);
+	return 0;
+}

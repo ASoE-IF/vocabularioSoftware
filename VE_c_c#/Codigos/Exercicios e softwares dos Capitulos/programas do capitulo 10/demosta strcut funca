@@ -1,0 +1,18 @@
+#include<stdio.h>
+struct carta
+{
+	char *naipe;
+	char *face;
+};
+
+int main(void)
+{
+	struct carta abre;
+		struct carta *abr;
+		
+	abre.naipe = "As";
+	abre.face = "Espadas";
+	abr = &abre;
+		printf("%s %s %s\n%s %s %s\n%s %s %s\n", abre.naipe, "De", abre.face,
+		   abr->naipe, "De", abr->face, (*abr).naipe, "De", (*abr).face);
+}

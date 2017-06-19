@@ -1,0 +1,16 @@
+#include <stdio.h>
+
+main(){
+int x, y;
+printf("Digite um inteiro: ");
+scanf("%d", &x);
+printf("Digite outro inteiro: ");
+scanf("%d", &y);
+if(x==y)
+printf("%d é igual a %d.", x, y);
+if(x>y)
+printf("%d é maior do que %d.", x, y);
+if(x<y)
+printf("%d é menor do que %d.", x, y);
+return 0;
+}

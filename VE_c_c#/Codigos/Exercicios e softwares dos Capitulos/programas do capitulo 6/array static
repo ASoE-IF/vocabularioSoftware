@@ -1,0 +1,41 @@
+#include<stdio.h>
+
+void xyz1(void);
+void xyz2(void);
+
+main(){
+	printf("Primeira chamada de cada função: \n");
+	xyz1();
+	xyz2();
+	
+	printf("Segunda chamada de cada função:\n");
+	xyz1();
+	xyz2();
+	
+	return 0;
+}
+void xyz1(void){
+ static int x[3];
+ int a;
+ printf("\nValores da função xyz1 ao entrar:\n");
+ 
+ for (a=0; a<=2; a++)
+ 	printf("\narray [%d] = %d", a, x[a]);
+ 	
+ 	printf("\nValores staticos de xgz1 ao sair:\n");
+ 		for  (a = 0;  a <= 2; a++)
+ 		printf("\narrayl[%d]  = %d *",  a, x[a]   += 5);
+ }
+ 
+ void xyz2(void){
+ static int x[3]={1, 2, 3};
+ int a;
+ printf("\nValores da função xyz2 ao entrar:\n");
+ 
+ for (a=0; a<=2; a++)
+ 	printf("\narray [%d] = %d", a, x[a]);
+ 	
+ 	printf("\nValores altomaticos de xgz2 ao sair:\n");
+ 		for  (a = 0;  a <= 2; a++)
+ 		printf("\narrayl[%d]  = %d *",  a, x[a]   += 5);
+ }

@@ -1,0 +1,6 @@
+#include<stdio.h>
+
+void main(void){
+int x[ ]={2,7,18,9, 5};
+printf("%d",  sizeof(x) / sizeof(x[0]));
+}

@@ -1,0 +1,15 @@
+#include<stdio.h>
+#include<time.h>
+int main(void){
+FILE *arq;
+char y[200];
+int a;
+srand((unsigned)time(NULL));
+int *bara[5]={"mago.txt", "dra.txt", "feiticeira.txt", "rá.txt"};
+for(int x=0; x<=5; x++){
+a=rand()%4;
+arq= fopen(bara[a], "r");
+fgets(y, 200, arq);
+printf("%s\n", y);
+}
+}

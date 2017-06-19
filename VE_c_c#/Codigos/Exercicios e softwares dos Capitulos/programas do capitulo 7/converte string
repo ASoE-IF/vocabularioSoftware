@@ -1,0 +1,18 @@
+/*Converter letras minúsculas para maiúsculas */
+/* usando um ponteiro nao-constante para um dado nao-constante*/
+#include <stdio.h>
+void converteParaMaiusculas(char *);
+main() {
+char string[ ]  = "caracteres";
+printf("A string antes da conversão e: %s\n", string);
+converteParaMaiusculas(string);
+printf("A string depois da conversão e: %s\n", string);
+return 0;
+}
+void converteParaMaiusculas(char *s) {
+while  (*s !=   '\0')
+{
+if  (*s>='a' && *s<='z')
+*s -= 32;
+++s;
+}}

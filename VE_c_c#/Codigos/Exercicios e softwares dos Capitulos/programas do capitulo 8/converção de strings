@@ -1,0 +1,12 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+int main(){
+int x;
+float y;
+long z;
+x=atoi("202390");
+y=atof("23.46566323");
+z=atof("2377153L");
+printf("%d\n%f\n%ld", x, y, z);
+}

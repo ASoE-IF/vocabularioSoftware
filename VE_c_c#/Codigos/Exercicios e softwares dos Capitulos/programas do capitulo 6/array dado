@@ -1,0 +1,22 @@
+#include<stdio.h>
+#include<time.h>
+void main(void){
+int dado1, dado2, soma;
+srand((unsigned)time(NULL));
+dado1=rand()%6+1;
+printf("O dado1 caiu em ");
+if(dado1!=0)
+printf("%d", dado1);
+else{
+	printf("1");
+}
+dado2=rand()%6+1;
+printf("\nO dado2 caiu em ");
+if(dado2!=0)
+printf("%d", dado2);
+else{
+	printf("1");
+}
+soma=dado2+dado1;
+printf("\na soma dos dados é %d + %d = %d", dado1, dado2, soma);
+}

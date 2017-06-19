@@ -1,0 +1,19 @@
+#inclue<stdio.h>
+int altera(int *x, int *y, int *z)
+{
+	printf("valores iniciais %d %d %d.\n", *x, *y, *z);
+	*x += 100;
+	*y += 100;
+	*z += 100;
+	printf("os valores finais são %d %d %d.\n", *x, *y, *z);
+}
+
+int main()
+{
+	int a, b, c;
+	a = 1;
+	b = 2;
+	c = 3;
+	altera(&a, &b, &c);
+	printf("os valores finais em main são %d %d %d.\n", a, b, c);
+}

@@ -1,0 +1,72 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+int cobra(int campo[][10]);
+int main(void)
+{
+	static int x[10][10]={8};
+	int a, b;
+	for(a=0; a<10; a++)
+	{
+		for(b=0; b<10; b++)
+		{
+		printf("[%d]", x[a][b]);
+		}
+		printf("\n");
+	}
+	printf("\n");
+	cobra(x);
+	printf("\n");
+		for(a=0; a<10; a++)
+	{
+		for(b=0; b<10; b++)
+		{
+		printf("[%d]", x[a][b]);
+		}
+		printf("\n");
+	}
+	printf("\n");
+}
+
+int cobra(int campo[ ][10])
+{
+	int i;
+	
+	struct listaent
+	{
+		int numero;
+		struct listaent *proximo;
+	}inicio, *nodo;
+	
+	inicio.proximo=NULL;	//Lista vazia.
+	nodo=&inicio;				//Aponta para o inicio da lista.
+	
+	for(i=1; i<=10; i++)
+		{
+			nodo->proximo=(struct listaent *) malloc(sizeof(struct listaent));
+			nodo=nodo->proximo;
+			nodo->numero=i;
+			nodo->proximo=NULL;
+		}
+		
+		//exibe o inicio da lista.
+		 nodo=inicio.proximo;
+		 while(nodo)
+		 {
+		 	printf("%d", nodo->numero);
+		 	nodo=nodo->proximo;
+		 }
+		 printf("\n");
+		 int a, b;
+		 		for(a=0; a<10; a++)
+	{
+	 nodo=&inicio;
+		for(b=0; b<10; b++)
+		{
+		campo[a][b]=nodo->numero;
+		printf("[%d]", campo[a][b]);
+		nodo=nodo->proximo;
+		}
+		printf("\n");
+	}
+}

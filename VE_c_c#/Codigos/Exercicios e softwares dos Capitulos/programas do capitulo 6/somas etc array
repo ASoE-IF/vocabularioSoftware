@@ -1,0 +1,19 @@
+#include<stdio.h>
+#include<time.h>
+main()
+{
+	int x, y[10]={57, 98, 45, 87, 65, 91, 38, 23, 10};
+	int z, a[10]={57, 98, 45, 87, 65, 91, 38, 23, 10};
+	int soma;
+	srand((unsigned)time(NULL));
+	x=rand()%10;
+	printf("Numero aleatorio %d\n", y[x]);
+	z=rand()%10;
+	printf("Numero aleatorio %d\n", a[z]);
+	printf("Soma de ambos é %d\n", y[x]+a[z]);
+	printf("Diferença de ambos é %d\n", y[x]-a[z]);
+	printf("Produlto de ambos é %d\n", y[x]*a[z]);
+	printf("Divisão de ambos é %d\n", y[x]/a[z]);
+	printf("Restos da divisão de ambos é %d\n", y[x]%a[z]);
+	printf("Media de ambos é %d\n", y[x]+a[z]/(2));
+}

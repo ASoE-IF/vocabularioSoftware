@@ -1,0 +1,9 @@
+#include<stdio.h>
+main(){
+char abc[256];
+int x;
+for(x=0; x<26; x++)
+abc[x]='A' + x;
+abc[x]=NULL;
+printf("%s", abc);
+}

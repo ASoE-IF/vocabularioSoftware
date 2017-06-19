@@ -1,0 +1,4 @@
+#include<stdio.h>
+main(){
+printf("%*.*f",   7,   2, 98.736);
+}

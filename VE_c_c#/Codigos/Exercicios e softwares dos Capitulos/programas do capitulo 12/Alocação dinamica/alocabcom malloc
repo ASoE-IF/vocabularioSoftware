@@ -1,0 +1,15 @@
+#include<stdio.h>
+#include<stdlib.h>
+int main(void)
+{
+int *aptr, co;
+for(co=0; co<10; ++co)
+{
+	aptr=(int *)malloc(4*sizeof(int));
+	*aptr=co;
+	printf("%d ", *aptr);
+}
+printf("\n%d", *aptr);
+free(aptr);
+getchar();
+}

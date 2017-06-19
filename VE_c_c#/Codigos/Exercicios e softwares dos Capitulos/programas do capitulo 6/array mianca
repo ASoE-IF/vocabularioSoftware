@@ -1,0 +1,12 @@
+#include <stdio.h>
+main(){
+	int i, x, y, n[5][5][5]={{{1,2,3,4,5}, {6,7,8,9,10}, {26,27,28,29,30}}};
+	printf("%s%13s\n",   "Elemento", "Valor");
+	for(i = 0;  i <= 5; i++){
+		for(x = 0;  x <= 5; x++){
+			for(y = 0;  y <= 5; y++){
+	printf("{%d} ",  n[i][x][y]);
+}}}
+printf("\n");
+return 0;
+}

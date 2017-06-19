@@ -1,0 +1,37 @@
+#include<stdio.h>
+#define SEN 0
+
+int main(void)
+{
+	int sentezimos, segundos, minutos, horas, contador = 0;
+	segundos = 0;
+	minutos = 0;
+	horas = 0;
+	for (contador=0; contador<10000; contador++)
+	{
+		for (sentezimos = SEN; sentezimos < 100; sentezimos++){
+			printf("%d:%d:%d:%d\n", horas, minutos, segundos, sentezimos);
+
+		if (sentezimos == 99)
+		{
+			segundos++;
+			printf("%d:%d:%d:%d\n", horas, minutos, segundos, sentezimos);
+						if (segundos == 59)
+			{
+				segundos=0;
+				sentezimos=0;
+				minutos++;
+				printf("%d:%d:%d:%d\n", horas, minutos, segundos, sentezimos);
+				if (minutos == 59)
+				{
+								segundos=0;
+					minutos=0;
+					sentezimos=0;
+					horas++;
+					printf("%d:%d:%d:%d\n", horas, minutos, segundos,
+						   sentezimos);
+				}
+			}
+		}
+	}
+}}

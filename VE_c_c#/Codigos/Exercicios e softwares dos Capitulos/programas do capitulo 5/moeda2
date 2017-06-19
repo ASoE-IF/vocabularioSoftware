@@ -1,0 +1,39 @@
+#include<stdio.h>
+#include<time.h>
+int moeda(){
+int x, y;
+printf("Aposte moeda.\n0)Cara.\nou\n1)Coroa.\nDigite uma aposta: ");
+scanf("%d", &x);
+srand((unsigned)time(NULL));
+y=rand()%2;
+if(x>1)
+denovo();
+if(x<0)
+denovo();
+if(x==y)
+printf("Você acertou.\n");
+else
+printf("Você errou.\n");
+if(y==1)
+printf("A moeda caiu em coroa.\nQuer tentar novamente:\n");
+if(y==0)
+printf("A moeda caiu em cara.\nQuer tentar novamente:\n");
+tente();
+}
+int tente(){
+int z;
+printf("1)Continue.\n2)Sair.\nDigite: ");
+scanf("%d", &z);
+if(z==1)
+moeda();
+else
+return 0;
+}
+int denovo(){
+printf("Aposta inexistente.\ntente novamente: \n");
+moeda();
+}
+int main(){
+moeda();
+}
+

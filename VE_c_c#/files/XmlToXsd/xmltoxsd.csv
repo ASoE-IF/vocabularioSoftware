@@ -1,0 +1,8 @@
+,Entity's Name,LOC Count,Header Count,Annotation Count,Inner Entities Lines,Total,Entity Type
+,/src/:com.pacote2.EmptyClass,2,1,0,0,3,CLASS
+,/src/:com.pacote2.EmptyMethod,3,1,0,0,4,CLASS
+,/src/:com.xml2xsd.GenericClass,19,4,0,11,34,CLASS
+,/src/:com.xml2xsd.GenericClass$Interna,10,0,0,0,10,INNER_CLASS
+,/src/:com.xml2xsd.GenericClass$Interna2,1,0,0,0,1,INNER_CLASS
+,/src/:com.xml2xsd.SideEnum,5,4,0,0,9,ENUM
+Total,,40,10,0,11,61

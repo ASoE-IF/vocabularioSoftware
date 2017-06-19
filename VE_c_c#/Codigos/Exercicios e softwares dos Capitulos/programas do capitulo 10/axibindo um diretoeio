@@ -1,0 +1,37 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<dirent.h>
+#include<string.h>
+
+int main(int argc, char *argv[ ])
+{
+	DIR *pont_diretorio;
+	struct dirent *entrada;
+	struct lista_arq{
+		char nomearq[30];
+		struct lista_arq *proximo;
+	}inicio, *nodo, *anterior, *novo;
+	
+		inicio.proximo=NULL;
+			//encontra a posição correta
+			anterior=&inicio;
+			nodo=inicio.proximo;
+			
+			while(nodo)
+			{
+				nodo=nodo->proximo;
+				anterior=anterior->proximo;
+			novo=(struct lista_arq *)malloc(sizeof(struct lista_arq));
+			novo->proximo=nodo;
+			anterior->proximo=novo;
+			novo->nomearq=antrada;
+		}
+		
+		nodo=inicio.proximo;
+		
+		while(nodo)
+		{
+			printf("%s\n", nodo->nomearq);
+			nodo=nodo->proximo;
+		}
+}

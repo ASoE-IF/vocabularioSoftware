@@ -1,0 +1,12 @@
+#include <stdio.h>
+#include <stdlib.h>
+main()
+{
+	double d;
+	char *string = "51.2% foram admitidos";
+	char *stringPtr;
+	d = strtod(string, &stringPtr);
+	printf("A string \"%s\"  foi convertida para o\n", string);
+	printf("valor double %.2f e a string \"%s\"\n", d, stringPtr);
+	return 0;
+	}

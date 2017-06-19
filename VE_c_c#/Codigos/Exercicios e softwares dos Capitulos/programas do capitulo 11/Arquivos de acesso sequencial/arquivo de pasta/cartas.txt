@@ -1,0 +1,10 @@
+Baralho de cartas aleatorio
+
+1|cavaleiro
+2|mago
+3|cavaleiro
+4|dragão
+5|dragão
+6|dragao alado de rá
+7|dragao alado de rá
+8|feiticeira

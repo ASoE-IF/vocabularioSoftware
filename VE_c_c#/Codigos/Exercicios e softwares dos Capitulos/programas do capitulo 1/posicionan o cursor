@@ -1,0 +1,20 @@
+#include<stdio.h>
+
+int main(void)
+{
+	int a;
+	for(a=0; a<=5;a++)
+	printf("\033[%d;%dHola", a, a);
+	for(a=0; a<=5; a++)
+	printf("\033[%dAola", a);
+		for(a=0; a<=5; a++)
+	printf("\033[%dBola", a);
+		for(a=0; a<=5; a++)
+	printf("\033[%dCola", a);
+		for(a=0; a<=5; a++)
+	printf("\033[%dDola\n", a);
+		for(a=0; a<=5; a++)
+	printf("\033[Sola");
+		for(a=0; a<=5; a++)
+	printf("\033[Uola\n");
+}

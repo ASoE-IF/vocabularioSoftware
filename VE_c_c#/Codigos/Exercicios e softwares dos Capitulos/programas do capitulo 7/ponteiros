@@ -1,0 +1,16 @@
+#include<stdio.h>
+
+void main(void)
+{
+	int a = 1, b = 2;
+	int *iptr;
+
+	iptr = &a;
+	*iptr = 5;
+
+	printf("o valor de iptr é %d, a variavel a é %d.\n", *iptr, a);
+
+	b = *iptr;
+	printf("o valor de b é %d.\n", b);
+	printf("o valor de iptr é %d.", *iptr);
+}

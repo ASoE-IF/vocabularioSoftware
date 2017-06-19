@@ -1,0 +1,16 @@
+#include<stdio.h>
+int go(int );
+main(){
+int x, y, z[5];
+for (x=1; x<=5; x++){
+printf("digite: ");
+scanf("%d", &z[x]);
+}
+for(x=1; x<=5; x++){
+x=go(z[x]);
+printf("%d\n", z[x]);
+}
+}
+int go(int d){
+return d;
+}

@@ -1,0 +1,12 @@
+#include<stdio.h>
+static void gomes(){
+int x;
+x=1;
+x++;
+printf("%d", x);
+gomes(x++);
+}
+main(){
+int x;
+gomes(x);
+}

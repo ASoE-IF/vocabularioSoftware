@@ -1,0 +1,17 @@
+#include<stdio.h>
+
+int main(void)
+{
+	FILE *entrada;
+	char letra;
+	if ((entrada = fopen("cartas.txt", "r")) != NULL)
+		printf("o arquivo nao pode ser aberto\n\n");
+	else
+	{
+		printf("o arquivo em byte é %d \n\n", ftell(entrada));
+		while ((letra = fgetc(entrada)) != EOF)
+			fputc(letra, stdout);
+		printf("\nA posiçao do arquivo é o byte %d\n", ftell(entrada));
+		fclose(entrada);
+	}
+}

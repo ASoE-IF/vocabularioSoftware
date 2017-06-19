@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<C-Project id="default" name="VocabularyExtractor" revision="">
+	<C-File name="Lista.c" sloc="185">
+		<comm cntt="comentario de linha"/>
+		<comm cntt="este é um commentario ue pode se estender por varias linhas"/>
+		<comm cntt="cria um nome alternativo para int"/>
+		<comm cntt="variavel statica"/>
+		<comm cntt="cria um pesudonome para Nodo, isso � um tipo"/>
+		<comm cntt="tipo lista"/>
+		<comm cntt="enums"/>
+		<comm cntt="prototipo de constroiLista"/>
+		<comm cntt="prototipo de destroiLista"/>
+		<comm cntt="prototipo de busca_lista"/>
+		<comm cntt="prototipo de insere_na_lista"/>
+		<comm cntt="prototipo de apaga_da_lista"/>
+		<comm cntt="prototipo de estahVazio"/>
+		<comm cntt="prototipo de cabeca"/>
+		<comm cntt="prototipo de imprimeLista"/>
+		<comm cntt="este commentario ta no meiod de definições"/>
+		<comm cntt="fim de main"/>
+		<comm cntt="comentario depois de main"/>
+		<comm cntt="este comentario ocupa 3 linha - 1 2 3"/>
+		<comm cntt="este comentario esta no fim"/>
+		<GlobalVar name="elem_lista" access="auto" jdoc="eu"/>
+		<GlobalVar name="variavelstatic" access="static" jdoc="eu"/>
+		<struct name="Nodo" access="global" sloc="0">
+		<comm cntt="declara um estrutura de N� da lista: Nodo"/>
+		<comm cntt="elemento da lista"/>
+		<comm cntt="estrutura que vai apontar para o proximo elemento da lista"/>
+		<comm cntt="estrutura que vai apontar para o elemento anterior da lista"/>
+			<structMembers name="elem" count="50"/>
+			<structMembers name="prox" count="50"/>
+			<structMembers name="ant" count="50"/>
+		</struct>
+		<struct name="" access="global" sloc="0">
+		<comm cntt="estrutura de onde será criada a lista"/>
+		<comm cntt="estrutura do tipo t_Nodo que contera a cabeca da lista"/>
+			<structMembers name="cabeca" count="50"/>
+		</struct>
+		<enum name="colors" sloc="0" jdoc="null">
+		<comm cntt="enum"/>
+			<const name="black" access="Não disponivel" jdoc=""/>
+			<const name="blue" access="Não disponivel" jdoc=""/>
+			<const name="green" access="Não disponivel" jdoc=""/>
+			<const name="cyan" access="Não disponivel" jdoc=""/>
+			<const name="red" access="Não disponivel" jdoc=""/>
+			<const name="purple" access="Não disponivel" jdoc=""/>
+			<const name="yellow" access="Não disponivel" jdoc=""/>
+			<const name="white" access="Não disponivel" jdoc=""/>
+		</enum>
+		<GlobalVar name="constroiLista" access="auto" jdoc="eu"/>
+		<GlobalVar name="destroiLista" access="auto" jdoc="eu"/>
+		<GlobalVar name="busca_lista" access="auto" jdoc="eu"/>
+		<GlobalVar name="insere_na_lista" access="auto" jdoc="eu"/>
+		<GlobalVar name="elem_lista" access="auto" jdoc="eu"/>
+		<GlobalVar name="estahVazio" access="auto" jdoc="eu"/>
+		<GlobalVar name="elem_lista" access="auto" jdoc="eu"/>
+		<GlobalVar name="imprimeLista" access="auto" jdoc="eu"/>
+		<function name="fun" access="static" jdoc="null">
+			<FunctionCall name="printf" count="1"/>
+				<lit cntt="""" count="1"/>
+		</function>
+		<function name="main" access="auto" jdoc="null">
+			<comm cntt="inicia o programa"/>
+			<comm cntt="cria uma variavel ponteiro do tipo t_Nodo e aloca memoria pra ela, este � o ponteiro de inicio de toda a lista, pode-se dizer que ele � o &amp;quot;inicio de tudo&amp;quot;"/>
+			<comm cntt="cria uma variavel ponteiro do tipo Lista e aloca memoria"/>
+			<comm cntt="faz cabe�a da lista apontar para o endere�o da variavel nodoLista"/>
+			<comm cntt="envia o endere�o de nodo para contruir a lista"/>
+			<comm cntt="testa se a lista est� vazia"/>
+			<comm cntt="insere na lista"/>
+			<comm cntt="insere na lista"/>
+			<comm cntt="insere na lista"/>
+			<comm cntt="insere na lista"/>
+			<comm cntt="insere na lista"/>
+			<comm cntt="insere na lista"/>
+			<comm cntt="chama a fun��o imprimir para imprimir a lista"/>
+			<comm cntt="testa se a lista est� vazia"/>
+			<comm cntt="tenta apagar um elemento inexistente da lista e retorna um erro"/>
+			<comm cntt="retorna o elemento do topo da lista"/>
+			<comm cntt="imprime a lista"/>
+			<comm cntt="apaga o elemento 5 da lista"/>
+			<comm cntt="apaga o elemento 6 da lista"/>
+			<comm cntt="apaga o elemento 2 da lista"/>
+			<comm cntt="imprime a lista atualizada sem os elementos que foram removidos"/>
+			<comm cntt="insere o 7 na lista"/>
+			<comm cntt="imprime a lista atualizada com o 7 inserido"/>
+			<comm cntt="busca se o 3 est� na lista e retorna 1, verdadeiro, e 0 falso"/>
+			<comm cntt="busca se o 6 est� na lista e retorna 1, verdadeiro, e 0 falso"/>
+			<comm cntt="retorna e imprime a cabe�a da lista"/>
+			<comm cntt="destroi a lista"/>
+			<comm cntt="tenta imprimir a lista destruida"/>
+			<comm cntt="obs: tentar imprimir a lisa destruida pode causar o travamento do programa em alguns computadores"/>
+			<comm cntt="libera a memoria alocada para a lista"/>
+			<comm cntt="libera a memoria alocada para o nodo da lista"/>
+			<param name="x"/>
+			<param name="y"/>
+			<param name="z"/>
+			<param name="a"/>
+			<lvar name="t_Nodo" count="5"/>
+			<lvar name="Lista" count="5"/>
+			<FunctionCall name="apaga_da_lista" count="4"/>
+			<FunctionCall name="busca_lista" count="2"/>
+			<FunctionCall name="cabeca" count="2"/>
+			<FunctionCall name="constroiLista" count="1"/>
+			<FunctionCall name="destroiLista" count="1"/>
+			<FunctionCall name="estahVazio" count="2"/>
+			<FunctionCall name="free" count="2"/>
+			<FunctionCall name="imprimeLista" count="5"/>
+			<FunctionCall name="insere_na_lista" count="7"/>
+			<FunctionCall name="printf" count="17"/>
+				<lit cntt=""6 esta na lista = %d\n"" count="1"/>
+				<lit cntt=""Elemento removido: %d\n"" count="4"/>
+				<lit cntt=""Inserindo os elementos 1, 2, 3, 4, 5 e 6\n"" count="1"/>
+				<lit cntt=""Lista vazia = %d\n"" count="2"/>
+				<lit cntt=""\n3 esta na lista = %d\n"" count="1"/>
+				<lit cntt=""\nDestruindo Lista!\n"" count="1"/>
+				<lit cntt=""\nElemento da cabeca: %d\n"" count="2"/>
+				<lit cntt=""\nInserindo o elemento 7\n"" count="1"/>
+				<lit cntt=""\nRemovendo 2\n"" count="1"/>
+				<lit cntt=""\nRemovendo 5\n"" count="1"/>
+				<lit cntt=""\nRemovendo 6\n"" count="1"/>
+				<lit cntt=""\nTentando remover 57\n"" count="1"/>
+				<lit cntt="1" count="1"/>
+				<lit cntt="2" count="2"/>
+				<lit cntt="3" count="2"/>
+				<lit cntt="4" count="1"/>
+				<lit cntt="5" count="2"/>
+				<lit cntt="57" count="1"/>
+				<lit cntt="6" count="3"/>
+				<lit cntt="7" count="1"/>
+		</function>
+		<function name="constroiLista" access="auto" jdoc="null">
+			<comm cntt="fun��o que controi a lista, recebe a referencia para a lista criada no main"/>
+			<comm cntt="faz a estrutura de proximo elemento da cabe�a da lista(prox) apontar para NULL,"/>
+			<comm cntt="faz a estrutura de elemento anterior da cabe�a da lista(ant) apontar para NULL,"/>
+			<comm cntt="Ou seja a lista esta vazia"/>
+			<param name="l"/>
+		</function>
+		<function name="destroiLista" access="auto" jdoc="null">
+			<comm cntt="cria um variavel que aponta para a cabe�a da lista ou seja, para o inicio"/>
+			<comm cntt="percorre a lista desde o inicio at� o final da lista"/>
+			<comm cntt="libera a memoria do elemento anterior da lista"/>
+			<comm cntt="testa se a lista j� chegou ao final, se sim ele libera a memoria armazenda para a variavel inicio"/>
+			<comm cntt="libera a memoria de inicio"/>
+			<comm cntt="quebra o loop"/>
+			<comm cntt="faz inicio apontar sempre para a proxima estrutura, ou seja o proximo elemento da lista"/>
+			<comm cntt="conclui a destrui��o fazendo o prox apontar para NULL"/>
+			<comm cntt="conclui a destrui��o fazendo o ant apontar para NULL"/>
+			<param name="l"/>
+			<lvar name="t_Nodo" count="5"/>
+			<FunctionCall name="free" count="2"/>
+		</function>
+		<function name="busca_lista" access="auto" jdoc="null">
+			<comm cntt="fun��o que busca na lista, recebe uma lista e um elemento a ser buscado na lista"/>
+			<comm cntt="que uma variavel ponteiro que aponta para a cabe�a da lista ou seja, o inicio"/>
+			<comm cntt="percorre do inicio da lista at� quando ela for NULL"/>
+			<comm cntt="testa se o elemento passado, k est� na lista"/>
+			<comm cntt="quebra o loop"/>
+			<comm cntt="faz a lista apontar para o proximo elemento sa o elemento da lista n�o for igual a k"/>
+			<comm cntt="se k n�o estiver na lista a lista, inicio apontara para NULL, ou seja se n�o existe k na lista ela � nula, e se existe ela � diferente de nula,"/>
+			<comm cntt="retorna 1 se estiver na lista e 0 se n�o estiver na lista"/>
+			<param name="l"/>
+			<param name="k"/>
+			<lvar name="t_Nodo" count="5"/>
+		</function>
+		<function name="insere_na_lista" access="auto" jdoc="null">
+			<comm cntt="insere na lista, recebe de parametro a lista e o elemento a ser inserido"/>
+			<comm cntt="declara um variavel ponteiro de tipo t_Nodo novo e temp"/>
+			<comm cntt="aloca memoria para o novo elemento da lista"/>
+			<comm cntt="testa se a memoria foi alocada corretamente"/>
+			<comm cntt="encerra o programa inteiro se e memoria n�o tiver sido alocada corretamente"/>
+			<comm cntt="coloca o elemento x no nodo novo"/>
+			<comm cntt="faz temp apontar para o proximo elemento da lista"/>
+			<comm cntt="faz a cabe�a apontar para o novo elemento"/>
+			<comm cntt="faz o proximo elemento da lista apontar para o antigo elemento da cabe�a"/>
+			<comm cntt="se temp for NULL, ent�o a lista est� vazia"/>
+			<comm cntt="se a lista est� vazia, o anterior do novo aponta para o anterior a ela, que nesse caso vai ser uma lista que possui elementos nulo, e n�o entra no calculo como um elemento incluso da lista, mas apenas funciona como a origem da lista, para est� lista, se este primeiro elemento n�o tivesse sido criado, n�o teria como adicionar novos elementos a lista"/>
+			<comm cntt="retorna ao chamador"/>
+			<comm cntt="faz o elemento da antiga cabe�a apontar para a nova cabe�a"/>
+			<comm cntt="faz o novo elemento apontar para o proximo elemento da lista"/>
+			<param name="l"/>
+			<param name="x"/>
+			<lvar name="t_Nodo" count="5"/>
+			<FunctionCall name="exit" count="1"/>
+			<FunctionCall name="printf" count="1"/>
+				<lit cntt=""Sem memoria!\n"" count="1"/>
+				<lit cntt="1" count="1"/>
+		</function>
+		<function name="apaga_da_lista" access="auto" jdoc="null">
+			<comm cntt="apaga um elemento da lista"/>
+			<comm cntt="cria um ponteiro de nodo inicio e temp"/>
+			<comm cntt="inicio aponta para a cabe�a da lista"/>
+			<comm cntt="percorre a lista at� o fim"/>
+			<comm cntt="se elemento da lista for igual a x, ent�o x esta na lista"/>
+			<comm cntt="acaba com o loop"/>
+			<comm cntt="aponta para o proximo elemento da lista"/>
+			<comm cntt="se inicio for igual a NULL, � porque a lista foi pecorrida t� o fim e o elemento x n�o foi encontrado nela"/>
+			<comm cntt="imprime uma mensagem de erro"/>
+			<comm cntt="retorna um valor de erro que nada interfere no funcionamento do programa"/>
+			<comm cntt="se x estiver na lista os codigos abaixo s�o execultados"/>
+			<comm cntt="temp aponta para a posi��o onde x foi encontrado, mantendo assim o valor de x por equanto"/>
+			<comm cntt="inicio aponta para o proximo elemento, agora inicio n�o tem mais o elemento igual a x"/>
+			<comm cntt="faz o inicio conter uma referencia para o elemento anterior da lista"/>
+			<comm cntt="faz o elemento anterior a x ter o referencia para o proximo elemento depois do que � igual a x"/>
+			<comm cntt="libera a memoria armazenada para o elemento igual a x"/>
+			<comm cntt="retorna o elemento que foi removido, que era igual a x"/>
+			<param name="l"/>
+			<param name="x"/>
+			<lvar name="t_Nodo" count="5"/>
+			<FunctionCall name="free" count="1"/>
+			<FunctionCall name="printf" count="1"/>
+				<lit cntt=""\nElemento inexistente, retornando valor de erro\n"" count="1"/>
+		</function>
+		<function name="estahVazio" access="auto" jdoc="null">
+			<comm cntt="testa se est� vazia"/>
+			<comm cntt="se a lista for NULL ela est� vazia"/>
+			<comm cntt="retorna 1, verdadeiro"/>
+			<comm cntt="se a cabe�a da lista for NULL, a lista tamb�m est� vazia"/>
+			<comm cntt="retorna 1, vardadeiro"/>
+			<comm cntt="se o proximo elemento da cabe�a for NULL a lista tamb�m est� vazia, n�o se esque�a que por padr�o esta lista possui um elemento que � anterior a cabe�a, esse elemento � o inicio desta lista e sem ele a lista n�o funciona, se esse inicio de tudo n�o aponta para o proximo elemento da lista ent�o a lista est� vazia"/>
+			<comm cntt="retorna 1, verdadeiro"/>
+			<comm cntt="se n�o tiver vazia ela retorna 0"/>
+			<param name="l"/>
+		</function>
+		<function name="cabeca" access="auto" jdoc="null">
+			<comm cntt="retorna o elemento da cabe�a"/>
+			<comm cntt="retorna o elemento da cabe�a, que � na verdade o proximo elemento do inicio de tudo"/>
+			<param name="l"/>
+		</function>
+		<function name="imprimeLista" access="auto" jdoc="null">
+			<comm cntt="imprime a lista"/>
+			<comm cntt="aponta para o primeiro elemento da lista que � o proximo elemento do inicio de tudo"/>
+			<comm cntt="contador"/>
+			<comm cntt="enquanto existir elementos na lista ele continua percorrendo"/>
+			<comm cntt="imprinme o elemento da lista"/>
+			<comm cntt="aponta para o proximo elemento"/>
+			<comm cntt="incrementa 1 ao contador"/>
+			<comm cntt="Comentario no if"/>
+			<param name="l"/>
+			<lvar name="t_Nodo" count="5"/>
+			<lvar name="cont" count="5"/>
+			<lvar name="x" count="5"/>
+			<FunctionCall name="printf" count="2"/>
+			<FunctionCall name="printfdoif" count="1"/>
+			<FunctionCall name="printfdoif2" count="1"/>
+				<lit cntt=""Elemento %d = %d\n"" count="1"/>
+				<lit cntt=""\nElementos da lista\n"" count="1"/>
+				<lit cntt=""testo"" count="1"/>
+				<lit cntt=""tsto"" count="1"/>
+				<lit cntt="1" count="1"/>
+				<lit cntt="5" count="1"/>
+		</function>
+	</C-File>
+	<C-File name="exercicio3.c" sloc="10">
+		<comm cntt="Implemente a fun��o imprime_endereco(int num) que recebe um inteiro e imprime o endere�o de mem�ria de num. Para testar a fun��o, imprima (usando printf) o endere�o de uma vari�vel inteira �a�, em seguida, chame a fun��o imprime_endereco passando �a� como par�metro. Os endere�os impressos foram iguais? Por qu�?"/>
+		<comm cntt="diferente porque soimente o que foi parassado para a fun��o foiuma copia do valor de num"/>
+		<function name="imprime_endereco" access="auto" jdoc="null">
+			<param name="num"/>
+			<param name="xy"/>
+			<FunctionCall name="printf" count="1"/>
+				<lit cntt=""O endereco de num na funcao e: %d\n"" count="1"/>
+		</function>
+		<function name="main" access="auto" jdoc="null">
+			<comm cntt="diferente porque soimente o que foi parassado para a fun��o foiuma copia do valor de num"/>
+			<param name=""/>
+			<lvar name="num" count="5"/>
+			<FunctionCall name="imprime_endereco" count="1"/>
+			<FunctionCall name="printf" count="1"/>
+				<lit cntt=""O endereco de num em main e: %d\n"" count="1"/>
+				<lit cntt="45" count="1"/>
+		</function>
+	</C-File>
+</C-Project>

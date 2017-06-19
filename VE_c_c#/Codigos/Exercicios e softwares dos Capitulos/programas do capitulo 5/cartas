@@ -1,0 +1,220 @@
+#include<stdio.h>
+#include<time.h>
+cartas(){
+char x;
+srand((unsigned)time(NULL));
+x=rand()%10;
+if(x==0)
+printf("carta 1.\n");
+if(x==1)
+printf("carta 2.\n");
+if(x==2)
+printf("carta 3.\n");
+if(x==3)
+printf("carta 4.\n");
+if(x==4)
+printf("carta 5.\n");
+if(x==5)
+printf("carta 6.\n");
+if(x==6)
+printf("carta 7.\n");
+if(x==7)
+printf("carta 8.\n");
+if(x==8)
+printf("carta 9.\n");
+if(x==9)
+printf("carta 10.\n");
+x=rand()%10;
+if(x==0)
+printf("carta 1.\n");
+if(x==1)
+printf("carta 2.\n");
+if(x==2)
+printf("carta 3.\n");
+if(x==3)
+printf("carta 4.\n");
+if(x==4)
+printf("carta 5.\n");
+if(x==5)
+printf("carta 6.\n");
+if(x==6)
+printf("carta 7.\n");
+if(x==7)
+printf("carta 8.\n");
+if(x==8)
+printf("carta 9.\n");
+if(x==9)
+printf("carta 10.\n");
+x=rand()%10;
+if(x==0)
+printf("carta 1.\n");
+if(x==1)
+printf("carta 2.\n");
+if(x==2)
+printf("carta 3.\n");
+if(x==3)
+printf("carta 4.\n");
+if(x==4)
+printf("carta 5.\n");
+if(x==5)
+printf("carta 6.\n");
+if(x==6)
+printf("carta 7.\n");
+if(x==7)
+printf("carta 8.\n");
+if(x==8)
+printf("carta 9.\n");
+if(x==9)
+printf("carta 10.\n");
+x=rand()%10;
+if(x==0)
+printf("carta 1.\n");
+if(x==1)
+printf("carta 2.\n");
+if(x==2)
+printf("carta 3.\n");
+if(x==3)
+printf("carta 4.\n");
+if(x==4)
+printf("carta 5.\n");
+if(x==5)
+printf("carta 6.\n");
+if(x==6)
+printf("carta 7.\n");
+if(x==7)
+printf("carta 8.\n");
+if(x==8)
+printf("carta 9.\n");
+if(x==9)
+printf("carta 10.\n");
+x=rand()%10;
+if(x==0)
+printf("carta 1.\n");
+if(x==1)
+printf("carta 2.\n");
+if(x==2)
+printf("carta 3.\n");
+if(x==3)
+printf("carta 4.\n");
+if(x==4)
+printf("carta 5.\n");
+if(x==5)
+printf("carta 6.\n");
+if(x==6)
+printf("carta 7.\n");
+if(x==7)
+printf("carta 8.\n");
+if(x==8)
+printf("carta 9.\n");
+if(x==9)
+printf("carta 10.\n");
+x=rand()%10;
+if(x==0)
+printf("carta 1.\n");
+if(x==1)
+printf("carta 2.\n");
+if(x==2)
+printf("carta 3.\n");
+if(x==3)
+printf("carta 4.\n");
+if(x==4)
+printf("carta 5.\n");
+if(x==5)
+printf("carta 6.\n");
+if(x==6)
+printf("carta 7.\n");
+if(x==7)
+printf("carta 8.\n");
+if(x==8)
+printf("carta 9.\n");
+if(x==9)
+printf("carta 10.\n");
+x=rand()%10;
+if(x==0)
+printf("carta 1.\n");
+if(x==1)
+printf("carta 2.\n");
+if(x==2)
+printf("carta 3.\n");
+if(x==3)
+printf("carta 4.\n");
+if(x==4)
+printf("carta 5.\n");
+if(x==5)
+printf("carta 6.\n");
+if(x==6)
+printf("carta 7.\n");
+if(x==7)
+printf("carta 8.\n");
+if(x==8)
+printf("carta 9.\n");
+if(x==9)
+printf("carta 10.\n");
+x=rand()%10;
+if(x==0)
+printf("carta 1.\n");
+if(x==1)
+printf("carta 2.\n");
+if(x==2)
+printf("carta 3.\n");
+if(x==3)
+printf("carta 4.\n");
+if(x==4)
+printf("carta 5.\n");
+if(x==5)
+printf("carta 6.\n");
+if(x==6)
+printf("carta 7.\n");
+if(x==7)
+printf("carta 8.\n");
+if(x==8)
+printf("carta 9.\n");
+if(x==9)
+printf("carta 10.\n");
+x=rand()%10;
+if(x==0)
+printf("carta 1.\n");
+if(x==1)
+printf("carta 2.\n");
+if(x==2)
+printf("carta 3.\n");
+if(x==3)
+printf("carta 4.\n");
+if(x==4)
+printf("carta 5.\n");
+if(x==5)
+printf("carta 6.\n");
+if(x==6)
+printf("carta 7.\n");
+if(x==7)
+printf("carta 8.\n");
+if(x==8)
+printf("carta 9.\n");
+if(x==9)
+printf("carta 10.\n");
+x=rand()%10;
+if(x==0)
+printf("carta 1.\n");
+if(x==1)
+printf("carta 2.\n");
+if(x==2)
+printf("carta 3.\n");
+if(x==3)
+printf("carta 4.\n");
+if(x==4)
+printf("carta 5.\n");
+if(x==5)
+printf("carta 6.\n");
+if(x==6)
+printf("carta 7.\n");
+if(x==7)
+printf("carta 8.\n");
+if(x==8)
+printf("carta 9.\n");
+if(x==9)
+printf("carta 10.\n");
+
+}
+main(){
+cartas();
+}

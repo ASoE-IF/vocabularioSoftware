@@ -1,0 +1,8 @@
+#include<stdio.h>
+
+int conta_dic = 1500;
+static char titulo[] = "olá mundo";
+void main(void)
+{
+	printf(titulo);
+}

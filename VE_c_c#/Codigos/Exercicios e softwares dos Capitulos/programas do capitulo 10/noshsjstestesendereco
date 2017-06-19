@@ -1,0 +1,6 @@
+#include<stdio.h>
+
+void main(void)
+{
+	int x, y, tr;
+	printf("%p   

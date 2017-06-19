@@ -1,0 +1,8 @@
+#include<stdio.h>
+void main(void){
+int x=5;
+FILE *cfptr;
+if((cfptr=fopen("israel.dat", "w"))!=NULL)
+printf("%d", x);
+else printf("nada encontrado.");
+}
