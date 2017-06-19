@@ -1,5 +1,0 @@
-#include<stdio.h>
-main(){
-int *a=7;
-printf("%d\n%p", a, &a);
-}

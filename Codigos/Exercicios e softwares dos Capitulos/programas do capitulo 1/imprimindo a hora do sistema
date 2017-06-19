@@ -1,6 +1,0 @@
-#include<stdio.h>
-
-int main(void)
-{
-	printf("Hora %s, Data %s\n", __TIME__, __DATE__);
-}

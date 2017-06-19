@@ -1,6 +1,0 @@
-#include<stdio.h>
-main(){
-int x;
-		for (x=1; x<=8; x++)
-		printf("%3d%3d%3d%3d%3d%3d%3d%3d\n", x, x, x, x, x, x, x, x);
-}

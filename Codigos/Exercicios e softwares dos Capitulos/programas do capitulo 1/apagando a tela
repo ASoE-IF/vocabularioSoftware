@@ -1,8 +1,0 @@
-#include<stdio.h>
-
-int main(void)
-{
-	int a;
-	for(a=30; a<=47; a++)
-	printf("\033[2Jola\n");
-}
