@@ -15,7 +15,7 @@ import org.eclipse.cdt.internal.core.dom.parser.c.CASTEnumerationSpecifier;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTFunctionDefinition;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTProblemDeclaration;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTSimpleDeclaration;
-import Vocabulary.Extractor.Util.CommentUnitC;
+import Vocabulary.Extractor.Util.CommentUnit;
 import Vocabulary.Extractor.Util.LOCManager;
 import Vocabulary.Extractor.Util.VxlManager;
 import Vocabulary.vloccount.EntityLOCKeeper;
@@ -25,108 +25,66 @@ import Vocabulary.vloccount.LOCParameters;
 
 public class FileProcessor
 {
-	protected static List<CommentUnitC> sourceCodeComments;
-	static ArrayList<ASTNode> fileDeclarations;//lista de funções
-	
-	private static StringBuffer vxlFragment;
-	private static StringBuffer vxlFragmentDeclarations;
-	private static Integer enumLoc = 0;
+	protected static List<CommentUnit> sourceCodeComments;
+	private StringBuffer vxlFragment;
 	
 	public FileProcessor()
 	{
 		vxlFragment = new StringBuffer("");
 	}
 	
-	@SuppressWarnings("unchecked")
-	public FileProcessor(IASTTranslationUnit translationUnit, String fileName, boolean isInner, int headerLines)
+	public FileProcessor(IASTTranslationUnit translationUnit, String fileName, int headerLines)
 	{
 		vxlFragment = new StringBuffer();
-		vxlFragmentDeclarations = new StringBuffer();
+		sourceCodeComments = new LinkedList<CommentUnit>();
 		
-		sourceCodeComments = new LinkedList<CommentUnitC>();
+		Integer enumLoc = 0;
 		
-		enumLoc = 0;
+		IASTDeclaration[] declarations = translationUnit.getDeclarations();
+
+		ASTNode type = (ASTNode) translationUnit;
 		
-		IASTDeclaration[] nodesDeclarations = translationUnit.getDeclarations();//extrai todas as declarações do codigo
+		LOCCountPerEntity locCounter = new LOCCountPerEntity(type, CompilationUnitProcessor.commentList, CompilationUnitProcessor.sourceCode);
+		EntityLOCKeeper locKeeper = new EntityLOCKeeper(locCounter, true);
+		locKeeper.setHeadersLOC(headerLines, true, LOCManager.locParameters.contains(LOCParameters.HEADERS));
+		locKeeper.increaseLOC(enumLoc);
 		
-		fileDeclarations = new ArrayList<ASTNode>();
+		vxlFragment.append(VxlManager.startFile(fileName, locKeeper.getLOC()));
+		vxlFragment.append((new CommentsProcessor(declarationList(declarations), type, false).getVxlFragment()));
 		
-		for(IASTDeclaration nodeDeclaration: nodesDeclarations)
-		{
-			if(nodeDeclaration instanceof IASTFunctionDefinition)
-			{
-				fileDeclarations.add((ASTNode)nodeDeclaration);
-			}
-			
-			if(nodeDeclaration instanceof CASTProblemDeclaration)
-			{
-				CASTProblemDeclaration p = (CASTProblemDeclaration) nodeDeclaration;
-				fileDeclarations.add((ASTNode)nodeDeclaration);
-			}
-			
-			if(nodeDeclaration instanceof IASTSimpleDeclaration)
-			{	
-				CASTSimpleDeclaration node = (CASTSimpleDeclaration)nodeDeclaration;
-				
-				IASTDeclSpecifier declarations = node.getDeclSpecifier();
-				
-				if((declarations instanceof CASTEnumerationSpecifier)
-						|| (declarations instanceof CASTCompositeTypeSpecifier))
-				{
-					fileDeclarations.add((ASTNode)nodeDeclaration);
-				}
-			}
-		}
-		
-		for(IASTDeclaration nodeDeclaration: nodesDeclarations)
+		for(IASTDeclaration nodeDeclaration: declarations)
 		{
 			if(nodeDeclaration instanceof IASTFunctionDefinition)
 			{
 				FunctionProcessor functions = new FunctionProcessor((CASTFunctionDefinition) nodeDeclaration);
-				vxlFragmentDeclarations.append(functions.getVxlFragment());
+				vxlFragment.append(functions.getVxlFragment());
 			}
 			
 			if(nodeDeclaration instanceof IASTSimpleDeclaration)
 			{
-				//se não for declaração de função, é uma declaração simples
-				Declarations declarations = new Declarations((CASTSimpleDeclaration)nodeDeclaration, false);
-				enumLoc += declarations.getEnumLoc();
-				vxlFragmentDeclarations.append(declarations.getVxlFragment());
+				Declarations.declarations((CASTSimpleDeclaration)nodeDeclaration, false);
+
+				vxlFragment.append(Declarations.getVxlFragment());
 			}
 		}
-		
-		LOCCountPerEntity locCounter = new LOCCountPerEntity((ASTNode)translationUnit, CompilationUnitProcessor.commentList, CompilationUnitProcessor.sourceCode);
-		EntityLOCKeeper locKeeper = new EntityLOCKeeper(locCounter, isInner);
-		locKeeper.setHeadersLOC(headerLines, isInner, LOCManager.locParameters.contains(LOCParameters.HEADERS));
-		locKeeper.increaseLOC(enumLoc);
-		
-		CommentsProcessorC comment = new CommentsProcessorC(fileDeclarations.toArray(new ASTNode[fileDeclarations.size()]), (ASTNode)translationUnit, false);
-		
-		//EntityType saveType = type.isInterface() ? EntityType.INTERFACE : isInner ? EntityType.INNER_CLASS : EntityType.CLASS;
-		
-		vxlFragment.append(VxlManager.startFile(fileName, locKeeper.getLOC()));
-		vxlFragment.append(comment.getVxlFragment());
-		vxlFragment.append(vxlFragmentDeclarations);
-		
-		if(LOCManager.locParameters.contains(LOCParameters.LOC) &&
-				(isInner ? LOCManager.locParameters.contains(LOCParameters.INNER_FILES) : true)) {
+	
+		if(LOCManager.locParameters.contains(LOCParameters.LOC) && (true ? LOCManager.locParameters.contains(LOCParameters.INNER_FILES) : true))
+		{
 			LOCManager.appendEntityLOCData("sem tipo", locKeeper, EntityType.INNER_CLASS);
 		}
 		
 		vxlFragment.append(VxlManager.endFile());
 	}
 	
-	public StringBuffer getVxlFragment() {
+	public StringBuffer getVxlFragment()
+	{
 		return vxlFragment;
 	}
 		
 	@Override
-	public String toString() {
+	public String toString()
+	{
 		return vxlFragment.toString();
-	}
-
-	public static void setEnumLoc(Integer loc) {
-		enumLoc += loc;
 	}
 	
 	
@@ -283,5 +241,38 @@ public class FileProcessor
 			sourceCodeComments.add(new CommentUnitC((ASTNode)element, sourceCode));
 		}
 	}*/
+	
+	public static List<ASTNode> declarationList(IASTDeclaration[] declarations)
+	{
+		List<ASTNode> fileDeclarations = new ArrayList<ASTNode>();
+		
+		for(IASTDeclaration declaration: declarations)
+		{
+			if(declaration instanceof IASTFunctionDefinition)
+			{
+				fileDeclarations.add((ASTNode)declaration);
+			}
+			
+			if(declaration instanceof CASTProblemDeclaration)
+			{
+				CASTProblemDeclaration p = (CASTProblemDeclaration) declaration;
+				fileDeclarations.add((ASTNode)declaration);
+			}
+			
+			if(declaration instanceof IASTSimpleDeclaration)
+			{	
+				CASTSimpleDeclaration node = (CASTSimpleDeclaration)declaration;
+				
+				IASTDeclSpecifier declarationSpecifier = node.getDeclSpecifier();
+				
+				if((declarationSpecifier instanceof CASTEnumerationSpecifier) || (declarationSpecifier instanceof CASTCompositeTypeSpecifier))
+				{
+					fileDeclarations.add((ASTNode)declaration);
+				}
+			}
+		}
+		
+		return fileDeclarations;
+	}
 }			 
 				 

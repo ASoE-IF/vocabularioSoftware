@@ -46,7 +46,7 @@ public abstract class VxlManager
 		return "</C-Project>";
 	}
 	
-	public static String commentTag(CommentUnitC comment, boolean function)
+	public static String commentTag(CommentUnit comment, boolean function)
 	{
 		return function ? "\t\t\t<comm cntt=\"" + comment.toString() + "\"/>\n"
 				: "\t\t<comm cntt=\"" + comment.toString() + "\"/>\n";

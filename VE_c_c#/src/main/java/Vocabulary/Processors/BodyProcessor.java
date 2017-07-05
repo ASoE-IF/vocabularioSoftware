@@ -1,7 +1,6 @@
 package Vocabulary.Processors;
 
-
-import java.io.IOException;
+import java.util.List;
 
 import org.eclipse.cdt.core.dom.ast.IASTDeclaration;
 import org.eclipse.cdt.core.dom.ast.IASTExpression;
@@ -10,193 +9,233 @@ import org.eclipse.cdt.internal.core.dom.parser.c.CASTAmbiguousStatement;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTBreakStatement;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTCaseStatement;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTCompoundStatement;
-import org.eclipse.cdt.internal.core.dom.parser.c.CASTCompoundStatementExpression;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTContinueStatement;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTDeclarationStatement;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTDefaultStatement;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTDoStatement;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTExpressionStatement;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTForStatement;
+import org.eclipse.cdt.internal.core.dom.parser.c.CASTGotoStatement;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTIfStatement;
+import org.eclipse.cdt.internal.core.dom.parser.c.CASTLabelStatement;
+import org.eclipse.cdt.internal.core.dom.parser.c.CASTNullStatement;
+import org.eclipse.cdt.internal.core.dom.parser.c.CASTProblemStatement;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTReturnStatement;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTSimpleDeclaration;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTSwitchStatement;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTWhileStatement;
-import org.eclipse.core.runtime.CoreException;
+import org.eclipse.wst.jsdt.core.dom.ThisExpression;
 
 public class BodyProcessor
 {
-	private StringBuffer vxlFragment;
+	private static StringBuffer vxlFragment;
 	
-	public BodyProcessor()
+	public static void extractBody(IASTStatement statement)
 	{
-		vxlFragment = new StringBuffer();
+		if(statement instanceof CASTAmbiguousStatement);
+		
+		if(statement instanceof CASTBreakStatement)
+			extractBreakStatement((CASTBreakStatement) statement);
+		
+		if(statement instanceof CASTCaseStatement)
+			extractCaseStatement((CASTCaseStatement) statement);
+		
+		if(statement instanceof CASTCompoundStatement)
+			extractCompoundStatement((CASTCompoundStatement) statement);
+		
+		if(statement instanceof CASTContinueStatement)
+			extractContinueStatement((CASTContinueStatement) statement);
+		
+		if(statement instanceof CASTDeclarationStatement)
+			extractDeclarationStatement((CASTDeclarationStatement) statement);
+		
+		if(statement instanceof CASTDefaultStatement)
+			extractDefaultStatement((CASTDefaultStatement) statement);
+		
+		if(statement instanceof CASTDoStatement)
+			extractDoStatement((CASTDoStatement) statement);
+		
+		if(statement instanceof CASTExpressionStatement)
+			extractExpressionStatement((CASTExpressionStatement) statement);
+		
+		if(statement instanceof CASTForStatement)
+			extractForStatement((CASTForStatement) statement);
+		
+		if(statement instanceof CASTGotoStatement)
+			extractGotoStatement((CASTGotoStatement) statement);
+		
+		if(statement instanceof CASTIfStatement)
+			extractIfStatement((CASTIfStatement) statement);
+		
+		if(statement instanceof CASTLabelStatement)
+			extractLabelStatement((CASTLabelStatement) statement);
+		
+		if(statement instanceof CASTNullStatement)
+			extractNullStatement((CASTNullStatement) statement);
+		
+		if(statement instanceof CASTProblemStatement)
+			extractProblemStatement((CASTProblemStatement) statement);
+		
+		if(statement instanceof CASTReturnStatement)
+			extractReturnStatement((CASTReturnStatement) statement);
+		
+		if(statement instanceof CASTSwitchStatement)
+			extractSwitchStatement((CASTSwitchStatement) statement);
+		
+		if(statement instanceof CASTWhileStatement)
+			extractWhileStatement((CASTWhileStatement) statement);
 	}
 	
-	public BodyProcessor(CASTCompoundStatement node)//processa o corpo do codigo
+	private static void extractBreakStatement(CASTBreakStatement breakStatement)
 	{
-		vxlFragment = new StringBuffer();
-		IASTStatement[] statements = node.getStatements();//extrair as informações do corpo
 		
-		for(IASTStatement state: statements )//percorre as informaçõs do corpo do codigo
+	}
+	
+	private static void extractCaseStatement(CASTCaseStatement caseStatement)
+	{
+		
+	}
+	
+	private static void extractCompoundStatement(CASTCompoundStatement compoundStatement)
+	{
+		for (IASTStatement s : compoundStatement.getStatements()) {
+			if (s != null) 
+				extractBody(s);
+		}
+	}
+	
+	private static void extractContinueStatement(CASTContinueStatement continueStatement)
+	{
+		
+	}
+	
+	private static void extractDeclarationStatement(CASTDeclarationStatement declarationStatement)
+	{
+		IASTDeclaration declaration = declarationStatement.getDeclaration();
+		if (declaration != null)
 		{
-			if(state instanceof CASTDeclarationStatement)//captura declarações de variaveis ou algo do tipo
-			{
-				DeclarationStatement((CASTDeclarationStatement) state);
-			}
+			Declarations.declarations((CASTSimpleDeclaration) declaration, true);
 			
-//			if(state instanceof CASTExpressionStatement)//capitura expressões
-//			{
-//				CASTExpressionStatement exp = (CASTExpressionStatement)state;
-//				ExpressionProcessor.extractExpression((IASTExpression)exp.getExpression());
-//				//vxlFragment.append(ExpressionStatement((IASTExpression) state));
-//			}
-//			
-			if (state instanceof CASTExpressionStatement)
-			{
-				CASTExpressionStatement state2 = (CASTExpressionStatement)state;
+			vxlFragment.append(Declarations.getVxlFragment());
+		}
+	}
+	
+	private static void extractDefaultStatement(CASTDefaultStatement defaultStatement)
+	{
+		
+	}
+	
+	private static void extractDoStatement(CASTDoStatement doStatement)
+	{
+		IASTStatement body = doStatement.getBody();
+		if (body != null) 
+			extractBody(body);
+		
+		IASTExpression exp = doStatement.getCondition();
+		if (exp != null)
+			ExpressionProcessor.extractExpression(exp);
+	}
+	
+	private static void extractExpressionStatement(CASTExpressionStatement expressionStatement)
+	{
+		IASTExpression exp = expressionStatement.getExpression();
 
-				ExpressionProcessor.extractExpression(state2.getExpression());
-			}
-			
-			if(state instanceof CASTAmbiguousStatement)
-			{
-				//System.out.println("Ambiguos : ");
-			}
-		
-			if(state instanceof CASTBreakStatement)//capitura "break" no codigo
-			{
-				//System.out.println("Break : ");
-			}
-		
-			if(state instanceof CASTCaseStatement)//capitura "case" no codigo
-			{
-				//System.out.println("Case : ");
-			}
-			
-			if(state instanceof CASTCompoundStatementExpression)
-			{
-				System.out.println("Compounds : ");
-			}
-	
-			if(state instanceof CASTContinueStatement)
-			{
-				//System.out.println("Continue : ");//capitura "continue" no codigo
-			}
-			
-			if(state instanceof CASTDefaultStatement)//capitura "default" no codigo
-			{
-				//System.out.println("Default : ");
-			}
-			
-			if(state instanceof CASTDoStatement)
-			{
-				//System.out.println("Do : ");
-			}
-		
-			if(state instanceof CASTForStatement)//capitura laços for
-			{
-				forStatement((CASTForStatement) state);
-			}
-		
-			if(state instanceof CASTIfStatement)//capitura comandos if
-			{
-				try
-				{
-					IfStatement((CASTIfStatement) state);//captura possiveis exceções
-				}
-				catch(CoreException e)
-				{
-					
-				}
-				catch(IOException e)
-				{
-					
-				}
-			}
-		
-			if(state instanceof CASTReturnStatement)//capitura "return" no codigo
-			{
-				//System.out.println("Return : ");
-			}
-		
-			if(state instanceof CASTSwitchStatement)//capitura "switch" no codigo
-			{
-				SwitchStatement((CASTSwitchStatement)state);
-			}
-		
-			if(state instanceof CASTWhileStatement)//capitura comandos while no codigo
-			{
-				WhileStatement((CASTWhileStatement) state);
-			}
-		} 
-	}
-	
-	public void WhileStatement(CASTWhileStatement node)//processa os comandos while encontrados
-	{	
-		if(node.getBody() instanceof CASTCompoundStatement)//processa o corpo do while
-		{
-			BodyProcessor body = new BodyProcessor((CASTCompoundStatement) node.getBody());//envia o corpo do while para extração de seus dados
-			vxlFragment.append(body.getVxlFragment());//adiciona o vocabulario extraido ao vxl fragment
-		}
+		if (exp != null)
+			ExpressionProcessor.extractExpression(exp);
 	}
 
-	public void forStatement(CASTForStatement node)//processa laços for
+	private static void extractForStatement(CASTForStatement forStatement)
 	{
-	
-		if(node.getBody() instanceof CASTCompoundStatement)//processa o corpo do for
-		{
-			BodyProcessor body = new BodyProcessor((CASTCompoundStatement)node.getBody());//extrai o vocabulario do corpo do for
-			
-			ExpressionProcessor.extractExpression(node.getConditionExpression());
-			vxlFragment.append(body.getVxlFragment());//adiciona ao vxlFragment o vocabulario extraido
-		}
-	}
-	
-	public void IfStatement(CASTIfStatement node) throws CoreException, IOException//processa comandos if
-	{
-		BodyProcessor body;//variavel do para processao o corpo do if
+		IASTStatement body = forStatement.getBody();
+		if (body != null)
+			extractBody(body);
 		
-		if(node.getThenClause() instanceof CASTCompoundStatement)//processa o corpo do if
-		{
-			body = new BodyProcessor((CASTCompoundStatement)node.getThenClause());//extrai as informações do corpo do if
-			vxlFragment.append(body.getVxlFragment());//adiciona ao vxlFragment
-			ExpressionProcessor.extractExpression(node.getConditionExpression());
-			
-		}
-	
-		/*if(node.getElseClause() != null)//processa else se existir
-		{
-			System.out.println(node.getElseClause() instanceof CASTCompoundStatement);
-			
-			body = new BodyProcessor((CASTCompoundStatement)node.getElseClause());//extrai vocabulario do corpo do else
-			vxlFragment.append(body.getVxlFragment());//adiciona vocabulario ao vxlfragment
-		}*/
-	}
-	
-	public void SwitchStatement(CASTSwitchStatement node)//processa comandos switch
-	{
-		if(node.getBody() instanceof CASTCompoundStatement)//processa o corpo do switch
-		{
-			BodyProcessor body = new BodyProcessor((CASTCompoundStatement)node.getBody());//envia o corpo para processamento
-			vxlFragment.append(body.getVxlFragment());//grava nop vxlFragment as informações extraidas do switch
-		}
-	}
-	
-	public void DeclarationStatement(CASTDeclarationStatement node)//processa declarações de variaveis ou algo do tipo
-	{
-		IASTDeclaration nodesDeclared = node.getDeclaration();//obtem a declaração
+		IASTExpression exp = forStatement.getConditionExpression();
+		if (exp != null)
+			ExpressionProcessor.extractExpression(exp);
 		
-		if(nodesDeclared instanceof CASTSimpleDeclaration)//processa a declaração
+		IASTStatement initializers = forStatement.getInitializerStatement();
+		if (initializers != null);
+			BodyProcessor.extractBody(initializers);
+
+		IASTExpression iteration = forStatement.getIterationExpression();
+		if (iteration != null) 
+			ExpressionProcessor.extractExpression(iteration);
+	}
+	
+	private static void extractGotoStatement(CASTGotoStatement gotoStatement)
+	{
+		
+	}
+	
+	private static void extractIfStatement(CASTIfStatement ifStatement)
+	{
+		IASTStatement elseBody = ifStatement.getElseClause();
+		if (elseBody != null)
+			extractBody(elseBody);	
+		
+		IASTExpression exp = ifStatement.getConditionExpression();
+		if (exp != null)
 		{
-			Declarations declarations = new Declarations((CASTSimpleDeclaration)nodesDeclared, true);//extrai as informações correspondentes as declarações
-			
-			vxlFragment.append(declarations.getVxlFragment());//grava as informações extraidas no vxlFragmet
+			ExpressionProcessor.extractExpression(exp);
+		}
+		
+		IASTStatement thenBody = ifStatement.getThenClause();
+		if (thenBody != null)
+			extractBody(thenBody);
+	}
+	
+	private static void extractLabelStatement(CASTLabelStatement labelStatement)
+	{
+		String identifier = labelStatement.getName().toString();
+		
+		IASTStatement statement = labelStatement.getNestedStatement();
+		if(statement != null)
+			BodyProcessor.extractBody(statement);
+	}
+	
+	private static void extractNullStatement(CASTNullStatement nullStatement)
+	{
+		
+	}
+	
+	private static void extractProblemStatement(CASTProblemStatement problemStatement)
+	{
+		
+	}
+	
+	private static void extractReturnStatement(CASTReturnStatement returnStatement)
+	{
+		IASTExpression exp = returnStatement.getReturnValue();
+		if (exp != null);
+	}
+	
+	private static void extractSwitchStatement(CASTSwitchStatement switchStatement)
+	{
+		IASTExpression exp = switchStatement.getControllerExpression();
+		if (exp != null);
+			//MethodVocabularyManager.insertLocalVariable(ExpressionProcessor.extractExpression(exp));
+		 
+		IASTStatement body = switchStatement.getBody();
+		if(body != null)
+			extractBody(body);
+	}
+	
+	private static void extractWhileStatement(CASTWhileStatement whileStatement)
+	{
+		IASTStatement body = whileStatement.getBody();
+		if (body != null)
+			extractBody(body);
+		
+		IASTExpression exp = whileStatement.getCondition();
+		if (exp != null)
+		{
+			ExpressionProcessor.extractExpression(exp);
 		}
 	}
 	
-	public StringBuffer getVxlFragment()//retorna o vxlFragment
+	public static void setVxlFragment(StringBuffer vxl)
 	{
-		return vxlFragment;
+		vxlFragment = vxl;
 	}
 }

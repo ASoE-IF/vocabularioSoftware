@@ -29,14 +29,14 @@ public class FunctionVocabularyManager {
 	
 	/**
 	 * Insert the methods invocations.
-	 * @param methodInvocation The method invocation.
+	 * @param functionCall The method invocation.
 	 */
-	public static void insertMethodInvocation(String methodInvocation) {
-		if (methodInvocation != null && !methodInvocation.equals("")) {
-			if (mthInv.containsKey(methodInvocation)) {
-				mthInv.put(methodInvocation, mthInv.get(methodInvocation)+1);
+	public static void insertFunctionInvocation(String functionCall) {
+		if (functionCall != null && !functionCall.equals("")) {
+			if (mthInv.containsKey(functionCall)) {
+				mthInv.put(functionCall, mthInv.get(functionCall)+1);
 			} else {
-				mthInv.put(methodInvocation, 1);
+				mthInv.put(functionCall, 1);
 			}
 		}
 	}

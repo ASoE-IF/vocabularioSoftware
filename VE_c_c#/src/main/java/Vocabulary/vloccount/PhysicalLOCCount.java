@@ -3,6 +3,7 @@ package Vocabulary.vloccount;
 import java.util.List;
 
 import org.eclipse.cdt.core.dom.ast.IASTComment;
+import org.eclipse.cdt.core.dom.ast.IASTFileLocation;
 import org.eclipse.cdt.internal.core.dom.parser.ASTNode;
 /**
  * Computes the number of physical lines of java code is there in a given scope
@@ -144,8 +145,11 @@ public class PhysicalLOCCount {
 	private int commentLOC(IASTComment comment) {
 		ASTNode commentAST = (ASTNode)comment;
 		
-		int begin = commentAST.getOffset();
-		int end = begin + commentAST.getLength();
+		IASTFileLocation location = comment.getFileLocation();
+
+		int begin = location.getNodeOffset();
+		int end = location.getNodeOffset() + location.getNodeLength();
+		
 		
 		String currentComment = (new String(sourceCode)).substring(begin, end);
 

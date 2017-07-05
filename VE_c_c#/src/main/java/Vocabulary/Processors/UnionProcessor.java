@@ -20,7 +20,7 @@ public class UnionProcessor//processa de union
 
 		vxlFragment.append(VxlManager.startUnion(compositeType.getName().toString(), "global", "null", scopeLocal));
 		
-		vxlFragment.append(new CommentsProcessorC((ASTNode)compositeType));
+		vxlFragment.append(new CommentsProcessor((ASTNode)compositeType));
 		
 		for(IASTDeclaration membersSimple : members)//processa os membros da union
 		{

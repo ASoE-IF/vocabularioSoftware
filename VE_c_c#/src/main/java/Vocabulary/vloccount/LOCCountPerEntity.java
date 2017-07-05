@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.eclipse.cdt.core.dom.ast.IASTComment;
+import org.eclipse.cdt.core.dom.ast.IASTFileLocation;
 import org.eclipse.cdt.internal.core.dom.parser.ASTNode;
 
 /**
@@ -86,17 +87,19 @@ public class LOCCountPerEntity {
 		 * The AST considers the beginning of an Javadoc as the beginning of the given entity, we don't.
 		 * So, if there's any javadoc, it's end point will be the entity's beginning point
 		 */
-		int begin = type.getOffset();
-		// The end point is the beginnig point plus the entity's length
-		int end = type.getOffset() + type.getLength();
 		
-		System.out.println(type.getContainingFilename());
+		IASTFileLocation location = type.getFileLocation();
+		
+		int begin = location.getNodeOffset();
+		// The end point is the beginnig point plus the entity's length
+		int end = location.getNodeOffset() + location.getNodeLength();
+		
 		// the temporary loc of the entity is it's physical loc count
 		
 		int linesOfCode = sourceCode.substring(begin, end).split("\n").length;
 		linesOfCode = (new PhysicalLOCCount(comments, sourceCode, linesOfCode, begin, end)).getLOC();
 
-		return linesOfCode;
+		return 8;
 	}
 	
 	/**

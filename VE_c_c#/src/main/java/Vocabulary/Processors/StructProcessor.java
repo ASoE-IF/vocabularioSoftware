@@ -17,54 +17,53 @@ import Vocabulary.vloccount.EntityType;
 import Vocabulary.vloccount.LOCCountPerEntity;
 import Vocabulary.vloccount.LOCParameters;
 
-public class StructProcessor//processador de struct
+public class StructProcessor
 {
 	private StringBuffer vxlFragment;
 	private int structLoc;
-	public StructProcessor(CASTCompositeTypeSpecifier compositeType, boolean scopeLocal)//processa as struct
+	public StructProcessor(CASTCompositeTypeSpecifier compositeType, boolean scopeLocal)
 	{
 		vxlFragment = new StringBuffer();
 		
-//		LOCCountPerEntity locCounter = new LOCCountPerEntity((ASTNode)compositeType, CompilationUnitProcessor.commentList, CompilationUnitProcessor.sourceCode);
-//		EntityLOCKeeper locKeeper = new EntityLOCKeeper(locCounter, true);
-//		locKeeper.setHeadersLOC(0, true, LOCManager.locParameters.contains(LOCParameters.HEADERS));
-//
-//		boolean inner = LOCManager.locParameters.contains(LOCParameters.INNER_FILES);
-//		
-//		if(LOCManager.locParameters.contains(LOCParameters.LOC) && inner)
-//				structLoc = locKeeper.getLOC() + locKeeper.getAnnotationsLOC() + locKeeper.getInnerEntitiesLOC();
-//		
-//		final String NO_COMMENT = ""; // enum constants don't have javadoc associations
+		LOCCountPerEntity locCounter = new LOCCountPerEntity((ASTNode)compositeType, CompilationUnitProcessor.commentList, CompilationUnitProcessor.sourceCode);
+		EntityLOCKeeper locKeeper = new EntityLOCKeeper(locCounter, true);
+		locKeeper.setHeadersLOC(0, true, LOCManager.locParameters.contains(LOCParameters.HEADERS));
 
-		List <IASTDeclaration> members = Arrays.asList(compositeType.getMembers());//obtem um array com os membros da struct
+		boolean inner = LOCManager.locParameters.contains(LOCParameters.INNER_FILES);
+		
+		if(LOCManager.locParameters.contains(LOCParameters.LOC) && inner)
+				structLoc = locKeeper.getLOC() + locKeeper.getAnnotationsLOC() + locKeeper.getInnerEntitiesLOC();
+		
+		final String NO_COMMENT = "";
 
-		vxlFragment.append(VxlManager.startStruct(compositeType.getName().toString(), "global", /*locKeeper.getLOC()*/0, scopeLocal));
+		List <IASTDeclaration> members = Arrays.asList(compositeType.getMembers());
+
+		vxlFragment.append(VxlManager.startStruct(compositeType.getName().toString(), "global", locKeeper.getLOC(), scopeLocal));
 		
-		vxlFragment.append(new CommentsProcessorC((ASTNode)compositeType));
+		vxlFragment.append(new CommentsProcessor((ASTNode)compositeType));
 		
-		for(IASTDeclaration membersSimple : members)//processa os membros da struct
+		for(IASTDeclaration membersSimple : members)
 		{
 			if(membersSimple instanceof CASTSimpleDeclaration)
 			{
-				CASTSimpleDeclaration simpleMembers = (CASTSimpleDeclaration)membersSimple;//converte tipos
+				CASTSimpleDeclaration simpleMembers = (CASTSimpleDeclaration)membersSimple;
 			
-				IASTDeclarator[] structMembers = simpleMembers.getDeclarators();//obtem a declaração do membro
-				if(structMembers.length != 0)//se não existirem declarações deve retornar imediatamente ao chamador
+				IASTDeclarator[] structMembers = simpleMembers.getDeclarators();
+				if(structMembers.length != 0)
 				{
-					vxlFragment.append(VxlManager.structMembers(structMembers[0].getName().toString(), scopeLocal));//grava no vxlFragment
+					vxlFragment.append(VxlManager.structMembers(structMembers[0].getName().toString(), scopeLocal));
 				}
 			}
 			if(membersSimple instanceof CASTProblemDeclaration)
 			{
 				CASTProblemDeclaration problema = (CASTProblemDeclaration)membersSimple;
-				//System.out.println("======================================" + problema.getRawSignature());
 			}
 		}
 		
 		vxlFragment.append(VxlManager.endStruct(scopeLocal));
 	}
 
-	public StringBuffer getVxlFragment()//retorna o vxlFragment
+	public StringBuffer getVxlFragment()
 	{
 		return vxlFragment;
 	}
