@@ -10,7 +10,6 @@ import org.eclipse.cdt.internal.core.dom.parser.c.CASTCompoundStatementExpressio
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTConditionalExpression;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTFunctionCallExpression;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTIdExpression;
-import org.eclipse.cdt.internal.core.dom.parser.c.CASTInitializerExpression;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTLiteralExpression;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTProblemExpression;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTTypeIdExpression;
@@ -45,9 +44,6 @@ public class ExpressionProcessor
 		if(expression instanceof CASTIdExpression)
 			extractIdExpression((CASTIdExpression) expression);
 				
-		if(expression instanceof CASTInitializerExpression)
-			extractInitializerExpression((CASTInitializerExpression) expression);
-				
 		if(expression instanceof CASTLiteralExpression)
 			extractLiteralExpression((CASTLiteralExpression) expression);
 				
@@ -73,7 +69,7 @@ public class ExpressionProcessor
 		
 	private static void extractArraySubscriptExpression(CASTArraySubscriptExpression arraySubscriptExpression)
 	{
-			
+		extractExpression(arraySubscriptExpression.getSubscriptExpression());
 	}
 		
 	private static void extractBinaryExpression(CASTBinaryExpression binaryExpression)
@@ -84,12 +80,18 @@ public class ExpressionProcessor
 		
 	private static void extractCastExpression(CASTCastExpression castExpression)
 	{
+		if(castExpression != null)
+		{
+			IASTExpression exp = castExpression.getOperand();
 			
+			if(exp != null)
+				extractExpression(exp);
+		}
 	}
 		
 	private static void extractCompoundStatementExpression(CASTCompoundStatementExpression compoundStatementExpression)
 	{
-			
+		System.out.println(compoundStatementExpression);
 	}
 		
 	private static void extractConditionalExpression(CASTConditionalExpression conditionalExpression)
@@ -142,11 +144,6 @@ public class ExpressionProcessor
 		FunctionVocabularyManager.insertLocalVariable(idExpression.getName().toString());
 	}
 		
-	private static void extractInitializerExpression( CASTInitializerExpression initializerExpression)
-	{
-			
-	}
-		
 	private static void extractLiteralExpression(CASTLiteralExpression literalExpression)
 	{
 		if (literalExpression.getValueCategory().isGLValue() == true)
@@ -158,17 +155,17 @@ public class ExpressionProcessor
 		
 	private static void extractProblemExpression(CASTProblemExpression problemExpression)
 	{
-			
+		
 	}
 		
 	private static void extractTypeIdExpression(CASTTypeIdExpression typeIdExpression)
 	{
-			
+		System.out.println(typeIdExpression);
 	}
 		
 	private static void extractTypeIdInitializerExpression(CASTTypeIdInitializerExpression typeIdInitializerExpression)
 	{
-			
+		System.out.println(typeIdInitializerExpression);
 	}
 		
 	private static void extractUnaryExpression(CASTUnaryExpression unaryExpression)

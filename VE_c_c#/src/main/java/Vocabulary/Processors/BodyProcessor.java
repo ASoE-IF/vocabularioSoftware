@@ -88,17 +88,20 @@ public class BodyProcessor
 	
 	private static void extractBreakStatement(CASTBreakStatement breakStatement)
 	{
-		
+
 	}
 	
 	private static void extractCaseStatement(CASTCaseStatement caseStatement)
 	{
-		
+		IASTExpression exp = caseStatement.getExpression();
+		if (exp != null)
+			ExpressionProcessor.extractExpression(exp);
 	}
 	
 	private static void extractCompoundStatement(CASTCompoundStatement compoundStatement)
 	{
-		for (IASTStatement s : compoundStatement.getStatements()) {
+		for (IASTStatement s : compoundStatement.getStatements())
+		{
 			if (s != null) 
 				extractBody(s);
 		}
@@ -165,7 +168,8 @@ public class BodyProcessor
 	
 	private static void extractGotoStatement(CASTGotoStatement gotoStatement)
 	{
-		
+		String identifier = gotoStatement.getName().toString();
+		FunctionVocabularyManager.insertLocalVariable(identifier);
 	}
 	
 	private static void extractIfStatement(CASTIfStatement ifStatement)
@@ -187,11 +191,13 @@ public class BodyProcessor
 	
 	private static void extractLabelStatement(CASTLabelStatement labelStatement)
 	{
-		String identifier = labelStatement.getName().toString();
-		
 		IASTStatement statement = labelStatement.getNestedStatement();
 		if(statement != null)
 			BodyProcessor.extractBody(statement);
+		
+		String identifier = labelStatement.getName().toString();
+		if(identifier != null)
+			FunctionVocabularyManager.insertLocalVariable(identifier);
 	}
 	
 	private static void extractNullStatement(CASTNullStatement nullStatement)
@@ -201,20 +207,21 @@ public class BodyProcessor
 	
 	private static void extractProblemStatement(CASTProblemStatement problemStatement)
 	{
-		
+		System.out.println("Problema");
 	}
 	
 	private static void extractReturnStatement(CASTReturnStatement returnStatement)
 	{
 		IASTExpression exp = returnStatement.getReturnValue();
-		if (exp != null);
+		if (exp != null)
+			ExpressionProcessor.extractExpression(exp);
 	}
 	
 	private static void extractSwitchStatement(CASTSwitchStatement switchStatement)
 	{
 		IASTExpression exp = switchStatement.getControllerExpression();
-		if (exp != null);
-			//MethodVocabularyManager.insertLocalVariable(ExpressionProcessor.extractExpression(exp));
+		if (exp != null)
+			ExpressionProcessor.extractExpression(exp);
 		 
 		IASTStatement body = switchStatement.getBody();
 		if(body != null)
@@ -229,9 +236,7 @@ public class BodyProcessor
 		
 		IASTExpression exp = whileStatement.getCondition();
 		if (exp != null)
-		{
 			ExpressionProcessor.extractExpression(exp);
-		}
 	}
 	
 	public static void setVxlFragment(StringBuffer vxl)

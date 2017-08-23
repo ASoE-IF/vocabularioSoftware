@@ -3,7 +3,6 @@ package Vocabulary.Extractor.Util;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.util.List;
 
 public abstract class VxlManager
 {
@@ -19,23 +18,10 @@ public abstract class VxlManager
 		vxl.append(vxlFragment);
 	}
 	
-
-	public static String startPackage(String packageName)
-	{
-		return "\t<pkg name=\"" + packageName + "\">" + "\n";
-	}
-
-	public static String endPackage()
-	{
-		return "\t</pkg>" + "\n";
-	}	
-	
 	public static String literal(String literal, int occurrences) {
 		return "\t\t\t\t<lit cntt=\"" + literal + "\" count=\"" + occurrences +"\"/>" + "\n";
 	}
 	
-	
-//*****************************************************************************************************
 	public static String startProject(String projectName, String projectRevision)
 	{
 		return "<C-Project id=\"default\" name=\"" + projectName + "\" revision=\"" + projectRevision + "\">" + "\n";
@@ -61,12 +47,6 @@ public abstract class VxlManager
 	{
 		return "\t</C-File>" + "\n";
 	}
-		
-	/*public static void functionComment(StringBuffer buffer, List<String> comments)
-	{
-		for(String comment : comments)
-			buffer.append("\t\t\t<comm cntt=\"" + comment + "\"/>" + "\n");
-	}*/
 	
 	public static String globalVariables(String fieldName, String visibility, String comment)
 	{
@@ -128,8 +108,6 @@ public abstract class VxlManager
 				: "\t\t\t<const name=\"" + constantName 	+ "\" access=\"" + visibility + "\" jdoc=\"" + comment + "\"/>" + "\n";
 	}
 	
-	
-	
 	public static String startUnion(String structName, String visibility, String comment, boolean scopeLocal)
 	{
 		return scopeLocal == true ? "\t\t\t<union name=\"" + structName + "\" access=\"" + visibility + "\" jdoc=\"" + comment + "\">" + "\n"
@@ -172,5 +150,30 @@ public abstract class VxlManager
 		{
 			e.printStackTrace();
 		}
+	}
+	
+	public static String macro(String macroName)
+	{
+		return "\t\t<macro name=\"" + macroName + "\"/>" + "\n";
+	}
+	
+	public static String macroParameter(String macroParacmeter)
+	{
+		return "\t\t\t<param name=\"" + macroParacmeter + "\"/>" + "\n";
+	}
+	
+	public static String errorDirective(String error)
+	{
+		return "\t\t<error message=\"" + error + "\"/>" + "\n";
+	}
+	
+	public static String includeDirective(String include)
+	{
+		return "\t\t<include name=\"" + include + "\"/>" + "\n";
+	}
+	
+	public static String pragmaDirective(String pragma)
+	{
+		return "\t\t<pragma message=\"" + pragma + "\"/>" + "\n";
 	}
 }

@@ -29,7 +29,7 @@ public class CompilationUnitParser
 		
 		FileContent fileContent = FileContent.createForExternalFileLocation(file.getAbsolutePath());
 
-		Map definedSymbols = new HashMap<>();
+		Map definedSymbols = new HashMap();
 		String[] includePaths = new String[0];
 		IScannerInfo info = new ScannerInfo(definedSymbols, includePaths);
 		IParserLogService log = new DefaultLogService();

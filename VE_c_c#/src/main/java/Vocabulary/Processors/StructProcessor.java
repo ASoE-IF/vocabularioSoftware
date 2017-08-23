@@ -41,7 +41,7 @@ public class StructProcessor
 		vxlFragment.append(VxlManager.startStruct(compositeType.getName().toString(), "global", locKeeper.getLOC(), scopeLocal));
 		
 		vxlFragment.append(new CommentsProcessor((ASTNode)compositeType));
-		
+
 		for(IASTDeclaration membersSimple : members)
 		{
 			if(membersSimple instanceof CASTSimpleDeclaration)
