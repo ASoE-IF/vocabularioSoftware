@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.wst.jsdt.core.dom.AST;
+import org.eclipse.wst.jsdt.core.dom.ASTNode;
 import org.eclipse.wst.jsdt.core.dom.ASTParser;
 import org.eclipse.wst.jsdt.core.dom.Block;
 import org.eclipse.wst.jsdt.core.dom.FunctionDeclaration;
@@ -25,21 +26,21 @@ public class MainTest {
 		// criando AST
 		JavaScriptUnit unit = (JavaScriptUnit) parser.createAST(new NullProgressMonitor());
 		
-		List<FunctionDeclaration> node = unit.statements();
-		System.out.println("function name: " + node.get(0).getName());
+		List<ASTNode> node = unit.statements();
+		System.out.println("function name: " + ((FunctionDeclaration) node.get(0)).getMethodName());
 		
-		functionParameters = node.get(0).parameters();
+		functionParameters = ((FunctionDeclaration) node.get(0)).parameters();
 		
 		// imprimindo parâmetros
 		for(int j=0; j<functionParameters.size(); j++) { 
 			System.out.println("argument "+j+": " + functionParameters.get(j).getName());
 		}
 
-		functionBody = node.get(0).getBody();
+		functionBody = ((FunctionDeclaration) node.get(0)).getBody();
 		functionVariables = functionBody.statements();
 		// imprimindo variáveis da função
 		for (int o=0; o<functionVariables.size(); o++)
-			System.out.println("functions variables: " + functionVariables.get(o));			  
+			System.out.println("functions variables: " + functionVariables.get(o));	
 	}
 }
 				 
