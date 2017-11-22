@@ -56,10 +56,11 @@ class MyTransformerName(ast.NodeTransformer):
 
 
 def d(s):
-    print len(dump(compile(ast.parse(s), '<String>', 'exec', pfcf|PyCF_ONLY_AST)))
+   # print len(dump(compile(ast.parse(s), '<String>', 'exec', pfcf|PyCF_ONLY_AST)))
 
 
-    print dump(compile(ast.parse(s), '<String>', 'exec', pfcf|PyCF_ONLY_AST))
+   # print dump(compile(ast.parse(s), '<String>', 'exec', pfcf|PyCF_ONLY_AST))
+
     b = dump(compile(ast.parse(s).body[1], '<String>', 'exec', pfcf|PyCF_ONLY_AST))
     e = len(ast.parse(s).body)
 
@@ -87,6 +88,7 @@ z = 1777
 
 
     function_definitions = [node for node in module.body[0].body if isinstance(node, ast.Assign)]
+
     for i in range(len(function_definitions)):
         MyTransformerString().visit(function_definitions[i])
         MyVisitorString().visit(function_definitions[i])

@@ -1,6 +1,7 @@
 a = 1
 b = 2
 c = 3
+
 myList = range(10)
 
 for i in range(0, 10):
@@ -10,6 +11,8 @@ for i in range(0, 10):
 def do_something():
     pass
 
+def otherFunc():
+    pass
 
 def someMethod(x):
     something = do_something()
@@ -24,3 +27,9 @@ class teste2:
 f = someMethod(b)
 
 print f
+
+strs = '''
+
+print ("Ola mundo veio!!!")
+
+'''
