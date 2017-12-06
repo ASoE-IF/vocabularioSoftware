@@ -43,11 +43,14 @@ for node in ast.walk(tree):
         NomesVariaveis.append(node.name)
 print("Nomes de Variáveis \n ", NomesVariaveis)
 
+VisitNos = ast.NodeVisitor
 
 for node in ast.walk(tree):
     if isinstance(node, ast.Str):
-        NewData.append(ast.Str(node.))
-print (NewData)
+        pass
+
+print ("Valores aleatorios \n", NewData)
+
 
 
 class EncontraStr (ast.NodeVisitor):
@@ -66,6 +69,7 @@ for i in range(len(GetBodyDumpValue)):
     EncontraStr().visit(GetBodyDumpValue[i])
 
 print ("Valores de Strings \n", ValorStrings)
+
 
 '''
 def GeradorAst(s):

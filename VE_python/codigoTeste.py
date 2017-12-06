@@ -30,6 +30,6 @@ print f
 
 strs = '''
 
-print ("Ola mundo veio!!!")
+Ola mundo veio!!!
 
 '''

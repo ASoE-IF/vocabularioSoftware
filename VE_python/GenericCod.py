@@ -5,20 +5,8 @@
 
 from __future__ import print_function
 
-temp = int(raw_input("Entre com a temperatura:"))
 
-if temp < 0:
-    print('\nCongelando...\n')
-elif 0 <= temp <= 20:
-    print ('\nFrio\n')
-elif 21 <= temp <= 25:
-    print ('\nNormal\n')
-elif 26 <= temp <= 35:
-    print ('\nQuente\n')
-else:
-    print('\nMuito quente!!!\n')
-
-# Loops
+#==================================Loops=====================================#
 
 # For
 
@@ -29,15 +17,14 @@ print ('Valor referente ao for: ', a)
 
 # while
 
-b = 0
-c = 1
+x = range(10)
 
-while x <= 100:
-    b = b + x
-    c = c + 1
-print (b)
+while x <= 10:
+    x += 1
 
-# Tipos
+print("Lista de nums do while ", x)
+
+#==================================Tipos de Variaveis=====================================#
 
 # Numeros
 
@@ -47,7 +34,7 @@ print ('int(3.14) = ', int(3.14))
 
 # convertendo de inteiro ṕara real
 
-print ('float(5) = ',float(5))
+print ('float(5) = ', float(5))
 
 # calculo entre inteiro e real resulta em real
 
@@ -56,12 +43,6 @@ print ("int('20', 16) =", int('20', 16))
 
 # operacoes com numeros complexos
 
-d = 3 + 4j
-
-print ('c = ', c)
-print ('Parte real: ', c.real)
-print ('Parte imaginaria:', c.imag)
-print ('conjugado:', c.conjugnate())
 
 
 
