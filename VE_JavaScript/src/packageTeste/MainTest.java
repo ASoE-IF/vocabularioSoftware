@@ -19,11 +19,10 @@ import org.eclipse.wst.jsdt.core.dom.VariableDeclarationStatement;
 public class MainTest {
 	@SuppressWarnings("unchecked")
 	public static void main(String[] args){
-		String pathArquivoTeste = "/home/dh/0_Programação/Java/EclipseProjects/vocabularioSoftware/VE_JavaScript/src/packageTeste/teste.js";
 		StringBuffer sourceCode = new StringBuffer();
         try {
-                InputStream is = new FileInputStream(pathArquivoTeste);
-                BufferedReader in = new BufferedReader(new InputStreamReader(is));
+                InputStream stream = new FileInputStream("src/packageTeste/teste.js");
+                BufferedReader in = new BufferedReader(new InputStreamReader(stream));
 
                 String line = "";
                 while (line != null) {
