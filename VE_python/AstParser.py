@@ -24,7 +24,7 @@ NewData = []
 arquivo = open("codigoTeste.py", "r")
 
 for conteudo in arquivo:
-    conteudoCodigo += conteudo
+    conteudoCodigo += conteudo 
 
 tree = ast.parse(conteudoCodigo)
 
@@ -69,6 +69,8 @@ for i in range(len(GetBodyDumpValue)):
     EncontraStr().visit(GetBodyDumpValue[i])
 
 print ("Valores de Strings \n", ValorStrings)
+
+### Erros O codec 'ascii' não pode decodificar byte 0xe1 na posição 25: ordinal not in range (128)
 
 
 '''
