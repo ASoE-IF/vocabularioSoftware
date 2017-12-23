@@ -1,0 +1,97 @@
+<class name="Calculadora">
+     <math name="__init__">
+         <field name="x" />
+         <field name="y" />
+         <cmtt name="testeInit" />
+     </math>
+     <math name="soma">
+         <param name="self" />
+         <param name="a" />
+         <param name="b" />
+         <cmtt name="testSomaBody" />
+         <cmtt name="testSomaDef" />
+     </math>
+     <math name="subtracao">
+         <param name="self" />
+         <param name="a" />
+         <param name="b" />
+     </math>
+     <math name="multiplicacao">
+         <param name="self" />
+         <param name="a" />
+         <param name="b" />
+     </math>
+     <math name="divisao">
+         <param name="self" />
+         <param name="a" />
+         <param name="b" />
+         <field name="v" />
+     </math>
+     <cmtt name="TestCalculadora" />
+     <cmtt name="TestHeadCalculadora" />
+</class>
+<class name="Testes">
+     <math name="unit">
+         <cmtt name="Test123" />
+         <cmtt name="TestUnit" />
+     </math>
+     <cmtt name="TestTestesss" />
+</class>
+<class name="body">
+     <field name="kwaokow" />
+     <field name="y" />
+     <math name="testes">
+         <param name="param1" />
+         <param name="param2" />
+         <field name="x" />
+         <field name="testeFor" />
+         <field name="testeForInFor" />
+         <field name="testeForInForInFor" />
+         <field name="testeForInForInForInFor" />
+         <field name="l" />
+         <field name="k" />
+         <field name="j" />
+         <field name="i" />
+         <field name="testeWhile" />
+         <field name="testeIfWhile" />
+         <field name="x" />
+         <field name="forDentroWhile" />
+         <field name="i" />
+         <field name="while4x" />
+         <field name="z" />
+         <field name="while3x" />
+         <field name="True" />
+         <field name="while2x" />
+         <field name="x" />
+         <field name="while1x" />
+         <field name="True" />
+         <field name="valorBooleanVerdade" />
+         <field name="valorBooleanFalse" />
+         <field name="z" />
+         <field name="z" />
+         <field name="z" />
+         <field name="m" />
+         <field name="x" />
+         <field name="dentroaquidoif" />
+         <field name="testeDentrodoIfDentrodoIf" />
+         <field name="testeIfDentroDoIf" />
+         <field name="testeDentrodoIfDentrodoIf" />
+         <field name="iftestando" />
+         <field name="iftestando2" />
+         <field name="x" />
+         <field name="dentroaquidoif" />
+         <field name="testeIfDentroDoIf" />
+         <field name="testeDentrodoIfDentrodoIf" />
+         <field name="dentroaquidoelse" />
+         <cmtt name=" AQUI E UM OUTRO " />
+         <cmtt name=" AQUI E COMENTS SEM NADA" />
+         <cmtt name=" wkaookawokwaok" />
+         <cmtt name=" ISSO AQUI E COMENTS" />
+         <cmtt name=" Isso aqui e coments" />
+     </math>
+     <math name="testes2">
+         <field name="x" />
+     </math>
+   wawdaaw  <cmtt name="Comentario no principal" />
+   wawdaaw  <cmtt name="testBody" />
+</class>
