@@ -1,0 +1,193 @@
+<module name="generic.py">
+     <class name="Calculadora">
+          <field name="atributoClasse" />
+          <mth name="soma">
+               <param name="self" />
+               <param name="a" />
+               <param name="b" />
+               <cmtt name=" Comentário de método da classe" />
+          </mth>
+          <mth name="subtrai">
+               <param name="self" />
+               <param name="a" />
+               <param name="b" />
+          </mth>
+          <mth name="multiplica">
+               <param name="self" />
+               <param name="a" />
+               <param name="b" />
+          </mth>
+          <mth name="divide">
+               <param name="self" />
+               <param name="a" />
+               <param name="b" />
+          </mth>
+          <cmtt name="Comentario de classe interna" />
+          <cmtt name=" Comentario de classe" />
+          <class name="ClasseInterna">
+               <field name="atributoClasseInterna" />
+               <mth name="imprimir">
+                    <param name="self" />
+                    <param name="mensagem" />
+               </mth>
+        </class>
+    </class>
+     <field name="string" />
+     <field name="inteiro" />
+     <field name="flutuante" />
+     <field name="boolean" />
+     <field name="complexo" />
+     <field name="lista" />
+     <field name="tupla" />
+     <field name="dicionario" />
+     <mth name="prototipo">
+     </mth>
+     <mth name="prototipo2">
+          <param name="x" />
+     </mth>
+     <mth name="prototipo3">
+          <param name="x" />
+          <param name="y" />
+     </mth>
+     <mth name="funcaoDeDeclaracaoDeVariaveisLocais">
+          <field name="stringLocal" />
+          <field name="inteiroLocal" />
+          <field name="flutuanteLocal" />
+          <field name="booleanLocal" />
+          <field name="complexoLocal" />
+          <field name="listaLocal" />
+          <field name="tuplaLocal" />
+          <field name="dicionarioLocal" />
+     </mth>
+     <mth name="funcaoDeUsoDeVariaveisGlobais">
+          <field name="stringLocal" />
+          <field name="inteiroLocal" />
+          <field name="flutuanteLocal" />
+          <field name="booleanLocal" />
+          <field name="complexoLocal" />
+          <field name="listaLocal" />
+          <field name="tuplaLocal" />
+          <field name="dicionarioLocal" />
+          <field name="stringLocal" />
+          <field name="inteiroLocal" />
+          <field name="flutuanteLocal" />
+          <field name="booleanLocal" />
+          <field name="complexoLocal" />
+          <field name="listaLocal" />
+          <field name="tuplaLocal" />
+          <field name="dicionarioLocal" />
+          <cmtt name="Usando variáveis locais que sobreescrevem as globais" />
+          <cmtt name="Usando Variáveis Globais" />
+     </mth>
+     <mth name="funcaoDeUsoDeVariaveisLocaisEOperadores">
+          <field name="stringLocal" />
+          <field name="inteiroLocal" />
+          <field name="flutuanteLocal" />
+          <field name="booleanLocal" />
+          <field name="complexoLocal" />
+          <field name="listaLocal" />
+          <field name="tuplaLocal" />
+          <field name="dicionarioLocal" />
+          <field name="variavelLocal1" />
+          <field name="variavelLocal2" />
+          <field name="variavelLocal3" />
+          <field name="variavelLocal1" />
+          <field name="variavelLocal3" />
+          <field name="variavelLocal1" />
+          <field name="variavelLocal1" />
+          <field name="variavelLocal2" />
+          <field name="variavelLocal3" />
+          <cmtt name=" Cast de Tipos" />
+          <cmtt name=" Operador Vírgula" />
+          <cmtt name=" Expressões Lógicas" />
+          <cmtt name=" Incremento e decremento" />
+     </mth>
+     <mth name="testeFor">
+     </mth>
+     <mth name="sqrNum">
+          <param name="num" />
+     </mth>
+     <mth name="funcaoDeUsoDeComandoDeControle">
+          <field name="variavelLocal1" />
+          <field name="variavelLocal2" />
+          <field name="variavelLocal3" />
+          <field name="variavelLocal4" />
+          <field name="indice1" />
+          <field name="indice2" />
+          <field name="variavelLocal1" />
+          <field name="variavelLocal2" />
+          <field name="variavelLocal1" />
+          <field name="variavelLocal2" />
+          <field name="variavelLocal2" />
+          <field name="variavelLocal3" />
+          <field name="variavelLocal1" />
+          <field name="variavelLocal3" />
+          <field name="variavelLocal1" />
+          <field name="variavelLocal2" />
+          <field name="variavelLocal2" />
+          <field name="variavelLocal3" />
+          <field name="variavelLocal1" />
+          <field name="variavelLocal2" />
+          <field name="variavelLocal3" />
+          <field name="variavelLocal2" />
+          <field name="variavelLocal1" />
+          <field name="variavelLocal1" />
+          <field name="variavelLocal3" />
+          <field name="variavelLocal1" />
+          <field name="variavelLocal2" />
+          <field name="variavelLocal2" />
+          <field name="variavelLocal3" />
+          <field name="variavelLocal1" />
+          <field name="variavelLocal2" />
+          <field name="variavelLocal3" />
+          <field name="variavelLocal2" />
+          <field name="variavelLocal1" />
+          <field name="variavelLocal2" />
+          <field name="variavelLocal2" />
+          <field name="variavelLocal3" />
+          <field name="variavelLocal2" />
+          <field name="variavelLocal2" />
+          <field name="variavelLocal1" />
+          <field name="variavelLocal3" />
+          <field name="variavelLocal3" />
+          <field name="variavelLocal1" />
+          <field name="variavelLocal3" />
+          <field name="variavelLocal2" />
+          <field name="variavelLocal1" />
+          <field name="variavelLocal2" />
+          <field name="variavelLocal1" />
+          <field name="variavelLocal2" />
+          <field name="variavelLocal2" />
+          <field name="variavelLocal2" />
+          <field name="variavelLocal3" />
+          <cmtt name=" Usando o Comando While" />
+          <cmtt name=" Usando o Comando For" />
+          <cmtt name=" Uso do Comando IF" />
+     </mth>
+     <mth name="funcaoUsandoMatrizes">
+     </mth>
+     <mth name="funcaoExemplo1">
+          <field name="variavelLocal" />
+     </mth>
+     <mth name="funcaoExemplo2">
+          <param name="parametro" />
+          <field name="variavelLocal" />
+          <field name="variavelLocal" />
+          <cmtt name=" Comentario Interno" />
+          <cmtt name=" Comentario externo" />
+     </mth>
+     <mth name="testeClasseEmFuncao">
+     </mth>
+     <cmtt name=" Usando Classe" />
+     <cmtt name=" Comentario de classe interna em função" />
+     <cmtt name=" Fim da função" />
+     <cmtt name=" Funções Dentro de Funções" />
+     <cmtt name=" Fim da Função" />
+     <cmtt name=" Fim da Função" />
+     <cmtt name=" Fim da Função" />
+     <cmtt name=" Fim da Função" />
+     <cmtt name=" Fim da Função" />
+     <cmtt name=" Prototipos de funções" />
+     <cmtt name=" Variaveis Globais" />
+     <cmtt name=" encoding: utf-8" />
+</module>

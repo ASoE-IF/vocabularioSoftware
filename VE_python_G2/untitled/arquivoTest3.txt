@@ -1,0 +1,12 @@
+<module name="codigoMenor.py">
+     <field name="string" />
+     <field name="inteiro" />
+     <field name="flutuante" />
+     <field name="boolean" />
+     <field name="complexo" />
+     <field name="lista" />
+     <field name="tupla" />
+     <field name="dicionario" />
+     <cmtt name=" Variaveis Globais" />
+     <cmtt name=" encoding: utf-8" />
+</module>
