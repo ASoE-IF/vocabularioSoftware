@@ -1,0 +1,67 @@
+#include<stdio.h>
+#define CONSTANTEDEFINE 10
+#define CONSTANTEDEFINECHAR "valor constante da constanteDefineChar"
+#define macroSoma(a,b) (a+b)
+#define macroStr(s) #s
+#define macroConcat(a, b) a ## b
+#error menssagem de erro com error
+signed char varCharComSignal;
+unsigned int varIntUnsigned;
+long double varLongDouble;
+short int varShortInt;
+const int varConst = 10;
+volatile int varVolatil;
+extern float varExtern;
+static double varStatic;
+int varAutoImplicita;
+int *ptrGlobal;
+float **ptrParaPtrGlobal;
+int prototipo1();
+int protoripo2(int, int);
+int protoripo3(int x, int y);
+prototipo4(int);
+prototipo5(int x);
+int funcao1()
+{
+	int variavelLocal;
+	int funcaoInterna()
+	{
+		int variavelLocalDaFuncaoInterna;
+		variavelLocal = 10;
+		int variavelLocal = 20;
+		variavelLocalDaFuncaoInterna = variavelLocal;
+	}
+	struct estrutura
+	{
+		int membro1;
+		int membro2;
+		double membroVetor[10];
+	};
+	union uniao
+	{
+		int membro1;
+		int membro2;
+		double membroVetor[10];
+	};
+	enum enum1
+	{
+		CONST1, CONST2, CONST3, CONST4, CONST5, CONST6 = 100, CONST7, CONST8, CONST9, CONST10/*enumaration*/
+	}
+	variavelLocal = 20;
+}
+struct estrutura1
+{
+	int membro1;
+	int membro2;
+	double membroVetor[10];
+};
+union union1
+{
+	int membro1;
+	int membro2;
+	double membroVetor[10];
+};
+enum enumeration
+{
+	CONST1, CONST2, CONST3, CONST4, CONST5, CONST6 = 100, CONST7, CONST8, CONST9, CONST10/*enumaration*/
+};

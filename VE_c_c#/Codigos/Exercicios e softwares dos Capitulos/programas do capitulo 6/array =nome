@@ -1,8 +1,0 @@
-#include<stdio.h>
-
-main(){
-int xis[1];
-printf("O endereço de %d é %p", xis[1], &xis[1]);
-return 0;
-getchar ();
-}

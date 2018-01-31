@@ -1,0 +1,1 @@
+static int outraVariavel = 5;

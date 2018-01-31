@@ -1,4 +1,0 @@
-#include<stdio.h>
-main(){
-printf(" IIIIIIIII\n     S   S\n     S   S\n     S   S\n      S S\n    RR\n   R\n R\n   R\n    AAAAAAAAA\n\n EEEEEEEEEEEEEEE\n E             E\n E             E\n E             E\n  L           L\n    LLLLLLLLL");
-}

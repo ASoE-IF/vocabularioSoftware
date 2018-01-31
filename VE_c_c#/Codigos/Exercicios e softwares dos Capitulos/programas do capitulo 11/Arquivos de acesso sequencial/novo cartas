@@ -1,8 +1,0 @@
- #include<stdio.h>
- 
- int main(){
-int x[30];
-fgets(x, 30, stdin);
-freopen("novo cartass.txt", "w", stdin);
-fprintf(stdin, "%s", x);
- }
