@@ -13,6 +13,7 @@ public class ASTRootProcessor {
 			switch (node.getNodeType()) {
 			case ASTNode.FUNCTION_DECLARATION:
 				FunctionProcessor.process((FunctionDeclaration) node);
+				break;
 			default:
 				System.out.println(""
 						+ "\nEstrutura ainda não conhecida encontrada");
