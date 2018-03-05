@@ -1,0 +1,23 @@
+@startuml
+
+class Runner {
+    void main()
+}
+Runner -- FileParser
+
+class FileParser{
+    char[] readFile(String filePath)
+    void parseFile(String filePath)
+}
+FileParser -- ASTRootProcessor
+
+class ASTRootProcessor{
+    void process(JavaScriptUnit astRoot)
+}
+ASTRootProcessor -- FunctionProcessor
+
+class FunctionProcessor{
+    void process(FunctionDeclaration functionDeclaration)
+}
+
+@enduml
