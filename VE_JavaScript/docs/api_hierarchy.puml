@@ -1,0 +1,86 @@
+@startuml
+
+skinparam shadowing false
+
+' this is a simple diagram showing how the hierarchy
+' of JSDT is given, for aid in extractor development
+
+abstract class ASTNode {
+}
+ASTNode <|- Expression
+ASTNode <|- ProgramElement
+ASTNode <|- VariableDeclaration
+ASTNode <|-- JavaScriptUnit
+
+class JavaScriptUnit {
+    List statements()
+}
+
+abstract class Expression{
+}
+Expression <|-- SimpleName
+
+class SimpleName{
+    String getIdentifier()
+}
+
+class VariableDeclaration{
+    abstract SimpleName getName()
+}
+VariableDeclaration <|-- VariableDeclarationFragment
+
+class VariableDeclarationFragment{
+    SimpleName getName()
+}
+
+abstract class ProgramElement{
+}
+ProgramElement <|-- BodyDeclaration
+ProgramElement <|-- Statement
+
+abstract class BodyDeclaration{
+}
+BodyDeclaration <|-- AbstractTypeDeclaration
+BodyDeclaration <|-- FieldDeclaration
+BodyDeclaration <|--- FunctionDeclaration
+
+abstract class AbstractTypeDeclaration{
+    SimpleName getName()
+}
+AbstractTypeDeclaration <|-- TypeDeclaration
+
+class TypeDeclaration {
+    FieldDeclaration[] getFields()
+    FunctionDeclaration[] getMethods()
+}
+
+class FieldDeclaration{
+    List fragments()
+}
+
+class FunctionDeclaration{
+    Block getBody()
+}
+
+abstract class Statement{
+}
+Statement <|-- Block
+Statement <|--- TypeDeclarationStatement
+Statement <|-- FunctionDeclarationStatement
+
+class Block{
+    List statements()
+}
+
+class FunctionDeclarationStatement{
+    FunctionDeclaration getDeclaration()
+}
+
+class TypeDeclarationStatement{
+    AbstractTypeDeclaration getDeclaration()
+}
+
+
+
+
+@enduml
