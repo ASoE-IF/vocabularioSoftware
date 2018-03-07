@@ -6,18 +6,26 @@ class Runner {
 Runner -- FileParser
 
 class FileParser{
-    char[] readFile(String filePath)
     void parseFile(String filePath)
+    char[] readFile(String filePath)
 }
-FileParser -- ASTRootProcessor
+FileParser -- StatementProcessor
 
-class ASTRootProcessor{
-    void process(JavaScriptUnit astRoot)
+class StatementProcessor{
+    void process(Block block)
+    void process(JavaScriptUnit jSUnit)
+    void process(FunctionDeclarationStatement funcDecStmt)
+    void process(TypeDeclarationStatement typeDecStmt)
 }
-ASTRootProcessor -- FunctionProcessor
+StatementProcessor -- FunctionProcessor
+StatementProcessor -- TypeProcessor
 
 class FunctionProcessor{
-    void process(FunctionDeclaration functionDeclaration)
+    void processFunction(FunctionDeclaration funcDec)
+}
+
+class TypeProcessor{
+    void processType(TypeDeclaration typeDec)
 }
 
 @enduml

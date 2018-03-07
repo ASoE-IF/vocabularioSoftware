@@ -1,0 +1,34 @@
+@startuml
+
+' este diagrama serve apenas para visualização de uma das partes do
+' extrator de vocabulário de Java, para uso em reunião
+
+class FileParser {
+    ' classe que só serve de exemplo do que chamaria a BodyProcessor
+}
+FileParser -- BodyProcessor
+
+class BodyProcessor{
+    void extractBody(Statement body)
+    void extractBlock(Block block)
+    void extractIfStatement(IfStatement ifStatement)
+    void extractForStatement(ForStatement forStatement)
+    void extractDoStatement(DoStatement doStatement)
+    void extractContinueStatement(ContinueStatement continueStatement)
+    void extractSwitchCase(SwitchCase switchCase)
+    void extractSwitchStatement(SwitchStatement switchStatement)
+    void extractWhileStatement(WhileStatement whileStatement)
+}
+BodyProcessor -- ExpressionProcessor
+BodyProcessor -- MethodVocabularyManager
+
+class ExpressionProcessor{
+    void extractExpression(Expression exp)
+    void extractVariableDeclarationFragment(VariableDeclarationFragment v)
+}
+
+class MethodVocabularyManager{
+    void insertLocalVariable(String variable)
+}
+
+@enduml
