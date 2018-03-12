@@ -11,7 +11,7 @@ import org.eclipse.wst.jsdt.core.dom.AST;
 import org.eclipse.wst.jsdt.core.dom.ASTParser;
 import org.eclipse.wst.jsdt.core.dom.JavaScriptUnit;
 
-import packageTeste.processors.ASTRootProcessor;
+import packageTeste.processors.StatementProcessor;
 
 public class FileParser {
 
@@ -25,7 +25,7 @@ public class FileParser {
 		// criando AST
 		JavaScriptUnit astRoot = (JavaScriptUnit) parser.createAST(new NullProgressMonitor());
 
-		ASTRootProcessor.process(astRoot);
+		StatementProcessor.process(astRoot);
 	}
 
 	public static char[] readFile(String filePath) {
