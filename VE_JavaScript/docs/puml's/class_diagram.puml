@@ -12,20 +12,22 @@ class FileParser{
 FileParser -- StatementProcessor
 
 class StatementProcessor{
-    void process(Block block)
     void process(JavaScriptUnit jSUnit)
-    void process(FunctionDeclarationStatement funcDecStmt)
-    void process(TypeDeclarationStatement typeDecStmt)
+    void process(List<ASTNode> statements)
+    void process(VariableDeclarationStatement varDeclStmt)
 }
 StatementProcessor -- FunctionProcessor
 StatementProcessor -- TypeProcessor
 
 class FunctionProcessor{
-    void processFunction(FunctionDeclaration funcDec)
+    void process(FunctionDeclaration funcDec)
+    String extractName(FunctionDeclaration funcDec)
+    String[] extractParameters(FunctionDeclaration funcDec)
 }
 
 class TypeProcessor{
-    void processType(TypeDeclaration typeDec)
+    void process(TypeDeclaration typeDec)
+    String extractName(TypeDeclaration typeDec)
 }
 
 @enduml
