@@ -7,10 +7,12 @@ skinparam shadowing false
 
 abstract class ASTNode {
 }
-ASTNode <|- Expression
-ASTNode <|- ProgramElement
-ASTNode <|- VariableDeclaration
+ASTNode <|-- Expression
+ASTNode <|-- ProgramElement
+ASTNode <|-- VariableDeclaration
 ASTNode <|-- JavaScriptUnit
+
+' every class below inherits from ASTNode
 
 class JavaScriptUnit {
     List statements()
@@ -19,66 +21,77 @@ class JavaScriptUnit {
 abstract class Expression{
 }
 Expression <|-- SimpleName
+Expression <|-- VariableDeclarationExpression
 
-class SimpleName{
-    String getIdentifier()
-}
+    class SimpleName{
+        String getIdentifier()
+    }
+
+    class VariableDeclarationExpression {
+        List<VariableDeclarationFragment> fragments()
+    }
 
 class VariableDeclaration{
     abstract SimpleName getName()
 }
 VariableDeclaration <|-- VariableDeclarationFragment
 
-class VariableDeclarationFragment{
-    SimpleName getName()
-}
+    class VariableDeclarationFragment{
+        SimpleName getName()
+        Expression getInitializer()
+    }
 
 abstract class ProgramElement{
 }
 ProgramElement <|-- BodyDeclaration
 ProgramElement <|-- Statement
 
-abstract class BodyDeclaration{
-}
-BodyDeclaration <|-- AbstractTypeDeclaration
-BodyDeclaration <|-- FieldDeclaration
-BodyDeclaration <|--- FunctionDeclaration
+    abstract class BodyDeclaration{
+    }
+    BodyDeclaration <|-- AbstractTypeDeclaration
+    BodyDeclaration <|-- FieldDeclaration
+    BodyDeclaration <|--- FunctionDeclaration
 
-abstract class AbstractTypeDeclaration{
-    SimpleName getName()
-}
-AbstractTypeDeclaration <|-- TypeDeclaration
+        abstract class AbstractTypeDeclaration{
+            SimpleName getName()
+        }
+        AbstractTypeDeclaration <|-- TypeDeclaration
 
-class TypeDeclaration {
-    FieldDeclaration[] getFields()
-    FunctionDeclaration[] getMethods()
-}
+            class TypeDeclaration {
+                FieldDeclaration[] getFields()
+                FunctionDeclaration[] getMethods()
+            }
 
-class FieldDeclaration{
-    List fragments()
-}
+        class FieldDeclaration{
+            List fragments()
+        }
 
-class FunctionDeclaration{
-    Block getBody()
-}
+        class FunctionDeclaration{
+            Block getBody()
+        }
 
-abstract class Statement{
-}
-Statement <|-- Block
-Statement <|--- TypeDeclarationStatement
-Statement <|-- FunctionDeclarationStatement
+    abstract class Statement{
+    }
+    Statement <|-- Block
+    Statement <|--- VariableDeclarationStatement
+    Statement <|-- FunctionDeclarationStatement
+    Statement <|--- TypeDeclarationStatement
 
-class Block{
-    List statements()
-}
+        class Block{
+            List statements()
+        }
 
-class FunctionDeclarationStatement{
-    FunctionDeclaration getDeclaration()
-}
+        class FunctionDeclarationStatement{
+            FunctionDeclaration getDeclaration()
+        }
 
-class TypeDeclarationStatement{
-    AbstractTypeDeclaration getDeclaration()
-}
+        class TypeDeclarationStatement{
+            AbstractTypeDeclaration getDeclaration()
+        }
+
+        class VariableDeclarationStatement{
+            List<VariableDeclarationFragment> fragments()
+        }
 
 
 
