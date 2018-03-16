@@ -35,6 +35,7 @@ lineNumber = 0
 comments = []
 coments_lines = []
 linhas_branco = []
+comments_multlines = []
 
 # Tratando o resto
 auxVars = 0
@@ -169,7 +170,6 @@ def extract(code):
             comments.append(tokenize.untokenize([(toktype, tokval)])[1:])
             coments_lines.append(lineNumber)
 
-
 # Nao usa
 def correctingPositions(node):
     if len(listaNomeVariaveis) > len(listaValores):
@@ -193,12 +193,12 @@ def comentsDefinition(superior, inferior):
 
 # pega as linhas em branco
 def catchWhiteLines(s):
+    global lineNumber
     for line in s.split('\n'):
         if len(line.strip()) == 0:
             linhas_branco.append(lineNumber)
         else:
             extract(line)
-        global lineNumber
         lineNumber += 1
 
 # Pegar as variaveis
@@ -216,14 +216,13 @@ def catchAssign(body):
 
 # Pegar o nome da funcao e parametros
 def catchNameDef(body):
+    global writeLines
     listaVarsFuncoes.append([])
     MyTransformerNameDef().visit(body)
     MyVisitorNameDef().visit(body)
-    global writeLines
     writeLines+=1
     MyTransformerVars().visit(body.args)
     MyVisitorVars().visit(body.args)
-    global writeLines
     writeLines-=1
     global auxFunctions
     auxFunctions += 1
@@ -246,7 +245,7 @@ def catchClass(classes_definitions, x):
 
         insideMthClass(True)
         #Capturando as variaveis da class
-        global writeLines
+
         writeLines = x+1
         for k in range(len(body_definitios)):
             if isinstance(body_definitios[k], ast.Assign):
@@ -267,7 +266,6 @@ def catchClass(classes_definitions, x):
         #Agora entra no corpo das funcoes dentro da class
             nodes = [node for node in name_definitionss[k].body]
             insideMthClass(True)
-            global writeLines
             writeLines = x+2
             for i in range(len(nodes)):
                 inferior = 0
@@ -333,7 +331,6 @@ def d(s):
     #Capturando funcoes do modulo
     for i in range(len(name_definitions)):
         catchNameDef(name_definitions[i])
-        global writeLines
         writeLines = 2
         nodes = [node for node in name_definitions[i].body]
         inferior = 0
@@ -352,7 +349,6 @@ def d(s):
             if k == len(nodes)-1:
                 inferior = nodes[k].lineno
         comentsDefinition(superior, inferior)
-        global writeLines
         writeLines = 1
         arquivo.write("     </mth>\n")
 
@@ -366,13 +362,15 @@ def d(s):
 from os import walk
 s = []
 allFiles = ""
-myPath = 'C:/Users/mathe/Downloads/Tcc_IFPB-master/untitled'
+
+myPath = '/home/denilson/Documentos/Projeto/vocabularioSoftware/VE_python_G2/untitled/'
 for root, dirs, files in walk(myPath):
     for file in files:
-        if file.endswith('codigoMenor.py'):
+        if file.endswith('multilinesComment.py'):
             openFile = open(root+"/"+file, "r")
             for lines in openFile.readlines():
                 allFiles += lines
             arquivo.write("<module name=\"" + file + "\">\n")
             d(allFiles)
             allFiles = ""
+

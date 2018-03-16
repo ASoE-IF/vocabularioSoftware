@@ -1,0 +1,7 @@
+var = '''
+
+Aaaaa
+Baaaa
+Caaaa
+
+'''
