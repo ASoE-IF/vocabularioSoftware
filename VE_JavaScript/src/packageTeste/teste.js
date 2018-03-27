@@ -33,6 +33,46 @@ var Casa = (function() {
     return Casa;
 })();
 
+function Bacia(capacidade) {
+    this.capacidade = capacidade;
+    this.volConteudo = 0;
+    this.nomeConteudo = "";
+
+    this.encher = function(quanto, comOQue) {
+        this.volConteudo = volConteudo + quanto;
+        this.nomeConteudo = comOQue;
+    };
+
+    this.remover = function(quanto) {
+        // remove <quanto> do conteúdo da bacia
+        // retorna o quanto foi removido
+
+        if (quanto >= volConteudo) {
+            var removido = volConteudo;
+            this.volConteudo = 0;
+            return removido;
+        } else {
+            this.volConteudo = volConteudo - quanto;
+            return quanto;
+        };
+    };
+};
+
+function Monitor(marca, modelo) {
+    this.marca = marca;
+    this.modelo = modelo;
+
+    this.getNomeProduto = function {
+        return this.marca + " " + this.modelo;
+    };
+    this.getMarca = function {
+        return this.marca;
+    };
+    this.getModelo = function {
+        return this.modelo;
+    };
+};
+
 var CasaBranca = new Casa();
 CasaBranca.setNome("Casa Branca");
 CasaBranca.setDono("Donald Trump");
