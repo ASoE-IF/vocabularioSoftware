@@ -1,9 +1,8 @@
 
-function juntarStrings(string1, string2) {
-    return string1 + string2;
-};
+// declarando construtores de objeto (tipos)
 
-var Casa = (function() {
+// utilizando prototipos
+var Casa = function() {
     // constructor
     function Casa() {
         this._nome = null;
@@ -31,9 +30,10 @@ var Casa = (function() {
     };
 
     return Casa;
-})();
+};
 
-function Bacia(capacidade) {
+// utilizando unicas funcoes
+function Recipiente(capacidade) {
     this.capacidade = capacidade;
     this.volConteudo = 0;
     this.nomeConteudo = "";
@@ -58,33 +58,29 @@ function Bacia(capacidade) {
     };
 };
 
-function Monitor(marca, modelo) {
-    this.marca = marca;
-    this.modelo = modelo;
+// criando objetos a partir dos construtores
 
-    this.getNomeProduto = function {
-        return this.marca + " " + this.modelo;
-    };
-    this.getMarca = function {
-        return this.marca;
-    };
-    this.getModelo = function {
-        return this.modelo;
-    };
+var casaBranca = new Casa();
+casaBranca.setNome("Casa Branca");
+casaBranca.setDono("Donald Trump");
+casaBranca.setValor(100);
+
+alert(casaBranca.getDono() + " é dono\n" + "da casa de nome " + casaBranca.getNome() + ", ela vale " + casaBranca.getValor());
+
+var bacia = new Recipiente(50);
+
+bacia.encher(25, "água");
+alert("a bacia tem " + bacia.volConteudo +
+    " de " + bacia.nomeConteudo);
+
+var removido = bacia.remover(20);
+alert("tirei " + removido + "da bacia\n" + "agora ela tem " + bacia.volConteudo + " de " + bacia.nomeConteudo);
+
+// funcao exemplo
+
+function juntarStrings(string1, string2) {
+    return string1 + string2;
 };
-
-var CasaBranca = new Casa();
-CasaBranca.setNome("Casa Branca");
-CasaBranca.setDono("Donald Trump");
-CasaBranca.setValor(100);
-
-var SupremoTribunal = new Casa();
-SupremoTribunal.setNome("Supremo Tribunal");
-SupremoTribunal.setDono("Cármen Lúcia");
-SupremoTribunal.setValor(100);
-
-alert(CasaBranca.getDono() + " é dono da casa de nome " + CasaBranca.getNome() + ", ela vale " + CasaBranca.getValor());
-alert(SupremoTribunal.getDono() + " é dono da casa de nome " + SupremoTribunal.getNome() + ", ela vale " + SupremoTribunal.getValor());
 
 var valor1 = prompt("Digite a primeira string, pessoa");
 var valor2 = prompt("Digite a segunda string, pessoa");
