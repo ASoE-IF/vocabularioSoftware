@@ -39,7 +39,7 @@ function Recipiente(capacidade) {
     this.nomeConteudo = "";
 
     this.encher = function(quanto, comOQue) {
-        this.volConteudo = volConteudo + quanto;
+        this.volConteudo = this.volConteudo + quanto;
         this.nomeConteudo = comOQue;
     };
 
@@ -47,16 +47,16 @@ function Recipiente(capacidade) {
         // remove <quanto> do conteúdo da bacia
         // retorna o quanto foi removido
 
-        if (quanto >= volConteudo) {
-            var removido = volConteudo;
+        if (quanto >= this.volConteudo) {
+            var removido = this.volConteudo;
             this.volConteudo = 0;
             return removido;
         } else {
-            this.volConteudo = volConteudo - quanto;
+            this.volConteudo = this.volConteudo - quanto;
             return quanto;
-        };
+        }
     };
-};
+}
 
 // criando objetos a partir dos construtores
 
