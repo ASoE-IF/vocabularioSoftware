@@ -2,7 +2,6 @@
 import numpy
 
 
-
 # Variaveis Globais
 
 string = "String Generica"
@@ -222,7 +221,7 @@ def funcaoExemplo2(parametro):
     def funcaoInterna(parametro):
         variavelLocal = 10
         # Comentario Interno
-        variavelLocalDaFuncaoInterna = variavelLocal = param1 = 0
+        variavelLocalDaFuncaoInterna = 0
 
     variavelLocal = 20
     return variavelLocal

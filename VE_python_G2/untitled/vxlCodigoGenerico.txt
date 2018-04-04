@@ -1,4 +1,5 @@
-<module name="generic.py">
+<<module name="generic.py">
+<imp name = "numpy" />
      <class name="Calculadora">
           <field name="atributoClasse" />
           <mth name="soma">
@@ -22,8 +23,6 @@
                <param name="a" />
                <param name="b" />
           </mth>
-          <cmtt name="Comentario de classe interna" />
-          <cmtt name=" Comentario de classe" />
           <class name="ClasseInterna">
                <field name="atributoClasseInterna" />
                <mth name="imprimir">
@@ -31,6 +30,8 @@
                     <param name="mensagem" />
                </mth>
         </class>
+               <cmtt name="Comentario de classe interna" />
+               <cmtt name=" Comentario de classe" />
     </class>
      <field name="string" />
      <field name="inteiro" />
@@ -57,7 +58,7 @@
           <field name="complexoLocal" />
           <field name="listaLocal" />
           <field name="tuplaLocal" />
-          <field name="dicionarioLocal" />
+          <field name="dicionarioLocal4" />
      </mth>
      <mth name="funcaoDeUsoDeVariaveisGlobais">
           <field name="stringLocal" />
@@ -75,7 +76,7 @@
           <field name="complexoLocal" />
           <field name="listaLocal" />
           <field name="tuplaLocal" />
-          <field name="dicionarioLocal" />
+          <field name="dicionarioLocal2" />
           <cmtt name="Usando variáveis locais que sobreescrevem as globais" />
           <cmtt name="Usando Variáveis Globais" />
      </mth>
@@ -87,7 +88,7 @@
           <field name="complexoLocal" />
           <field name="listaLocal" />
           <field name="tuplaLocal" />
-          <field name="dicionarioLocal" />
+          <field name="dicionarioLocal3" />
           <field name="variavelLocal1" />
           <field name="variavelLocal2" />
           <field name="variavelLocal3" />
@@ -127,56 +128,66 @@
           <field name="variavelLocal2" />
           <field name="variavelLocal3" />
           <field name="variavelLocal1" />
-          <field name="variavelLocal2" />
-          <field name="variavelLocal3" />
-          <field name="variavelLocal2" />
+          <field name="j" />
+          <field name="range" />
+          <field name="l" />
+          <field name="range" />
+          <field name="sqrNum" />
+          <field name="variavelLocal1" />
+          <field name="i" />
+          <field name="range" />
+          <field name="variavelLocal4" />
           <field name="variavelLocal1" />
           <field name="variavelLocal1" />
-          <field name="variavelLocal3" />
-          <field name="variavelLocal1" />
-          <field name="variavelLocal2" />
-          <field name="variavelLocal2" />
-          <field name="variavelLocal3" />
-          <field name="variavelLocal1" />
-          <field name="variavelLocal2" />
-          <field name="variavelLocal3" />
-          <field name="variavelLocal2" />
-          <field name="variavelLocal1" />
-          <field name="variavelLocal2" />
-          <field name="variavelLocal2" />
-          <field name="variavelLocal3" />
-          <field name="variavelLocal2" />
-          <field name="variavelLocal2" />
-          <field name="variavelLocal1" />
-          <field name="variavelLocal3" />
-          <field name="variavelLocal3" />
-          <field name="variavelLocal1" />
-          <field name="variavelLocal3" />
           <field name="variavelLocal2" />
           <field name="variavelLocal1" />
           <field name="variavelLocal2" />
           <field name="variavelLocal1" />
+          <field name="variavelLocal1" />
           <field name="variavelLocal2" />
-          <field name="variavelLocal2" />
-          <field name="variavelLocal2" />
-          <field name="variavelLocal3" />
+          <field name="variavelLocal4" />
+          <field name="True" />
+          <field name="variavelLocal4" />
           <cmtt name=" Usando o Comando While" />
           <cmtt name=" Usando o Comando For" />
           <cmtt name=" Uso do Comando IF" />
      </mth>
      <mth name="funcaoUsandoMatrizes">
+          <field name="matriz" />
+          <field name="novaMatriz" />
+          <field name="numpy" />
+          <field name="matriz" />
+          <field name="novaMatriz" />
      </mth>
      <mth name="funcaoExemplo1">
           <field name="variavelLocal" />
+          <field name="variavelLocal" />
+          <mth name="funcaoInterna">
+               <field name="variavelLocal" />
+               <field name="variavelLocalDaFuncaoInterna" />
+               <field name="variavelLocal" />
+          </mth>
      </mth>
      <mth name="funcaoExemplo2">
           <param name="parametro" />
           <field name="variavelLocal" />
           <field name="variavelLocal" />
-          <cmtt name=" Comentario Interno" />
+          <mth name="funcaoInterna">
+               <param name="parametro" />
+               <field name="variavelLocal" />
+               <field name="variavelLocalDaFuncaoInterna" />
+               <cmtt name=" Comentario Interno" />
+          </mth>
           <cmtt name=" Comentario externo" />
      </mth>
      <mth name="testeClasseEmFuncao">
+          <class name="ClasseInternaDaFuncao">
+               <field name="atributoClasseFuncao" />
+               <mth name="imprimirMensagem">
+                    <param name="self" />
+                    <param name="mensagemFuncao" />
+               </mth>
+        </class>
      </mth>
      <cmtt name=" Usando Classe" />
      <cmtt name=" Comentario de classe interna em função" />

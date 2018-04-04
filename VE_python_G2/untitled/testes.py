@@ -11,7 +11,6 @@
 # Comentarios na classe... 100%
 # Comentarios nos metodos... 100%
 
-
 #Bugs:
     # Comentarios na ultima linha de qualquer elemento ficam perdidos(Nao sabem a quem pertence)
 
@@ -35,7 +34,6 @@ lineNumber = 0
 comments = []
 coments_lines = []
 linhas_branco = []
-comments_multlines = []
 
 # Tratando o resto
 auxVars = 0
@@ -49,6 +47,7 @@ auxFunctions = 0
 listaNomesFuncoes = []
 listaVarsFuncoes = []
 
+imports = []
 
 class MyVisitorVars(ast.NodeVisitor):
     def visit_Name(self, node):
@@ -118,8 +117,15 @@ class MyVisitorNameIf(ast.NodeVisitor):
         listaNomeVariaveis.append(node.id)
         arquivo.write("     "*writeLines+"<field name=\""+node.id+"\""" />\n")
 
+class MyTransformerImport(ast.NodeTransformer):
+    def visit_Import(self, node):
+        return ast.alias(node.name)
 
-# Visitor = adiciona na lista, transformer = transforma em string cada no
+class MyVisitorImport(ast.NodeVisitor):
+    def visit_Import(self, node):
+        imports.append(node.name)
+
+
 
 class MyTransformerNameIf(ast.NodeTransformer):
     def visit_Name(self, node):
@@ -162,7 +168,6 @@ def ForInFor(nodeCatch):
     for i in range(len(nodes)):
         ForAndWhileCatch(nodes[i])
 
-#Extrai comentarios
 def extract(code):
     stringio = StringIO.StringIO(code)
     for toktype, tokval, begin, end, line in tokenize.generate_tokens(stringio.readline):
@@ -170,7 +175,7 @@ def extract(code):
             comments.append(tokenize.untokenize([(toktype, tokval)])[1:])
             coments_lines.append(lineNumber)
 
-# Nao usa
+
 def correctingPositions(node):
     if len(listaNomeVariaveis) > len(listaValores):
         listaValores[auxVars].append(node.id)
@@ -179,7 +184,6 @@ def correctingPositions(node):
         arquivo.write("     "*writeLines+"<field name=\""+node.id+"\""" />\n")
 
 
-#Pega o tamanho dele e saber se tem comentarios
 def comentsDefinition(superior, inferior):
     definedComments = []
     for i in range(len(coments_lines)-1,-1,-1):
@@ -191,17 +195,15 @@ def comentsDefinition(superior, inferior):
     for i in range(len(definedComments)):
         arquivo.write("     "*writeLines+"<cmtt name=\""+definedComments[i]+"\""" />\n")
 
-# pega as linhas em branco
 def catchWhiteLines(s):
-    global lineNumber
     for line in s.split('\n'):
         if len(line.strip()) == 0:
             linhas_branco.append(lineNumber)
         else:
             extract(line)
+        global lineNumber
         lineNumber += 1
 
-# Pegar as variaveis
 def catchAssign(body):
     listaValores.append([])
     listaNumLine.append(body.lineno)
@@ -214,15 +216,15 @@ def catchAssign(body):
     global auxVars
     auxVars += 1
 
-# Pegar o nome da funcao e parametros
 def catchNameDef(body):
-    global writeLines
     listaVarsFuncoes.append([])
     MyTransformerNameDef().visit(body)
     MyVisitorNameDef().visit(body)
+    global writeLines
     writeLines+=1
     MyTransformerVars().visit(body.args)
     MyVisitorVars().visit(body.args)
+    global writeLines
     writeLines-=1
     global auxFunctions
     auxFunctions += 1
@@ -232,8 +234,8 @@ def catchClass(classes_definitions, x):
     writeLines = x
     for i in range(len(classes_definitions)):
         arquivo.write("     "*x+"<class name=\""+classes_definitions[i].name+"\""">\n")
-        superiorClasse = classes_definitions[i].lineno
-
+        superior = classes_definitions[i].lineno
+        inferior = 0
         #Criando lista das funcoes da class atual
         name_definitionss = [node for node in classes_definitions[i].body if isinstance(node, ast.FunctionDef)]
 
@@ -245,7 +247,7 @@ def catchClass(classes_definitions, x):
 
         insideMthClass(True)
         #Capturando as variaveis da class
-
+        global writeLines
         writeLines = x+1
         for k in range(len(body_definitios)):
             if isinstance(body_definitios[k], ast.Assign):
@@ -257,47 +259,63 @@ def catchClass(classes_definitions, x):
                 ForAndWhileCatch(body_definitios[k])
             if isinstance(body_definitios[k], ast.For):
                 ForAndWhileCatch(body_definitios[k])
-
-        #Captura primeiro o nome das funcoes
-        for k in range(len(name_definitionss)):
-            superior = name_definitionss[k].lineno
-            catchNameDef(name_definitionss[k])
-
-        #Agora entra no corpo das funcoes dentro da class
-            nodes = [node for node in name_definitionss[k].body]
-            insideMthClass(True)
-            writeLines = x+2
-            for i in range(len(nodes)):
-                inferior = 0
-                # Capturando as variaveis dentro da funcao da class
-                if isinstance(nodes[i], ast.Assign):
-                    catchAssign(nodes[i])
-
-                if i == len(nodes)-1:
-                    inferior = nodes[i].lineno
-            comentsDefinition(superior, inferior)
-            writeLines-=1
-            arquivo.write("     "*writeLines+"</mth>\n")
-        if i == len(nodes)-1:
-            inferiorClasse = nodes[i].lineno
-        insideMthClass(False)
-        comentsDefinition(superiorClasse, inferiorClasse)
+            if k == len(body_definitios)-1:
+                inferior = body_definitios[k].lineno
+        catchFunction(name_definitionss, x+1)
         catchClass(insideClass, x+1)
+        comentsDefinition(superior, inferior)
         arquivo.write("    "*x+"</class>\n")
+
+def catchFunction(names_definitions, x):
+    global writeLines
+    writeLines = x
+    for i in range(len(names_definitions)):
+        catchNameDef(names_definitions[i])
+        superiorFunction = names_definitions[i].lineno
+        inferiorFunction = 0
+        global writeLines
+        writeLines = x+1
+        names_definitionss = [node for node in names_definitions[i].body if isinstance(node, ast.FunctionDef)]
+        class_definitions = [node for node in names_definitions[i].body if isinstance(node, ast.ClassDef)]
+        body_definitios = [node for node in names_definitions[i].body]
+        for k in range(len(body_definitios)):
+            if isinstance(body_definitios[k], ast.Assign):
+                catchAssign(body_definitios[k])
+            #Procurando estruturas primarias na class
+            if isinstance(body_definitios[k], ast.If):
+                IfinIf(body_definitios[k])
+            if isinstance(body_definitios[k], ast.While):
+                ForAndWhileCatch(body_definitios[k])
+            if isinstance(body_definitios[k], ast.For):
+                ForAndWhileCatch(body_definitios[k])
+            if k == len(body_definitios)-1:
+                inferiorFunction = body_definitios[k].lineno
+
+        insideMthClass(False)
+        catchClass(class_definitions, x+1)
+        catchFunction(names_definitionss, x+1)
+        comentsDefinition(superiorFunction, inferiorFunction)
+        writeLines-=1
+        arquivo.write("     "*writeLines+"</mth>\n")
+
+
+
+def catchImports(importsss):
+    for i in range(len(importsss)):
+        astAlias = [node for node in importsss[i].names if isinstance(node, ast.alias)]
+        arquivo.write("<imp name = \""+astAlias[0].name+"\""" />\n")
 
 #Metodo responsavel para definir a posicao de escrita do XVL
 def insideMthClass(status):
     global dentroDoMetodoDaClasse
     dentroDoMetodoDaClasse = status
 
-# Chama tudo
 def d(s):
     #Capturando a posicao das linhas em branco
     catchWhiteLines(s)
     #Recebendo a astParse do arquivo
     module = ast.parse(s)
-
-    #Criando listas com os metodos, classes e resto do modulo
+    modules = [node for node in module.body if isinstance(node, ast.Import)]
 
     #Criando lista das funcoes do modulo
     name_definitions = [node for node in module.body if isinstance(node, ast.FunctionDef)]
@@ -311,9 +329,9 @@ def d(s):
 
     insideMthClass(False)
 
+    catchImports(modules)
     #TOTAL REFATORAMENTO DESSA PARTE
     catchClass(classes_definitions, 1)
-
     insideMthClass(False)
     global writeLines
     writeLines = 1
@@ -329,28 +347,7 @@ def d(s):
         if isinstance(nodes_body[i], ast.For):
             ForAndWhileCatch(nodes_body[i])
     #Capturando funcoes do modulo
-    for i in range(len(name_definitions)):
-        catchNameDef(name_definitions[i])
-        writeLines = 2
-        nodes = [node for node in name_definitions[i].body]
-        inferior = 0
-        superior = name_definitions[i].lineno
-        for k in range(len(nodes)):
-            if isinstance(nodes[k], ast.Assign):
-               insideMthClass(True)
-               catchAssign(nodes[k])
-            if isinstance(nodes[k], ast.For):
-               ForAndWhileCatch(nodes[k])
-            if isinstance(nodes[k], ast.While):
-               ForAndWhileCatch(nodes[k])
-            if isinstance(nodes[k], ast.If):
-               IfInIfCatch(nodes[k])
-
-            if k == len(nodes)-1:
-                inferior = nodes[k].lineno
-        comentsDefinition(superior, inferior)
-        writeLines = 1
-        arquivo.write("     </mth>\n")
+    catchFunction(name_definitions, 1)
 
     #Escrevendo comentarios do modulo
     for i in range(len(comments)-1,-1,-1):
@@ -362,15 +359,13 @@ def d(s):
 from os import walk
 s = []
 allFiles = ""
-
-myPath = '/home/denilson/Documentos/Projeto/vocabularioSoftware/VE_python_G2/untitled/'
+myPath = 'C:/Users/mathe/Downloads/Tcc_IFPB-master/untitled'
 for root, dirs, files in walk(myPath):
     for file in files:
-        if file.endswith('multilinesComment.py'):
+        if file.endswith('codigoComentarios.py'):
             openFile = open(root+"/"+file, "r")
             for lines in openFile.readlines():
                 allFiles += lines
             arquivo.write("<module name=\"" + file + "\">\n")
             d(allFiles)
             allFiles = ""
-
