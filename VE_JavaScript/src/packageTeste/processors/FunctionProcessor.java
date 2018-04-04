@@ -9,13 +9,21 @@ public class FunctionProcessor {
 	
 	@SuppressWarnings("unchecked")
 	public static void process(FunctionDeclaration funcDec) {
-		System.out.println("\nFunção encontrada:");
+		System.out.println("\nFunctionDeclaration encontrada:");
 
-		System.out.println("\t" + extractName(funcDec));
+		System.out.println("\tnome: "+extractName(funcDec));
 
-		System.out.println("parâmetros:");
-		for (String parameter : extractParameters(funcDec))
-			System.out.println("\t" + parameter);
+		System.out.println("\té construtora? "+funcDec.isConstructor());
+
+		String[] parameters = extractParameters(funcDec);
+		if (parameters.length > 0) {
+			System.out.println("\tparâmetros:");
+
+			for (String parameter : parameters)
+				System.out.println("\t\t"+parameter);
+		} else {
+			System.out.println("\tparâmetros: nenhum");
+		}
 	}
 
 	private static String extractName(FunctionDeclaration funcDec) {

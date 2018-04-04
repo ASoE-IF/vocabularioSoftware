@@ -28,16 +28,15 @@ public class StatementProcessor {
 
 			} else {
 				System.out.println(
-						"Elemento não conhecido encontrado:" +
-								"\n" + statement.toString() +
-								"\nera um ASTNode de tipo " + statement.getNodeType()
+						"\nASTNode desconhecida encontrada (tipo "+statement.getNodeType()+"):"+
+								"\n" + statement.toString()
 				);
 			}
 		}
 	}
 
 	private static void process(VariableDeclarationStatement varDeclStmt) {
-		System.out.println("VariableDeclarationStatement encontrado:");
+		System.out.println("\nVariableDeclarationStatement encontrado:");
 
 		System.out.println("\tfragmentos:");
 		List<VariableDeclarationFragment> fragments = varDeclStmt.fragments();
