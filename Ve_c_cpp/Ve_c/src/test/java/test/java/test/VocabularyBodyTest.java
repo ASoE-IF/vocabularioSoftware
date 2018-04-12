@@ -24,13 +24,14 @@ public class VocabularyBodyTest extends TestCase {
 	public void setUp() {
 		try { 
 			String[] args = {"-n", "xmltoxsd", "-d", "./files/XmlToXsd/",
-					"-loc", "iah", "-vxl", "./files/XmlToXsd/xmltoxsd.vxl", 
-					"-csv", "./files/XmlToXsd/xmltoxsd.csv"}; 
+					"-loc", "hi", "-vxl", "./files/XmlToXsd/xmltoxsd.vxl", 
+					"-csv", "./files/XmlToXsd/xmltoxsd.csv", "-func"}; 
 			
 			VocabularyRunner.main(args);
 		
 			// parsing vxl file
 			String vxlFileName = "./files/XmlToXsd/xmltoxsd.vxl";
+			
 			XMLReader xr = XMLReaderFactory.createXMLReader();
 
 			this.vxlHandler = new VXLHandler();

@@ -74,18 +74,18 @@ public class PhysicalLocTest extends TestCase {
 	}
 	
 	public void testSimpleFile() throws Exception {
-		assertTrue(getPhysicalLocCount(simpleFile) == 67);
+		assertTrue(getPhysicalLocCount(simpleFile) == 60);
 	}
 	
 	public void testNoBlankLinesFile() throws Exception {
-		assertTrue(getPhysicalLocCount(noBlankLinesFile) == 67);
+		assertTrue(getPhysicalLocCount(noBlankLinesFile) == 60);
 	}
 	
 	public void testNoCommentsFile() throws Exception {
-		assertTrue(getPhysicalLocCount(noCommentsFile) == 67);
+		assertTrue(getPhysicalLocCount(noCommentsFile) == 60);
 	}
 	
 	public void testComplexFile() throws Exception {
-		assertTrue(getPhysicalLocCount(complexFile) == 67);
+		assertTrue(getPhysicalLocCount(complexFile) == 60);
 	}
 }

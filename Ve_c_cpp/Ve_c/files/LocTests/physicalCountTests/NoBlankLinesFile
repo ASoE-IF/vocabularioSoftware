@@ -3,14 +3,6 @@
  * Autor: Israel Gomes de Lima
  * Data: 20/09/2017
  */
-//Includes e Defines
-#include<stdio.h>
-#define CONSTANTEDEFINE 10
-#define CONSTANTEDEFINECHAR "valor constante da constanteDefineChar"
-#define macroSoma(a,b) (a+b)
-#define macroStr(s) #s
-#define macroConcat(a, b) a ## b
-#error menssagem de erro com error
 //Variaveis globais
 signed char varCharComSignal;
 unsigned int varIntUnsigned;

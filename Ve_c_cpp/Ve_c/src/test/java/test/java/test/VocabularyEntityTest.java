@@ -59,7 +59,7 @@ public class VocabularyEntityTest extends TestCase {
 			String attributeValue = it.next();
 			
 			if (attributeName.equals("sloc"))
-				assertTrue(attributeValue.equals("586"));
+				assertTrue(attributeValue.equals("607"));
 		}
 	}
 	

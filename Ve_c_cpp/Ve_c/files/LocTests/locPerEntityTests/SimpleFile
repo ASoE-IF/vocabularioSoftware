@@ -1,10 +1,3 @@
-#include<stdio.h>
-#define CONSTANTEDEFINE 10
-#define CONSTANTEDEFINECHAR "valor constante da constanteDefineChar"
-#define macroSoma(a,b) (a+b)
-#define macroStr(s) #s
-#define macroConcat(a, b) a ## b
-#error menssagem de erro com error
 signed char varCharComSignal;
 unsigned int varIntUnsigned;
 long double varLongDouble;
@@ -45,7 +38,7 @@ int funcao1()
 	};
 	enum enum1
 	{
-		CONST1, CONST2, CONST3, CONST4, CONST5, CONST6 = 100, CONST7, CONST8, CONST9, CONST10/*enumaration*/
+		CONST1, CONST2, CONST3, CONST4, CONST5, CONST6 = 100, CONST7, CONST8, CONST9, CONST10
 	}
 	variavelLocal = 20;
 }
@@ -63,5 +56,5 @@ union union1
 };
 enum enumeration
 {
-	CONST1, CONST2, CONST3, CONST4, CONST5, CONST6 = 100, CONST7, CONST8, CONST9, CONST10/*enumaration*/
+	CONST1, CONST2, CONST3, CONST4, CONST5, CONST6 = 100, CONST7, CONST8, CONST9, CONST10
 };
