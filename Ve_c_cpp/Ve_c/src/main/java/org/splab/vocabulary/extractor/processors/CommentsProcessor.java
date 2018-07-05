@@ -6,24 +6,44 @@ import org.eclipse.cdt.internal.core.dom.parser.ASTNode;
 import org.splab.vocabulary.extractor.util.CommentUnit;
 import org.splab.vocabulary.extractor.util.VxlManager;
 
+/**
+ * Essa classe é responsável por extrair os comentários onde quer que eles
+ * estejam no código fonte.
+ * 
+ * Obs.: Essa classe é baseada na CommentsProcessor do extrator original do
+ * Java.
+ * 
+ * @author Israel Gomes de Lima
+ */
 public class CommentsProcessor {
+	/**
+	 * Mantém um fragmento de vxl
+	 */
 	private StringBuffer vxlFragment;
 
-	public CommentsProcessor(List<ASTNode> allDeclarations, ASTNode type, boolean function) {
+	/**
+	 * Construtor responsável por processar os comentários corretamente.
+	 * 
+	 * @param allDeclarations
+	 * @param type
+	 * @param entityIndentationLevel
+	 */
+	public CommentsProcessor(List<ASTNode> allDeclarations, ASTNode type, int entityIndentationLevel) {
 		vxlFragment = new StringBuffer();
+
 		List<CommentUnit> sourceCodeComments = CompilationUnitProcessor.sourceCodeComments;
 
 		for (CommentUnit c : sourceCodeComments)
 			if (allDeclarations.size() != 0) {
 				if (c.getStartPosition() >= type.getOffset()
 						&& c.getStartPosition() < allDeclarations.get(0).getFileLocation().getNodeOffset()) {
-					vxlFragment.append(VxlManager.commentTag(c, function));
+					vxlFragment.append(VxlManager.commentTag(c, entityIndentationLevel));
 					FileProcessor.sourceCodeComments.add(c);
 				}
 			} else {
 				if (c.getStartPosition() >= type.getOffset()
 						&& c.getEndPosition() < type.getOffset() + type.getLength()) {
-					vxlFragment.append(VxlManager.commentTag(c, function));
+					vxlFragment.append(VxlManager.commentTag(c, entityIndentationLevel));
 					FileProcessor.sourceCodeComments.add(c);
 				}
 			}
@@ -38,7 +58,7 @@ public class CommentsProcessor {
 
 				if (c.getStartPosition() >= endOfPreviousDeclaration
 						&& c.getStartPosition() < beginOfCurrentDeclaration) {
-					vxlFragment.append(VxlManager.commentTag(c, function));
+					vxlFragment.append(VxlManager.commentTag(c, entityIndentationLevel));
 					FileProcessor.sourceCodeComments.add(c);
 				}
 			}
@@ -53,22 +73,34 @@ public class CommentsProcessor {
 				int endOfFile = type.getOffset() + type.getLength();
 
 				if (c.getStartPosition() > endOfPreviousDeclaration && c.getStartPosition() < endOfFile) {
-					vxlFragment.append(VxlManager.commentTag(c, function));
+					vxlFragment.append(VxlManager.commentTag(c, entityIndentationLevel));
 					FileProcessor.sourceCodeComments.add(c);
 				}
 			}
 	}
 
-	public CommentsProcessor(ASTNode declaration) {
+	/**
+	 * Construtor responsável por processar os comentários de entidades que não
+	 * contem entidades internas com corpos.
+	 * 
+	 * @param declaration
+	 * @param entityIndentationLevel
+	 */
+	public CommentsProcessor(ASTNode declaration, int entityIndentationLevel) {
 		vxlFragment = new StringBuffer();
 
 		for (CommentUnit c : CompilationUnitProcessor.sourceCodeComments)
 			if (c.getStartPosition() > declaration.getFileLocation().getNodeOffset()
 					&& c.getStartPosition() < (declaration.getFileLocation().getNodeOffset()
 							+ declaration.getFileLocation().getNodeLength()))
-				vxlFragment.append(VxlManager.commentTag(c, false));
+				vxlFragment.append(VxlManager.commentTag(c, entityIndentationLevel));
 	}
 
+	/**
+	 * Retorna o fragmento de vxl
+	 * 
+	 * @return
+	 */
 	public StringBuffer getVxlFragment() {
 		return vxlFragment;
 	}

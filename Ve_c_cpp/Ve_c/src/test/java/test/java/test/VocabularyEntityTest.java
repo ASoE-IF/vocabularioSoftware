@@ -24,8 +24,8 @@ public class VocabularyEntityTest extends TestCase {
 	public void setUp() {
 		try { 
 			String[] args = {"-n", "xmltoxsd", "-d", "./files/XmlToXsd/",
-					"-loc", "iah", "-vxl", "./files/XmlToXsd/xmltoxsd.vxl", 
-					"-csv", "./files/XmlToXsd/xmltoxsd.csv"}; 
+					"-loc", "ih", "-vxl", "./files/XmlToXsd/xmltoxsd.vxl", 
+					"-csv", "./files/XmlToXsd/xmltoxsd.csv", "-func", "-file", "CH"}; 
 			
 			VocabularyRunner.main(args);
 		

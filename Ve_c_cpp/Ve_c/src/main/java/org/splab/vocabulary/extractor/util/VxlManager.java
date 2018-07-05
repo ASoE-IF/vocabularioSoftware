@@ -81,20 +81,138 @@ public abstract class VxlManager {
 	}
 
 	/**
+	 * Return the macro fragment of the VXL file.
+	 * 
+	 * @param macroName
+	 *            The macro.
+	 * @return The macro fragment of the VXL file.
+	 */
+	public static String macro(String macroName) {
+		return "\t\t<macro name=\"" + macroName + "\"/>" + "\n";
+	}
+
+	public static String startFunctionStyleMacro(String macroName) {
+		return "\t\t<macro name=\"" + macroName + "\">" + "\n";
+	}
+
+	public static String endFunctionStyleMacro() {
+		return "\t\t</macro>" + "\n";
+	}
+
+	/**
+	 * Return the macroParameter fragment of the VXL file.
+	 * 
+	 * @param macro
+	 *            parameter The macro parameter.
+	 * @return The function style macro parameter fragment of the VXL file.
+	 */
+	public static String macroParameter(String macroParacmeterName) {
+		return "\t\t\t<param name=\"" + macroParacmeterName + "\"/>" + "\n";
+	}
+
+	/**
+	 * Return the error message members fragment of the VXL file.
+	 * 
+	 * @param message
+	 *            The error menssage.
+	 * @return The start error directive of the VXL file.
+	 */
+	public static String errorDirective(String error) {
+		return "\t\t<error message=" + error + "/>" + "\n";
+	}
+
+	/**
+	 * Return the include directives members fragment of the VXL file.
+	 * 
+	 * @param include
+	 *            directives The include directives names.
+	 * @return The include directive fragment of the VXL file.
+	 */
+	public static String includeDirective(String include) {
+		return "\t\t<include name=\"" + include + "\"/>" + "\n";
+	}
+
+	/**
+	 * Return the pragma directive message fragment of the VXL file.
+	 * 
+	 * @param membersName
+	 *            The members name.
+	 * @return The pragma directive fragment of the VXL file.
+	 */
+	public static String pragmaDirective(String pragma) {
+		return "\t\t<pragma message=" + pragma + "/>" + "\n";
+	}
+
+	/**
 	 * Return the comment fragment of the VXL file.
 	 * 
 	 * @param comment
 	 *            The comment of the file.
+	 * @param indentationLevel
+	 *            The Comment VXL File Indentation Level.
 	 * @return The comment fragment of the VXL file.
 	 */
-	public static String commentTag(CommentUnit comment, boolean scope) {
+	public static String commentTag(CommentUnit comment, int indentationLevel) {
+		String indentation = getIndentation(indentationLevel);
+		return indentation + "<comm cntt=\"" + comment.toString() + "\"/>" + "\n";
+	}
 
-		/** Se o comentário estiver em alguma estrutura de bloco **/
-		if (scope == true)
-			return "\t\t\t<comm cntt=\"" + comment.toString() + "\"/>" + "\n";
+	/**
+	 * Return the global variable fragment of the VXL file.
+	 * 
+	 * @param variableName
+	 *            Name The Global Variable Name.
+	 * @param access
+	 *            The Global Variable Access.
+	 * @param storage
+	 *            The Global Variable Storage Class.
+	 * @param ocurrences
+	 *            The Global Variable Occurrences.
+	 * @param indentationLevel
+	 *            The Global Variable VXL File Indentation Level.
+	 * @return The global variable fragment of the VXL file.
+	 */
+	public static String globalVariable(String variableName, String access, String storage, int occurrences,
+			int indentationLevel) {
+		String indentation = getIndentation(indentationLevel);
+		return indentation + "<gvar name=\"" + variableName + "\" access=\"" + access + "\" storage=\"" + storage
+				+ "\" count=\"" + occurrences + "\"/>" + "\n";
+	}
 
-		/** se o comentário for global **/
-		return "\t\t<comm cntt=\"" + comment.toString() + "\"/>" + "\n";
+	/**
+	 * Return the function prototype fragment of the VXL file.
+	 * 
+	 * @param prototypeName
+	 *            Name The Function ProtoType Name.
+	 * @param access
+	 *            The Function Prototype Access.
+	 * @param storage
+	 *            The Function Prototype Storage Class.
+	 * @param indentationLevel
+	 *            The Function Prototype VXL File Indentation Level.
+	 * @return The function prototype fragment of the VXL file.
+	 */
+
+	public static String funtionPrototype(String prototypeName, String access, String storage, int indentationLevel) {
+		String indentation = getIndentation(indentationLevel);
+		return indentation + "<prttp name=\"" + prototypeName + "\" access=\"" + access + "\" storage=\"" + storage
+				+ "\"/>" + "\n";
+	}
+
+	/**
+	 * Return the literal fragment of the VXL file.
+	 * 
+	 * @param literal
+	 *            The literal content.
+	 * @param occurrences
+	 *            The frequency of the literal is used at the code.
+	 * @param indentationLevel
+	 *            The literal VXL File Indentation Level.
+	 * @return The literal fragment of the VXL file.s
+	 */
+	public static String literal(String literal, int occurrences, int indentationLevel) {
+		String indentation = getIndentation(indentationLevel);
+		return indentation + "<lit cntt=\"" + literal + "\" count=\"" + occurrences + "\"/>" + "\n";
 	}
 
 	/**
@@ -106,31 +224,25 @@ public abstract class VxlManager {
 	 *            All the enum comments.
 	 * @param sloc
 	 *            The total LOC of the enum.
-	 * @return The stat enum fragment of the VXL file.
+	 * @param indentationLevel
+	 *            The enum VXL File Indentation Level.
+	 * @return The start enum fragment of the VXL file.
 	 */
-	public static String startEnum(String enumName, int sloc, boolean scope) {
-
-		/** Se a enum estiver dentro de uma estrutura de bloco **/
-		if (scope == true)
-			return "\t\t\t<enum name=\"" + enumName + "\" sloc=\"" + sloc + "\">" + "\n";
-
-		/** se a enum for global **/
-		return "\t\t<enum name=\"" + enumName + "\" sloc=\"" + sloc + "\">" + "\n";
+	public static String startEnum(String enumName, int sloc, int indentationLevel) {
+		String indentation = getIndentation(indentationLevel);
+		return indentation + "<enum name=\"" + enumName + "\" sloc=\"" + sloc + "\">" + "\n";
 	}
 
 	/**
 	 * Return the enum fragment of the VXL file.
 	 * 
-	 * @return The enum fragment of the VXL file.
+	 * @param indentationLevel
+	 *            The enum VXL File Indentation Level.
+	 * @return The end enum fragment of the VXL file.
 	 */
-	public static String endEnum(boolean scope) {
-
-		/** Se a enum estiver dentro de uma estrutura de bloco **/
-		if (scope == true)
-			return "\t\t\t</enum>" + "\n";
-
-		/** se a enum for global **/
-		return "\t\t</enum>" + "\n";
+	public static String endEnum(int indentationLevel) {
+		String indentation = getIndentation(indentationLevel);
+		return indentation + "</enum>" + "\n";
 	}
 
 	/**
@@ -138,120 +250,27 @@ public abstract class VxlManager {
 	 * 
 	 * @param constantName
 	 *            The constant name.
+	 * @param indentationLevel
+	 *            The constant VXL File Indentation Level.
 	 * @return
 	 */
-	public static String constant(String constantName, boolean scope) {
-
-		/**
-		 * Se a enum que contem esta estiver dentro de uma estrutura de bloco
-		 **/
-		if (scope == true)
-			return "\t\t\t\t<const name=\"" + constantName + "\"/>" + "\n";
-
-		/** Se a enum que contem for global **/
-		return "\t\t\t<const name=\"" + constantName + "\"/>" + "\n";
+	public static String constant(String constantName, int indentationLevel) {
+		String indentation = getIndentation(indentationLevel);
+		return indentation + "<const name=\"" + constantName + "\"/>" + "\n";
 	}
 
 	/**
-	 * Return the field fragment of the VXL file.
+	 * Return the fields fragment of the VXL file.
 	 * 
-	 * @param Variable
-	 *            Name The Global Variablen Name.
-	 * @param access
-	 *            The Global Variable visibility.
+	 * @param fieldName
+	 *            The members name.
+	 * @param indentationLevel
+	 *            The field VXL File Indentation Level.
 	 * @return The field fragment of the VXL file.
 	 */
-	public static String globalVariables(String fieldName, String access, String storage, int occurrences) {
-		return "\t\t<gvar name=\"" + fieldName + "\" access=\"" + access + "\" storage=\"" + storage + "\" count=\""
-				+ occurrences + "\"/>" + "\n";
-	}
-
-	public static String globalPrototip(String fieldName, String access, String storage) {
-		return "\t\t<prttp name=\"" + fieldName + "\" access=\"" + access + "\" storage=\"" + storage + "\"/>" + "\n";
-	}
-
-	/**
-	 * Return the start function fragment of the VXL file.
-	 * 
-	 * @param functionName
-	 *            The function name.
-	 * @param visibility
-	 *            The function visibility.
-	 * @param comment
-	 *            The function comment.
-	 * @return The start function fragment of the VXL file.
-	 */
-	public static String startFuntion(String functionName, String access, String storage, boolean inner, int sloc) {
-		String interna = inner ? "y" : "n"; // se a função for interna é igual a
-											// "y"
-
-		return "\t\t<func name=\"" + functionName + "\" access=\"" + access + "\" storage=\"" + storage + "\" inn=\""
-				+ interna + "\" sloc=\"" + sloc + "\">" + "\n";
-	}
-
-	/**
-	 * Return the end function fragment of the VXl file.
-	 * 
-	 * @return The end function fragment of the VXL file.
-	 */
-	public static String endFuntion() {
-		return "\t\t</func>" + "\n";
-	}
-
-	/**
-	 * Return the parameter fragment of the VXL file.
-	 * 
-	 * @param buffer
-	 *            The buffer containing the parameters of the function.
-	 * @param parameterName
-	 *            The parameter name.
-	 */
-	public static void parameter(StringBuffer buffer, String parameterName) {
-		buffer.append("\t\t\t<param name=\"" + parameterName + "\"/>" + "\n");
-	}
-
-	/**
-	 * Return the local variable fragment of the VXL file.
-	 * 
-	 * @param localVariableName
-	 *            The local variable name.
-	 * @param occurrences
-	 *            The frequency of occurrence of the variable.
-	 * @return The local variable fragment of the VXL file.
-	 */
-	public static String localVariables(String fieldName, String access, String storage, int occurrences) {
-		return "\t\t\t<lvar name=\"" + fieldName + "\" access=\"" + access + "\" storage=\"" + storage + "\" count=\""
-				+ occurrences + "\"/>" + "\n";
-	}
-
-	public static String localPrototip(String fieldName, String access, String storage) {
-		return "\t\t\t<prttp name=\"" + fieldName + "\" access=\"" + access + "\" storage=\"" + storage + "\"/>" + "\n";
-	}
-
-	/**
-	 * Return the function call fragment of the VXL file.
-	 * 
-	 * @param func
-	 *            call The name of the function that is called.
-	 * @param occurrences
-	 *            The frequency of occurrence of the function call.
-	 * @return
-	 */
-	public static String functionCall(String callName, int occurrences) {
-		return "\t\t\t<call name=\"" + callName + "\" count=\"" + occurrences + "\"/>" + "\n";
-	}
-
-	/**
-	 * Return the literal fragment of the VXL file.
-	 * 
-	 * @param literal
-	 *            The literal content.
-	 * @param occurrences
-	 *            The frequency of the literal is used at the code.
-	 * @return The literal fragment of the VXL file.s
-	 */
-	public static String literal(String literal, int occurrences) {
-		return "\t\t\t\t<lit cntt=\"" + literal + "\" count=\"" + occurrences + "\"/>" + "\n";
+	public static String field(String fieldName, int indentationLevel) {
+		String indentation = getIndentation(indentationLevel);
+		return indentation + "<field name=\"" + fieldName + "\"/>" + "\n";
 	}
 
 	/**
@@ -261,42 +280,25 @@ public abstract class VxlManager {
 	 *            The struct name.
 	 * @param sloc
 	 *            The total LOC of the struct.
+	 * @param indentationLevel
+	 *            The struct VXL File Indentation Level.
 	 * @return The start struct fragment of the VXL file.
 	 */
-	public static String startStruct(String structName, int sloc, boolean scopeLocal) {
-		if (scopeLocal == true)
-			return "\t\t\t<strt name=\"" + structName + "\" sloc=\"" + sloc + "\">"
-					+ "\n";
-
-		return "\t\t<strt name=\"" + structName + "\" sloc=\"" + sloc + "\">" + "\n";
+	public static String startStruct(String structName, int sloc, int indentationLevel) {
+		String indentation = getIndentation(indentationLevel);
+		return indentation + "<strt name=\"" + structName + "\" sloc=\"" + sloc + "\">" + "\n";
 	}
 
 	/**
 	 * Return the struct fragment of the VXL file.
 	 * 
-	 * @return The struct fragment of the VXL file.
+	 * @param indentationLevel
+	 *            The struct VXL File Indentation Level.
+	 * @return The end struct fragment of the VXL file.
 	 */
-	public static String endStruct(boolean scopeLocal) {
-		
-		if (scopeLocal == true)
-			return "\t\t\t</strt>" + "\n";
-
-		return "\t\t</strt>" + "\n";
-	}
-
-	/**
-	 * Return the struct members fragment of the VXL file.
-	 * 
-	 * @param membersName
-	 *            The members name.
-	 * @return
-	 */
-	public static String structMembers(String structMembersName, boolean scopeLocal) {
-
-		if (scopeLocal == true)
-			return "\t\t\t\t<strtMemb name=\"" + structMembersName + "\"/>" + "\n";
-
-		return "\t\t\t<strtMemb name=\"" + structMembersName + "\"/>" + "\n";
+	public static String endStruct(int indentationLevel) {
+		String indentation = getIndentation(indentationLevel);
+		return indentation + "</strt>" + "\n";
 	}
 
 	/**
@@ -306,105 +308,127 @@ public abstract class VxlManager {
 	 *            The union name.
 	 * @param sloc
 	 *            The total LOC of the union.
+	 * @param indentationLevel
+	 *            The union VXL File Indentation Level.
 	 * @return The start union fragment of the VXL file.
 	 */
-	public static String startUnion(String unionName, int sloc, boolean scopeLocal) {
-		if (scopeLocal == true)
-			return "\t\t\t<union name=\"" + unionName + "\" sloc=\"" + sloc + "\">"
-					+ "\n";
-
-		return "\t\t<union name=\"" + unionName + "\" sloc=\"" + sloc + "\">" + "\n";
+	public static String startUnion(String unionName, int sloc, int indentationLevel) {
+		String indentation = getIndentation(indentationLevel);
+		return indentation + "<union name=\"" + unionName + "\" sloc=\"" + sloc + "\">" + "\n";
 	}
 
 	/**
 	 * Return the union fragment of the VXL file.
 	 * 
+	 * @param indentationLevel
+	 *            The union VXL File Indentation Level.
 	 * @return The union fragment of the VXL file.
 	 */
-	public static String endUnion(boolean scopeLocal) {
-		
-		if (scopeLocal == true)
-			return "\t\t\t</union>" + "\n";
-
-		return "\t\t</union>" + "\n";
+	public static String endUnion(int indentationLevel) {
+		String indentation = getIndentation(indentationLevel);
+		return indentation + "</union>" + "\n";
 	}
 
 	/**
-	 * Return the union members fragment of the VXL file.
+	 * Return the start function fragment of the VXL file.
 	 * 
-	 * @param membersName
-	 *            The members name.
-	 * @return
+	 * @param functionName
+	 *            The function name.
+	 * @param access
+	 *            The function access.
+	 * @param storage
+	 *            The function class storage.
+	 * @param sloc
+	 *            The number of LOC of the function.
+	 * @param indentationLevel
+	 *            The function VXL File Indentation Level.
+	 * @return The start function fragment of the VXL file.
 	 */
-	public static String unionMembers(String unionMembersName, boolean scopeLocal) {
-		
-		if (scopeLocal == true)
-			return "\t\t\t\t<unionMemb name=\"" + unionMembersName + "\"/>" + "\n";
+	public static String startFunction(String functionName, String access, String storage, boolean inner, int sloc,
+			int indentationLevel) {
+		String indentation = getIndentation(indentationLevel);
+		String interna = inner ? "y" : "n";
 
-		return "\t\t\t<unionMemb name=\"" + unionMembersName + "\"/>" + "\n";
-	}
-
-	/**
-	 * Return the macro fragment of the VXL file.
-	 * 
-	 * @param macroName
-	 *            The macro.
-	 * @return
-	 */
-	public static String macro(String macroName) {
-		return "\t\t<macro name=\"" + macroName + "\"/>" + "\n";
-	}
-	
-	public static String startFunctionStyleMacro(String macroName) {
-		return "\t\t<macro name=\"" + macroName + "\">" + "\n";
-	}
-	
-	public static String endFunctionStyleMacro() {
-		return "\t\t</macro>" + "\n";
+		return indentation + "<func name=\"" + functionName + "\" access=\"" + access + "\" storage=\"" + storage
+				+ "\" inn=\"" + interna + "\" sloc=\"" + sloc + "\">" + "\n";
 	}
 
 	/**
-	 * Return the macroParameter fragment of the VXL file.
+	 * Return the end function fragment of the VXl file.
 	 * 
-	 * @param macro
-	 *            parameter The macro parameter.
-	 * @return
+	 * @param indentationLevel
+	 *            The function VXL File Indentation Level.
+	 * @return The end function fragment of the VXL file.
 	 */
-	public static String macroParameter(String macroParacmeterName) {
-		return "\t\t\t<param name=\"" + macroParacmeterName + "\"/>" + "\n";
+	public static String endFuntion(int indentationLevel) {
+		String indentation = getIndentation(indentationLevel);
+		return indentation + "</func>" + "\n";
 	}
 
 	/**
-	 * Return the error message members fragment of the VXL file.
+	 * Return the parameter fragment of the VXL file.
 	 * 
-	 * @param message
-	 *            The error menssage.
-	 * @return
+	 * @param buffer
+	 *            The buffer containing the parameters of the function.
+	 * @param parameterName
+	 *            The parameter name.
+	 * @param indentationLevel
+	 *            The function parameter VXL File Indentation Level.
 	 */
-	public static String errorDirective(String error) {
-		return "\t\t<error message=\"" + error + "\"/>" + "\n";
+	public static void parameter(StringBuffer buffer, String parameterName, int indentationLevel) {
+		String indentation = getIndentation(indentationLevel);
+		buffer.append(indentation + "<param name=\"" + parameterName + "\"/>" + "\n");
 	}
 
 	/**
-	 * Return the include directives members fragment of the VXL file.
+	 * Return the local variable fragment of the VXL file.
 	 * 
-	 * @param include
-	 *            directives The include directives names.
-	 * @return
+	 * @param variableName
+	 *            Name The Global Variable Name.
+	 * @param access
+	 *            The local Variable Access.
+	 * @param storage
+	 *            The local Variable Storage Class.
+	 * @param occurrences
+	 *            The local Variable Occurrences.
+	 * @param indentationLevel
+	 *            The local Variable VXL File Indentation Level.
+	 * @return The local variable fragment of the VXL file.
 	 */
-	public static String includeDirective(String include) {
-		return "\t\t<include name=\"" + include + "\"/>" + "\n";
+	public static String localVariable(String variableName, String access, String storage, int occurrences,
+			int indentationLevel) {
+		String indentation = getIndentation(indentationLevel);
+		return indentation + "<lvar name=\"" + variableName + "\" access=\"" + access + "\" storage=\"" + storage
+				+ "\" count=\"" + occurrences + "\"/>" + "\n";
 	}
 
 	/**
-	 * Return the pragma directive message fragment of the VXL file.
+	 * Return the function call fragment of the VXL file.
 	 * 
-	 * @param membersName
-	 *            The members name.
+	 * @param funcCallName
+	 *            call The name of the function that is called.
+	 * @param occurrences
+	 *            The frequency of occurrence of the function call.
+	 * @param indentationLevel
+	 *            The function call VXL File Indentation Level.
 	 * @return
 	 */
-	public static String pragmaDirective(String pragma) {
-		return "\t\t<pragma message=" + pragma + "/>" + "\n";
+	public static String functionCall(String funcCallName, int occurrences, int indentationLevel) {
+		String indentation = getIndentation(indentationLevel);
+		return indentation + "<call name=\"" + funcCallName + "\" count=\"" + occurrences + "\"/>" + "\n";
+	}
+
+	/**
+	 * Entity indentation
+	 */
+	private static String getIndentation(int indentationLevel) {
+
+		String indentation = "";
+		for (int countCharacter = 0; countCharacter < indentationLevel; countCharacter++) {
+			indentation += '\t';
+		}
+
+		return indentation;
 	}
 
 	/**

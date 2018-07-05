@@ -33,7 +33,7 @@ public class PhysicalLocTest extends TestCase {
 	private static String noCommentsFile = testFilesDir + "/NoCommentsFile";
 	private static String complexFile = testFilesDir + "/ComplexFile";
 	
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private static IASTTranslationUnit getASTTreeFromSourceCode(final char[] sourceCode) throws InvocationTargetException, InterruptedException, CoreException {
 
 		FileContent fileContent = FileContent.create(testFilesDir, sourceCode);
@@ -52,7 +52,6 @@ public class PhysicalLocTest extends TestCase {
 		return translationUnit;
 	}
 	
-	@SuppressWarnings({ "unchecked" })
 	private static int getPhysicalLocCount(String file) throws Exception {
 		BufferedReader in = new BufferedReader(new FileReader(file));
 		String sourceCode = "", aux;

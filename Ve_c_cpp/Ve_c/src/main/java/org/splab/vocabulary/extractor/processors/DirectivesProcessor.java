@@ -14,19 +14,24 @@ import org.eclipse.cdt.internal.core.dom.parser.ASTNode;
 import org.splab.vocabulary.extractor.util.VxlManager;
 
 /**
- * This class is responsible for extracting informations from the directives
+ * DirectivesProcessor é reponsável por receber uma lista de diretivas de
+ * preprocessador e extrair os tipos específicos para então processá-los.
  * 
- * DirectiveProcessor extract informations such as: macro, pragma, error,
- * includes
- * 
- * @author Israel Gomes de Lima Baseado na BodyProcessor do extrator original
- * @since september 06, 2017.
+ * @author Israel Gomes de Lima
+ *
  */
-
 public class DirectivesProcessor {
+	/**
+	 * Mantém uma lista de nodos ast e um fragmento de vxl.
+	 */
 	private static List<ASTNode> preprocessorList;
 	private static StringBuffer vxlFragment;
 
+	/**
+	 * Diferencia as diretivas e obtem suas informações.
+	 * 
+	 * @param directives
+	 */
 	public static void extractDirectives(IASTPreprocessorStatement[] directives) {
 		vxlFragment = new StringBuffer();
 		preprocessorList = new LinkedList<ASTNode>();
@@ -51,6 +56,11 @@ public class DirectivesProcessor {
 		}
 	}
 
+	/**
+	 * Extrai definições de macros simples e semelhantes a funções.
+	 * 
+	 * @param macroDefinition
+	 */
 	private static void macroDefinitionExtract(IASTPreprocessorMacroDefinition macroDefinition) {
 		if (macroDefinition instanceof IASTPreprocessorFunctionStyleMacroDefinition) {
 			IASTPreprocessorFunctionStyleMacroDefinition functionStyleMacro = (IASTPreprocessorFunctionStyleMacroDefinition) macroDefinition;
@@ -67,26 +77,61 @@ public class DirectivesProcessor {
 		}
 	}
 
+	/**
+	 * Extrai a mensagem em uma directiva de error
+	 * 
+	 * @param error
+	 */
 	private static void errorExtract(IASTPreprocessorErrorStatement error) {
-		vxlFragment.append(VxlManager.errorDirective(new String(error.getMessage())));
+		char[] message = error.getMessage();
+
+		if (message.length >= 1) {
+			if ((message[0] == '\"') && (message[message.length - 1] == '\"'))
+				vxlFragment.append(VxlManager.errorDirective(new String(error.getMessage())));
+			else
+				vxlFragment.append(VxlManager.errorDirective("\"" + new String(error.getMessage()) + "\""));
+		}
 	}
 
+	/**
+	 * Extrai a biblioteca em uma directiva include
+	 * 
+	 * @param include
+	 */
 	private static void includeExtract(IASTPreprocessorIncludeStatement include) {
 		vxlFragment.append(VxlManager.includeDirective(include.getName().toString()));
 	}
 
+	/**
+	 * Extrai a mensagem em uma directiva de pragma
+	 * 
+	 * @param pragmaStatement
+	 */
 	private static void pragamaExtract(IASTPreprocessorPragmaStatement pragmaStatement) {
 		char[] message = pragmaStatement.getMessage();
-		if ((message[0] == '\"') && (message[message.length - 1] == '\"'))
-			vxlFragment.append(VxlManager.pragmaDirective(new String(pragmaStatement.getMessage())));
-		else
-			vxlFragment.append(VxlManager.pragmaDirective("\"" + new String(pragmaStatement.getMessage()) + "\""));
+
+		if (message.length >= 1) {
+			if ((message[0] == '\"') && (message[message.length - 1] == '\"'))
+				vxlFragment.append(VxlManager.pragmaDirective(new String(pragmaStatement.getMessage())));
+			else
+				vxlFragment.append(VxlManager.pragmaDirective("\"" + new String(pragmaStatement.getMessage()) + "\""));
+		}
 	}
 
+	/**
+	 * Retorna o fragmento de vxl
+	 * 
+	 * @return
+	 */
 	public static StringBuffer getVxlFragment() {
 		return vxlFragment;
 	}
 
+	/**
+	 * Retorna a lista de directivas
+	 * 
+	 * @return
+	 */
 	public static List<ASTNode> getPreprocessorList() {
 		return preprocessorList;
 	}

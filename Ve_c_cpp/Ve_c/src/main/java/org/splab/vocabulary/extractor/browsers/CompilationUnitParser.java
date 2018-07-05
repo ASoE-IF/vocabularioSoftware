@@ -17,16 +17,18 @@ import org.eclipse.cdt.internal.core.dom.parser.ASTNode;
 import org.eclipse.core.runtime.CoreException;
 import org.splab.vocabulary.extractor.processors.CompilationUnitProcessor;
 import org.splab.vocabulary.extractor.util.CommentUnit;
+import org.splab.vocabulary.extractor.util.ErrorLogManager;
 
 /**
+ * Baseado e modificado da classe feita por Tercio de Melo da Versão do extrator
+ * original Para funcionamento no presente extrator
  * 
- * @author Israel Gomes de Lima Baseado e modificado da Versão do extrator
- *         original feita por Tercio de Melo Para funcionamento no presente
- *         extrator
+ * @author Tercio de Melo, Israel Gomes de Lima
  */
 public class CompilationUnitParser {
 	private static IASTTranslationUnit translationUnit;
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static StringBuffer parse(File file) {
 		StringBuffer source;
 
@@ -46,8 +48,10 @@ public class CompilationUnitParser {
 			translationUnit = GCCLanguage.getDefault().getASTTranslationUnit(fileContent, info, emptyIncludes, null,
 					opts, log);
 		} catch (CoreException core) {
-			System.err.println("Erro fatal ao gerar a AST!");
+			ErrorLogManager.appendErro(file.getAbsolutePath(), core.getMessage());
 			core.printStackTrace();
+		} catch (ClassCastException cast) {
+			ErrorLogManager.appendErro(file.getAbsolutePath(), cast.getMessage());
 		}
 
 		source = new StringBuffer(translationUnit.getRawSignature().toString());

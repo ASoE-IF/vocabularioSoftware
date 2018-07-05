@@ -1,10 +1,5 @@
-#include<stdio.h>
-#define CONSTANTEDEFINE 10
-#define CONSTANTEDEFINECHAR "valor constante da constanteDefineChar"
-#define macroSoma(a,b) (a+b)
-#define macroStr(s) #s
-#define macroConcat(a, b) a ## b
-#error menssagem de erro com error
+#include<iostream>
+#include<string>
 signed char varCharComSignal;
 unsigned int varIntUnsigned;
 long double varLongDouble;
@@ -16,21 +11,17 @@ static double varStatic;
 int varAutoImplicita;
 int *ptrGlobal;
 float **ptrParaPtrGlobal;
+using std::string;
+using std::cout;
 int prototipo1();
 int protoripo2(int, int);
 int protoripo3(int x, int y);
-prototipo4(int);
-prototipo5(int x);
+void prototipo4(int);
+void prototipo5(string x = "valor");
+void prototipo6(int, string, double);
 int funcao1()
 {
 	int variavelLocal;
-	int funcaoInterna()
-	{
-		int variavelLocalDaFuncaoInterna;
-		variavelLocal = 10;
-		int variavelLocal = 20;
-		variavelLocalDaFuncaoInterna = variavelLocal;
-	}
 	struct estrutura
 	{
 		int membro1;
@@ -45,8 +36,34 @@ int funcao1()
 	};
 	enum enum1
 	{
-		CONST1, CONST2, CONST3, CONST4, CONST5, CONST6 = 100, CONST7, CONST8, CONST9, CONST10/*enumaration*/
+		CONST1, CONST2, CONST3, CONST4, CONST5, CONST6 = 100, CONST7, CONST8, CONST9, CONST10
 	}
+	class Generic1
+	{
+	private:
+    	string nome, jogo;
+   		int quantidade;
+	public:
+    	string nomePublico;
+    	int x = funcc(varx);
+    	Generic1()
+    	{
+        	nome = "";
+        	jogo = "";
+    	}
+    	Generic1(string name)
+    	{
+        	nome = name;
+    	}
+    	Generic1(int quantidade1, string name = "valor")
+    	{
+        	quantidade = quantidade1;
+        	nome = name;
+    	}
+    	~Generic1()
+    	{
+    	}
+	};
 	variavelLocal = 20;
 }
 struct estrutura1
@@ -63,5 +80,45 @@ union union1
 };
 enum enumeration
 {
-	CONST1, CONST2, CONST3, CONST4, CONST5, CONST6 = 100, CONST7, CONST8, CONST9, CONST10/*enumaration*/
+	CONST1, CONST2, CONST3, CONST4, CONST5, CONST6 = 100, CONST7, CONST8, CONST9, CONST10
+};
+class GenericClass1
+{
+private:
+    string nome, jogo;
+    int quantidade;
+public:
+    string nomePublico;
+    int x = funcc(varx);
+    GenericClass1()
+    {
+        nome = "";
+        jogo = "";
+    }
+    GenericClass1(string name)
+    {
+        nome = name;
+    }
+    GenericClass1(int quantidade1, string name = "valor")
+    {
+        quantidade = quantidade1;
+        nome = name;
+    }
+    void setNome(string nome1)
+    {
+        nome = nome1;
+    }
+    string getNome()
+    {
+        return nome;
+    }
+    static void printUniversal()
+    {
+    }
+    void printUniversal2() const
+    {
+    }
+    ~GenericClass1()
+    {
+    }
 };

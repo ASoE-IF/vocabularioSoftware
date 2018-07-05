@@ -4,7 +4,9 @@ import java.io.File;
 import java.io.IOException;
 
 import org.eclipse.core.runtime.CoreException;
+import org.splab.vocabulary.extractor.util.LOCManager;
 import org.splab.vocabulary.extractor.util.VxlManager;
+import org.splab.vocabulary.extractor.vloccount.LOCParameters;
 
 /**
  * 
@@ -37,10 +39,13 @@ public class DirectoriesBrowser {
 				browseDirectory(directory, containingFile);
 			}
 		} else {
-			if (file.isFile() && (file.getAbsolutePath().toLowerCase().endsWith(".c")
-					|| file.getAbsolutePath().toLowerCase().endsWith(".h"))) {
+			if (LOCManager.locParameters.contains(LOCParameters.C_FILE)
+					&& (file.isFile() && (file.getAbsolutePath().toLowerCase().endsWith(".c"))))
 				VxlManager.appendVXLFragment(CompilationUnitParser.parse(file));
-			}
+
+			if (LOCManager.locParameters.contains(LOCParameters.H_FILE)
+					&& (file.isFile() && (file.getAbsolutePath().toLowerCase().endsWith(".h"))))
+				VxlManager.appendVXLFragment(CompilationUnitParser.parse(file));
 		}
 	}
 }

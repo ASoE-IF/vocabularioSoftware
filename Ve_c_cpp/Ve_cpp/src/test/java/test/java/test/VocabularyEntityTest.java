@@ -25,7 +25,7 @@ public class VocabularyEntityTest extends TestCase {
 		try { 
 			String[] args = {"-n", "xmltoxsd", "-d", "./files/XmlToXsd/",
 					"-loc", "iah", "-vxl", "./files/XmlToXsd/xmltoxsd.vxl", 
-					"-csv", "./files/XmlToXsd/xmltoxsd.csv"}; 
+					"-csv", "./files/XmlToXsd/xmltoxsd.csv", "-func", "-file", "CH"}; 
 			
 			VocabularyRunner.main(args);
 		
@@ -49,28 +49,149 @@ public class VocabularyEntityTest extends TestCase {
 	
 	public void testFile() {
 
-		assertTrue(this.entityProps.containsKey("GenericFile.c"));
-		assertFalse(this.entityProps.get("GenericFile.c").isEmpty());
+		assertTrue(this.entityProps.containsKey("Diretivas.cpp"));
+		assertFalse(this.entityProps.get("Diretivas.cpp").isEmpty());
 		
-		List<String> fileProps = this.entityProps.get("GenericFile.c");
+		List<String> fileProps = this.entityProps.get("Diretivas.cpp");
 		for (Iterator<String> it = fileProps.iterator(); it.hasNext();) {
 			
 			String attributeName = it.next();
 			String attributeValue = it.next();
 			
 			if (attributeName.equals("sloc"))
-				assertTrue(attributeValue.equals("586"));
+				assertTrue(attributeValue.equals("37"));
+		}
+		
+		assertTrue(this.entityProps.containsKey("UsandoEstruturasDeControle.cpp"));
+		assertFalse(this.entityProps.get("UsandoEstruturasDeControle.cpp").isEmpty());
+		
+		fileProps = this.entityProps.get("UsandoEstruturasDeControle.cpp");
+		for (Iterator<String> it = fileProps.iterator(); it.hasNext();) {
+			
+			String attributeName = it.next();
+			String attributeValue = it.next();
+			
+			if (attributeName.equals("sloc"))
+				assertTrue(attributeValue.equals("173"));
+		}
+		
+		assertTrue(this.entityProps.containsKey("UsandoFuncoes.cpp"));
+		assertFalse(this.entityProps.get("UsandoFuncoes.cpp").isEmpty());
+		
+		fileProps = this.entityProps.get("UsandoFuncoes.cpp");
+		for (Iterator<String> it = fileProps.iterator(); it.hasNext();) {
+			
+			String attributeName = it.next();
+			String attributeValue = it.next();
+			
+			if (attributeName.equals("sloc"))
+				assertTrue(attributeValue.equals("33"));
+		}
+		
+		assertTrue(this.entityProps.containsKey("UsandoMatrizesEPonteiros.cpp"));
+		assertFalse(this.entityProps.get("UsandoMatrizesEPonteiros.cpp").isEmpty());
+		
+		fileProps = this.entityProps.get("UsandoMatrizesEPonteiros.cpp");
+		for (Iterator<String> it = fileProps.iterator(); it.hasNext();) {
+			
+			String attributeName = it.next();
+			String attributeValue = it.next();
+			
+			if (attributeName.equals("sloc"))
+				assertTrue(attributeValue.equals("77"));
+		}
+		
+		assertTrue(this.entityProps.containsKey("UsandoVariaveisGlobaisELocais.cpp"));
+		assertFalse(this.entityProps.get("UsandoVariaveisGlobaisELocais.cpp").isEmpty());
+		
+		fileProps = this.entityProps.get("UsandoVariaveisGlobaisELocais.cpp");
+		for (Iterator<String> it = fileProps.iterator(); it.hasNext();) {
+			
+			String attributeName = it.next();
+			String attributeValue = it.next();
+			
+			if (attributeName.equals("sloc"))
+				assertTrue(attributeValue.equals("114"));
+		}
+		
+		assertTrue(this.entityProps.containsKey("CLASSES1.CPP"));
+		assertFalse(this.entityProps.get("CLASSES1.CPP").isEmpty());
+		
+		fileProps = this.entityProps.get("CLASSES1.CPP");
+		for (Iterator<String> it = fileProps.iterator(); it.hasNext();) {
+			
+			String attributeName = it.next();
+			String attributeValue = it.next();
+			
+			if (attributeName.equals("sloc"))
+				assertTrue(attributeValue.equals("136"));
+		}
+		
+		assertTrue(this.entityProps.containsKey("EnumsStructsEUnions.cpp"));
+		assertFalse(this.entityProps.get("EnumsStructsEUnions.cpp").isEmpty());
+		
+		fileProps = this.entityProps.get("EnumsStructsEUnions.cpp");
+		for (Iterator<String> it = fileProps.iterator(); it.hasNext();) {
+			
+			String attributeName = it.next();
+			String attributeValue = it.next();
+			
+			if (attributeName.equals("sloc"))
+				assertTrue(attributeValue.equals("149"));
+		}
+		
+		assertTrue(this.entityProps.containsKey("TEMPLATE.CPP"));
+		assertFalse(this.entityProps.get("TEMPLATE.CPP").isEmpty());
+		
+		fileProps = this.entityProps.get("TEMPLATE.CPP");
+		for (Iterator<String> it = fileProps.iterator(); it.hasNext();) {
+			
+			String attributeName = it.next();
+			String attributeValue = it.next();
+			
+			if (attributeName.equals("sloc"))
+				assertTrue(attributeValue.equals("12"));
+		}
+		
+		assertTrue(this.entityProps.containsKey("TratamentoDeExcecoes.cpp"));
+		assertFalse(this.entityProps.get("TratamentoDeExcecoes.cpp").isEmpty());
+		
+		fileProps = this.entityProps.get("TratamentoDeExcecoes.cpp");
+		for (Iterator<String> it = fileProps.iterator(); it.hasNext();) {
+			
+			String attributeName = it.next();
+			String attributeValue = it.next();
+			
+			if (attributeName.equals("sloc"))
+				assertTrue(attributeValue.equals("21"));
+		}
+		
+		assertTrue(this.entityProps.containsKey("UsandoClassesEVariaveis.cpp"));
+		assertFalse(this.entityProps.get("UsandoClassesEVariaveis.cpp").isEmpty());
+		
+		fileProps = this.entityProps.get("UsandoClassesEVariaveis.cpp");
+		for (Iterator<String> it = fileProps.iterator(); it.hasNext();) {
+			
+			String attributeName = it.next();
+			String attributeValue = it.next();
+			
+			if (attributeName.equals("sloc"))
+				assertTrue(attributeValue.equals("28"));
 		}
 	}
 	
 	public void testFunctions() {
-		assertTrue(this.entityProps.containsKey("funcao_principal"));
-		assertTrue(this.entityProps.containsKey("funcaoInterna"));
+		assertTrue(this.entityProps.containsKey("funcao_sem_parametros"));
+		assertTrue(this.entityProps.containsKey("funcao1"));
+		assertTrue(this.entityProps.containsKey("funcao2"));
+		assertTrue(this.entityProps.containsKey("GenericClass2::getNome"));
 		
-		assertFalse(this.entityProps.get("funcao_principal").isEmpty());
-		assertFalse(this.entityProps.get("funcaoInterna").isEmpty());
-
-		List<String> attributeProps = this.entityProps.get("funcao_principal");
+		assertFalse(this.entityProps.get("funcao_sem_parametros").isEmpty());
+		assertFalse(this.entityProps.get("funcao1").isEmpty());
+		assertFalse(this.entityProps.get("funcao2").isEmpty());
+		assertFalse(this.entityProps.get("GenericClass2::getNome").isEmpty());
+		
+		List<String> attributeProps = this.entityProps.get("funcao_sem_parametros");
 		for (Iterator<String> it = attributeProps.iterator(); it.hasNext();) {
 	
 			String attributeName = it.next();
@@ -79,13 +200,11 @@ public class VocabularyEntityTest extends TestCase {
 				assertTrue(attributeValue.equals("volatile"));
 			if (attributeName.equals("storage"))
 				assertTrue(attributeValue.equals("static"));
-			if (attributeName.equals("inn"))
-				assertTrue(attributeValue.equals("n"));
 			if (attributeName.equals("sloc"))
-				assertTrue(attributeValue.equals("12"));
+				assertTrue(attributeValue.equals("5"));
 		}
 		
-		attributeProps = this.entityProps.get("funcaoInterna");
+		attributeProps = this.entityProps.get("funcao1");
 		for (Iterator<String> it = attributeProps.iterator(); it.hasNext();) {
 	
 			String attributeName = it.next();
@@ -94,10 +213,34 @@ public class VocabularyEntityTest extends TestCase {
 				assertTrue(attributeValue.equals(""));
 			if (attributeName.equals("storage"))
 				assertTrue(attributeValue.equals("auto"));
-			if (attributeName.equals("inn"))
-				assertTrue(attributeValue.equals("y"));
+			if (attributeName.equals("sloc"))
+				assertTrue(attributeValue.equals("5"));
+		}
+		
+		attributeProps = this.entityProps.get("funcao2");
+		for (Iterator<String> it = attributeProps.iterator(); it.hasNext();) {
+	
+			String attributeName = it.next();
+			String attributeValue = it.next();
+			if (attributeName.equals("access"))
+				assertTrue(attributeValue.equals("inline"));
+			if (attributeName.equals("storage"))
+				assertTrue(attributeValue.equals("auto"));
 			if (attributeName.equals("sloc"))
 				assertTrue(attributeValue.equals("7"));
+		}
+		
+		attributeProps = this.entityProps.get("GenericClass2::getNome");
+		for (Iterator<String> it = attributeProps.iterator(); it.hasNext();) {
+	
+			String attributeName = it.next();
+			String attributeValue = it.next();
+			if (attributeName.equals("access"))
+				assertTrue(attributeValue.equals(""));
+			if (attributeName.equals("storage"))
+				assertTrue(attributeValue.equals("auto"));
+			if (attributeName.equals("sloc"))
+				assertTrue(attributeValue.equals("4"));
 		}
 	}
 	
@@ -181,6 +324,87 @@ public class VocabularyEntityTest extends TestCase {
 
 			if (attributeName.equals("sloc"))
 				assertTrue(attributeValue.equals("4"));
+		}
+	}
+	/**
+	 * Test class
+	 */
+	public void testClass() {
+
+		assertTrue(this.entityProps.containsKey("GenericClass6"));
+		assertFalse(this.entityProps.get("GenericClass6").isEmpty());
+
+		List<String> attributeProps = this.entityProps.get("GenericClass6");
+		for (Iterator<String> it = attributeProps.iterator(); it.hasNext();) {
+	
+			String attributeName = it.next();
+			String attributeValue = it.next();
+
+			if (attributeName.equals("sloc")){
+				assertTrue(attributeValue.equals("15"));
+			}
+		}
+		
+		assertTrue(this.entityProps.containsKey("classeGlobal"));
+		assertFalse(this.entityProps.get("classeGlobal").isEmpty());
+
+		attributeProps = this.entityProps.get("classeGlobal");
+		for (Iterator<String> it = attributeProps.iterator(); it.hasNext();) {
+	
+			String attributeName = it.next();
+			String attributeValue = it.next();
+
+			if (attributeName.equals("sloc")){
+				assertTrue(attributeValue.equals("19"));
+			}
+		}
+	}
+	
+	/**Test methods**/
+	public void testMethods() {
+		assertTrue(this.entityProps.containsKey("printUniversal2"));
+		assertTrue(this.entityProps.containsKey("metodoVirtualPura"));
+		assertTrue(this.entityProps.containsKey("funcao2"));
+		
+		
+		assertFalse(this.entityProps.get("printUniversal2").isEmpty());
+		assertFalse(this.entityProps.get("metodoVirtualPura").isEmpty());
+		assertFalse(this.entityProps.get("funcao2").isEmpty());
+
+		List<String> attributeProps = this.entityProps.get("printUniversal2");
+		for (Iterator<String> it = attributeProps.iterator(); it.hasNext();) {
+	
+			String attributeName = it.next();
+			String attributeValue = it.next();
+			if (attributeName.equals("access"))
+				assertTrue(attributeValue.equals(""));
+			if (attributeName.equals("storage"))
+				assertTrue(attributeValue.equals("auto"));
+			if (attributeName.equals("modifies"))
+				assertTrue(attributeValue.equals("const"));
+			if (attributeName.equals("visib"))
+				assertTrue(attributeValue.equals("pub"));
+			if (attributeName.equals("virtual"))
+				assertTrue(attributeValue.equals("n"));
+			if (attributeName.equals("sloc"))
+				assertTrue(attributeValue.equals("3"));
+		}
+		
+		attributeProps = this.entityProps.get("metodoVirtualPura");
+		for (Iterator<String> it = attributeProps.iterator(); it.hasNext();) {
+	
+			String attributeName = it.next();
+			String attributeValue = it.next();
+			if (attributeName.equals("access"))
+				assertTrue(attributeValue.equals(""));
+			if (attributeName.equals("storage"))
+				assertTrue(attributeValue.equals("auto"));
+			if (attributeName.equals("modifies"))
+				assertTrue(attributeValue.equals("const"));
+			if (attributeName.equals("visib"))
+				assertTrue(attributeValue.equals("priv"));
+			if (attributeName.equals("pvirtual"))
+				assertTrue(attributeValue.equals("y"));
 		}
 	}
 	

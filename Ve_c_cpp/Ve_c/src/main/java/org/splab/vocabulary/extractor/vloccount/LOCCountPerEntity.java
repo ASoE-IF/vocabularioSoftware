@@ -136,6 +136,12 @@ public class LOCCountPerEntity {
 		return comm;
 	}
 
+	/**
+	 * Decrementa a quantidade de headers
+	 * 
+	 * @param type
+	 * @return
+	 */
 	private int headersLOCDecrement(ASTNode type) {
 
 		if(DirectivesProcessor.getPreprocessorList() == null)
@@ -158,6 +164,13 @@ public class LOCCountPerEntity {
 		return preprocessorLineCount;
 	}
 
+	/**
+	 * Decrementa a quantidade de headers
+	 * 
+	 * @param allDeclarations
+	 * @param type
+	 * @return
+	 */
 	private int headersLOCDecrement(List<ASTNode> allDeclarations, ASTNode type) {
 
 		if(DirectivesProcessor.getPreprocessorList() == null)

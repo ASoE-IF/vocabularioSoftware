@@ -15,6 +15,7 @@ import org.eclipse.cdt.internal.core.dom.parser.ASTNode;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTFunctionDefinition;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTSimpleDeclaration;
 import org.splab.vocabulary.extractor.nodelists.DeclarationList;
+import org.splab.vocabulary.extractor.processors.vocabulay.manager.FileVocabularyManager;
 import org.splab.vocabulary.extractor.util.CommentUnit;
 import org.splab.vocabulary.extractor.util.LOCManager;
 import org.splab.vocabulary.extractor.util.VxlManager;
@@ -24,47 +25,47 @@ import org.splab.vocabulary.extractor.vloccount.LOCCountPerEntity;
 import org.splab.vocabulary.extractor.vloccount.LOCParameters;
 
 /**
- * This class is responsible for extracting informations from the files's body.
- * FileProcessor extract informations such as: file, extern declarations
+ * FileProcessor é responsavel por diferenciar as entidades e designar o
+ * processador correto para a operação de extração do vocabulário.
  * 
  * @author Israel Gomes de Lima
  */
-
 public class FileProcessor {
+	/**
+	 * Cria a lista de comentários e o fragmento de vxl do arquivo
+	 */
 	protected static List<CommentUnit> sourceCodeComments;
 	private StringBuffer vxlFragment;
 
-	private StringBuffer functionVXL;
-	private StringBuffer enumVXL;
-	private StringBuffer structVXL;
-	private StringBuffer unionVXL;
-
-	public FileProcessor() {
-		vxlFragment = new StringBuffer("");
-	}
-
+	/**
+	 * Construtor para criar um processador de arquivo
+	 * 
+	 * @param translationUnit
+	 * @param fileName
+	 * @param headerLines
+	 */
 	public FileProcessor(IASTTranslationUnit translationUnit, String fileName, int headerLines) {
 
-		FileVocabularyManager.initializerVariables();
-		
+		// Configura as partes do vocabulario
+		FileVocabularyManager vocabularyManager = new FileVocabularyManager();
+		vocabularyManager.insertInHierarchy();
+		ExpressionProcessor.setVocabularyManager(vocabularyManager);
+
+		// Configura os vxl
 		vxlFragment = new StringBuffer();
+		StringBuffer functionVXL = new StringBuffer();
+		int indentationLevel = 1;
+
+		// Cria lista de comentários, declarações, tipos e nodos
 		sourceCodeComments = new LinkedList<CommentUnit>();
-
-		// Mantem fragmentos de vxl para as entidades abaixo
-		functionVXL = new StringBuffer();
-		enumVXL = new StringBuffer();
-		structVXL = new StringBuffer();
-		unionVXL = new StringBuffer();
-
-		// Retorna as declarations
 		IASTDeclaration[] declarations = translationUnit.getDeclarations();
 		ASTNode type = (ASTNode) translationUnit;
 		List<ASTNode> listDeclarations = DeclarationList.getTypes(declarations);
 
-		//Processa o vocabulário das directives
+		// Processa o vocabulário das directives
 		IASTPreprocessorStatement[] directives = translationUnit.getAllPreprocessorStatements();
 		DirectivesProcessor.extractDirectives(directives);
-		
+
 		// Contagem de loc por entidade
 		LOCCountPerEntity locCounter = new LOCCountPerEntity(type, CompilationUnitProcessor.commentList,
 				CompilationUnitProcessor.sourceCode);
@@ -72,58 +73,60 @@ public class FileProcessor {
 		EntityLOCKeeper locKeeper = new EntityLOCKeeper(locCounter);
 		locKeeper.setHeadersLOC(headerLines, false, LOCManager.locParameters.contains(LOCParameters.HEADERS));
 
-		vxlFragment.append(VxlManager.startFile(fileName, locKeeper.getLOC() + locKeeper.getInnerEntitiesLOC() + locKeeper.getHeaderLOC()));
-		vxlFragment.append((new CommentsProcessor(listDeclarations, type, false).getVxlFragment()));
-		//Adiciona o vocabulário das directives ao vxl
+		vxlFragment.append(VxlManager.startFile(fileName,
+				locKeeper.getLOC() + locKeeper.getInnerEntitiesLOC() + locKeeper.getHeaderLOC()));
+		vxlFragment.append((new CommentsProcessor(listDeclarations, type, indentationLevel + 1).getVxlFragment()));
+
+		// Incrementa o vxl das directives
 		vxlFragment.append(DirectivesProcessor.getVxlFragment());
 
+		DeclarationProcessor declProcessor = new DeclarationProcessor(vocabularyManager);
 		for (IASTDeclaration nodeDeclaration : declarations) {
-
 			// Processa as funções
 			if (nodeDeclaration instanceof IASTFunctionDefinition) {
-				FunctionProcessor functions = new FunctionProcessor((CASTFunctionDefinition) nodeDeclaration, false,
-						EntityType.FUNCTION);
+				CASTFunctionDefinition functionDefinition = (CASTFunctionDefinition) nodeDeclaration;
+				FunctionProcessor functions = new FunctionProcessor(functionDefinition, false, EntityType.FUNCTION,
+						indentationLevel + 1);
 				functionVXL.append(functions.getVxlFragment());
 			}
 
-			// Processa variáveis, struct, union, enums, protótipos
+			// Processa variáveis, struct, union, enums, protótipos e class
 			if (nodeDeclaration instanceof IASTSimpleDeclaration) {
-				DeclarationsType valor = Declarations.declarations((CASTSimpleDeclaration) nodeDeclaration, null,
-						false);
-
-				if (valor == DeclarationsType.ENUM)
-					enumVXL.append(Declarations.getVxlFragment());
-				else if (valor == DeclarationsType.STRUCT)
-					structVXL.append(Declarations.getVxlFragment());
-				else if (valor == DeclarationsType.UNION)
-					unionVXL.append(Declarations.getVxlFragment());
-
+				CASTSimpleDeclaration simpleDeclaration = (CASTSimpleDeclaration) nodeDeclaration;
+				declProcessor.extractDeclaration(simpleDeclaration, indentationLevel + 1);
 			}
 		}
 
-		// monta o vxl de variáveis
-		storeInternVocabulary(FileVocabularyManager.gvar, FileVocabularyManager.gvarStorage,
-				FileVocabularyManager.gvarAccess, FileVocabularyManager.prttpStorage, FileVocabularyManager.prttpAccess,
-				FileVocabularyManager.literal);
+		storeInternVocabulary(vocabularyManager.getGlobalVar(), vocabularyManager.getGlobalVarStorage(),
+				vocabularyManager.getGlobalVarAccess(), vocabularyManager.getLiterals(), indentationLevel + 1);
+
 		// Junta os fragmentos de vxl
-		vxlFragment.append(enumVXL);
-		vxlFragment.append(structVXL);
-		vxlFragment.append(unionVXL);
+		vxlFragment.append(declProcessor.getVxlFragment());
 		vxlFragment.append(functionVXL);
+		// Fim do arquivo no vxl
 
 		if (LOCManager.locParameters.contains(LOCParameters.LOC)) {
-			LOCManager.appendEntityLOCData(fileName, locKeeper, EntityType.FILE);
+			LOCManager.appendFileLOCData(fileName, locKeeper, EntityType.FILE);
 		}
 
 		vxlFragment.append(VxlManager.endFile());
+		vocabularyManager.removeFromHierarchy();
 	}
 
-	/** Processa o vocabulário das variáveis globais **/
+	/**
+	 * Recebe os vocabulários extraidos do arquivo e adiciona-os ao fragmento de
+	 * vxl
+	 * 
+	 * @param gvar
+	 * @param gvarStorage
+	 * @param gvarAccess
+	 * @param literal
+	 * @param entityIndentationLevel
+	 */
 	private void storeInternVocabulary(Map<String, Integer> gvar, Map<String, String> gvarStorage,
-			Map<String, String> gvarAccess, Map<String, String> prttpStorage, Map<String, String> prttpAccess,
-			Map<String, Integer> literal) {
-		
-		//Processa gvars
+			Map<String, String> gvarAccess, Map<String, Integer> literal, int entityIndentationLevel) {
+
+		// Processa gvars
 		Set<String> gvariable = gvar.keySet();
 		Iterator<String> it_gvar = gvariable.iterator();
 		while (it_gvar.hasNext()) {
@@ -133,30 +136,23 @@ public class FileProcessor {
 			String storage = gvarStorage.get(identifier);
 			int count = gvar.get(identifier);
 
-			vxlFragment.append(VxlManager.globalVariables(identifier, access, storage, count));
+			vxlFragment.append(VxlManager.globalVariable(identifier, access, storage, count, entityIndentationLevel));
 		}
 
-		//Processar protótipos de funções
-		Set<String> prototipo = prttpAccess.keySet();
-		Iterator<String> it_prototipo = prototipo.iterator();
-		while (it_prototipo.hasNext()) {
-			String identifier = it_prototipo.next();
-
-			String access = prttpAccess.get(identifier);
-			String storage = prttpStorage.get(identifier);
-
-			vxlFragment.append(VxlManager.globalPrototip(identifier, access, storage));
-		}
-
-		//Processa Literais
+		// Processa Literais
 		Set<String> lit = literal.keySet();
 		Iterator<String> it_lit = lit.iterator();
 		while (it_lit.hasNext()) {
 			String identifier = it_lit.next();
-			vxlFragment.append(VxlManager.literal(identifier, literal.get(identifier)));
+			vxlFragment.append(VxlManager.literal(identifier, literal.get(identifier), entityIndentationLevel));
 		}
 	}
 
+	/**
+	 * Retorna o fragmento de vxl
+	 * 
+	 * @return
+	 */
 	public StringBuffer getVxlFragment() {
 		return vxlFragment;
 	}

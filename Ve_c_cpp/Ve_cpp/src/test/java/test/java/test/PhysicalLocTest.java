@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.cdt.core.dom.ast.IASTTranslationUnit;
-import org.eclipse.cdt.core.dom.ast.gnu.c.GCCLanguage;
+import org.eclipse.cdt.core.dom.ast.gnu.cpp.GPPLanguage;
 import org.eclipse.cdt.core.parser.DefaultLogService;
 import org.eclipse.cdt.core.parser.FileContent;
 import org.eclipse.cdt.core.parser.IParserLogService;
@@ -33,7 +33,7 @@ public class PhysicalLocTest extends TestCase {
 	private static String noCommentsFile = testFilesDir + "/NoCommentsFile";
 	private static String complexFile = testFilesDir + "/ComplexFile";
 	
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private static IASTTranslationUnit getASTTreeFromSourceCode(final char[] sourceCode) throws InvocationTargetException, InterruptedException, CoreException {
 
 		FileContent fileContent = FileContent.create(testFilesDir, sourceCode);
@@ -46,13 +46,12 @@ public class PhysicalLocTest extends TestCase {
 		IncludeFileContentProvider emptyIncludes = IncludeFileContentProvider.getEmptyFilesProvider();
 
 		int opts = 8;
-		IASTTranslationUnit translationUnit = GCCLanguage.getDefault().getASTTranslationUnit(fileContent, info,
+		IASTTranslationUnit translationUnit = GPPLanguage.getDefault().getASTTranslationUnit(fileContent, info,
 				emptyIncludes, null, opts, log);
 		
 		return translationUnit;
 	}
 	
-	@SuppressWarnings({ "unchecked" })
 	private static int getPhysicalLocCount(String file) throws Exception {
 		BufferedReader in = new BufferedReader(new FileReader(file));
 		String sourceCode = "", aux;
@@ -74,18 +73,18 @@ public class PhysicalLocTest extends TestCase {
 	}
 	
 	public void testSimpleFile() throws Exception {
-		assertTrue(getPhysicalLocCount(simpleFile) == 67);
+		assertTrue(getPhysicalLocCount(simpleFile) == 124);
 	}
 	
 	public void testNoBlankLinesFile() throws Exception {
-		assertTrue(getPhysicalLocCount(noBlankLinesFile) == 67);
+		assertTrue(getPhysicalLocCount(noBlankLinesFile) == 124);
 	}
 	
 	public void testNoCommentsFile() throws Exception {
-		assertTrue(getPhysicalLocCount(noCommentsFile) == 67);
+		assertTrue(getPhysicalLocCount(noCommentsFile) == 124);
 	}
 	
 	public void testComplexFile() throws Exception {
-		assertTrue(getPhysicalLocCount(complexFile) == 67);
+		assertTrue(getPhysicalLocCount(complexFile) == 124);
 	}
 }

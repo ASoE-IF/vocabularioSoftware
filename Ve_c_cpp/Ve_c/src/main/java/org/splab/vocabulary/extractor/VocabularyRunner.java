@@ -3,6 +3,7 @@ package org.splab.vocabulary.extractor;
 import java.util.LinkedList;
 
 import org.splab.vocabulary.extractor.browsers.DirectoriesBrowser;
+import org.splab.vocabulary.extractor.util.ErrorLogManager;
 import org.splab.vocabulary.extractor.util.LOCManager;
 import org.splab.vocabulary.extractor.util.MemoryRuntimeIFPB;
 import org.splab.vocabulary.extractor.util.VxlManager;
@@ -14,8 +15,8 @@ import org.splab.vocabulary.extractor.vloccount.LOCParameters;
  * VocabularyExtractor will find the software vocabulary and give it back in an
  * hierarquial VXL file.
  * 
- * @author Catharine Quintans, Tercio de Melo, Katyusco Santos
- * Modificado por: Israel Gomes de Lima para funcionamento neste extrator
+ * @author Catharine Quintans, Tercio de Melo, Katyusco Santos Modificado por:
+ *         Israel Gomes de Lima para funcionamento neste extrator
  */
 
 public class VocabularyRunner {
@@ -29,7 +30,8 @@ public class VocabularyRunner {
 				+ "\n\t\t d: sets directives loc counting" + "\n\t\t i: sets inners file counting"
 				+ "\n\t\t p: sets physical sloc counting but unsets all the other loc options"
 				+ "\n\t-msr: activates the measuring of memory usage for VocabularyExtractor execution"
-				+ "\n\n\tEXAMPLE: -n Project_name -r Projetc_revision -d ~/SomeProject/ -loc iah -vxl ~/ProjectVXL.vxl -csv ~/ProjectCSV.csv -mth";
+				+ "\n\t-file: Selects the source file type (C or H or CH), C: c file, H: header file"
+				+ "\n\n\tEXAMPLE: -n Project_name -r Projetc_revision -d ~/SomeProject/ -loc ih -vxl ~/ProjectVXL.vxl -csv ~/ProjectCSV.csv -func -file CH";
 
 		try {
 			LOCManager.locParameters = new LinkedList<LOCParameters>();
@@ -60,11 +62,14 @@ public class VocabularyRunner {
 					setParam("func");
 				} else if (args[i].equals("-msr")) {
 					measure_enable = true;
+				} else if (args[i].equals("-file")) {
+					setParam(args[++i]);
 				}
 			}
 			DirectoriesBrowser.browse(projectPath, projectName, projectRevision);
 
 			VxlManager.save(resultVXLFileName);
+			ErrorLogManager.save();
 
 			if (LOCManager.locParameters.contains(LOCParameters.LOC)) {
 				LOCManager.save(resultLOCFileName);
@@ -103,6 +108,15 @@ public class VocabularyRunner {
 				LOCManager.reset();
 				break;
 			}
+
+			if (c == 'C') {
+				LOCManager.locParameters.add(LOCParameters.C_FILE);
+			}
+
+			if (c == 'H') {
+				LOCManager.locParameters.add(LOCParameters.H_FILE);
+			}
+
 		}
 		LOCManager.reset();
 	}

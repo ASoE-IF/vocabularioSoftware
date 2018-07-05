@@ -25,7 +25,7 @@ public class VocabularyBodyTest extends TestCase {
 		try { 
 			String[] args = {"-n", "xmltoxsd", "-d", "./files/XmlToXsd/",
 					"-loc", "hi", "-vxl", "./files/XmlToXsd/xmltoxsd.vxl", 
-					"-csv", "./files/XmlToXsd/xmltoxsd.csv", "-func"}; 
+					"-csv", "./files/XmlToXsd/xmltoxsd.csv", "-func", "-file", "CH"}; 
 			
 			VocabularyRunner.main(args);
 		

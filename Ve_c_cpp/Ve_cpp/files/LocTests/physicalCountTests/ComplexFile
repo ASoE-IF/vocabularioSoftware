@@ -3,17 +3,11 @@
  * Autor: Israel Gomes de Lima
  * Data: 20/09/2017
  */
+ 
+#include<iostream>
+#include<string>
 
-//Includes e Defines
-#include<stdio.h>
-#define CONSTANTEDEFINE 10
-#define CONSTANTEDEFINECHAR "valor constante da constanteDefineChar"
-#define macroSoma(a,b) (a+b)
-#define macroStr(s) #s
-#define macroConcat(a, b) a ## b
-#error menssagem de erro com error
-
-//Variaveis globais
+ //Variaveis globais
 signed char varCharComSignal;
 unsigned int varIntUnsigned;
 long double varLongDouble;
@@ -26,32 +20,25 @@ int varAutoImplicita;
 int *ptrGlobal;
 float **ptrParaPtrGlobal;
 
+using std::string;
+using std::cout;
+
 //Prototipos de funções
 int prototipo1();
 int protoripo2(int, int);
 int protoripo3(int x, int y);
-prototipo4(int);
-prototipo5(int x);
+void prototipo4(int);
+void prototipo5(string x = "valor");
+void prototipo6(int, string, double);
+
 
 /**Abaixo funções para demonstrar o
- * Uso de Funções em c, desde de criação de
- * funções globais até funções internas
+ * Uso de Funções em c++
  */
 int funcao1()
 {
 	//comentário interni=o
 	int variavelLocal;
-
-	int funcaoInterna()
-	{
-		int variavelLocalDaFuncaoInterna;
-
-		variavelLocal = 10;
-
-		int variavelLocal = 20;
-
-		variavelLocalDaFuncaoInterna = variavelLocal;
-	}
 	
 	/*Comentário de bloco interno a função**/
 	struct estrutura
@@ -74,6 +61,49 @@ int funcao1()
 		CONST1, CONST2, CONST3, CONST4, CONST5, CONST6 = 100, CONST7, CONST8, CONST9, CONST10/*enumaration*/
 	}
 
+	//Usando classes
+	class Generic1
+	{
+		//Comentário de linha no inicio da classe
+	private:
+    	string nome, jogo;
+   		int quantidade;
+
+	public:
+
+    	string nomePublico;
+    	int x = funcc(varx);
+
+		//Construtor da classe
+    	Generic1()
+    	{
+        	nome = "";
+        	jogo = "";
+    	}
+
+		//Construtor 2 da classe
+    	Generic1(string name)
+    	{
+        	nome = name;
+    	}
+
+		/*Construtor
+		* 3 da classe*/
+    	Generic1(int quantidade1, string name = "valor")
+    	{
+    		/*Comentário do construtor*/
+        	quantidade = quantidade1;
+        	nome = name;
+    	}
+
+		/*Destrutor*/
+    	~Generic1()
+    	{
+    		/*Corpo do destrutor*/
+    		//Com comentário simples e de bloco
+    	}
+		/**fora do destrutor**/
+	};
 	variavelLocal = 20;
 }
 
@@ -117,3 +147,68 @@ enum enumeration // enumaration1
 	CONST1, CONST2, CONST3, CONST4, CONST5, CONST6 = 100, CONST7, CONST8, CONST9, CONST10/*enumaration*/
 	//enum
 }/*enuma*/;//fora da enum
+
+
+//Usando classes
+class GenericClass1
+{
+//Comentário de linha no inicio da classe
+private:
+    string nome, jogo;
+    int quantidade;
+
+public:
+
+    string nomePublico;
+    int x = funcc(varx);
+
+	//Construtor da classe
+    GenericClass1()
+    {
+        nome = "";
+        jogo = "";
+    }
+
+	//Construtor 2 da classe
+    GenericClass1(string name)
+    {
+        nome = name;
+    }
+
+	/*Construtor
+	* 3 da classe*/
+    GenericClass1(int quantidade1, string name = "valor")
+    {
+    	/*Comentário do construtor*/
+        quantidade = quantidade1;
+        nome = name;
+    }
+
+	/*Método set*/
+    void setNome(string nome1)
+    {
+        nome = nome1;
+    }
+
+    string getNome()
+    {
+        return nome;
+    }
+
+    static void printUniversal()
+    {
+    }
+
+    void printUniversal2() const
+    {
+    }
+
+	/*Destrutor*/
+    ~GenericClass1()
+    {
+    	/*Corpo do destrutor*/
+    	//Com comentário simples e de bloco
+    }
+	/**fora do destrutor**/
+};
+//Fora da classe

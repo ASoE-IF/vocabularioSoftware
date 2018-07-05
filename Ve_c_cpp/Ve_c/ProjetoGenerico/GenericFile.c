@@ -13,7 +13,6 @@
 #define macroConcat(a, b) a ## b
 #error menssagem de erro com error
 
-
 //Variaveis globais
 signed char varCharComSignal;
 unsigned int varIntUnsigned;
@@ -31,8 +30,8 @@ float **ptrParaPtrGlobal;
 int prototipo1();
 int protoripo2(int, int);
 int protoripo3(int x, int y);
-void prototipo4(int);
-void prototipo5(int x);
+prototipo4(int);
+prototipo5(int x);
 
 
 void funcaoDePreProcessador()
@@ -228,12 +227,12 @@ int prompt(void)
 	return 0;
 }
 
-int readNum(void)
+void readNum(void)
 {
 	return 50;
 }
 
-int sqrNum(int num)
+void sqrNum(int num)
 {
 	return num * num;
 }

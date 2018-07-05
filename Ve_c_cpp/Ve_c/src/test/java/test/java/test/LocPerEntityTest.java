@@ -43,7 +43,7 @@ public class LocPerEntityTest extends TestCase {
 	private static String noCommentsFile = testFilesDir + "/NoCommentsFile";
 	private static String complexFile = testFilesDir + "/ComplexFile";
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private static IASTTranslationUnit getASTTreeFromSourceCode(final char[] sourceCode)
 			throws InvocationTargetException, InterruptedException, CoreException {
 
@@ -63,7 +63,6 @@ public class LocPerEntityTest extends TestCase {
 		return translationUnit;
 	}
 
-	@SuppressWarnings({ "unchecked" })
 	private static boolean assertLocCountPerEntity(String file) throws Exception {
 		BufferedReader in = new BufferedReader(new FileReader(file));
 		String sourceCode = "", aux;
@@ -123,7 +122,6 @@ public class LocPerEntityTest extends TestCase {
 		return true;
 	}
 
-	@SuppressWarnings({ "unchecked" })
 	private static int getLocCountPerEntity(String file) throws Exception {
 		int totalEntitiesLOC = 0;
 
@@ -171,12 +169,9 @@ public class LocPerEntityTest extends TestCase {
 				}
 			}
 		}
-		System.out.println(totalEntitiesLOC);
-
 		return totalEntitiesLOC;
 	}
 
-	@SuppressWarnings({ "unchecked" })
 	private static int getPhysicalLocCount(String file) throws Exception {
 		BufferedReader in = new BufferedReader(new FileReader(file));
 		String sourceCode = "", aux;
@@ -187,8 +182,7 @@ public class LocPerEntityTest extends TestCase {
 		in.close();
 		IASTTranslationUnit translationUnit = (IASTTranslationUnit) getASTTreeFromSourceCode(sourceCode.toCharArray());
 		DirectivesProcessor.extractDirectives(translationUnit.getAllPreprocessorStatements());
-System.out.println((new PhysicalLOCCount(Arrays.asList(translationUnit.getComments()), sourceCode,
-				sourceCode.split("\n").length)).getLOC());
+		
 		return (new PhysicalLOCCount(Arrays.asList(translationUnit.getComments()), sourceCode,
 				sourceCode.split("\n").length)).getLOC();
 	}

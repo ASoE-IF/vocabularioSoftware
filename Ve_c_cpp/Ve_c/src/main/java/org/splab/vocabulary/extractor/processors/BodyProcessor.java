@@ -3,7 +3,6 @@ package org.splab.vocabulary.extractor.processors;
 import org.eclipse.cdt.core.dom.ast.IASTDeclaration;
 import org.eclipse.cdt.core.dom.ast.IASTExpression;
 import org.eclipse.cdt.core.dom.ast.IASTStatement;
-import org.eclipse.cdt.internal.core.dom.parser.c.CASTAmbiguousStatement;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTCaseStatement;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTCompoundStatement;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTDeclarationStatement;
@@ -18,18 +17,16 @@ import org.eclipse.cdt.internal.core.dom.parser.c.CASTReturnStatement;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTSimpleDeclaration;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTSwitchStatement;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTWhileStatement;
+import org.splab.vocabulary.extractor.processors.vocabulay.manager.FunctionVocabularyManager;
+import org.splab.vocabulary.extractor.processors.vocabulay.manager.VocabularyManager;
 import org.splab.vocabulary.extractor.vloccount.EntityType;
 
 /**
- * This class is responsible for extracting informations from the function's
- * body. All the informations extract should be Statement type.
- * 
- * BodyProcessor extract informations such as: function call and variable
- * declaration.
+ * Esta classe é responsável por extrair os statments e as informações do corpo
+ * de uma função ou de um arquivo.
  * 
  * @author Israel Gomes de Lima
- * Baseado na BodyProcessor do extrator original
- * @since september 06, 2017.
+ *
  */
 public class BodyProcessor {
 	/**
@@ -37,37 +34,32 @@ public class BodyProcessor {
 	 **/
 	private StringBuffer vxlFragment;
 	private StringBuffer functionVXL;
-	private StringBuffer enumVXL;
-	private StringBuffer structVXL;
-	private StringBuffer unionVXL;
+	private int indentationLevel;
 
-	private FunctionVocabularyManager functionVocabulary;
+	/**
+	 * Mantem o vocabulary manager do chamador
+	 */
+	private VocabularyManager vocabularyManager;
 
 	/**
 	 * Construtor para novo objeto do tipo BodyProcessor. Todo arquivo e toda
 	 * função tem um corpo para extração de dados
 	 */
-	public BodyProcessor(FunctionVocabularyManager functionVocabulary) {
+	public BodyProcessor(VocabularyManager vocabularyManager, int indentationLevel) {
 		this.vxlFragment = new StringBuffer();
-		
 		this.functionVXL = new StringBuffer();
-		this.enumVXL = new StringBuffer();
-		this.structVXL = new StringBuffer();
-		this.unionVXL = new StringBuffer();
-		
-		this.functionVocabulary = functionVocabulary;
+
+		this.vocabularyManager = vocabularyManager;
+		this.indentationLevel = indentationLevel;
 	}
 
 	/**
-	 * Identifier the instance of the body to extract all the information about
-	 * the method's body.
+	 * Recebe um statement e identifica o seu tipo estrutural para poder
+	 * designar o método adequado para processá-lo.
 	 * 
-	 * @param body
-	 *            The method's body that will be analyzed.
+	 * @param statement
 	 */
 	public void extractBody(IASTStatement statement) {
-		if (statement instanceof CASTAmbiguousStatement);
-
 		if (statement instanceof CASTCaseStatement)
 			extractCaseStatement((CASTCaseStatement) statement);
 
@@ -104,20 +96,24 @@ public class BodyProcessor {
 		if (statement instanceof CASTWhileStatement)
 			extractWhileStatement((CASTWhileStatement) statement);
 	}
-	
+
 	/**
-	 * Extract the variable declarations and the block of code that are
-	 * inside the 'Case' from 'SwitchCase Statement'.
+	 * Extrai o conteudo que está dentro de um "case" em um bloco de switch
+	 * 
+	 * @param caseStatement
 	 */
 	private void extractCaseStatement(CASTCaseStatement caseStatement) {
 		IASTExpression exp = caseStatement.getExpression();
-		
+
 		if (exp != null)
 			ExpressionProcessor.extractExpression(exp);
 	}
 
 	/**
-	 * Extract the compound statement.
+	 * Recebe uma estrutura que possui corpo (como while, por exemplo), extrai
+	 * seu corpo de designa o tratador.
+	 * 
+	 * @param compoundStatement
 	 */
 	private void extractCompoundStatement(CASTCompoundStatement compoundStatement) {
 		for (IASTStatement state : compoundStatement.getStatements()) {
@@ -126,41 +122,40 @@ public class BodyProcessor {
 		}
 	}
 
-
 	/**
-	 * Extract the simples declarations statement. Extract the internal
-	 * functions definitions.
+	 * Extrai declarações simples ou declarações de funções internas
+	 * 
+	 * @param declarationStatement
 	 */
 	private void extractDeclarationStatement(CASTDeclarationStatement declarationStatement) {
 		IASTDeclaration declaration = declarationStatement.getDeclaration();
-		
-		DeclarationsType tipoDeclaracao;
-		if (declaration != null && declaration instanceof CASTSimpleDeclaration) {
-			tipoDeclaracao = Declarations.declarations((CASTSimpleDeclaration) declaration, functionVocabulary, true);
 
-			if (tipoDeclaracao == DeclarationsType.ENUM) {
-				enumVXL.append(Declarations.getVxlFragment());
-			} else {
-				if (tipoDeclaracao == DeclarationsType.STRUCT) {
-					structVXL.append(Declarations.getVxlFragment());
-				} else {
-					if (tipoDeclaracao == DeclarationsType.UNION) {
-						unionVXL.append(Declarations.getVxlFragment());
-					}
-				}
-			}
+		if (declaration != null && declaration instanceof CASTSimpleDeclaration) {
+			extractSimpleDeclarationStatement((CASTSimpleDeclaration) declaration);
 		}
 		if (declaration instanceof CASTFunctionDefinition) {
-			FunctionProcessor functions = new FunctionProcessor((CASTFunctionDefinition) declaration, true, EntityType.INNER_FUNCTION);
+			FunctionProcessor functions = new FunctionProcessor((CASTFunctionDefinition) declaration, true,
+					EntityType.INNER_FUNCTION, indentationLevel);
 			functionVXL.append(functions.getVxlFragment());
 		}
 	}
+
 	/**
-	 * Extract the body inside a 'Do Statement' and the expression that makes
-	 * the 'Do Statement' to be executed.
+	 * Extrai declarações de variáveis, struct, union, enum, classes, etc.
+	 * 
+	 * @param simpleDeclarationStatement
+	 */
+	private void extractSimpleDeclarationStatement(CASTSimpleDeclaration simpleDeclarationStatement) {
+
+		DeclarationProcessor declProcessor = new DeclarationProcessor(vocabularyManager);
+		declProcessor.extractDeclaration(simpleDeclarationStatement, indentationLevel);
+		vxlFragment.append(declProcessor.getVxlFragment());
+	}
+
+	/**
+	 * Extrai o conteudo e a condição em um do/while
 	 * 
 	 * @param doStatement
-	 *            The Do Statement.
 	 */
 	private void extractDoStatement(CASTDoStatement doStatement) {
 		IASTStatement body = doStatement.getBody();
@@ -173,6 +168,7 @@ public class BodyProcessor {
 	}
 
 	/**
+	 * Extrai os participantes de uma expressão qualquer
 	 * 
 	 * @param expressionStatement
 	 */
@@ -184,10 +180,9 @@ public class BodyProcessor {
 	}
 
 	/**
-	 * Extract for informations.
+	 * Extrai o corpo e a expressão condicional do for
 	 * 
 	 * @param forStatement
-	 *            The for statement.
 	 */
 	private void extractForStatement(CASTForStatement forStatement) {
 		IASTStatement body = forStatement.getBody();
@@ -208,19 +203,21 @@ public class BodyProcessor {
 	}
 
 	/**
-	 * Extract the goto statement.
+	 * Extrai uma expressão com goto assim como o seu label
+	 * 
+	 * @param gotoStatement
 	 */
 	private void extractGotoStatement(CASTGotoStatement gotoStatement) {
 		String identifier = gotoStatement.getName().toString();
-		functionVocabulary.insertLocalVariable(identifier, "", "");
+		FunctionVocabularyManager funcVoc = (FunctionVocabularyManager) vocabularyManager;
+		funcVoc.insertLocalVariable(identifier, "", "");
 	}
 
 	/**
-	 * Extract all the information existing in a 'if else' statement. Extract
-	 * the expression of the 'If' and the body of the 'If' and 'Else' statement.
+	 * Trata um if/else e extrai a expressão condicional assim como também o
+	 * conteudo de seu corpo.
 	 * 
 	 * @param ifStatement
-	 *            The If/Else statement.
 	 */
 	private void extractIfStatement(CASTIfStatement ifStatement) {
 		IASTStatement elseBody = ifStatement.getElseClause();
@@ -238,7 +235,7 @@ public class BodyProcessor {
 	}
 
 	/**
-	 * Extract information of the label statement.
+	 * Recebe um label e designar o seu tratamento ou armazenamento.
 	 * 
 	 * @param labelStatement
 	 */
@@ -248,15 +245,16 @@ public class BodyProcessor {
 			extractBody(statement);
 
 		String identifier = labelStatement.getName().toString();
-		if (identifier != null)
-			functionVocabulary.insertLocalVariable(identifier, "", "");
+		if (identifier != null) {
+			FunctionVocabularyManager funcVoc = (FunctionVocabularyManager) vocabularyManager;
+			funcVoc.insertLocalVariable(identifier, "", "");
+		}
 	}
-	
+
 	/**
-	 * Extract the expression of the return statement.
+	 * Extrai a expressão em um return.
 	 * 
 	 * @param returnStatement
-	 *            The return statement.
 	 */
 	private void extractReturnStatement(CASTReturnStatement returnStatement) {
 		IASTExpression exp = returnStatement.getReturnValue();
@@ -265,10 +263,9 @@ public class BodyProcessor {
 	}
 
 	/**
-	 * Extract the expression of the 'Switch Case' statement.
+	 * Extrai a expressão em um switch e também o conteudo do seu corpo.
 	 * 
-	 * @param switchCase
-	 *            The switch case statement.
+	 * @param switchStatement
 	 */
 	private void extractSwitchStatement(CASTSwitchStatement switchStatement) {
 		IASTExpression exp = switchStatement.getControllerExpression();
@@ -281,10 +278,10 @@ public class BodyProcessor {
 	}
 
 	/**
-	 * Extract the expression and the body of the 'while statement'.
+	 * Extrai o conteudo de um bloco while, tal como sua expressão condicional e
+	 * o conteudo do seu corpo.
 	 * 
 	 * @param whileStatement
-	 *            The while statement.
 	 */
 	private void extractWhileStatement(CASTWhileStatement whileStatement) {
 		IASTStatement body = whileStatement.getBody();
@@ -297,21 +294,13 @@ public class BodyProcessor {
 	}
 
 	/**
-	 * Return the vxl fragment
+	 * Retorna o fragmento de vxl organizado.
+	 * 
+	 * @return
 	 */
 	public StringBuffer getVxlFragment() {
-		vxlFragment.append(enumVXL);
-		vxlFragment.append(structVXL);
-		vxlFragment.append(unionVXL);
 		vxlFragment.append(functionVXL);
 
 		return this.vxlFragment;
-	}
-
-	/**
-	 * Return the function internal vocabulary
-	 */
-	public FunctionVocabularyManager getFunctionVocabulary() {
-		return functionVocabulary;
 	}
 }

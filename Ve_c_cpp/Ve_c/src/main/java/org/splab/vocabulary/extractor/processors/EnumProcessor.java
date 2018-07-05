@@ -10,10 +10,26 @@ import org.splab.vocabulary.extractor.vloccount.EntityType;
 import org.splab.vocabulary.extractor.vloccount.LOCCountPerEntity;
 import org.splab.vocabulary.extractor.vloccount.LOCParameters;
 
+/**
+ * EnumProcessor é responsável por receber um tipo enum e tratálo, obtendo suas
+ * inforções, tais como seu nome e o de suas constantes.
+ * 
+ * @author Israel Gomes de Lima
+ *
+ */
 public class EnumProcessor {
+	/**
+	 * Mantém um fragmento de vxl.
+	 */
 	private StringBuffer vxlFragment;
 
-	public EnumProcessor(CASTEnumerationSpecifier enumDeclaration, boolean scope, boolean isInner) {
+	/**
+	 * Construtor responsável por processar a enum.
+	 * 
+	 * @param enumDeclaration
+	 * @param indentationLevel
+	 */
+	public EnumProcessor(CASTEnumerationSpecifier enumDeclaration, int indentationLevel) {
 
 		vxlFragment = new StringBuffer();
 
@@ -21,27 +37,31 @@ public class EnumProcessor {
 				CompilationUnitProcessor.commentList, CompilationUnitProcessor.sourceCode);
 		EntityLOCKeeper locKeeper = new EntityLOCKeeper(locCounter);
 
-		boolean inner = (isInner ? LOCManager.locParameters.contains(LOCParameters.INNER_FUNCTION) : true);
-
-		if (LOCManager.locParameters.contains(LOCParameters.LOC) && inner) {
+		if (LOCManager.locParameters.contains(LOCParameters.LOC)) {
 			LOCManager.appendEntityLOCData(enumDeclaration.getName().toString(), locKeeper, EntityType.ENUM);
 		}
 
 		// obtem um array com as constantes da enum
 		IASTEnumerator[] enumerators = enumDeclaration.getEnumerators();
 
-		vxlFragment.append(VxlManager.startEnum(enumDeclaration.getName().toString(), locKeeper.getLOC(), scope));
-		vxlFragment.append((new CommentsProcessor((ASTNode) enumDeclaration)).getVxlFragment());
+		vxlFragment.append(
+				VxlManager.startEnum(enumDeclaration.getName().toString(), locKeeper.getLOC(), indentationLevel));
+		vxlFragment.append((new CommentsProcessor((ASTNode) enumDeclaration, indentationLevel + 1)).getVxlFragment());
 
 		// percorre as constantes da enum
 		for (IASTEnumerator constEnumerators : enumerators) {
 			// grava no vxlFragment as consantes enum
-			vxlFragment.append(VxlManager.constant(constEnumerators.getName().toString(), scope));
+			vxlFragment.append(VxlManager.constant(constEnumerators.getName().toString(), indentationLevel + 1));
 		}
 
-		vxlFragment.append(VxlManager.endEnum(scope));
+		vxlFragment.append(VxlManager.endEnum(indentationLevel));
 	}
 
+	/**
+	 * Retorna o fragmento de vxl
+	 * 
+	 * @return
+	 */
 	public StringBuffer getVxlFragment() {
 		return vxlFragment;
 	}

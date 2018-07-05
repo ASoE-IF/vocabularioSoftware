@@ -1,6 +1,5 @@
 package org.splab.vocabulary.extractor.processors;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -15,11 +14,13 @@ import org.eclipse.cdt.core.dom.ast.IFunction;
 import org.eclipse.cdt.core.dom.ast.IVariable;
 import org.eclipse.cdt.internal.core.dom.parser.ASTNode;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTCompoundStatement;
+import org.eclipse.cdt.internal.core.dom.parser.c.CASTEqualsInitializer;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTFunctionDeclarator;
 import org.eclipse.cdt.internal.core.dom.parser.c.CASTFunctionDefinition;
 import org.eclipse.cdt.internal.core.dom.parser.c.CFunction;
 import org.eclipse.cdt.internal.core.dom.parser.c.CVariable;
 import org.splab.vocabulary.extractor.nodelists.DeclarationList;
+import org.splab.vocabulary.extractor.processors.vocabulay.manager.FunctionVocabularyManager;
 import org.splab.vocabulary.extractor.util.LOCManager;
 import org.splab.vocabulary.extractor.util.VxlManager;
 import org.splab.vocabulary.extractor.vloccount.EntityLOCKeeper;
@@ -27,24 +28,35 @@ import org.splab.vocabulary.extractor.vloccount.EntityType;
 import org.splab.vocabulary.extractor.vloccount.LOCCountPerEntity;
 import org.splab.vocabulary.extractor.vloccount.LOCParameters;
 
+/**
+ * FunctionProcessor é responsavel por receber uma função, processar seu
+ * vocabulário e designar o processador de seu vocabulário interno
+ * 
+ * @author Israel Gomes de Lima
+ */
 public class FunctionProcessor {
-	private StringBuffer vxlFragment;
-	private List<ASTNode> listDeclarations;
-	private FunctionVocabularyManager functionVocabulary;
+	/**
+	 * Cria o fragmento de vxl
+	 */
+	protected StringBuffer vxlFragment;
 
-	protected static List<FunctionProcessor> listFuncions = new ArrayList<FunctionProcessor>();
+	/**
+	 * Cria uma lista de declarações
+	 */
+	protected List<ASTNode> allDeclarationList;
 
+	/**
+	 * Construtor "padrão"
+	 */
 	public FunctionProcessor() {
 		vxlFragment = new StringBuffer();
 	}
 
-	public FunctionProcessor(CASTFunctionDefinition functionDefinition, boolean isInner, EntityType entityType) {
-
-		// Lista contendo as funções desde a primeira até a mais interna
-		listFuncions.add(this);
-
+	public FunctionProcessor(CASTFunctionDefinition functionDefinition, boolean isInner, EntityType entityType,
+			int indentationLevel) {
 		// Vocabulário interno das funções
-		functionVocabulary = new FunctionVocabularyManager();
+		FunctionVocabularyManager vocabularyManager = new FunctionVocabularyManager();
+		vocabularyManager.insertInHierarchy();
 
 		// Captura o nome, tipo de classe de armazenamento e o acesso da função
 		String name = functionDefinition.getDeclarator().getName().toString();
@@ -55,64 +67,71 @@ public class FunctionProcessor {
 		ASTNode typeAST = (ASTNode) functionDefinition;
 
 		// Cria um extrator para as informações do corpo da função
-		BodyProcessor bodyProcessor = new BodyProcessor(functionVocabulary);
+		BodyProcessor bodyProcessor = new BodyProcessor(vocabularyManager, indentationLevel + 1);
 
 		// Passa o functionVocabulary para acesso na expression processor
-		ExpressionProcessor.setFunctionVocabulary(functionVocabulary);
+		ExpressionProcessor.setVocabularyManager(vocabularyManager);
 		CASTCompoundStatement body = (CASTCompoundStatement) functionDefinition.getBody();
 
-		// Cria uma lista con todas as declarações do código
-		listDeclarations = DeclarationList.getTypes(body.getStatements());
+		// Cria uma lista con todas as declarações internas a presente entidade
+		allDeclarationList = DeclarationList.getTypes(body.getStatements());
 
 		LOCCountPerEntity locCounter = new LOCCountPerEntity(typeAST, CompilationUnitProcessor.commentList,
 				CompilationUnitProcessor.sourceCode);
 
 		EntityLOCKeeper locKeeper = new EntityLOCKeeper(locCounter);
 		locKeeper.setHeadersLOC(0, true, LOCManager.locParameters.contains(LOCParameters.HEADERS));
-		
-		vxlFragment = new StringBuffer(VxlManager.startFuntion(name, acesso, storage, isInner, locKeeper.getLOC() + locKeeper.getInnerEntitiesLOC()));
-		vxlFragment
-				.append(new CommentsProcessor(listDeclarations, (ASTNode) functionDefinition, true).getVxlFragment());
+
+		vxlFragment = new StringBuffer(VxlManager.startFunction(name, acesso, storage, isInner,
+				locKeeper.getLOC() + locKeeper.getInnerEntitiesLOC(), indentationLevel));
+		vxlFragment.append(
+				new CommentsProcessor(this.allDeclarationList, (ASTNode) functionDefinition, indentationLevel + 1)
+						.getVxlFragment());
 
 		// Extrai as informações dos parâmetros
 		if (functionDefinition.getDeclarator() instanceof CASTFunctionDeclarator) {
-			CASTFunctionDeclarator argumentsOfFunction = (CASTFunctionDeclarator) functionDefinition.getDeclarator();
+			CASTFunctionDeclarator functionDeclarator = (CASTFunctionDeclarator) functionDefinition.getDeclarator();
+			IASTParameterDeclaration[] parameters = functionDeclarator.getParameters();
 
-			IASTParameterDeclaration[] arguments = argumentsOfFunction.getParameters();
+			DeclarationProcessor paramProcess = new DeclarationProcessor(vocabularyManager);
+			for (IASTParameterDeclaration parameter : parameters) {
+				if (!parameter.getDeclarator().getName().toString().equals("")) {
 
-			for (IASTParameterDeclaration argument : arguments) {
-				if (!argument.getDeclarator().getName().toString().equals("")) {
-					String parametroStorage = storageClass(argument.getDeclarator().getName());
-					String parametroAccess = access(argument.getDeclSpecifier());
-					String parametroName = argument.getDeclarator().getName().toString();
+					if (parameter.getDeclarator().getInitializer() != null)
+						paramProcess.extractEqualsInitializer(
+								(CASTEqualsInitializer) parameter.getDeclarator().getInitializer());
 
-					VxlManager.parameter(vxlFragment, parametroName);
+					String parametroStorage = storageClass(parameter.getDeclarator().getName());
+					String parametroAccess = access(parameter.getDeclSpecifier());
+					String parametroName = parameter.getDeclarator().getName().toString();
 
-					functionVocabulary.insertParameter(parametroName, parametroAccess, parametroStorage);
+					VxlManager.parameter(vxlFragment, parametroName, (indentationLevel + 1));
+					vocabularyManager.insertParameter(parametroName, parametroAccess, parametroStorage);
 				}
 			}
 		}
 
-		if (functionDefinition.getBody() instanceof CASTCompoundStatement) {
-			IASTStatement[] statements = body.getStatements();
+		if (LOCManager.locParameters.contains(LOCParameters.INTERN_VOCABULARY)) {
 
-			for (IASTStatement statement : statements) {
-				bodyProcessor.extractBody(statement);
+			if (functionDefinition.getBody() instanceof CASTCompoundStatement) {
+				IASTStatement[] statements = body.getStatements();
+
+				for (IASTStatement statement : statements) {
+					ExpressionProcessor.setVocabularyManager(vocabularyManager);
+					bodyProcessor.extractBody(statement);
+				}
 			}
 
 			// Processa o vocabulário das variáveis globais
-			storeInternVocabularyGlobalVar(functionVocabulary.getGlobalVar(), functionVocabulary.getGlobalVarAccess(),
-					functionVocabulary.getGlobalVarStorage());
+			storeInternVocabularyGlobalVar(vocabularyManager.getGlobalVar(), vocabularyManager.getGlobalVarAccess(),
+					vocabularyManager.getGlobalVarStorage(), indentationLevel + 1);
 			// Processa o vocabulário das variáveis locais
-			storeInternVocabularyLocalVar(functionVocabulary.getLocalVar(), functionVocabulary.getLocalVarAccess(),
-					functionVocabulary.getLocalVarStorage());
-			// Processa o vocabulário dos protótipos de funções
-			storeInternVocabularyFunctionPrttp(functionVocabulary.getFunctionPrttpAccess(),
-					functionVocabulary.getFunctionPrttpStorage());
+			storeInternVocabularyLocalVar(vocabularyManager.getLocalVar(), vocabularyManager.getLocalVarAccess(),
+					vocabularyManager.getLocalVarStorage(), indentationLevel + 1);
 			// Processa o vocabulário das chamadas de funções
-			storeInternVocabularyFunctionCall(functionVocabulary.getFunctionCall());
+			storeInternVocabularyFunctionCall(vocabularyManager.getFunctionCall(), indentationLevel + 1);
 			// Processa o vocabulário das Strings Literais
-			storeInternVocabularyLiteral(functionVocabulary.getLiterals());
+			storeInternVocabularyLiteral(vocabularyManager.getLiterals(), indentationLevel + 1);
 
 			vxlFragment.append(bodyProcessor.getVxlFragment());
 		}
@@ -125,15 +144,19 @@ public class FunctionProcessor {
 				&& (isInner ? LOCManager.locParameters.contains(LOCParameters.INNER_FUNCTION) : true)) {
 			LOCManager.appendEntityLOCData(name, locKeeper, EntityType.INNER_FUNCTION);
 		}
-		vxlFragment.append(VxlManager.endFuntion());
 
-		listFuncions.remove(this);
-		if (listFuncions.size() > 0)
-			ExpressionProcessor.setFunctionVocabulary(listFuncions.get(listFuncions.size() - 1).getFunctionVocabulary());
+		vxlFragment.append(VxlManager.endFuntion(indentationLevel));
+
+		vocabularyManager.removeFromHierarchy();
 	}
 
-	/** Processa a classe de armazenamento das funções **/
-	private static String storageClass(IASTFunctionDeclarator declaration) {
+	/**
+	 * Processa a classe de armazenamento da função
+	 * 
+	 * @param declaration
+	 * @return
+	 */
+	private String storageClass(IASTFunctionDeclarator declaration) {
 		IFunction function = (IFunction) new CFunction(declaration);
 		String storage;
 
@@ -151,8 +174,13 @@ public class FunctionProcessor {
 		return storage;
 	}
 
-	/** processa a classe de armazenamento de uma declaração qualquer **/
-	private static String storageClass(IASTName variableName) {
+	/**
+	 * Processa a classe de armazenamento de uma declaração qualquer
+	 * 
+	 * @param variableName
+	 * @return
+	 */
+	private String storageClass(IASTName variableName) {
 		IVariable e = new CVariable(variableName);
 		String storage;
 
@@ -170,8 +198,13 @@ public class FunctionProcessor {
 		return storage;
 	}
 
-	/** Processa o acesso de qualquer declaração **/
-	private static String access(IASTDeclSpecifier decl) {
+	/**
+	 * Processo o tipo de acesso da função
+	 * 
+	 * @param decl
+	 * @return
+	 */
+	private String access(IASTDeclSpecifier decl) {
 
 		String acesso = "";
 
@@ -187,9 +220,16 @@ public class FunctionProcessor {
 		return acesso;
 	}
 
-	/** A partir daqui inserimos os vocabulários no vxl **/
-	private void storeInternVocabularyLocalVar(Map<String, Integer> localVariables,
-			Map<String, String> localVariablesAccess, Map<String, String> localVariablesStorage) {
+	/**
+	 * Adiciona o vocabulário de variáveis locais da função ao fragmento de vxl
+	 * 
+	 * @param localVariables
+	 * @param localVariablesAccess
+	 * @param localVariablesStorage
+	 * @param indentationLevel
+	 */
+	public void storeInternVocabularyLocalVar(Map<String, Integer> localVariables,
+			Map<String, String> localVariablesAccess, Map<String, String> localVariablesStorage, int indentationLevel) {
 
 		Set<String> lvar = localVariables.keySet();
 		Iterator<String> it_lvar = lvar.iterator();
@@ -201,13 +241,22 @@ public class FunctionProcessor {
 				String storage = localVariablesStorage.get(identifier);
 				int count = localVariables.get(identifier);
 
-				vxlFragment.append(VxlManager.localVariables(identifier, access, storage, count));
+				vxlFragment.append(VxlManager.localVariable(identifier, access, storage, count, indentationLevel));
 			}
 		}
 	}
 
-	private void storeInternVocabularyGlobalVar(Map<String, Integer> globalVariables,
-			Map<String, String> globalVariablesAccess, Map<String, String> globalVariablesStorage) {
+	/**
+	 * Adiciona o vocabulário de variáveis globais ao fragmento de vxl
+	 * 
+	 * @param globalVariables
+	 * @param globalVariablesAccess
+	 * @param globalVariablesStorage
+	 * @param indentationLevel
+	 */
+	public void storeInternVocabularyGlobalVar(Map<String, Integer> globalVariables,
+			Map<String, String> globalVariablesAccess, Map<String, String> globalVariablesStorage,
+			int indentationLevel) {
 
 		Set<String> gvar = globalVariables.keySet();
 		Iterator<String> it_gvar = gvar.iterator();
@@ -219,50 +268,47 @@ public class FunctionProcessor {
 			String storage = globalVariablesStorage.get(identifier);
 			int count = globalVariables.get(identifier);
 
-			vxlFragment.append(VxlManager.globalVariables(identifier, access, storage, count));
+			vxlFragment.append(VxlManager.globalVariable(identifier, access, storage, count, indentationLevel));
 		}
 	}
 
-	private void storeInternVocabularyFunctionPrttp(Map<String, String> prttpAccess, Map<String, String> prttpStorage) {
-
-		Set<String> prttp = prttpAccess.keySet();
-
-		Iterator<String> it_prttp = prttp.iterator();
-
-		while (it_prttp.hasNext()) {
-			String identifier = it_prttp.next();
-			String access = prttpAccess.get(identifier);
-			String storage = prttpStorage.get(identifier);
-
-			vxlFragment.append(VxlManager.localPrototip(identifier, access, storage));
-		}
-	}
-
-	private void storeInternVocabularyFunctionCall(Map<String, Integer> functionCall) {
-
+	/**
+	 * Insere o vocaulario de chamadas a funções no fragmento de vxl
+	 * 
+	 * @param functionCall
+	 * @param indentationLevel
+	 */
+	public void storeInternVocabularyFunctionCall(Map<String, Integer> functionCall, int indentationLevel) {
 		Set<String> funcCall = functionCall.keySet();
 		Iterator<String> it_funcCall = funcCall.iterator();
 		while (it_funcCall.hasNext()) {
 			String identifier = it_funcCall.next();
-			vxlFragment.append(VxlManager.functionCall(identifier, functionCall.get(identifier)));
+			vxlFragment.append(VxlManager.functionCall(identifier, functionCall.get(identifier), indentationLevel));
 		}
 	}
 
-	private void storeInternVocabularyLiteral(Map<String, Integer> literals) {
+	/**
+	 * Insere no fragmento de vxl o vocabulário de strings literais
+	 * 
+	 * @param literals
+	 * @param indentationLevel
+	 */
+	public void storeInternVocabularyLiteral(Map<String, Integer> literals, int indentationLevel) {
 
 		Set<String> lit = literals.keySet();
 		Iterator<String> it_lit = lit.iterator();
 		while (it_lit.hasNext()) {
 			String identifier = it_lit.next();
-			vxlFragment.append(VxlManager.literal(identifier, literals.get(identifier)));
+			vxlFragment.append(VxlManager.literal(identifier, literals.get(identifier), indentationLevel));
 		}
 	}
 
+	/**
+	 * Retorn o fragmento de vxl
+	 * 
+	 * @return
+	 */
 	public StringBuffer getVxlFragment() {
 		return vxlFragment;
-	}
-
-	public FunctionVocabularyManager getFunctionVocabulary() {
-		return functionVocabulary;
 	}
 }
