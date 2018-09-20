@@ -11,33 +11,38 @@
 #define macroSoma(a,b) (a+b)
 #define macroStr(s) #s
 #define macroConcat(a, b) a ## b
-#error menssagem de erro com error
+#error "menssagem de erro com error"
+
+#error menssagem de er&ro com error
 
 using std::cout;
 using std::endl;
 
+/**ComentÃ¡rio com caracteres especiais: < e > & $ ! \ / \\ * + -
+*/
+
 void funcaoDePreProcessador()
 {
-//Inicio da função: funcaoDePreProcessador
- /*esta é a função que contem todas as instruções
+//Inicio da funï¿½ï¿½o: funcaoDePreProcessador
+ /*esta ï¿½ a funï¿½ï¿½o que contem todas as instruï¿½ï¿½es
  * de preprocessador do C
  */
 #if constanteDefine == 10
-	cout << "os valores são iguais, no #if\n" << endl;
+	cout << "os valores sï¿½o iguais, no #if\n" << endl;
 #elif constanteDefine < 10
-	cout << "o valor é menor que 10, no #elif\n" << endl;
+	cout << "o valor ï¿½ menor que 10, no #elif\n" << endl;
 #else
-	cout << "os valores são diferentes, no #else do if\n" << endl;
+	cout << "os valores sï¿½o diferentes, no #else do if\n" << endl;
 #endif
 
 #ifdef constanteDefine
 	cout << "a constanteDefine foi definida, no #ifdef\n" << endl;
 #else
-	cout << "a constanteDefine não foi definida, no #else do ifdef\n" << endl;
+	cout << "a constanteDefine nï¿½o foi definida, no #else do ifdef\n" << endl;
 #endif
 
 #ifndef constanteDefine
-	cout << "a constanteDefine não foi definida, no #ifdef\n" << endl;
+	cout << "a constanteDefine nï¿½o foi definida, no #ifdef\n" << endl;
 #else
 	cout << "a constanteDefine foi definida, no #else do #ifndef\n" << endl;
 #endif
@@ -52,7 +57,7 @@ void funcaoDePreProcessador()
 
 #pragma "Menssagem na pragma"
 
-//Fim da função: funcaoDePreProcessador
+//Fim da funï¿½ï¿½o: funcaoDePreProcessador
 }
 
 int main(void){

@@ -93,30 +93,45 @@ public class ClassProcessor {
 
 		// Cria lista de fields para auxiliar na extração
 		this.fieldList = new HashMap<String, ICPPField>();
-		for (ICPPField field : classScope.getDeclaredFields()) {
-			this.fieldList.put(field.getName(), field);
+		try {
+			for (ICPPField field : classScope.getDeclaredFields()) {
+				this.fieldList.put(field.getName(), field);
+			}
+		} catch (NullPointerException e) {
+
 		}
 
 		// Cria lista de métodos
-		ICPPMethod[] methods = classScope.getDeclaredMethods();
+		ICPPMethod[] methods;
+		try {
+			methods = classScope.getDeclaredMethods();
+		} catch (NullPointerException e) {
+			methods = new CPPMethod[0];
+		}
 
 		/*
 		 * Cria lista de funções friends. Obs.: Funções friends não são metodos.
 		 */
 		friendDeclarationList = new LinkedList<CPPASTFunctionDeclarator>();
-		for (IBinding friend : classScope.getFriends()) {
+		try {
+			for (IBinding friend : classScope.getFriends()) {
 
-			CPPFunction function = (CPPFunction) friend;
-			if (function.getDeclarations() != null && function.getDeclarations().length > 0) {
-				for (IASTDeclarator decl : function.getDeclarations()) {
-					friendDeclarationList.add((CPPASTFunctionDeclarator) decl);
+				if (friend instanceof CPPFunction) {
+					CPPFunction function = (CPPFunction) friend;
+					if (function.getDeclarations() != null && function.getDeclarations().length > 0) {
+						for (IASTDeclarator decl : function.getDeclarations()) {
+							friendDeclarationList.add((CPPASTFunctionDeclarator) decl);
+						}
+					} else {
+						if (function.getDefinition() != null)
+							friendDeclarationList.add((CPPASTFunctionDeclarator) function.getDefinition());
+					}
 				}
-			} else {
-				if (function.getDefinition() != null)
-					friendDeclarationList.add((CPPASTFunctionDeclarator) function.getDefinition());
 			}
+		} catch (NullPointerException e) {
+			methods = new CPPMethod[0];
 		}
-
+		
 		DeclarationProcessor declProcessor = new DeclarationProcessor(vocabularyManager);
 		for (IASTDeclaration declaration : members) {
 
@@ -168,7 +183,7 @@ public class ClassProcessor {
 		for (ICPPMethod method : methods) {
 			if (method instanceof CPPMethodTemplate) {
 				extractTemplateMethods((CPPMethodTemplate) method, indentationLevel + 1);
-			} else {
+			} else if (method instanceof CPPMethod) {
 				extractMethods((CPPMethod) method, indentationLevel + 1);
 			}
 		}
@@ -334,6 +349,9 @@ public class ClassProcessor {
 	private void extractTemplateMethods(CPPMethodTemplate method, int indentationLevel) {
 
 		CPPASTTemplateDeclaration templateDeclaration = (CPPASTTemplateDeclaration) method.getPrimaryDeclaration();
+		if (templateDeclaration == null)
+			return;
+
 		if (templateDeclaration.getDeclaration() instanceof IASTFunctionDefinition) {
 			MethodProcessor methodProcessor = new MethodProcessor(method, EntityType.METHOD, indentationLevel);
 			methodVxlFragment.append(methodProcessor.getVxlFragment());

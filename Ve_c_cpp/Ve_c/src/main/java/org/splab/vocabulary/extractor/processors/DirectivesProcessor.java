@@ -64,16 +64,17 @@ public class DirectivesProcessor {
 	private static void macroDefinitionExtract(IASTPreprocessorMacroDefinition macroDefinition) {
 		if (macroDefinition instanceof IASTPreprocessorFunctionStyleMacroDefinition) {
 			IASTPreprocessorFunctionStyleMacroDefinition functionStyleMacro = (IASTPreprocessorFunctionStyleMacroDefinition) macroDefinition;
-			vxlFragment.append(VxlManager.startFunctionStyleMacro(functionStyleMacro.getName().toString()));
+			vxlFragment.append(VxlManager
+					.startFunctionStyleMacro(StringProcessor.processString(functionStyleMacro.getName().toString())));
 
 			IASTFunctionStyleMacroParameter[] macroParameters = functionStyleMacro.getParameters();
 			for (IASTFunctionStyleMacroParameter parameter : macroParameters) {
-				vxlFragment.append(VxlManager.macroParameter(parameter.getParameter()));
+				vxlFragment.append(VxlManager.macroParameter(StringProcessor.processString(parameter.getParameter())));
 			}
 
 			vxlFragment.append(VxlManager.endFunctionStyleMacro());
 		} else {
-			vxlFragment.append(VxlManager.macro(macroDefinition.getName().toString()));
+			vxlFragment.append(VxlManager.macro(StringProcessor.processString(macroDefinition.getName().toString())));
 		}
 	}
 
@@ -87,9 +88,11 @@ public class DirectivesProcessor {
 
 		if (message.length >= 1) {
 			if ((message[0] == '\"') && (message[message.length - 1] == '\"'))
-				vxlFragment.append(VxlManager.errorDirective(new String(error.getMessage())));
+				vxlFragment.append(VxlManager.errorDirective("\"" + StringProcessor.processString(
+								new String(error.getMessage()).substring(1, error.getMessage().length - 1)) + "\""));
 			else
-				vxlFragment.append(VxlManager.errorDirective("\"" + new String(error.getMessage()) + "\""));
+				vxlFragment.append(VxlManager
+						.errorDirective("\"" + StringProcessor.processString(new String(error.getMessage())) + "\""));
 		}
 	}
 
@@ -99,7 +102,7 @@ public class DirectivesProcessor {
 	 * @param include
 	 */
 	private static void includeExtract(IASTPreprocessorIncludeStatement include) {
-		vxlFragment.append(VxlManager.includeDirective(include.getName().toString()));
+		vxlFragment.append(VxlManager.includeDirective(StringProcessor.processString(include.getName().toString())));
 	}
 
 	/**
@@ -112,9 +115,12 @@ public class DirectivesProcessor {
 
 		if (message.length >= 1) {
 			if ((message[0] == '\"') && (message[message.length - 1] == '\"'))
-				vxlFragment.append(VxlManager.pragmaDirective(new String(pragmaStatement.getMessage())));
+				vxlFragment.append(VxlManager.pragmaDirective("\"" + StringProcessor.processString(
+						new String(pragmaStatement.getMessage()).substring(1, pragmaStatement.getMessage().length - 1))
+						+ "\""));
 			else
-				vxlFragment.append(VxlManager.pragmaDirective("\"" + new String(pragmaStatement.getMessage()) + "\""));
+				vxlFragment.append(VxlManager.pragmaDirective(
+						"\"" + StringProcessor.processString(new String(pragmaStatement.getMessage())) + "\""));
 		}
 	}
 

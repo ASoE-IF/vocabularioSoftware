@@ -45,5 +45,5 @@
 ,,6,0,0,6,STRUCT
 ,funcaoUsandoTypedef,11,0,0,11,FUNCTION
 ,main,10,0,0,10,FUNCTION
-,GenericFile.c,16,21,570,607,FILE
+,.\files\XmlToXsd\src\GenericFile.c,16,21,570,607,FILE
 Total,,586,294,605,607

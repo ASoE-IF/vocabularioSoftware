@@ -89,6 +89,11 @@ public class FunctionProcessor {
 		ExpressionProcessor.setVocabularyManager(vocabularyManager);
 		this.body = (CPPASTCompoundStatement) functionDefinition.getBody();
 
+		if (this.body == null) {
+			vxlFragment = new StringBuffer(VxlManager.funtionPrototype(name, access, storage, indentationLevel));
+			return;
+		}
+
 		// Cria uma lista con todas as declarações internas a presente entidade
 		allDeclarationList = DeclarationList.getTypes(this.body.getStatements());
 

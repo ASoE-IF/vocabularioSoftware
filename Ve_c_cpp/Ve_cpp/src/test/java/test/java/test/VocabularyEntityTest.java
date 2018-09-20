@@ -49,10 +49,10 @@ public class VocabularyEntityTest extends TestCase {
 	
 	public void testFile() {
 
-		assertTrue(this.entityProps.containsKey("Diretivas.cpp"));
-		assertFalse(this.entityProps.get("Diretivas.cpp").isEmpty());
+		assertTrue(this.entityProps.containsKey(".\\files\\XmlToXsd\\src\\Algoritmos\\Diretivas.cpp"));
+		assertFalse(this.entityProps.get(".\\files\\XmlToXsd\\src\\Algoritmos\\Diretivas.cpp").isEmpty());
 		
-		List<String> fileProps = this.entityProps.get("Diretivas.cpp");
+		List<String> fileProps = this.entityProps.get(".\\files\\XmlToXsd\\src\\Algoritmos\\Diretivas.cpp");
 		for (Iterator<String> it = fileProps.iterator(); it.hasNext();) {
 			
 			String attributeName = it.next();
@@ -62,10 +62,10 @@ public class VocabularyEntityTest extends TestCase {
 				assertTrue(attributeValue.equals("37"));
 		}
 		
-		assertTrue(this.entityProps.containsKey("UsandoEstruturasDeControle.cpp"));
-		assertFalse(this.entityProps.get("UsandoEstruturasDeControle.cpp").isEmpty());
+		assertTrue(this.entityProps.containsKey(".\\files\\XmlToXsd\\src\\Algoritmos\\UsandoEstruturasDeControle.cpp"));
+		assertFalse(this.entityProps.get(".\\files\\XmlToXsd\\src\\Algoritmos\\UsandoEstruturasDeControle.cpp").isEmpty());
 		
-		fileProps = this.entityProps.get("UsandoEstruturasDeControle.cpp");
+		fileProps = this.entityProps.get(".\\files\\XmlToXsd\\src\\Algoritmos\\UsandoEstruturasDeControle.cpp");
 		for (Iterator<String> it = fileProps.iterator(); it.hasNext();) {
 			
 			String attributeName = it.next();
@@ -75,10 +75,10 @@ public class VocabularyEntityTest extends TestCase {
 				assertTrue(attributeValue.equals("173"));
 		}
 		
-		assertTrue(this.entityProps.containsKey("UsandoFuncoes.cpp"));
-		assertFalse(this.entityProps.get("UsandoFuncoes.cpp").isEmpty());
+		assertTrue(this.entityProps.containsKey(".\\files\\XmlToXsd\\src\\Algoritmos\\UsandoFuncoes.cpp"));
+		assertFalse(this.entityProps.get(".\\files\\XmlToXsd\\src\\Algoritmos\\UsandoFuncoes.cpp").isEmpty());
 		
-		fileProps = this.entityProps.get("UsandoFuncoes.cpp");
+		fileProps = this.entityProps.get(".\\files\\XmlToXsd\\src\\Algoritmos\\UsandoFuncoes.cpp");
 		for (Iterator<String> it = fileProps.iterator(); it.hasNext();) {
 			
 			String attributeName = it.next();
@@ -88,10 +88,10 @@ public class VocabularyEntityTest extends TestCase {
 				assertTrue(attributeValue.equals("33"));
 		}
 		
-		assertTrue(this.entityProps.containsKey("UsandoMatrizesEPonteiros.cpp"));
-		assertFalse(this.entityProps.get("UsandoMatrizesEPonteiros.cpp").isEmpty());
+		assertTrue(this.entityProps.containsKey(".\\files\\XmlToXsd\\src\\Algoritmos\\UsandoMatrizesEPonteiros.cpp"));
+		assertFalse(this.entityProps.get(".\\files\\XmlToXsd\\src\\Algoritmos\\UsandoMatrizesEPonteiros.cpp").isEmpty());
 		
-		fileProps = this.entityProps.get("UsandoMatrizesEPonteiros.cpp");
+		fileProps = this.entityProps.get(".\\files\\XmlToXsd\\src\\Algoritmos\\UsandoMatrizesEPonteiros.cpp");
 		for (Iterator<String> it = fileProps.iterator(); it.hasNext();) {
 			
 			String attributeName = it.next();
@@ -101,10 +101,10 @@ public class VocabularyEntityTest extends TestCase {
 				assertTrue(attributeValue.equals("77"));
 		}
 		
-		assertTrue(this.entityProps.containsKey("UsandoVariaveisGlobaisELocais.cpp"));
-		assertFalse(this.entityProps.get("UsandoVariaveisGlobaisELocais.cpp").isEmpty());
+		assertTrue(this.entityProps.containsKey(".\\files\\XmlToXsd\\src\\Algoritmos\\UsandoVariaveisGlobaisELocais.cpp"));
+		assertFalse(this.entityProps.get(".\\files\\XmlToXsd\\src\\Algoritmos\\UsandoVariaveisGlobaisELocais.cpp").isEmpty());
 		
-		fileProps = this.entityProps.get("UsandoVariaveisGlobaisELocais.cpp");
+		fileProps = this.entityProps.get(".\\files\\XmlToXsd\\src\\Algoritmos\\UsandoVariaveisGlobaisELocais.cpp");
 		for (Iterator<String> it = fileProps.iterator(); it.hasNext();) {
 			
 			String attributeName = it.next();
@@ -114,10 +114,10 @@ public class VocabularyEntityTest extends TestCase {
 				assertTrue(attributeValue.equals("114"));
 		}
 		
-		assertTrue(this.entityProps.containsKey("CLASSES1.CPP"));
-		assertFalse(this.entityProps.get("CLASSES1.CPP").isEmpty());
+		assertTrue(this.entityProps.containsKey(".\\files\\XmlToXsd\\src\\Classes\\CLASSES1.CPP"));
+		assertFalse(this.entityProps.get(".\\files\\XmlToXsd\\src\\Classes\\CLASSES1.CPP").isEmpty());
 		
-		fileProps = this.entityProps.get("CLASSES1.CPP");
+		fileProps = this.entityProps.get(".\\files\\XmlToXsd\\src\\Classes\\CLASSES1.CPP");
 		for (Iterator<String> it = fileProps.iterator(); it.hasNext();) {
 			
 			String attributeName = it.next();
@@ -127,10 +127,10 @@ public class VocabularyEntityTest extends TestCase {
 				assertTrue(attributeValue.equals("136"));
 		}
 		
-		assertTrue(this.entityProps.containsKey("EnumsStructsEUnions.cpp"));
-		assertFalse(this.entityProps.get("EnumsStructsEUnions.cpp").isEmpty());
+		assertTrue(this.entityProps.containsKey(".\\files\\XmlToXsd\\src\\Classes\\EnumsStructsEUnions.cpp"));
+		assertFalse(this.entityProps.get(".\\files\\XmlToXsd\\src\\Classes\\EnumsStructsEUnions.cpp").isEmpty());
 		
-		fileProps = this.entityProps.get("EnumsStructsEUnions.cpp");
+		fileProps = this.entityProps.get(".\\files\\XmlToXsd\\src\\Classes\\EnumsStructsEUnions.cpp");
 		for (Iterator<String> it = fileProps.iterator(); it.hasNext();) {
 			
 			String attributeName = it.next();
@@ -140,10 +140,10 @@ public class VocabularyEntityTest extends TestCase {
 				assertTrue(attributeValue.equals("149"));
 		}
 		
-		assertTrue(this.entityProps.containsKey("TEMPLATE.CPP"));
-		assertFalse(this.entityProps.get("TEMPLATE.CPP").isEmpty());
+		assertTrue(this.entityProps.containsKey(".\\files\\XmlToXsd\\src\\Classes\\TEMPLATE.CPP"));
+		assertFalse(this.entityProps.get(".\\files\\XmlToXsd\\src\\Classes\\TEMPLATE.CPP").isEmpty());
 		
-		fileProps = this.entityProps.get("TEMPLATE.CPP");
+		fileProps = this.entityProps.get(".\\files\\XmlToXsd\\src\\Classes\\TEMPLATE.CPP");
 		for (Iterator<String> it = fileProps.iterator(); it.hasNext();) {
 			
 			String attributeName = it.next();
@@ -153,10 +153,10 @@ public class VocabularyEntityTest extends TestCase {
 				assertTrue(attributeValue.equals("12"));
 		}
 		
-		assertTrue(this.entityProps.containsKey("TratamentoDeExcecoes.cpp"));
-		assertFalse(this.entityProps.get("TratamentoDeExcecoes.cpp").isEmpty());
+		assertTrue(this.entityProps.containsKey(".\\files\\XmlToXsd\\src\\Classes\\TratamentoDeExcecoes.cpp"));
+		assertFalse(this.entityProps.get(".\\files\\XmlToXsd\\src\\Classes\\TratamentoDeExcecoes.cpp").isEmpty());
 		
-		fileProps = this.entityProps.get("TratamentoDeExcecoes.cpp");
+		fileProps = this.entityProps.get(".\\files\\XmlToXsd\\src\\Classes\\TratamentoDeExcecoes.cpp");
 		for (Iterator<String> it = fileProps.iterator(); it.hasNext();) {
 			
 			String attributeName = it.next();
@@ -166,10 +166,10 @@ public class VocabularyEntityTest extends TestCase {
 				assertTrue(attributeValue.equals("21"));
 		}
 		
-		assertTrue(this.entityProps.containsKey("UsandoClassesEVariaveis.cpp"));
-		assertFalse(this.entityProps.get("UsandoClassesEVariaveis.cpp").isEmpty());
+		assertTrue(this.entityProps.containsKey(".\\files\\XmlToXsd\\src\\Classes\\UsandoClassesEVariaveis.cpp"));
+		assertFalse(this.entityProps.get(".\\files\\XmlToXsd\\src\\Classes\\UsandoClassesEVariaveis.cpp").isEmpty());
 		
-		fileProps = this.entityProps.get("UsandoClassesEVariaveis.cpp");
+		fileProps = this.entityProps.get(".\\files\\XmlToXsd\\src\\Classes\\UsandoClassesEVariaveis.cpp");
 		for (Iterator<String> it = fileProps.iterator(); it.hasNext();) {
 			
 			String attributeName = it.next();

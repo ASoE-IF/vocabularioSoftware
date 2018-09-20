@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <cpp-project id="default" name="xmltoxsd" revision="default">
-	<cpp-file name="Diretivas.cpp" sloc="37">
+	<cpp-file name=".\files\XmlToXsd\src\Algoritmos\Diretivas.cpp" sloc="37">
 		<comm cntt="Aplicativo completo com todas as entidades e estruturas de um Aplicativo em C. Autor: Israel Gomes de Lima Data: 20 09 2017"/>
 		<comm cntt="Includes e Defines"/>
 		<include name="iostream"/>
@@ -32,7 +32,7 @@
 		<func name="main" access="" storage="auto" sloc="2">
 		</func>
 	</cpp-file>
-	<cpp-file name="UsandoEstruturasDeControle.cpp" sloc="173">
+	<cpp-file name=".\files\XmlToXsd\src\Algoritmos\UsandoEstruturasDeControle.cpp" sloc="173">
 		<comm cntt="Aplicativo completo com todas as entidades e estruturas de um Aplicativo em C. Autor: Israel Gomes de Lima Data: 20 09 2017"/>
 		<comm cntt="fun��es para uso na fun��o de controle"/>
 		<include name="iostream"/>
@@ -80,7 +80,7 @@
 		<func name="main" access="" storage="auto" sloc="2">
 		</func>
 	</cpp-file>
-	<cpp-file name="UsandoFuncoes.cpp" sloc="33">
+	<cpp-file name=".\files\XmlToXsd\src\Algoritmos\UsandoFuncoes.cpp" sloc="33">
 		<comm cntt="Aplicativo completo com todas as entidades e estruturas de um Aplicativo em C. Autor: Israel Gomes de Lima Data: 20 09 2017"/>
 		<comm cntt="Prototipos de fun��es"/>
 		<comm cntt="Espa�o entre fun��es"/>
@@ -117,7 +117,7 @@
 		<func name="main" access="" storage="auto" sloc="2">
 		</func>
 	</cpp-file>
-	<cpp-file name="UsandoMatrizesEPonteiros.cpp" sloc="77">
+	<cpp-file name=".\files\XmlToXsd\src\Algoritmos\UsandoMatrizesEPonteiros.cpp" sloc="77">
 		<comm cntt="Aplicativo completo com todas as entidades e estruturas de um Aplicativo em C. Autor: Israel Gomes de Lima Data: 20 09 2017"/>
 		<comm cntt="Fun��es de matriz"/>
 		<include name="iostream"/>
@@ -180,7 +180,7 @@
 			<lvar name="x" access="" storage="auto" count="3"/>
 		</func>
 	</cpp-file>
-	<cpp-file name="UsandoVariaveisGlobaisELocais.cpp" sloc="114">
+	<cpp-file name=".\files\XmlToXsd\src\Algoritmos\UsandoVariaveisGlobaisELocais.cpp" sloc="114">
 		<comm cntt="Aplicativo completo com todas as entidades e estruturas de um Aplicativo em C. Autor: Israel Gomes de Lima Data: 20 09 2017"/>
 		<comm cntt="Variaveis globais"/>
 		<gvar name="ptrGlobal" access="" storage="auto" count="1"/>
@@ -254,7 +254,7 @@
 			<call name="calloc" count="1"/>
 		</func>
 	</cpp-file>
-	<cpp-file name="CLASSES1.CPP" sloc="136">
+	<cpp-file name=".\files\XmlToXsd\src\Classes\CLASSES1.CPP" sloc="136">
 		<comm cntt="Aplicativo completo com todas as entidades e estruturas de um Aplicativo em C. Autor: Israel Gomes de Lima Data: 20 09 2017"/>
 		<comm cntt="Usando Classes"/>
 		<comm cntt="Classe gen�rica 2"/>
@@ -350,7 +350,7 @@
 		</class>
 		<class name="GenericClass6" abs="n" inn="n" sloc="15">
 			<field name="atributo1" access="" storage="auto" visib="priv" count="1"/>
-			<gvar name="var" access="" storage="auto" count="1"/>
+			<field name="var" access="" storage="auto" visib="pub" count="1"/>
 			<enum name="ena" sloc="1">
 				<const name="CONST1"/>
 			</enum>
@@ -399,7 +399,7 @@
 			<prttp name="method2" access="" storage="auto"/>
 		</func>
 	</cpp-file>
-	<cpp-file name="EnumsStructsEUnions.cpp" sloc="149">
+	<cpp-file name=".\files\XmlToXsd\src\Classes\EnumsStructsEUnions.cpp" sloc="149">
 		<comm cntt="Aplicativo completo com todas as entidades e estruturas de um Aplicativo em C. Autor: Israel Gomes de Lima Data: 20 09 2017"/>
 		<comm cntt="Usando estruturas, uni�es enumera��es e tipos definidos pelo usuario"/>
 		<comm cntt="comentario de bloco antes da estrutura"/>
@@ -633,7 +633,7 @@
 		<func name="main" access="" storage="auto" sloc="2">
 		</func>
 	</cpp-file>
-	<cpp-file name="TEMPLATE.CPP" sloc="12">
+	<cpp-file name=".\files\XmlToXsd\src\Classes\TEMPLATE.CPP" sloc="12">
 		<comm cntt="Aplicativo completo com todas as entidades e estruturas de um Aplicativo em C. Autor: Israel Gomes de Lima Data: 20 09 2017"/>
 		<include name="iostream"/>
 		<class name="classeTemplate" abs="n" inn="n" sloc="5">
@@ -648,7 +648,7 @@
 		<func name="main" access="" storage="auto" sloc="2">
 		</func>
 	</cpp-file>
-	<cpp-file name="TratamentoDeExcecoes.cpp" sloc="21">
+	<cpp-file name=".\files\XmlToXsd\src\Classes\TratamentoDeExcecoes.cpp" sloc="21">
 		<comm cntt="Aplicativo completo com todas as entidades e estruturas de um Aplicativo em C. Autor: Israel Gomes de Lima Data: 20 09 2017"/>
 		<include name="iostream"/>
 		<include name="exception"/>
@@ -666,7 +666,7 @@
 			<lit cntt="&amp;quot;Erro Gereado&amp;quot;" count="1"/>
 		</func>
 	</cpp-file>
-	<cpp-file name="UsandoClassesEVariaveis.cpp" sloc="28">
+	<cpp-file name=".\files\XmlToXsd\src\Classes\UsandoClassesEVariaveis.cpp" sloc="28">
 		<include name="stdio.h"/>
 		<gvar name="variavel_de_fora_do_arquivo" access="" storage="" count="2"/>
 		<gvar name="variavel_do_arc2" access="const" storage="static" count="2"/>

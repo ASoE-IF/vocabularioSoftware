@@ -1,31 +1,48 @@
 package org.splab.vocabulary.extractor.processors;
 
 import org.eclipse.cdt.core.dom.ast.IASTDeclSpecifier;
+import org.eclipse.cdt.core.dom.ast.IASTDeclarator;
 import org.eclipse.cdt.core.dom.ast.cpp.ICPPField;
 import org.splab.vocabulary.extractor.processors.vocabulay.manager.ClassVocabularyManager;
 
 /**
- * FieldProcessor é responsável por receber um atributo de classe
- * e extrair suas informações.
+ * FieldProcessor é responsável por receber um atributo de classe e extrair suas
+ * informações.
  * 
  * @author Israel gomes de Lima
  *
  */
 public class FieldProcessor {
 	/**
-	 * Construtor responsável por designar os responsáveis
-	 * por extrair as informações dos atributos.
+	 * Construtor responsável por designar os responsáveis por extrair as
+	 * informações dos atributos.
 	 * 
 	 * @param declSpecifier
 	 * @param field
-	 * @param indentationLevel
 	 * @param vocabularymanager
 	 */
-	public FieldProcessor(IASTDeclSpecifier declSpecifier, ICPPField field, int indentationLevel, ClassVocabularyManager vocabularymanager) {
+	public FieldProcessor(IASTDeclSpecifier declSpecifier, ICPPField field, ClassVocabularyManager vocabularymanager) {
 		String name = field.getName();
 		String visibility = visibility(field.getVisibility());
 		String storage = storageClass(field);
 		String access = access(declSpecifier);
+
+		vocabularymanager.insertField(name, access, storage, visibility);
+	}
+
+	/**
+	 * Construtor responsável por designar os responsáveis por extrair as
+	 * informações dos atributos.
+	 * 
+	 * @param declarator
+	 * @param field
+	 * @param vocabularymanager
+	 */
+	public FieldProcessor(IASTDeclarator declarator, ICPPField field, ClassVocabularyManager vocabularymanager) {
+		String name = field.getName();
+		String visibility = visibility(field.getVisibility());
+		String storage = storageClass(field);
+		String access = "";
 		
 		vocabularymanager.insertField(name, access, storage, visibility);
 	}
@@ -81,7 +98,7 @@ public class FieldProcessor {
 
 		return storage;
 	}
-	
+
 	/**
 	 * Extrai o tipo de acesso ao atributo
 	 * 

@@ -52,6 +52,8 @@ public class CompilationUnitParser {
 			core.printStackTrace();
 		} catch (ClassCastException cast) {
 			ErrorLogManager.appendErro(file.getAbsolutePath(), cast.getMessage());
+		} catch (NullPointerException nullPointer) {
+			ErrorLogManager.appendErro(file.getAbsolutePath(), nullPointer.getMessage());
 		}
 
 		source = new StringBuffer(translationUnit.getRawSignature().toString());
@@ -61,7 +63,7 @@ public class CompilationUnitParser {
 
 		setCompilationUnitComments(translationUnit, CompilationUnitProcessor.getSourceCode());
 
-		return (new CompilationUnitProcessor(translationUnit, file.getName()).getVxlFragment());
+		return (new CompilationUnitProcessor(translationUnit, file.getPath()).getVxlFragment());
 	}
 
 	private static void setCompilationUnitComments(IASTTranslationUnit translationUnit, String sourceCode) {

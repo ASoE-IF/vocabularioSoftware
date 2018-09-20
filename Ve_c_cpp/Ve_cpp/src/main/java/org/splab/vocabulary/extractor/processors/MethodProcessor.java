@@ -67,6 +67,9 @@ public class MethodProcessor extends FunctionProcessor {
 		this.visibilidade = visibility(method.getVisibility());
 		String isVirtual = method.isVirtual() ? "y" : "n";
 
+		if (method.isDeleted())
+			modificador = "delete";
+
 		// Converte o tipo de ASTTranslationUnit para ASTNode
 		ASTNode typeAST = (ASTNode) functionDefinition;
 
@@ -77,7 +80,11 @@ public class MethodProcessor extends FunctionProcessor {
 		ExpressionProcessor.setVocabularyManager(vocabularyManager);
 		this.body = (CPPASTCompoundStatement) functionDefinition.getBody();
 
-		// Cria uma lista con todas as declarações do código
+		if (this.body == null) {
+			vxlFragment = new StringBuffer(VxlManager.methodPrototype(name, access, storage, modificador, visibilidade,
+					"n", indentationLevel));
+			return;
+		}
 		this.allDeclarationList = DeclarationList.getTypes(this.body.getStatements());
 
 		LOCCountPerEntity locCounter = new LOCCountPerEntity(typeAST, CompilationUnitProcessor.commentList,
@@ -144,6 +151,8 @@ public class MethodProcessor extends FunctionProcessor {
 		this.modificador = modifies((ICPPASTFunctionDeclarator) functionDefinition.getDeclarator());
 		this.visibilidade = visibility(method.getVisibility());
 		String isVirtual = method.isVirtual() ? "y" : "n";
+		if (method.isDeleted())
+			modificador = "delete";
 
 		// Converte o tipo de ASTTranslationUnit para ASTNode
 		ASTNode typeAST = (ASTNode) functionDefinition;
@@ -154,6 +163,12 @@ public class MethodProcessor extends FunctionProcessor {
 		// Passa o functionVocabulary para acesso na expression processor
 		ExpressionProcessor.setVocabularyManager(vocabularyManager);
 		this.body = (CPPASTCompoundStatement) functionDefinition.getBody();
+
+		if (this.body == null) {
+			vxlFragment = new StringBuffer(VxlManager.methodPrototype(name, access, storage, modificador, visibilidade,
+					"n", indentationLevel));
+			return;
+		}
 
 		// Cria uma lista con todas as declarações do código
 		this.allDeclarationList = DeclarationList.getTypes(this.body.getStatements());
@@ -187,7 +202,7 @@ public class MethodProcessor extends FunctionProcessor {
 			// Processa o vocabulário das Strings Literais
 			storeInternVocabularyLiteral(vocabularyManager.getLiterals(), indentationLevel + 1);
 		}
-		
+
 		vxlFragment.append(bodyProcessor.getVxlFragment());
 		if ((LOCManager.locParameters.contains(LOCParameters.LOC)) && (entityType == EntityType.METHOD)) {
 			LOCManager.appendEntityLOCData(this.name, locKeeper, EntityType.METHOD);
@@ -214,9 +229,18 @@ public class MethodProcessor extends FunctionProcessor {
 		// Captura o nome, tipo de classe de armazenamento e o acesso do método
 		this.name = method.getName();
 		this.storage = storageClass(method);
-		this.access = access(simpleDeclaration.getDeclSpecifier());
-		this.modificador = modifies((CPPASTFunctionDeclarator) declarator);
+		this.access = "";
+		this.modificador = "";
+		if (simpleDeclaration.getDeclSpecifier() instanceof CPPASTFunctionDeclarator) {
+			this.access = access(simpleDeclaration.getDeclSpecifier());
+		}
+		if (declarator instanceof CPPASTFunctionDeclarator) {
+			this.modificador = modifies((CPPASTFunctionDeclarator) declarator);
+		}
+		
 		this.visibilidade = visibility(method.getVisibility());
+		if (method.isDeleted())
+			modificador = "delete";
 
 		if (method.isPureVirtual())
 			vxlFragment = new StringBuffer(
@@ -249,6 +273,8 @@ public class MethodProcessor extends FunctionProcessor {
 		this.access = access(simpleDeclaration.getDeclSpecifier());
 		this.modificador = modifies((CPPASTFunctionDeclarator) declarator);
 		this.visibilidade = visibility(method.getVisibility());
+		if (method.isDeleted())
+			modificador = "delete";
 
 		if (method.isPureVirtual())
 			vxlFragment = new StringBuffer(

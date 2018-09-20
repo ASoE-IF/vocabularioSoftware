@@ -19,6 +19,7 @@ import org.eclipse.cdt.internal.core.dom.parser.cpp.CPPASTEnumerationSpecifier;
 import org.eclipse.cdt.internal.core.dom.parser.cpp.CPPASTFunctionDefinition;
 import org.eclipse.cdt.internal.core.dom.parser.cpp.CPPASTSimpleDeclaration;
 import org.eclipse.cdt.internal.core.dom.parser.cpp.CPPASTTemplateDeclaration;
+import org.eclipse.cdt.internal.core.dom.parser.cpp.CPPASTTemplateSpecialization;
 
 /**
  * Esta classe é responsável por retornar listas de tipos de declarações, para
@@ -140,28 +141,59 @@ public class DeclarationList {
 
 			// Extrai declarações de templates
 			if (declaration instanceof ICPPASTTemplateDeclaration) {
-				CPPASTTemplateDeclaration templateDeclaration = (CPPASTTemplateDeclaration) declaration;
+				if (declaration instanceof CPPASTTemplateDeclaration) {
+					CPPASTTemplateDeclaration templateDeclaration = (CPPASTTemplateDeclaration) declaration;
 
-				if (templateDeclaration.getDeclaration() instanceof ICPPASTFunctionDefinition) {
-					// Recupera uma declaração de função
-					statementList.add((ASTNode) templateDeclaration.getDeclaration());
-				}
-
-				if (templateDeclaration.getDeclaration() instanceof IASTSimpleDeclaration) {
-					CPPASTSimpleDeclaration node = (CPPASTSimpleDeclaration) templateDeclaration.getDeclaration();
-
-					IASTDeclSpecifier declarationSpecifier = node.getDeclSpecifier();
-
-					if (declarationSpecifier instanceof CPPASTEnumerationSpecifier) {
-						// Recupera uma declaração de enum
-						CPPASTEnumerationSpecifier enumeration = (CPPASTEnumerationSpecifier) declarationSpecifier;
-						statementList.add((ASTNode) enumeration);
+					if (templateDeclaration.getDeclaration() instanceof ICPPASTFunctionDefinition) {
+						// Recupera uma declaração de função
+						statementList.add((ASTNode) templateDeclaration.getDeclaration());
 					}
 
-					if (declarationSpecifier instanceof CPPASTCompositeTypeSpecifier) {
-						// Recupera uma declaração de classe, struct ou union
-						CPPASTCompositeTypeSpecifier composite = (CPPASTCompositeTypeSpecifier) declarationSpecifier;
-						statementList.add((ASTNode) composite);
+					if (templateDeclaration.getDeclaration() instanceof IASTSimpleDeclaration) {
+						CPPASTSimpleDeclaration node = (CPPASTSimpleDeclaration) templateDeclaration.getDeclaration();
+
+						IASTDeclSpecifier declarationSpecifier = node.getDeclSpecifier();
+
+						if (declarationSpecifier instanceof CPPASTEnumerationSpecifier) {
+							// Recupera uma declaração de enum
+							CPPASTEnumerationSpecifier enumeration = (CPPASTEnumerationSpecifier) declarationSpecifier;
+							statementList.add((ASTNode) enumeration);
+						}
+
+						if (declarationSpecifier instanceof CPPASTCompositeTypeSpecifier) {
+							// Recupera uma declaração de classe, struct ou
+							// union
+							CPPASTCompositeTypeSpecifier composite = (CPPASTCompositeTypeSpecifier) declarationSpecifier;
+							statementList.add((ASTNode) composite);
+						}
+					}
+				}
+				
+				if(declaration instanceof CPPASTTemplateSpecialization){
+					CPPASTTemplateSpecialization templateSpecialization = (CPPASTTemplateSpecialization) declaration;
+					
+					if (templateSpecialization.getDeclaration() instanceof ICPPASTFunctionDefinition) {
+						// Recupera uma declaração de função
+						statementList.add((ASTNode) templateSpecialization.getDeclaration());
+					}
+
+					if (templateSpecialization.getDeclaration() instanceof IASTSimpleDeclaration) {
+						CPPASTSimpleDeclaration node = (CPPASTSimpleDeclaration) templateSpecialization.getDeclaration();
+
+						IASTDeclSpecifier declarationSpecifier = node.getDeclSpecifier();
+
+						if (declarationSpecifier instanceof CPPASTEnumerationSpecifier) {
+							// Recupera uma declaração de enum
+							CPPASTEnumerationSpecifier enumeration = (CPPASTEnumerationSpecifier) declarationSpecifier;
+							statementList.add((ASTNode) enumeration);
+						}
+
+						if (declarationSpecifier instanceof CPPASTCompositeTypeSpecifier) {
+							// Recupera uma declaração de classe, struct ou
+							// union
+							CPPASTCompositeTypeSpecifier composite = (CPPASTCompositeTypeSpecifier) declarationSpecifier;
+							statementList.add((ASTNode) composite);
+						}
 					}
 				}
 			}

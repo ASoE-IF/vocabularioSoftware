@@ -13,6 +13,7 @@ import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTDesignator;
 import org.eclipse.cdt.internal.core.dom.parser.cpp.CPPASTArrayDesignator;
 import org.eclipse.cdt.internal.core.dom.parser.cpp.CPPASTArrayRangeDesignator;
 import org.eclipse.cdt.internal.core.dom.parser.cpp.CPPASTCompositeTypeSpecifier;
+import org.eclipse.cdt.internal.core.dom.parser.cpp.CPPASTConstructorInitializer;
 import org.eclipse.cdt.internal.core.dom.parser.cpp.CPPASTDeclarator;
 import org.eclipse.cdt.internal.core.dom.parser.cpp.CPPASTDesignatedInitializer;
 import org.eclipse.cdt.internal.core.dom.parser.cpp.CPPASTElaboratedTypeSpecifier;
@@ -145,7 +146,7 @@ public class DeclarationProcessor {
 			EnumProcessor enumProcessor = new EnumProcessor(enumeration, indentationLevel);
 
 			IASTDeclarator[] declarators = simpleDeclaration.getDeclarators();
-			extractDeclarator(declarators);
+			extractDeclarator(declarators, classDeclProcess);
 
 			enumVXL.append(enumProcessor.getVxlFragment());
 
@@ -159,7 +160,7 @@ public class DeclarationProcessor {
 			extractCompositeType(compositeType, true, indentationLevel);
 
 			IASTDeclarator[] declarators = simpleDeclaration.getDeclarators();
-			extractDeclarator(declarators);
+			extractDeclarator(declarators, classDeclProcess);
 
 			return;
 		}
@@ -201,10 +202,52 @@ public class DeclarationProcessor {
 					String access = "";
 					String name = declarator.getName().toString();
 
-					vocabularyManager.insertVariable(name, access, storage);
+					if (vocabularyManager instanceof FunctionVocabularyManager) {
+						FunctionVocabularyManager vocMan = (FunctionVocabularyManager) vocabularyManager;
+						vocMan.insertLocalVariable(name, access, storage);
+					} else if (vocabularyManager instanceof FileVocabularyManager) {
+						FileVocabularyManager vocMan = (FileVocabularyManager) vocabularyManager;
+						vocMan.insertGlobalVariable(name, access, storage);
+					}
 
-					if (declarator.getInitializer() != null)
-						extractEqualsInitializer((CPPASTEqualsInitializer) declarator.getInitializer());
+					if (declarator.getInitializer() != null) {
+						if (declarator.getInitializer() instanceof CPPASTEqualsInitializer)
+							extractEqualsInitializer((CPPASTEqualsInitializer) declarator.getInitializer());
+						else if (declarator.getInitializer() instanceof CPPASTConstructorInitializer)
+							extractConstructorInitializer((CPPASTConstructorInitializer) declarator.getInitializer());
+					}
+				}
+			}
+		}
+	}
+
+	/**
+	 * * Extra as declarações de variáveis padrões no momento da criação da
+	 * class, struct, union e enum dentro de uma class
+	 * 
+	 * @param declarators
+	 * @param classDeclProcess
+	 */
+	private void extractDeclarator(IASTDeclarator[] declarators, ClassProcessor classDeclProcess) {
+		if (declarators.length > 0) {
+			for (IASTDeclarator declarator : declarators) {
+				if (declarator != null) {
+					String storage = storageClass(declarator.getName());
+					String access = "";
+					String name = declarator.getName().toString();
+
+					if (classDeclProcess.getFieldList().containsKey(name)) {
+						new FieldProcessor(declarator, classDeclProcess.getFieldList().get(name),
+								classDeclProcess.getVocabularyManager());
+					} else {
+						vocabularyManager.insertVariable(name, access, storage);
+					}
+					if (declarator.getInitializer() != null) {
+						if (declarator.getInitializer() instanceof CPPASTEqualsInitializer)
+							extractEqualsInitializer((CPPASTEqualsInitializer) declarator.getInitializer());
+						else if (declarator.getInitializer() instanceof CPPASTConstructorInitializer)
+							extractConstructorInitializer((CPPASTConstructorInitializer) declarator.getInitializer());
+					}
 				}
 			}
 		}
@@ -307,9 +350,14 @@ public class DeclarationProcessor {
 
 				for (IASTParameterDeclaration parameter : parameters) {
 					if (!parameter.getDeclarator().getName().toString().equals("")) {
-						if (parameter.getDeclarator().getInitializer() != null)
-							extractEqualsInitializer(
-									(CPPASTEqualsInitializer) parameter.getDeclarator().getInitializer());
+						if (parameter.getDeclarator().getInitializer() != null) {
+							if (parameter.getDeclarator().getInitializer() instanceof CPPASTEqualsInitializer)
+								extractEqualsInitializer(
+										(CPPASTEqualsInitializer) parameter.getDeclarator().getInitializer());
+							else if (parameter.getDeclarator().getInitializer() instanceof CPPASTConstructorInitializer)
+								extractConstructorInitializer(
+										(CPPASTConstructorInitializer) parameter.getDeclarator().getInitializer());
+						}
 					}
 				}
 				prttpVXL.append(VxlManager.funtionPrototype(name, access, storage, indentationLevel));
@@ -328,8 +376,14 @@ public class DeclarationProcessor {
 			}
 
 			// extrai as inicializações na hora da declaração
-			if (simpleDeclarations[0].getInitializer() != null)
-				extractEqualsInitializer((CPPASTEqualsInitializer) declarator.getInitializer());
+			for (IASTDeclarator decl : simpleDeclarations) {
+				if (decl.getInitializer() != null) {
+					if (decl.getInitializer() instanceof CPPASTEqualsInitializer)
+						extractEqualsInitializer((CPPASTEqualsInitializer) decl.getInitializer());
+					else if (decl.getInitializer() instanceof CPPASTConstructorInitializer)
+						extractConstructorInitializer((CPPASTConstructorInitializer) decl.getInitializer());
+				}
+			}
 		}
 	}
 
@@ -385,9 +439,14 @@ public class DeclarationProcessor {
 
 				for (IASTParameterDeclaration parameter : parameters) {
 					if (!parameter.getDeclarator().getName().toString().equals("")) {
-						if (parameter.getDeclarator().getInitializer() != null)
-							extractEqualsInitializer(
-									(CPPASTEqualsInitializer) parameter.getDeclarator().getInitializer());
+						if (parameter.getDeclarator().getInitializer() != null) {
+							if (parameter.getDeclarator().getInitializer() instanceof CPPASTEqualsInitializer)
+								extractEqualsInitializer(
+										(CPPASTEqualsInitializer) parameter.getDeclarator().getInitializer());
+							else if (parameter.getDeclarator().getInitializer() instanceof CPPASTConstructorInitializer)
+								extractConstructorInitializer(
+										(CPPASTConstructorInitializer) parameter.getDeclarator().getInitializer());
+						}
 					}
 				}
 
@@ -399,13 +458,19 @@ public class DeclarationProcessor {
 			else {
 				if (classDeclProcess.getFieldList().containsKey(name)) {
 					new FieldProcessor(declaration.getDeclSpecifier(), classDeclProcess.getFieldList().get(name),
-							indentationLevel + 1, classDeclProcess.getVocabularyManager());
+							classDeclProcess.getVocabularyManager());
 				}
 			}
 
 			// extrai as inicializações na hora da declaração
-			if (simpleDeclarations[0].getInitializer() != null)
-				extractEqualsInitializer((CPPASTEqualsInitializer) declarator.getInitializer());
+			for (IASTDeclarator decl : simpleDeclarations) {
+				if (decl.getInitializer() != null) {
+					if (decl.getInitializer() instanceof CPPASTEqualsInitializer)
+						extractEqualsInitializer((CPPASTEqualsInitializer) decl.getInitializer());
+					else if (decl.getInitializer() instanceof CPPASTConstructorInitializer)
+						extractConstructorInitializer((CPPASTConstructorInitializer) decl.getInitializer());
+				}
+			}
 		}
 	}
 
@@ -440,6 +505,46 @@ public class DeclarationProcessor {
 							} else {
 								if (clause instanceof IASTInitializerList)
 									extractInitializerList((IASTInitializerList) clause);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	/**
+	 * Processa as inicializações de construtores na hora da declaração
+	 * 
+	 * @param initializer
+	 */
+	public void extractConstructorInitializer(CPPASTConstructorInitializer initializer) {
+
+		if (initializer == null)
+			return;
+
+		IASTInitializerClause[] initializerClausules = initializer.getArguments();
+		// se for uma expressão
+		for (IASTInitializerClause iniClause : initializerClausules) {
+			if (iniClause instanceof IASTExpression) {
+				ExpressionProcessor.extractExpression((IASTExpression) iniClause);
+			} else {
+				// se for uma lista de inicializações
+				if (iniClause instanceof IASTInitializerList) {
+					IASTInitializerList list = (IASTInitializerList) iniClause;
+
+					for (IASTInitializerClause clause : list.getClauses()) {
+						if (clause instanceof IASTExpression)
+							ExpressionProcessor.extractExpression((IASTExpression) clause);
+						else {
+							if (clause instanceof IASTInitializerClause) {
+								if (clause instanceof CPPASTDesignatedInitializer) {
+									extractDesignatedInitializer((CPPASTDesignatedInitializer) clause);
+
+								} else {
+									if (clause instanceof IASTInitializerList)
+										extractInitializerList((IASTInitializerList) clause);
+								}
 							}
 						}
 					}

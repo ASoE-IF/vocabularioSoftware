@@ -49,10 +49,10 @@ public class VocabularyEntityTest extends TestCase {
 	
 	public void testFile() {
 
-		assertTrue(this.entityProps.containsKey("GenericFile.c"));
-		assertFalse(this.entityProps.get("GenericFile.c").isEmpty());
+		assertTrue(this.entityProps.containsKey(".\\files\\XmlToXsd\\src\\GenericFile.c"));
+		assertFalse(this.entityProps.get(".\\files\\XmlToXsd\\src\\GenericFile.c").isEmpty());
 		
-		List<String> fileProps = this.entityProps.get("GenericFile.c");
+		List<String> fileProps = this.entityProps.get(".\\files\\XmlToXsd\\src\\GenericFile.c");
 		for (Iterator<String> it = fileProps.iterator(); it.hasNext();) {
 			
 			String attributeName = it.next();

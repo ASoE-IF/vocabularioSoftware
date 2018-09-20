@@ -12,6 +12,7 @@
 #define macroStr(s) #s
 #define macroConcat(a, b) a ## b
 #error menssagem de erro com error
+#error "menssagem de er&ro <com er>ror"
 
 //Variaveis globais
 signed char varCharComSignal;
@@ -33,6 +34,8 @@ int protoripo3(int x, int y);
 prototipo4(int);
 prototipo5(int x);
 
+/**Comentário com caracteres especiais: < e > & $ ! \ / \\ * + -
+*/
 
 void funcaoDePreProcessador()
 {

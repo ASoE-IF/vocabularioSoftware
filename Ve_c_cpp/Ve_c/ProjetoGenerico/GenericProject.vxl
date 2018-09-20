@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <c-project id="default" name="GenericProject" revision="2.0.1">
-	<c-file name="GenericFile.c" sloc="607">
+	<c-file name=".\ProjetoGenerico\GenericFile.c" sloc="608">
 		<comm cntt="Aplicativo completo com todas as entidades e estruturas de um Aplicativo em C. Autor: Israel Gomes de Lima Data: 20 09 2017"/>
 		<comm cntt="Includes e Defines"/>
 		<comm cntt="Variaveis globais"/>
 		<comm cntt="Prototipos de funções"/>
+		<comm cntt="Comentário com caracteres especiais: &amp;lt; e &amp;gt; &amp; $ ! \ \\ + -"/>
 		<comm cntt="Espaço entre funções"/>
 		<comm cntt="funções para uso na função de controle"/>
 		<comm cntt="Funções de matriz"/>
@@ -53,6 +54,7 @@
 			<param name="b"/>
 		</macro>
 		<error message="menssagem de erro com error"/>
+		<error message="menssagem de er&amp;ro &amp;lt;com er&amp;gt;ror"/>
 		<pragma message="Menssagem na pragma"/>
 		<gvar name="ptrGlobal" access="" storage="auto" count="1"/>
 		<gvar name="ptrParaPtrGlobal" access="" storage="auto" count="1"/>
@@ -493,7 +495,7 @@
 			<lit cntt="macroStr(palavra)" count="1"/>
 		</func>
 	</c-file>
-	<c-file name="Header.h" sloc="18">
+	<c-file name=".\ProjetoGenerico\Header.h" sloc="33">
 		<comm cntt="Arquivo de header em C. Autor: Israel Gomes de Lima Data: 20 09 2017"/>
 		<macro name="PTR1"/>
 		<macro name="PTR2"/>
@@ -509,10 +511,24 @@
 		<macro name="RBR6"/>
 		<gvar name="q2_var" access="const" storage="auto" count="1"/>
 		<gvar name="x" access="" storage="auto" count="1"/>
-		<func name="funcao_do_header" access="" storage="auto" inn="n" sloc="3">
+		<func name="funcao_do_header" access="" storage="auto" inn="n" sloc="12">
+			<lvar name="varLo" access="" storage="auto" count="1"/>
+			<strt name="estrutura1" sloc="9">
+				<comm cntt="comentario de bloco da estrutura"/>
+				<comm cntt="comentario1 de bloco da estrutura"/>
+				<comm cntt="comentario2 de bloco da estrutura"/>
+				<comm cntt="comentario3 de bloco da estrutura"/>
+				<field name="membro1"/>
+				<field name="membro2"/>
+				<field name="membroVetor"/>
+			</strt>
+		</func>
+		<func name="vuncccc" access="" storage="auto" inn="n" sloc="6">
+			<lvar name="xyyyyy" access="" storage="auto" count="2"/>
+			<lvar name="xyzzx" access="" storage="auto" count="4"/>
 		</func>
 	</c-file>
-	<c-file name="c11-align-1.c" sloc="23">
+	<c-file name=".\ProjetoGenerico\Outros Arquivos\c11-align-1.c" sloc="23">
 		<comm cntt="Test C11 alignment support. Test valid code."/>
 		<comm cntt="{ dg-do compile }"/>
 		<comm cntt="{ dg-options &amp;quot;-std=c11 -pedantic-errors&amp;quot; }"/>
@@ -540,7 +556,7 @@
 		<func name="main" access="" storage="auto" inn="n" sloc="1">
 		</func>
 	</c-file>
-	<c-file name="limits-declparen.c" sloc="13">
+	<c-file name=".\ProjetoGenerico\Outros Arquivos\limits-declparen.c" sloc="13">
 		<macro name="PTR1"/>
 		<macro name="PTR2"/>
 		<macro name="PTR3"/>
@@ -555,7 +571,7 @@
 		<macro name="RBR6"/>
 		<gvar name="q2_var" access="" storage="auto" count="1"/>
 	</c-file>
-	<c-file name="limits-exprparen.c" sloc="13">
+	<c-file name=".\ProjetoGenerico\Outros Arquivos\limits-exprparen.c" sloc="13">
 		<macro name="LBR1"/>
 		<macro name="LBR2"/>
 		<macro name="LBR3"/>
@@ -571,7 +587,7 @@
 		<gvar name="q5_var" access="" storage="auto" count="1"/>
 		<gvar name="x" access="" storage="" count="1"/>
 	</c-file>
-	<c-file name="limits-ifs.c" sloc="13">
+	<c-file name=".\ProjetoGenerico\Outros Arquivos\limits-ifs.c" sloc="13">
 		<comm cntt="PR c 2161: parser stack overflow."/>
 		<comm cntt="{ dg-do compile }"/>
 		<comm cntt="{ dg-timeout-factor 4.0 }"/>
@@ -583,7 +599,7 @@
 			<comm cntt="11,000 else if&amp;apos;s."/>
 		</func>
 	</c-file>
-	<c-file name="limits-structnest.c" sloc="30">
+	<c-file name=".\ProjetoGenerico\Outros Arquivos\limits-structnest.c" sloc="30">
 		<macro name="LIM1">
 			<param name="x"/>
 		</macro>

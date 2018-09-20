@@ -2,16 +2,22 @@ package org.splab.vocabulary.extractor.processors;
 
 import org.eclipse.cdt.core.dom.ast.IASTExpression;
 import org.eclipse.cdt.core.dom.ast.IASTInitializerClause;
+import org.eclipse.cdt.core.dom.ast.IASTInitializerList;
 import org.eclipse.cdt.core.dom.ast.IASTName;
 import org.eclipse.cdt.core.dom.ast.IVariable;
+import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTDesignator;
 import org.eclipse.cdt.internal.core.dom.parser.cpp.CPPASTAmbiguousExpression;
+import org.eclipse.cdt.internal.core.dom.parser.cpp.CPPASTArrayDesignator;
+import org.eclipse.cdt.internal.core.dom.parser.cpp.CPPASTArrayRangeDesignator;
 import org.eclipse.cdt.internal.core.dom.parser.cpp.CPPASTArraySubscriptExpression;
 import org.eclipse.cdt.internal.core.dom.parser.cpp.CPPASTBinaryExpression;
 import org.eclipse.cdt.internal.core.dom.parser.cpp.CPPASTCastExpression;
 import org.eclipse.cdt.internal.core.dom.parser.cpp.CPPASTConditionalExpression;
 import org.eclipse.cdt.internal.core.dom.parser.cpp.CPPASTConstructorInitializer;
 import org.eclipse.cdt.internal.core.dom.parser.cpp.CPPASTDeleteExpression;
+import org.eclipse.cdt.internal.core.dom.parser.cpp.CPPASTDesignatedInitializer;
 import org.eclipse.cdt.internal.core.dom.parser.cpp.CPPASTExpressionList;
+import org.eclipse.cdt.internal.core.dom.parser.cpp.CPPASTFieldDesignator;
 import org.eclipse.cdt.internal.core.dom.parser.cpp.CPPASTFieldReference;
 import org.eclipse.cdt.internal.core.dom.parser.cpp.CPPASTFunctionCallExpression;
 import org.eclipse.cdt.internal.core.dom.parser.cpp.CPPASTIdExpression;
@@ -166,12 +172,16 @@ public class ExpressionProcessor {
 			IASTInitializerClause[] arguments = functionCallExpression.getArguments();
 
 			for (IASTInitializerClause exp : arguments) {
-				if (exp != null)
+				if (exp != null) {
 					if (exp instanceof CPPASTIdExpression) {
 						extractIdExpression((CPPASTIdExpression) exp);
+					} else if (exp instanceof IASTInitializerList) {
+						extractInitializerList((IASTInitializerList) exp);
+
 					} else {
 						extractExpression((IASTExpression) exp);
 					}
+				}
 			}
 
 			if (functionCallExpression.getFunctionNameExpression() instanceof CPPASTIdExpression) {
@@ -281,6 +291,108 @@ public class ExpressionProcessor {
 		for (IASTExpression expression : expressions) {
 			extractExpression(expression);
 		}
+	}
+
+	/**
+	 * Extrai listas de inicializações, no caso de arrays por exemplo
+	 * 
+	 * @param initializerList
+	 */
+	private static void extractInitializerList(IASTInitializerList initializerList) {
+		IASTInitializerClause[] initializerClauses = initializerList.getClauses();
+
+		for (IASTInitializerClause clause : initializerClauses) {
+			if (clause instanceof IASTExpression)
+				ExpressionProcessor.extractExpression((IASTExpression) clause);
+			else {
+				if (clause instanceof CPPASTDesignatedInitializer) {
+					extractDesignatedInitializer((CPPASTDesignatedInitializer) clause);
+
+				} else {
+					extractInitializerList((IASTInitializerList) clause);
+				}
+			}
+		}
+	}
+
+	/**
+	 * Este também é mais um tipo de inicialização
+	 * 
+	 * @param designated
+	 */
+	private static void extractDesignatedInitializer(CPPASTDesignatedInitializer designated) {
+
+		if (designated == null)
+			return;
+
+		for (ICPPASTDesignator designator : designated.getDesignators()) {
+			extractDesignators(designator);
+		}
+
+		if (designated.getOperand() instanceof IASTExpression)
+			extractExpression((IASTExpression) designated.getOperand());
+
+		if (designated.getOperand() instanceof IASTInitializerList)
+			extractInitializerList((IASTInitializerList) designated.getOperand());
+	}
+
+	/**
+	 * Extrai as designators
+	 * 
+	 * @param designator
+	 */
+	private static void extractDesignators(ICPPASTDesignator designator) {
+
+		if (designator instanceof CPPASTArrayDesignator) {
+			CPPASTArrayDesignator arrayDesignator = (CPPASTArrayDesignator) designator;
+			extractExpression(arrayDesignator.getSubscriptExpression());
+		}
+
+		if (designator instanceof CPPASTFieldDesignator)
+			extractFieldDesignator((CPPASTFieldDesignator) designator);
+
+		if (designator instanceof CPPASTArrayRangeDesignator) {
+			CPPASTArrayRangeDesignator arrayRangeDesignator = (CPPASTArrayRangeDesignator) designator;
+			extractArrayRangeDesignator(arrayRangeDesignator);
+		}
+
+		if (designator instanceof CPPASTDesignatedInitializer)
+			extractDesignatedInitializer((CPPASTDesignatedInitializer) designator);
+	}
+
+	/**
+	 * Extrai array designators
+	 * 
+	 * @param arrayRangeDesignator
+	 */
+	private static void extractArrayRangeDesignator(CPPASTArrayRangeDesignator arrayRangeDesignator) {
+
+		if (arrayRangeDesignator.getRangeCeiling() instanceof IASTExpression)
+			extractExpression(arrayRangeDesignator.getRangeCeiling());
+
+		else if (arrayRangeDesignator.getRangeCeiling() instanceof CPPASTArrayDesignator)
+			extractArrayRangeDesignator((CPPASTArrayRangeDesignator) arrayRangeDesignator.getRangeCeiling());
+
+		if (arrayRangeDesignator.getRangeFloor() instanceof IASTExpression)
+			extractExpression(arrayRangeDesignator.getRangeFloor());
+
+		else if (arrayRangeDesignator.getRangeFloor() instanceof CPPASTArrayDesignator)
+			extractArrayRangeDesignator((CPPASTArrayRangeDesignator) arrayRangeDesignator.getRangeFloor());
+	}
+
+	/**
+	 * Extrai field designators
+	 * 
+	 * @param fieldDesignator
+	 */
+	private static void extractFieldDesignator(CPPASTFieldDesignator fieldDesignator) {
+
+		String storage = storageClass(fieldDesignator.getName());
+		String access = "";
+		String name = fieldDesignator.getName().toString();
+
+		if (vocabularyManager != null)
+			vocabularyManager.insertVariable(name, access, storage);
 	}
 
 	/**

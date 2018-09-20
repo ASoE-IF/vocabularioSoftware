@@ -15,6 +15,7 @@ import org.eclipse.cdt.internal.core.dom.parser.ASTNode;
 import org.eclipse.cdt.internal.core.dom.parser.cpp.CPPASTFunctionDefinition;
 import org.eclipse.cdt.internal.core.dom.parser.cpp.CPPASTSimpleDeclaration;
 import org.eclipse.cdt.internal.core.dom.parser.cpp.CPPASTTemplateDeclaration;
+import org.eclipse.cdt.internal.core.dom.parser.cpp.CPPASTTemplateSpecialization;
 import org.splab.vocabulary.extractor.nodelists.DeclarationList;
 import org.splab.vocabulary.extractor.processors.vocabulay.manager.FileVocabularyManager;
 import org.splab.vocabulary.extractor.util.LOCManager;
@@ -99,23 +100,49 @@ public class FileProcessor {
 
 			if (nodeDeclaration instanceof ICPPASTTemplateDeclaration) {
 
-				CPPASTTemplateDeclaration templateDeclaration = (CPPASTTemplateDeclaration) nodeDeclaration;
+				if (nodeDeclaration instanceof CPPASTTemplateDeclaration) {
+					CPPASTTemplateDeclaration templateDeclaration = (CPPASTTemplateDeclaration) nodeDeclaration;
 
-				if (templateDeclaration.getDeclaration() instanceof IASTFunctionDefinition) {
-					CPPASTFunctionDefinition functionDefinition = (CPPASTFunctionDefinition) templateDeclaration
-							.getDeclaration();
-					FunctionProcessor functions = new FunctionProcessor(functionDefinition, EntityType.FUNCTION,
-							indentationLevel + 1);
+					if (templateDeclaration.getDeclaration() instanceof IASTFunctionDefinition) {
+						CPPASTFunctionDefinition functionDefinition = (CPPASTFunctionDefinition) templateDeclaration
+								.getDeclaration();
+						FunctionProcessor functions = new FunctionProcessor(functionDefinition, EntityType.FUNCTION,
+								indentationLevel + 1);
 
-					functionVXL.append(functions.getVxlFragment());
+						functionVXL.append(functions.getVxlFragment());
+					}
+
+					// Processa variáveis, struct, union, enums, protótipos e
+					// class
+					if (templateDeclaration.getDeclaration() instanceof IASTSimpleDeclaration) {
+						CPPASTSimpleDeclaration simpleDeclaration = (CPPASTSimpleDeclaration) templateDeclaration
+								.getDeclaration();
+						ExpressionProcessor.setVocabularyManager(vocabularyManager);
+						declProcessor.extractDeclaration(simpleDeclaration, indentationLevel + 1);
+					}
 				}
 
-				// Processa variáveis, struct, union, enums, protótipos e class
-				if (templateDeclaration.getDeclaration() instanceof IASTSimpleDeclaration) {
-					CPPASTSimpleDeclaration simpleDeclaration = (CPPASTSimpleDeclaration) templateDeclaration
-							.getDeclaration();
-					ExpressionProcessor.setVocabularyManager(vocabularyManager);
-					declProcessor.extractDeclaration(simpleDeclaration, indentationLevel + 1);
+				if (nodeDeclaration instanceof CPPASTTemplateSpecialization) {
+					CPPASTTemplateSpecialization templateSpecialization = (CPPASTTemplateSpecialization) nodeDeclaration;
+
+					if (templateSpecialization.getDeclaration() instanceof IASTFunctionDefinition) {
+						CPPASTFunctionDefinition functionDefinition = (CPPASTFunctionDefinition) templateSpecialization
+								.getDeclaration();
+						FunctionProcessor functions = new FunctionProcessor(functionDefinition, EntityType.FUNCTION,
+								indentationLevel + 1);
+
+						functionVXL.append(functions.getVxlFragment());
+					}
+
+					// Processa variáveis, struct, union, enums, protótipos e
+					// class
+					if (templateSpecialization.getDeclaration() instanceof IASTSimpleDeclaration) {
+						CPPASTSimpleDeclaration simpleDeclaration = (CPPASTSimpleDeclaration) templateSpecialization
+								.getDeclaration();
+						ExpressionProcessor.setVocabularyManager(vocabularyManager);
+						declProcessor.extractDeclaration(simpleDeclaration, indentationLevel + 1);
+
+					}
 				}
 			}
 		}

@@ -135,7 +135,13 @@ public class DeclarationProcessor {
 					String access = "";
 					String name = declarator.getName().toString();
 
-					vocabularyManager.insertVariable(name, access, storage);
+					if (vocabularyManager instanceof FunctionVocabularyManager) {
+						FunctionVocabularyManager vocMan = (FunctionVocabularyManager) vocabularyManager;
+						vocMan.insertLocalVariable(name, access, storage);
+					} else if (vocabularyManager instanceof FileVocabularyManager) {
+						FileVocabularyManager vocMan = (FileVocabularyManager) vocabularyManager;
+						vocMan.insertGlobalVariable(name, access, storage);
+					}
 
 					if (declarator.getInitializer() != null)
 						extractEqualsInitializer((CASTEqualsInitializer) declarator.getInitializer());

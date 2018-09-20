@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<c-project id="default" name="GenericProject" revision="2.0.1">
-	<c-file name="GenericFile.c" sloc="607">
+<c-project id="default" name="xmltoxsd" revision="default">
+	<c-file name=".\files\XmlToXsd\src\GenericFile.c" sloc="607">
 		<comm cntt="Aplicativo completo com todas as entidades e estruturas de um Aplicativo em C. Autor: Israel Gomes de Lima Data: 20 09 2017"/>
 		<comm cntt="Includes e Defines"/>
 		<comm cntt="Variaveis globais"/>

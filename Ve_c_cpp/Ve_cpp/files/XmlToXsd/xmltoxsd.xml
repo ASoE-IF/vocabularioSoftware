@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<cpp-project id="default" name="xmltoxsd" revision="default">
-	<cpp-file name="Diretivas.cpp" sloc="37">
+<cpp-project id="default" name="GenericProject" revision="2.0.1">
+	<cpp-file name=".\ProjetoGenerico\Algoritmos\Diretivas.cpp" sloc="37">
 		<comm cntt="Aplicativo completo com todas as entidades e estruturas de um Aplicativo em C. Autor: Israel Gomes de Lima Data: 20 09 2017"/>
 		<comm cntt="Includes e Defines"/>
 		<include name="iostream"/>
@@ -32,7 +32,7 @@
 		<func name="main" access="" storage="auto" sloc="2">
 		</func>
 	</cpp-file>
-	<cpp-file name="UsandoEstruturasDeControle.cpp" sloc="173">
+	<cpp-file name=".\ProjetoGenerico\Algoritmos\UsandoEstruturasDeControle.cpp" sloc="173">
 		<comm cntt="Aplicativo completo com todas as entidades e estruturas de um Aplicativo em C. Autor: Israel Gomes de Lima Data: 20 09 2017"/>
 		<comm cntt="fun��es para uso na fun��o de controle"/>
 		<include name="iostream"/>
@@ -80,7 +80,7 @@
 		<func name="main" access="" storage="auto" sloc="2">
 		</func>
 	</cpp-file>
-	<cpp-file name="UsandoFuncoes.cpp" sloc="33">
+	<cpp-file name=".\ProjetoGenerico\Algoritmos\UsandoFuncoes.cpp" sloc="33">
 		<comm cntt="Aplicativo completo com todas as entidades e estruturas de um Aplicativo em C. Autor: Israel Gomes de Lima Data: 20 09 2017"/>
 		<comm cntt="Prototipos de fun��es"/>
 		<comm cntt="Espa�o entre fun��es"/>
@@ -117,12 +117,12 @@
 		<func name="main" access="" storage="auto" sloc="2">
 		</func>
 	</cpp-file>
-	<cpp-file name="UsandoMatrizesEPonteiros.cpp" sloc="77">
+	<cpp-file name=".\ProjetoGenerico\Algoritmos\UsandoMatrizesEPonteiros.cpp" sloc="77">
 		<comm cntt="Aplicativo completo com todas as entidades e estruturas de um Aplicativo em C. Autor: Israel Gomes de Lima Data: 20 09 2017"/>
 		<comm cntt="Fun��es de matriz"/>
 		<include name="iostream"/>
 		<include name="string"/>
-		<prttp name="" access="" storage="auto"/>
+		<gvar name="compare" access="" storage="auto" count="1"/>
 		<func name="funcaoDeMatriz" access="" storage="auto" sloc="3">
 			<param name="vetor"/>
 		</func>
@@ -180,7 +180,7 @@
 			<lvar name="x" access="" storage="auto" count="3"/>
 		</func>
 	</cpp-file>
-	<cpp-file name="UsandoVariaveisGlobaisELocais.cpp" sloc="114">
+	<cpp-file name=".\ProjetoGenerico\Algoritmos\UsandoVariaveisGlobaisELocais.cpp" sloc="114">
 		<comm cntt="Aplicativo completo com todas as entidades e estruturas de um Aplicativo em C. Autor: Israel Gomes de Lima Data: 20 09 2017"/>
 		<comm cntt="Variaveis globais"/>
 		<gvar name="ptrGlobal" access="" storage="auto" count="1"/>
@@ -254,7 +254,7 @@
 			<call name="calloc" count="1"/>
 		</func>
 	</cpp-file>
-	<cpp-file name="CLASSES1.CPP" sloc="136">
+	<cpp-file name=".\ProjetoGenerico\Classes\CLASSES1.CPP" sloc="136">
 		<comm cntt="Aplicativo completo com todas as entidades e estruturas de um Aplicativo em C. Autor: Israel Gomes de Lima Data: 20 09 2017"/>
 		<comm cntt="Usando Classes"/>
 		<comm cntt="Classe gen�rica 2"/>
@@ -350,7 +350,7 @@
 		</class>
 		<class name="GenericClass6" abs="n" inn="n" sloc="15">
 			<field name="atributo1" access="" storage="auto" visib="priv" count="1"/>
-			<gvar name="var" access="" storage="auto" count="1"/>
+			<field name="var" access="" storage="auto" visib="pub" count="1"/>
 			<enum name="ena" sloc="1">
 				<const name="CONST1"/>
 			</enum>
@@ -399,7 +399,7 @@
 			<prttp name="method2" access="" storage="auto"/>
 		</func>
 	</cpp-file>
-	<cpp-file name="EnumsStructsEUnions.cpp" sloc="149">
+	<cpp-file name=".\ProjetoGenerico\Classes\EnumsStructsEUnions.cpp" sloc="149">
 		<comm cntt="Aplicativo completo com todas as entidades e estruturas de um Aplicativo em C. Autor: Israel Gomes de Lima Data: 20 09 2017"/>
 		<comm cntt="Usando estruturas, uni�es enumera��es e tipos definidos pelo usuario"/>
 		<comm cntt="comentario de bloco antes da estrutura"/>
@@ -633,7 +633,7 @@
 		<func name="main" access="" storage="auto" sloc="2">
 		</func>
 	</cpp-file>
-	<cpp-file name="TEMPLATE.CPP" sloc="12">
+	<cpp-file name=".\ProjetoGenerico\Classes\TEMPLATE.CPP" sloc="12">
 		<comm cntt="Aplicativo completo com todas as entidades e estruturas de um Aplicativo em C. Autor: Israel Gomes de Lima Data: 20 09 2017"/>
 		<include name="iostream"/>
 		<class name="classeTemplate" abs="n" inn="n" sloc="5">
@@ -648,7 +648,7 @@
 		<func name="main" access="" storage="auto" sloc="2">
 		</func>
 	</cpp-file>
-	<cpp-file name="TratamentoDeExcecoes.cpp" sloc="21">
+	<cpp-file name=".\ProjetoGenerico\Classes\TratamentoDeExcecoes.cpp" sloc="21">
 		<comm cntt="Aplicativo completo com todas as entidades e estruturas de um Aplicativo em C. Autor: Israel Gomes de Lima Data: 20 09 2017"/>
 		<include name="iostream"/>
 		<include name="exception"/>
@@ -666,7 +666,7 @@
 			<lit cntt="&amp;quot;Erro Gereado&amp;quot;" count="1"/>
 		</func>
 	</cpp-file>
-	<cpp-file name="UsandoClassesEVariaveis.cpp" sloc="28">
+	<cpp-file name=".\ProjetoGenerico\Classes\UsandoClassesEVariaveis.cpp" sloc="28">
 		<include name="stdio.h"/>
 		<gvar name="variavel_de_fora_do_arquivo" access="" storage="" count="2"/>
 		<gvar name="variavel_do_arc2" access="const" storage="static" count="2"/>
@@ -696,6 +696,182 @@
 			<gvar name="variavel_de_fora_do_arquivo" access="" storage="" count="1"/>
 			<gvar name="variavel_do_arquivo" access="volatile" storage="static" count="2"/>
 			<lvar name="variavel_da_funcao_global" access="" storage="auto" count="2"/>
+		</func>
+	</cpp-file>
+	<cpp-file name=".\ProjetoGenerico\Header\Header.h" sloc="37">
+		<comm cntt="Arquivo de header em C. Autor: Israel Gomes de Lima Data: 20 09 2017"/>
+		<macro name="PTR1"/>
+		<macro name="PTR2"/>
+		<macro name="PTR3"/>
+		<macro name="PTR4"/>
+		<macro name="PTR5"/>
+		<macro name="PTR6"/>
+		<macro name="RBR1"/>
+		<macro name="RBR2"/>
+		<macro name="RBR3"/>
+		<macro name="RBR4"/>
+		<macro name="RBR5"/>
+		<macro name="RBR6"/>
+		<gvar name="q2_var" access="const" storage="auto" count="1"/>
+		<gvar name="x" access="" storage="auto" count="1"/>
+		<func name="funcao_do_header" access="" storage="auto" sloc="23">
+			<comm cntt="comentario de bloco fora da estrutura"/>
+			<lvar name="var" access="" storage="auto" count="1"/>
+			<lvar name="varLo" access="" storage="auto" count="1"/>
+			<strt name="estrutura1" sloc="6">
+				<comm cntt="comentario de bloco da estrutura"/>
+				<comm cntt="comentario1 de bloco da estrutura"/>
+				<comm cntt="comentario2 de bloco da estrutura"/>
+				<comm cntt="comentario3 de bloco da estrutura"/>
+				<field name="membro1"/>
+				<field name="membro2"/>
+				<field name="membroVetor"/>
+			</strt>
+			<class name="classe" abs="n" inn="n" sloc="14">
+				<field name="field" access="" storage="auto" visib="priv" count="1"/>
+				<field name="fieldEnum" access="" storage="auto" visib="priv" count="1"/>
+				<field name="fieldStr" access="" storage="auto" visib="priv" count="1"/>
+				<field name="fieldUni" access="" storage="auto" visib="priv" count="1"/>
+				<enum name="enumNaClasse" sloc="3">
+				</enum>
+				<strt name="strNaClasse" sloc="3">
+				</strt>
+				<union name="uniNaClasse" sloc="3">
+				</union>
+			</class>
+		</func>
+	</cpp-file>
+	<cpp-file name=".\ProjetoGenerico\Outros Arquivos\c11-align-1.cpp" sloc="24">
+		<comm cntt="Test C11 alignment support. Test valid code."/>
+		<comm cntt="{ dg-do compile }"/>
+		<comm cntt="{ dg-options &amp;quot;-std=c11 -pedantic-errors&amp;quot; }"/>
+		<comm cntt="Valid, but useless."/>
+		<comm cntt="{ dg-warning &amp;quot;useless&amp;quot; }"/>
+		<include name="stddef.h"/>
+		<gvar name="c" access="" storage="extern" count="1"/>
+		<gvar name="i" access="" storage="extern" count="1"/>
+		<enum name="e" sloc="1">
+			<const name="E"/>
+		</enum>
+		<func name="func" access="" storage="auto" sloc="5">
+			<lvar name="auto_ll" access="" storage="auto" count="1"/>
+			<lvar name="max_align_t" access="" storage="auto" count="1"/>
+		</func>
+		<func name="main" access="" storage="auto" sloc="1">
+		</func>
+	</cpp-file>
+	<cpp-file name=".\ProjetoGenerico\Outros Arquivos\limits-declparen.cpp" sloc="13">
+		<macro name="PTR1"/>
+		<macro name="PTR2"/>
+		<macro name="PTR3"/>
+		<macro name="PTR4"/>
+		<macro name="PTR5"/>
+		<macro name="PTR6"/>
+		<macro name="RBR1"/>
+		<macro name="RBR2"/>
+		<macro name="RBR3"/>
+		<macro name="RBR4"/>
+		<macro name="RBR5"/>
+		<macro name="RBR6"/>
+		<gvar name="q2_var" access="" storage="auto" count="1"/>
+	</cpp-file>
+	<cpp-file name=".\ProjetoGenerico\Outros Arquivos\limits-exprparen.cpp" sloc="13">
+		<macro name="LBR1"/>
+		<macro name="LBR2"/>
+		<macro name="LBR3"/>
+		<macro name="LBR4"/>
+		<macro name="LBR5"/>
+		<macro name="LBR6"/>
+		<macro name="RBR1"/>
+		<macro name="RBR2"/>
+		<macro name="RBR3"/>
+		<macro name="RBR4"/>
+		<macro name="RBR5"/>
+		<macro name="RBR6"/>
+		<gvar name="q5_var" access="" storage="auto" count="1"/>
+		<gvar name="x" access="" storage="" count="1"/>
+	</cpp-file>
+	<cpp-file name=".\ProjetoGenerico\Outros Arquivos\limits-ifs.cpp" sloc="9">
+		<comm cntt="PR c 2161: parser stack overflow."/>
+		<comm cntt="{ dg-do compile }"/>
+		<comm cntt="{ dg-timeout-factor 4.0 }"/>
+		<macro name="ONE"/>
+		<macro name="TEN"/>
+		<macro name="HUN"/>
+		<macro name="THOU"/>
+		<func name="foo" access="" storage="auto" sloc="5">
+			<comm cntt="11,000 else if&amp;apos;s."/>
+		</func>
+	</cpp-file>
+	<cpp-file name=".\ProjetoGenerico\Outros Arquivos\limits-structnest.cpp" sloc="30">
+		<macro name="LIM1">
+			<param name="x"/>
+		</macro>
+		<macro name="LIM2">
+			<param name="x"/>
+		</macro>
+		<macro name="LIM3">
+			<param name="x"/>
+		</macro>
+		<macro name="LIM4">
+			<param name="x"/>
+		</macro>
+		<macro name="LIM5">
+			<param name="x"/>
+		</macro>
+		<macro name="LIM6">
+			<param name="x"/>
+		</macro>
+		<macro name="LIM7">
+			<param name="x"/>
+		</macro>
+		<macro name="RBR1"/>
+		<macro name="RBR2"/>
+		<macro name="RBR3"/>
+		<macro name="RBR4"/>
+		<macro name="RBR5"/>
+		<gvar name="x" access="" storage="auto" count="10"/>
+		<strt name="s0" sloc="0">
+			<field name="x"/>
+		</strt>
+		<strt name="s1" sloc="0">
+			<field name="x"/>
+		</strt>
+		<strt name="s2" sloc="0">
+			<field name="x"/>
+		</strt>
+		<strt name="s3" sloc="0">
+			<field name="x"/>
+		</strt>
+		<strt name="s4" sloc="0">
+			<field name="x"/>
+		</strt>
+		<strt name="s5" sloc="0">
+			<field name="x"/>
+		</strt>
+		<strt name="s6" sloc="0">
+			<field name="x"/>
+		</strt>
+		<strt name="s7" sloc="0">
+			<field name="x"/>
+		</strt>
+		<strt name="s8" sloc="0">
+			<field name="x"/>
+		</strt>
+		<strt name="s9" sloc="3">
+			<field name="x"/>
+		</strt>
+		<strt name="dd" sloc="2">
+		</strt>
+		<enum name="ff" sloc="1">
+			<const name="CONT"/>
+		</enum>
+		<strt name="d" sloc="1">
+		</strt>
+		<func name="main" access="" storage="auto" sloc="5">
+			<lvar name="f" access="" storage="auto" count="2"/>
+			<lvar name="f.t" access="" storage="auto" count="1"/>
+			<lvar name="x" access="" storage="auto" count="1"/>
 		</func>
 	</cpp-file>
 </cpp-project>

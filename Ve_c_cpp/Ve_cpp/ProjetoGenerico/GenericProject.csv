@@ -1,20 +1,20 @@
 ,Entity's Name,LOC Count,Header Count,Inner Entities Lines,Total,Entity Type
 ,funcaoDePreProcessador,12,0,0,12,FUNCTION
 ,main,2,0,0,2,FUNCTION
-,Diretivas.cpp,2,21,14,37,FILE
+,.\ProjetoGenerico\Algoritmos\Diretivas.cpp,2,22,14,38,FILE
 ,prompt,4,0,0,4,FUNCTION
 ,readNum,4,0,0,4,FUNCTION
 ,sqrNum,4,0,0,4,FUNCTION
 ,funcaoDeUsoDeComandoDeControle,156,0,0,156,FUNCTION
 ,main,2,0,0,2,FUNCTION
-,UsandoEstruturasDeControle.cpp,2,1,170,173,FILE
+,.\ProjetoGenerico\Algoritmos\UsandoEstruturasDeControle.cpp,2,1,170,173,FILE
 ,funcao_sem_parametros,5,0,0,5,FUNCTION
 ,funcao1,5,0,0,5,FUNCTION
 ,funcao2,7,0,0,7,FUNCTION
 ,sobrecarregada,2,0,0,2,FUNCTION
 ,sobrecarregada,2,0,0,2,FUNCTION
 ,main,2,0,0,2,FUNCTION
-,UsandoFuncoes.cpp,8,2,23,33,FILE
+,.\ProjetoGenerico\Algoritmos\UsandoFuncoes.cpp,8,2,23,33,FILE
 ,funcaoDeMatriz,3,0,0,3,FUNCTION
 ,funcaoDeMatriz2,3,0,0,3,FUNCTION
 ,funcaoDeMatriz3,3,0,0,3,FUNCTION
@@ -23,11 +23,11 @@
 ,funcaoDePonteiro2,3,0,0,3,FUNCTION
 ,funcaoUsandoPonteiros,27,0,0,27,FUNCTION
 ,main,8,0,0,8,FUNCTION
-,UsandoMatrizesEPonteiros.cpp,2,2,73,77,FILE
+,.\ProjetoGenerico\Algoritmos\UsandoMatrizesEPonteiros.cpp,2,2,73,77,FILE
 ,funcaoDeDeclaracaoDeVariaveisLocais,24,0,0,24,FUNCTION
 ,funcaoDeUsoDeVariaveisGlobais,28,0,0,28,FUNCTION
 ,funcaoDeUsoDeVariaveisLocaisEOperadores,51,0,0,51,FUNCTION
-,UsandoVariaveisGlobaisELocais.cpp,11,0,103,114,FILE
+,.\ProjetoGenerico\Algoritmos\UsandoVariaveisGlobaisELocais.cpp,11,0,103,114,FILE
 ,funcc,2,0,0,2,FUNCTION
 ,GenericClass1,5,0,0,5,METHOD
 ,GenericClass1,4,0,0,4,METHOD
@@ -58,7 +58,7 @@
 ,metodoGenerico,3,0,0,3,METHOD
 ,GenericClass6,6,0,9,15,CLASS
 ,main,11,0,0,11,FUNCTION
-,CLASSES1.CPP,4,2,130,136,FILE
+,.\ProjetoGenerico\Classes\CLASSES1.CPP,4,2,130,136,FILE
 ,funcaoDeMembroDeEstrutura,3,0,0,3,FUNCTION
 ,estrutura1,6,0,0,6,STRUCT
 ,estrutura2,6,0,0,6,STRUCT
@@ -79,33 +79,38 @@
 ,,6,0,0,6,STRUCT
 ,funcaoUsandoTypedef,11,0,0,11,FUNCTION
 ,main,2,0,0,2,FUNCTION
-,EnumsStructsEUnions.cpp,0,1,148,149,FILE
+,.\ProjetoGenerico\Classes\EnumsStructsEUnions.cpp,0,1,148,149,FILE
 ,templateTeste1,2,0,0,2,FUNCTION
 ,classeTemplate,2,0,0,2,METHOD
 ,classeTemplate,3,0,2,5,CLASS
 ,main,2,0,0,2,FUNCTION
-,TEMPLATE.CPP,2,1,9,12,FILE
+,.\ProjetoGenerico\Classes\TEMPLATE.CPP,2,1,9,12,FILE
 ,TrataErro1::TrataErro1,2,0,0,2,METHOD
 ,usandoThrow,3,0,0,3,METHOD
 ,TrataErro1,3,0,5,8,CLASS
 ,main,9,0,0,9,FUNCTION
-,TratamentoDeExcecoes.cpp,2,2,17,21,FILE
+,.\ProjetoGenerico\Classes\TratamentoDeExcecoes.cpp,2,2,17,21,FILE
 ,funcaoGlobal,5,0,0,5,FUNCTION
 ,metodoInterno,3,0,0,3,METHOD
 ,classeInterna,4,0,3,7,CLASS
 ,metodoDaClasseGlobal,5,0,7,12,METHOD
 ,classeGlobal,7,0,12,19,CLASS
-,UsandoClassesEVariaveis.cpp,3,1,24,28,FILE
-,funcao_do_header,3,0,0,3,FUNCTION
-,Header.h,0,0,3,3,FILE
+,.\ProjetoGenerico\Classes\UsandoClassesEVariaveis.cpp,3,1,24,28,FILE
+,estrutura1,6,0,0,6,STRUCT
+,strNaClasse,3,0,0,3,STRUCT
+,uniNaClasse,3,0,0,3,UNION
+,enumNaClasse,3,0,0,3,ENUM
+,classe,5,0,9,14,CLASS
+,funcao_do_header,3,0,20,23,FUNCTION
+,.\ProjetoGenerico\Header\Header.h,2,12,23,37,FILE
 ,e,1,0,0,1,ENUM
 ,func,5,0,0,5,FUNCTION
 ,main,1,0,0,1,FUNCTION
-,c11-align-1.cpp,16,1,7,24,FILE
-,limits-declparen.cpp,1,12,0,13,FILE
-,limits-exprparen.cpp,1,12,0,13,FILE
+,.\ProjetoGenerico\Outros Arquivos\c11-align-1.cpp,16,1,7,24,FILE
+,.\ProjetoGenerico\Outros Arquivos\limits-declparen.cpp,1,12,0,13,FILE
+,.\ProjetoGenerico\Outros Arquivos\limits-exprparen.cpp,1,12,0,13,FILE
 ,foo,5,0,0,5,FUNCTION
-,limits-ifs.cpp,0,4,5,9,FILE
+,.\ProjetoGenerico\Outros Arquivos\limits-ifs.cpp,0,4,5,9,FILE
 ,s0,0,0,3,3,STRUCT
 ,s1,0,0,3,3,STRUCT
 ,s2,0,0,3,3,STRUCT
@@ -120,5 +125,5 @@
 ,d,1,0,0,1,STRUCT
 ,ff,1,0,0,1,ENUM
 ,main,5,0,0,5,FUNCTION
-,limits-structnest.cpp,6,12,12,30,FILE
-Total,,798,74,850,872
+,.\ProjetoGenerico\Outros Arquivos\limits-structnest.cpp,6,12,12,30,FILE
+Total,,820,87,899,907
