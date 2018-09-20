@@ -73,4 +73,7 @@
 ,ff,1,0,0,1,ENUM
 ,main,5,0,0,5,FUNCTION
 ,.\ProjetoGenerico\Outros Arquivos\limits-structnest.c,6,12,12,30,FILE
-Total,,658,75,686,733
+,func_interna,6,0,0,6,INNER_FUNCTION
+,main,6,0,6,12,FUNCTION
+,.\ProjetoGenerico\Teste.c,1,0,12,13,FILE
+Total,,671,75,704,746

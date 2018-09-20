@@ -113,6 +113,9 @@ public class FunctionProcessor {
 		extractFunction(functionDefinition, vocabularyManager, entityType, indentationLevel + 1);
 
 		if (LOCManager.locParameters.contains(LOCParameters.INTERN_VOCABULARY)) {
+			// Processa o vocabulário de fields
+			storeInternVocabularyField(vocabularyManager.getField(), vocabularyManager.getFieldAccess(),
+					vocabularyManager.getFieldStorage(), vocabularyManager.getFieldVisibility(), indentationLevel + 1);
 			// Processa o vocabulário das variáveis globais
 			storeInternVocabularyGlobalVar(vocabularyManager.getGlobalVar(), vocabularyManager.getGlobalVarAccess(),
 					vocabularyManager.getGlobalVarStorage(), indentationLevel + 1);
@@ -333,6 +336,34 @@ public class FunctionProcessor {
 		while (it_lit.hasNext()) {
 			String identifier = it_lit.next();
 			vxlFragment.append(VxlManager.literal(identifier, literals.get(identifier), indentationLevel));
+		}
+	}
+
+	/**
+	 * Recebe o vocabulário de atriutos e os insere no fragmento de vxl
+	 * 
+	 * @param fields
+	 * @param fieldAccess
+	 * @param fieldStorage
+	 * @param visibility
+	 * @param indentationLevel
+	 */
+	public void storeInternVocabularyField(Map<String, Integer> fields, Map<String, String> fieldAccess,
+			Map<String, String> fieldStorage, Map<String, String> visibility, int indentationLevel) {
+
+		Set<String> fieldSet = fields.keySet();
+		Iterator<String> it_fields = fieldSet.iterator();
+
+		while (it_fields.hasNext()) {
+			String identifier = it_fields.next();
+			if (fields.get(identifier) > 0) {
+				String access = fieldAccess.get(identifier);
+				String storage = fieldStorage.get(identifier);
+				int count = fields.get(identifier);
+				String visib = visibility.get(identifier);
+
+				vxlFragment.append(VxlManager.field(identifier, access, storage, visib, count, indentationLevel));
+			}
 		}
 	}
 

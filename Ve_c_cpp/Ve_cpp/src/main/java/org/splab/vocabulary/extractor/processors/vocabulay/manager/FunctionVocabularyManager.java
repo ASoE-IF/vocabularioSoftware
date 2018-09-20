@@ -5,11 +5,10 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * FunctionVocabularyManager define onde os dados contabilizados das
- * variáveis globais que são usadas nas funções, das variáveis locais,
- * das chamadas a funções e dos literáis usados nessas funções são
- * guardados e posteriormente usados para incremento em seus respectivos
- * valores de Uso.
+ * FunctionVocabularyManager define onde os dados contabilizados das variáveis
+ * globais que são usadas nas funções, das variáveis locais, das chamadas a
+ * funções e dos literáis usados nessas funções são guardados e posteriormente
+ * usados para incremento em seus respectivos valores de Uso.
  * 
  * @author Israel Gomes de Lima
  * @since May 14, 2018
@@ -28,6 +27,10 @@ public class FunctionVocabularyManager implements VocabularyManager {
 	private Map<String, String> gvarAccess;
 	private Map<String, Integer> funcCall;
 	private Map<String, Integer> literal;
+	private Map<String, Integer> field;
+	private Map<String, String> fieldStorage;
+	private Map<String, String> fieldAccess;
+	private Map<String, String> fieldVisibility;
 
 	/**
 	 * Construtor do vocabulário da função
@@ -41,10 +44,15 @@ public class FunctionVocabularyManager implements VocabularyManager {
 		this.gvarAccess = new TreeMap<String, String>();
 		this.funcCall = new TreeMap<String, Integer>();
 		this.literal = new TreeMap<String, Integer>();
+		this.field = new TreeMap<String, Integer>();
+		this.fieldStorage = new TreeMap<String, String>();
+		this.fieldAccess = new TreeMap<String, String>();
+		this.fieldVisibility = new TreeMap<String, String>();
 	}
 
 	/**
 	 * Insere variáveis locais e contabiliza
+	 * 
 	 * @param variable
 	 * @param access
 	 * @param storage
@@ -63,6 +71,7 @@ public class FunctionVocabularyManager implements VocabularyManager {
 
 	/**
 	 * Insere os usos de variáveis globais e contabiliza
+	 * 
 	 * @param variable
 	 * @param access
 	 * @param storage
@@ -81,11 +90,10 @@ public class FunctionVocabularyManager implements VocabularyManager {
 	}
 
 	/**
-	 * Insere o uso de um parâmetro e contabiliza
-	 * Obs.: Quando um parâmetro é detectado ele é inserido com count 0,
-	 * porquê seus escopo não está dentro do corpo da função
-	 * (Delimitado por: {}) e, portanto, seus incrementos só começarão
-	 * a partir de sua primeira ocorrência na função.
+	 * Insere o uso de um parâmetro e contabiliza Obs.: Quando um parâmetro é
+	 * detectado ele é inserido com count 0, porquê seus escopo não está dentro
+	 * do corpo da função (Delimitado por: {}) e, portanto, seus incrementos só
+	 * começarão a partir de sua primeira ocorrência na função.
 	 * 
 	 * @param parametro
 	 * @param access
@@ -120,6 +128,7 @@ public class FunctionVocabularyManager implements VocabularyManager {
 
 	/**
 	 * Insere strings literais usadas na funções e contabiliza
+	 * 
 	 * @param literalString
 	 */
 	public void insertLiteral(String literalString) {
@@ -131,11 +140,33 @@ public class FunctionVocabularyManager implements VocabularyManager {
 			}
 		}
 	}
-	
+
+	/**
+	 * Insere os atributos e contabiliza seus usos
+	 * 
+	 * @param name
+	 * @param access
+	 * @param storage
+	 * @param visibility
+	 */
+	public void insertField(String name, String access, String storage, String visibility) {
+
+		if (name != null && !name.equals("")) {
+			if (field.containsKey(name)) {
+				field.put(name, field.get(name) + 1);
+			} else {
+				field.put(name, 1);
+				fieldAccess.put(name, access);
+				fieldStorage.put(name, storage);
+				fieldVisibility.put(name, visibility);
+			}
+		}
+	}
 
 	@Override
 	/**
 	 * Insere variaveis contabilizando no local correto
+	 * 
 	 * @param name
 	 * @param access
 	 * @param storage
@@ -150,9 +181,23 @@ public class FunctionVocabularyManager implements VocabularyManager {
 
 		Iterator<VocabularyManager> it_vocabulary = hierarchyVocabularyList.descendingIterator();
 		while (it_vocabulary.hasNext()) {
-			
+
 			VocabularyManager vocabulary = it_vocabulary.next();
-			
+
+			if (vocabulary instanceof ClassVocabularyManager) {
+				ClassVocabularyManager classVocabulary = (ClassVocabularyManager) vocabulary;
+
+				if (classVocabulary.getField().containsKey(name)) {
+					access = classVocabulary.getFieldAccess().get(name);
+					storage = classVocabulary.getFieldStorage().get(name);
+					String visibility = classVocabulary.getFieldVisibility().get(name);
+
+					insertField(name, access, storage, visibility);
+
+					return;
+				}
+			}
+
 			if (vocabulary instanceof FunctionVocabularyManager) {
 				FunctionVocabularyManager functionVocabulary = (FunctionVocabularyManager) vocabulary;
 
@@ -160,22 +205,8 @@ public class FunctionVocabularyManager implements VocabularyManager {
 					access = functionVocabulary.getLocalVarAccess().get(name);
 					storage = functionVocabulary.getLocalVarStorage().get(name);
 
-					functionVocabulary.insertLocalVariable(name, access, storage);
 					insertGlobalVariable(name, access, storage);
-					
-					return;
-				}
-			}
-			
-			if (vocabulary instanceof FileVocabularyManager) {
-				FileVocabularyManager fileVocabulary = (FileVocabularyManager) vocabulary;
 
-				if (fileVocabulary.getGlobalVar().containsKey(name)) {
-					access = fileVocabulary.getGlobalVarAccess().get(name);
-					storage = fileVocabulary.getGlobalVarStorage().get(name);
-
-					fileVocabulary.insertGlobalVariable(name, access, storage);	
-					insertGlobalVariable(name, access, storage);
 					return;
 				}
 			}
@@ -185,6 +216,7 @@ public class FunctionVocabularyManager implements VocabularyManager {
 
 	/***
 	 * Retorna o maps contendo as variáveis locais
+	 * 
 	 * @return
 	 */
 	public Map<String, Integer> getLocalVar() {
@@ -193,6 +225,7 @@ public class FunctionVocabularyManager implements VocabularyManager {
 
 	/**
 	 * Retorna o mapa contendo o armazenamento das variáveis locais
+	 * 
 	 * @return
 	 */
 	public Map<String, String> getLocalVarStorage() {
@@ -201,6 +234,7 @@ public class FunctionVocabularyManager implements VocabularyManager {
 
 	/**
 	 * Retorna o mapa contendo o acesso das variáveis locais
+	 * 
 	 * @return
 	 */
 	public Map<String, String> getLocalVarAccess() {
@@ -209,6 +243,7 @@ public class FunctionVocabularyManager implements VocabularyManager {
 
 	/**
 	 * Retorna o mapa contendo as variaveis globais
+	 * 
 	 * @return
 	 */
 	public Map<String, Integer> getGlobalVar() {
@@ -217,6 +252,7 @@ public class FunctionVocabularyManager implements VocabularyManager {
 
 	/**
 	 * Retorna o mapa contendo o armazenamento das variaveis globais
+	 * 
 	 * @return
 	 */
 	public Map<String, String> getGlobalVarStorage() {
@@ -225,6 +261,7 @@ public class FunctionVocabularyManager implements VocabularyManager {
 
 	/**
 	 * Retorna o mapa contendo o acesso das variaveis globais
+	 * 
 	 * @return
 	 */
 	public Map<String, String> getGlobalVarAccess() {
@@ -233,6 +270,7 @@ public class FunctionVocabularyManager implements VocabularyManager {
 
 	/**
 	 * Retorna o mapa contendo as chamadas a funções
+	 * 
 	 * @return
 	 */
 	public Map<String, Integer> getFunctionCall() {
@@ -241,9 +279,46 @@ public class FunctionVocabularyManager implements VocabularyManager {
 
 	/**
 	 * Retorna o mapa contendo as strings literais
+	 * 
 	 * @return
 	 */
 	public Map<String, Integer> getLiterals() {
 		return literal;
+	}
+
+	/**
+	 * Retorna o mapa contendo os atributos usados no métodos
+	 * 
+	 * @return
+	 */
+	public Map<String, Integer> getField() {
+		return field;
+	}
+
+	/**
+	 * Retorna o mapa contendo o armazenamento dos atributos
+	 * 
+	 * @return
+	 */
+	public Map<String, String> getFieldStorage() {
+		return fieldStorage;
+	}
+
+	/**
+	 * Retorna o mapa contendo o acesso dos atributos
+	 * 
+	 * @return
+	 */
+	public Map<String, String> getFieldAccess() {
+		return fieldAccess;
+	}
+
+	/**
+	 * Retorna o mapa contendo a visibilidade dos atributos
+	 * 
+	 * @return
+	 */
+	public Map<String, String> getFieldVisibility() {
+		return fieldVisibility;
 	}
 }

@@ -1,9 +1,5 @@
 package org.splab.vocabulary.extractor.processors;
 
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-
 import org.eclipse.cdt.core.dom.ast.cpp.ICPPASTFunctionDeclarator;
 import org.eclipse.cdt.core.dom.ast.cpp.ICPPMethod;
 import org.eclipse.cdt.internal.core.dom.parser.ASTNode;
@@ -16,7 +12,7 @@ import org.eclipse.cdt.internal.core.dom.parser.cpp.CPPASTTemplateDeclaration;
 import org.eclipse.cdt.internal.core.dom.parser.cpp.CPPMethod;
 import org.eclipse.cdt.internal.core.dom.parser.cpp.CPPMethodTemplate;
 import org.splab.vocabulary.extractor.nodelists.DeclarationList;
-import org.splab.vocabulary.extractor.processors.vocabulay.manager.MethodVocabularyManager;
+import org.splab.vocabulary.extractor.processors.vocabulay.manager.FunctionVocabularyManager;
 import org.splab.vocabulary.extractor.util.LOCManager;
 import org.splab.vocabulary.extractor.util.VxlManager;
 import org.splab.vocabulary.extractor.vloccount.EntityLOCKeeper;
@@ -56,7 +52,7 @@ public class MethodProcessor extends FunctionProcessor {
 		CPPASTFunctionDefinition functionDefinition = (CPPASTFunctionDefinition) method.getPrimaryDeclaration();
 
 		// Vocabulário interno das funções
-		MethodVocabularyManager vocabularyManager = new MethodVocabularyManager();
+		FunctionVocabularyManager vocabularyManager = new FunctionVocabularyManager();
 		vocabularyManager.insertInHierarchy();
 
 		// Captura o nome, tipo de classe de armazenamento e o acesso do método
@@ -141,7 +137,7 @@ public class MethodProcessor extends FunctionProcessor {
 		CPPASTFunctionDefinition functionDefinition = (CPPASTFunctionDefinition) templateDeclaration.getDeclaration();
 
 		// Vocabulário interno das funções
-		MethodVocabularyManager vocabularyManager = new MethodVocabularyManager();
+		FunctionVocabularyManager vocabularyManager = new FunctionVocabularyManager();
 		vocabularyManager.insertInHierarchy();
 
 		// Captura o nome, tipo de classe de armazenamento e o acesso do método
@@ -237,7 +233,7 @@ public class MethodProcessor extends FunctionProcessor {
 		if (declarator instanceof CPPASTFunctionDeclarator) {
 			this.modificador = modifies((CPPASTFunctionDeclarator) declarator);
 		}
-		
+
 		this.visibilidade = visibility(method.getVisibility());
 		if (method.isDeleted())
 			modificador = "delete";
@@ -285,34 +281,6 @@ public class MethodProcessor extends FunctionProcessor {
 		else
 			vxlFragment = new StringBuffer(VxlManager.methodPrototype(name, access, storage, modificador, visibilidade,
 					"n", indentationLevel));
-	}
-
-	/**
-	 * Recebe o vocabulário de atriutos e os insere no fragmento de vxl
-	 * 
-	 * @param fields
-	 * @param fieldAccess
-	 * @param fieldStorage
-	 * @param visibility
-	 * @param indentationLevel
-	 */
-	private void storeInternVocabularyField(Map<String, Integer> fields, Map<String, String> fieldAccess,
-			Map<String, String> fieldStorage, Map<String, String> visibility, int indentationLevel) {
-
-		Set<String> fieldSet = fields.keySet();
-		Iterator<String> it_fields = fieldSet.iterator();
-
-		while (it_fields.hasNext()) {
-			String identifier = it_fields.next();
-			if (fields.get(identifier) > 0) {
-				String access = fieldAccess.get(identifier);
-				String storage = fieldStorage.get(identifier);
-				int count = fields.get(identifier);
-				String visib = visibility.get(identifier);
-
-				vxlFragment.append(VxlManager.field(identifier, access, storage, visib, count, indentationLevel));
-			}
-		}
 	}
 
 	/**

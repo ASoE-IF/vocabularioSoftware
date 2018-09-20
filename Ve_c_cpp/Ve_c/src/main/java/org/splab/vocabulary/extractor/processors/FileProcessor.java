@@ -48,7 +48,6 @@ public class FileProcessor {
 
 		// Configura as partes do vocabulario
 		FileVocabularyManager vocabularyManager = new FileVocabularyManager();
-		vocabularyManager.insertInHierarchy();
 		ExpressionProcessor.setVocabularyManager(vocabularyManager);
 
 		// Configura os vxl
@@ -110,7 +109,6 @@ public class FileProcessor {
 		}
 
 		vxlFragment.append(VxlManager.endFile());
-		vocabularyManager.removeFromHierarchy();
 	}
 
 	/**

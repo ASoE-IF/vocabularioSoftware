@@ -56,7 +56,6 @@ public class FunctionProcessor {
 			int indentationLevel) {
 		// Vocabulário interno das funções
 		FunctionVocabularyManager vocabularyManager = new FunctionVocabularyManager();
-		vocabularyManager.insertInHierarchy();
 
 		// Captura o nome, tipo de classe de armazenamento e o acesso da função
 		String name = functionDefinition.getDeclarator().getName().toString();
@@ -146,8 +145,6 @@ public class FunctionProcessor {
 		}
 
 		vxlFragment.append(VxlManager.endFuntion(indentationLevel));
-
-		vocabularyManager.removeFromHierarchy();
 	}
 
 	/**

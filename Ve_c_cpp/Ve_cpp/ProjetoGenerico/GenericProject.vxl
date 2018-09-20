@@ -34,6 +34,26 @@
 		<func name="main" access="" storage="auto" sloc="2">
 		</func>
 	</cpp-file>
+	<cpp-file name=".\ProjetoGenerico\Algoritmos\Teste.cpp" sloc="18">
+		<gvar name="x" access="" storage="auto" count="1"/>
+		<func name="main" access="" storage="auto" sloc="17">
+			<gvar name="x" access="" storage="" count="2"/>
+			<lvar name="y" access="" storage="auto" count="2"/>
+			<class name="classeIn" abs="n" inn="n" sloc="11">
+				<field name="field" access="" storage="auto" visib="priv" count="2"/>
+				<field name="field2" access="" storage="auto" visib="priv" count="1"/>
+				<field name="field3" access="" storage="auto" visib="priv" count="1"/>
+				<gvar name="x" access="" storage="" count="1"/>
+				<gvar name="y" access="" storage="auto" count="1"/>
+				<mth name="method" access="" storage="auto" modifies="" visib="priv" virtual="n" sloc="5">
+					<field name="field" access="" storage="auto" visib="priv" count="2"/>
+					<field name="field2" access="" storage="auto" visib="priv" count="1"/>
+					<gvar name="x" access="" storage="" count="2"/>
+					<gvar name="y" access="" storage="auto" count="1"/>
+				</mth>
+			</class>
+		</func>
+	</cpp-file>
 	<cpp-file name=".\ProjetoGenerico\Algoritmos\UsandoEstruturasDeControle.cpp" sloc="173">
 		<comm cntt="Aplicativo completo com todas as entidades e estruturas de um Aplicativo em C. Autor: Israel Gomes de Lima Data: 20 09 2017"/>
 		<comm cntt="fun��es para uso na fun��o de controle"/>
@@ -187,15 +207,15 @@
 		<comm cntt="Variaveis globais"/>
 		<gvar name="ptrGlobal" access="" storage="auto" count="1"/>
 		<gvar name="ptrParaPtrGlobal" access="" storage="auto" count="1"/>
-		<gvar name="varAutoImplicita" access="" storage="auto" count="3"/>
-		<gvar name="varCharComSignal" access="" storage="auto" count="3"/>
+		<gvar name="varAutoImplicita" access="" storage="auto" count="1"/>
+		<gvar name="varCharComSignal" access="" storage="auto" count="1"/>
 		<gvar name="varConst" access="const" storage="auto" count="1"/>
 		<gvar name="varExtern" access="" storage="extern" count="1"/>
-		<gvar name="varIntUnsigned" access="" storage="auto" count="2"/>
-		<gvar name="varLongDouble" access="" storage="auto" count="2"/>
-		<gvar name="varShortInt" access="" storage="auto" count="3"/>
-		<gvar name="varStatic" access="" storage="static" count="2"/>
-		<gvar name="varVolatil" access="volatile" storage="auto" count="2"/>
+		<gvar name="varIntUnsigned" access="" storage="auto" count="1"/>
+		<gvar name="varLongDouble" access="" storage="auto" count="1"/>
+		<gvar name="varShortInt" access="" storage="auto" count="1"/>
+		<gvar name="varStatic" access="" storage="static" count="1"/>
+		<gvar name="varVolatil" access="volatile" storage="auto" count="1"/>
 		<func name="funcaoDeDeclaracaoDeVariaveisLocais" access="" storage="auto" sloc="24">
 			<lvar name="varAutoExplicitaLocal" access="" storage="auto" count="4"/>
 			<lvar name="varAutoImplicitaLocal" access="" storage="auto" count="4"/>
@@ -214,13 +234,13 @@
 			<comm cntt="Usando novas v�riveis locais que sobreescrevem as globais"/>
 			<comm cntt="Fim da fun��o"/>
 			<gvar name="::varCharComSignal" access="" storage="" count="1"/>
-			<gvar name="varAutoImplicita" access="" storage="auto" count="2"/>
-			<gvar name="varCharComSignal" access="" storage="auto" count="2"/>
-			<gvar name="varIntUnsigned" access="" storage="auto" count="1"/>
-			<gvar name="varLongDouble" access="" storage="auto" count="1"/>
-			<gvar name="varShortInt" access="" storage="auto" count="2"/>
-			<gvar name="varStatic" access="" storage="static" count="1"/>
-			<gvar name="varVolatil" access="volatile" storage="auto" count="1"/>
+			<gvar name="varAutoImplicita" access="" storage="" count="2"/>
+			<gvar name="varCharComSignal" access="" storage="" count="2"/>
+			<gvar name="varIntUnsigned" access="" storage="" count="1"/>
+			<gvar name="varLongDouble" access="" storage="" count="1"/>
+			<gvar name="varShortInt" access="" storage="" count="2"/>
+			<gvar name="varStatic" access="" storage="" count="1"/>
+			<gvar name="varVolatil" access="" storage="" count="1"/>
 			<lvar name="varAutoImplicita" access="" storage="auto" count="3"/>
 			<lvar name="varCharComSignal" access="" storage="auto" count="2"/>
 			<lvar name="varConst" access="const" storage="auto" count="1"/>
@@ -256,7 +276,7 @@
 			<call name="calloc" count="1"/>
 		</func>
 	</cpp-file>
-	<cpp-file name=".\ProjetoGenerico\Classes\CLASSES1.CPP" sloc="136">
+	<cpp-file name=".\ProjetoGenerico\Classes\CLASSES1.CPP" sloc="137">
 		<comm cntt="Aplicativo completo com todas as entidades e estruturas de um Aplicativo em C. Autor: Israel Gomes de Lima Data: 20 09 2017"/>
 		<comm cntt="Usando Classes"/>
 		<comm cntt="Classe gen�rica 2"/>
@@ -266,16 +286,16 @@
 		<comm cntt="Usando objetos"/>
 		<include name="iostream"/>
 		<include name="string"/>
-		<gvar name="varGlobal" access="" storage="auto" count="5"/>
-		<gvar name="varx" access="" storage="auto" count="3"/>
+		<gvar name="varGlobal" access="" storage="auto" count="1"/>
+		<gvar name="varx" access="" storage="auto" count="2"/>
 		<gvar name="vary" access="" storage="auto" count="1"/>
 		<class name="GenericClass1" abs="n" inn="n" sloc="40">
-			<field name="jogo" access="" storage="auto" visib="priv" count="2"/>
-			<field name="nome" access="" storage="auto" visib="priv" count="6"/>
+			<field name="jogo" access="" storage="auto" visib="priv" count="1"/>
+			<field name="nome" access="" storage="auto" visib="priv" count="1"/>
 			<field name="nomePublico" access="" storage="auto" visib="pub" count="1"/>
-			<field name="quantidade" access="" storage="auto" visib="priv" count="2"/>
+			<field name="quantidade" access="" storage="auto" visib="priv" count="1"/>
 			<field name="x" access="" storage="auto" visib="pub" count="1"/>
-			<gvar name="varx" access="" storage="auto" count="1"/>
+			<gvar name="varx" access="" storage="" count="1"/>
 			<call name="funcc" count="1"/>
 			<mth name="GenericClass1" access="" storage="auto" modifies="" visib="pub" virtual="n" sloc="5">
 				<field name="jogo" access="" storage="auto" visib="priv" count="1"/>
@@ -314,7 +334,7 @@
 		<class name="GenericClass2" abs="n" inn="n" sloc="13">
 			<field name="nome" access="" storage="auto" visib="priv" count="1"/>
 			<field name="quantidade" access="" storage="auto" visib="priv" count="1"/>
-			<gvar name="varGlobal" access="" storage="auto" count="2"/>
+			<gvar name="varGlobal" access="" storage="" count="2"/>
 			<mth name="GenericClass2" access="" storage="auto" modifies="" visib="pub" virtual="n"/>
 			<mth name="GenericClass2" access="" storage="auto" modifies="" visib="pub" virtual="n"/>
 			<mth name="GenericClass2" access="" storage="auto" modifies="" visib="pub" virtual="n"/>
@@ -328,15 +348,17 @@
 				<param name="first"/>
 			</mth>
 		</class>
-		<class name="GenericClass4" abs="n" inn="n" sloc="13">
+		<class name="GenericClass4" abs="n" inn="n" sloc="14">
 			<field name="obj1" access="" storage="static" visib="priv" count="1"/>
 			<prttp name="metodoGenerico" access="" storage="auto"/>
 			<prttp name="operator" access="" storage="auto"/>
 			<mth name="GenericClass4" access="" storage="auto" modifies="" visib="pub" virtual="n" sloc="2">
 			</mth>
-			<func name="operator" access="" storage="auto" sloc="3">
+			<func name="operator" access="" storage="auto" sloc="4">
 				<param name="output"/>
 				<param name="number"/>
+				<field name="obj1" access="" storage="static" visib="priv" count="1"/>
+				<gvar name="null" access="" storage="" count="1"/>
 			</func>
 		</class>
 		<class name="GenericClass5" abs="y" inn="n" sloc="8">
@@ -379,7 +401,7 @@
 		<func name="GenericClass2::GenericClass2" access="" storage="auto" sloc="3">
 			<param name="var2"/>
 			<param name="var3"/>
-			<gvar name="varGlobal" access="" storage="auto" count="2"/>
+			<gvar name="varGlobal" access="" storage="" count="2"/>
 		</func>
 		<func name="GenericClass2::setNome" access="" storage="auto" sloc="4">
 			<param name="nome1"/>
@@ -431,28 +453,28 @@
 		<comm cntt="comentario fora da funcao"/>
 		<comm cntt="comentario de lina"/>
 		<include name="stdio.h"/>
-		<gvar name="var1" access="" storage="auto" count="6"/>
-		<gvar name="var10" access="" storage="auto" count="6"/>
-		<gvar name="var11" access="" storage="auto" count="3"/>
-		<gvar name="var12" access="" storage="auto" count="3"/>
+		<gvar name="var1" access="" storage="auto" count="1"/>
+		<gvar name="var10" access="" storage="auto" count="1"/>
+		<gvar name="var11" access="" storage="auto" count="1"/>
+		<gvar name="var12" access="" storage="auto" count="1"/>
 		<gvar name="var13" access="" storage="auto" count="1"/>
 		<gvar name="var14" access="" storage="auto" count="1"/>
 		<gvar name="var15" access="" storage="auto" count="1"/>
 		<gvar name="var16" access="" storage="auto" count="1"/>
 		<gvar name="var17" access="" storage="auto" count="1"/>
-		<gvar name="var18" access="" storage="auto" count="2"/>
+		<gvar name="var18" access="" storage="auto" count="1"/>
 		<gvar name="var19" access="" storage="auto" count="1"/>
-		<gvar name="var2" access="" storage="auto" count="3"/>
+		<gvar name="var2" access="" storage="auto" count="1"/>
 		<gvar name="var20" access="" storage="auto" count="1"/>
 		<gvar name="var21" access="" storage="auto" count="1"/>
 		<gvar name="var22" access="" storage="auto" count="1"/>
 		<gvar name="var23" access="" storage="auto" count="1"/>
 		<gvar name="var24" access="" storage="auto" count="1"/>
-		<gvar name="var3" access="" storage="auto" count="2"/>
+		<gvar name="var3" access="" storage="auto" count="1"/>
 		<gvar name="var4" access="" storage="auto" count="1"/>
 		<gvar name="var5" access="" storage="auto" count="1"/>
 		<gvar name="var6" access="" storage="auto" count="1"/>
-		<gvar name="var7" access="" storage="auto" count="2"/>
+		<gvar name="var7" access="" storage="auto" count="1"/>
 		<gvar name="var8" access="" storage="auto" count="1"/>
 		<gvar name="var9" access="" storage="auto" count="1"/>
 		<enum name="enumeration" sloc="4">
@@ -554,10 +576,10 @@
 			<lit cntt="&amp;quot;Valor do membro1 da estrutura: %d\n&amp;quot;" count="1"/>
 		</func>
 		<func name="funcaoUsandoEstrutura" access="" storage="auto" sloc="20">
-			<gvar name="var1" access="" storage="auto" count="5"/>
-			<gvar name="var2" access="" storage="auto" count="2"/>
-			<gvar name="var3" access="" storage="auto" count="1"/>
-			<gvar name="var7" access="" storage="auto" count="1"/>
+			<gvar name="var1" access="" storage="" count="5"/>
+			<gvar name="var2" access="" storage="" count="2"/>
+			<gvar name="var3" access="" storage="" count="1"/>
+			<gvar name="var7" access="" storage="" count="1"/>
 			<lvar name="ponteiroStruct" access="" storage="auto" count="4"/>
 			<lvar name="ponteiroStruct->membro1" access="" storage="auto" count="3"/>
 			<lvar name="var1.membro1" access="" storage="auto" count="2"/>
@@ -584,10 +606,10 @@
 			<lit cntt="&amp;quot;Valor do membro1 da union1: %d\n&amp;quot;" count="1"/>
 		</func>
 		<func name="funcaoUsandoUnion" access="" storage="auto" sloc="20">
-			<gvar name="var10" access="" storage="auto" count="5"/>
-			<gvar name="var11" access="" storage="auto" count="2"/>
-			<gvar name="var12" access="" storage="auto" count="2"/>
-			<gvar name="var18" access="" storage="auto" count="1"/>
+			<gvar name="var10" access="" storage="" count="5"/>
+			<gvar name="var11" access="" storage="" count="2"/>
+			<gvar name="var12" access="" storage="" count="2"/>
+			<gvar name="var18" access="" storage="" count="1"/>
 			<lvar name="ponteiroUnion" access="" storage="auto" count="4"/>
 			<lvar name="ponteiroUnion->membro1" access="" storage="auto" count="3"/>
 			<lvar name="var10.membro1" access="" storage="auto" count="2"/>
@@ -670,20 +692,20 @@
 	</cpp-file>
 	<cpp-file name=".\ProjetoGenerico\Classes\UsandoClassesEVariaveis.cpp" sloc="28">
 		<include name="stdio.h"/>
-		<gvar name="variavel_de_fora_do_arquivo" access="" storage="" count="2"/>
-		<gvar name="variavel_do_arc2" access="const" storage="static" count="2"/>
-		<gvar name="variavel_do_arquivo" access="volatile" storage="static" count="4"/>
+		<gvar name="variavel_de_fora_do_arquivo" access="" storage="" count="1"/>
+		<gvar name="variavel_do_arc2" access="const" storage="static" count="1"/>
+		<gvar name="variavel_do_arquivo" access="volatile" storage="static" count="2"/>
 		<prttp name="mss" access="" storage="auto"/>
 		<class name="classeGlobal" abs="y" inn="n" sloc="19">
-			<field name="atributoDaClasseGlobal" access="" storage="auto" visib="priv" count="7"/>
-			<field name="atributoDaClasseGlobal2" access="" storage="auto" visib="priv" count="2"/>
-			<gvar name="variavel_do_arc2" access="const" storage="static" count="1"/>
+			<field name="atributoDaClasseGlobal" access="" storage="auto" visib="priv" count="2"/>
+			<field name="atributoDaClasseGlobal2" access="" storage="auto" visib="priv" count="1"/>
+			<gvar name="variavel_do_arc2" access="" storage="" count="1"/>
 			<mth name="metodoDaClasseGlobal" access="" storage="auto" modifies="" visib="pub" virtual="n" sloc="12">
 				<field name="atributoDaClasseGlobal" access="" storage="auto" visib="priv" count="2"/>
 				<field name="atributoDaClasseGlobal2" access="" storage="auto" visib="priv" count="1"/>
-				<lvar name="variavelLocal" access="" storage="auto" count="3"/>
+				<lvar name="variavelLocal" access="" storage="auto" count="1"/>
 				<class name="classeInterna" abs="n" inn="n" sloc="7">
-					<field name="atributoInterno" access="" storage="auto" visib="priv" count="2"/>
+					<field name="atributoInterno" access="" storage="auto" visib="priv" count="1"/>
 					<gvar name="variavelLocal" access="" storage="auto" count="1"/>
 					<mth name="metodoInterno" access="" storage="auto" modifies="" visib="priv" virtual="n" sloc="3">
 						<field name="atributoDaClasseGlobal" access="" storage="auto" visib="priv" count="3"/>
@@ -696,7 +718,7 @@
 		</class>
 		<func name="funcaoGlobal" access="" storage="auto" sloc="5">
 			<gvar name="variavel_de_fora_do_arquivo" access="" storage="" count="1"/>
-			<gvar name="variavel_do_arquivo" access="volatile" storage="static" count="2"/>
+			<gvar name="variavel_do_arquivo" access="" storage="" count="2"/>
 			<lvar name="variavel_da_funcao_global" access="" storage="auto" count="2"/>
 		</func>
 	</cpp-file>

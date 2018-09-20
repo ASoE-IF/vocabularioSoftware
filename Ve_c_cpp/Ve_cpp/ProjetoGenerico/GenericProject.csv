@@ -2,6 +2,10 @@
 ,funcaoDePreProcessador,12,0,0,12,FUNCTION
 ,main,2,0,0,2,FUNCTION
 ,.\ProjetoGenerico\Algoritmos\Diretivas.cpp,2,22,14,38,FILE
+,method,5,0,0,5,METHOD
+,classeIn,6,0,5,11,CLASS
+,main,6,0,11,17,FUNCTION
+,.\ProjetoGenerico\Algoritmos\Teste.cpp,1,0,17,18,FILE
 ,prompt,4,0,0,4,FUNCTION
 ,readNum,4,0,0,4,FUNCTION
 ,sqrNum,4,0,0,4,FUNCTION
@@ -46,9 +50,9 @@
 ,GenericClass2::getNome,4,0,0,4,FUNCTION
 ,metodoGenerico,3,0,0,3,METHOD
 ,GenericClass3,6,0,3,9,CLASS
-,operator,3,0,0,3,FUNCTION
+,operator,4,0,0,4,FUNCTION
 ,GenericClass4,2,0,0,2,METHOD
-,GenericClass4,8,0,5,13,CLASS
+,GenericClass4,8,0,6,14,CLASS
 ,GenericClass5,2,0,0,2,METHOD
 ,metodoVirtual,2,0,0,2,METHOD
 ,GenericClass5,4,0,4,8,CLASS
@@ -58,7 +62,7 @@
 ,metodoGenerico,3,0,0,3,METHOD
 ,GenericClass6,6,0,9,15,CLASS
 ,main,11,0,0,11,FUNCTION
-,.\ProjetoGenerico\Classes\CLASSES1.CPP,4,2,130,136,FILE
+,.\ProjetoGenerico\Classes\CLASSES1.CPP,4,2,131,137,FILE
 ,funcaoDeMembroDeEstrutura,3,0,0,3,FUNCTION
 ,estrutura1,6,0,0,6,STRUCT
 ,estrutura2,6,0,0,6,STRUCT
@@ -126,4 +130,4 @@
 ,ff,1,0,0,1,ENUM
 ,main,5,0,0,5,FUNCTION
 ,.\ProjetoGenerico\Outros Arquivos\limits-structnest.cpp,6,12,12,30,FILE
-Total,,820,87,899,907
+Total,,839,87,934,926

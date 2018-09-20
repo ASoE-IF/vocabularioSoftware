@@ -139,6 +139,7 @@ public:
 
     friend string &operator<<( string &output, const GenericClass1 &number )
     {
+    	obj1 = null;
     }
 
     explicit GenericClass4(){
