@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cpp-project id="default" name="Projeto Genérico" revision="1.2.3">
+	<cpp-file name="Arquivo Genérico.cpp" sloc="656">
+		<comm cntt="Isto é um comentário presente no arquivo-1"/>
+		<comm cntt="Isto é um comentário presente no arquivo-2"/>
+		<include name="stdio.h"/>
+		<include name="stdlib.h"/>
+		<pragma message="Menssagem de pragma1"/>
+		<pragma message="Menssagem de pragma2"/>
+		<error message="Menssagem de erro 1"/>
+		<error message="menssagem de erro 2"/>
+		<macro name="Macro1"/>
+		<macro name="Macro2"/>
+		<macro name="FuncStyleMacro1">
+			<param name="macro_paramter1"/>
+			<param name="macro_paramter2"/>
+		</macro>
+		<macro name="FuncStyleMacro2">
+			<param name="macro_paramter1"/>
+			<param name="macro_paramter2"/>
+		</macro>
+		<call name="call1" count="4"/>
+		<call name="call2" count="5"/>
+		<gvar name="variavel_global1" access="const" storage="auto" count="5"/>
+		<gvar name="variavel_global2" access="const" storage="auto" count="5"/>
+		<lit cntt="literal no arquivo1" count="7"/>
+		<lit cntt="literal no arquivo2" count="3"/>
+		<prttp name="prttp1" access="const" storage="auto"/>
+		<prttp name="prttp2" access="const" storage="static"/>
+		<enum name="enum_name1" sloc="3">
+			<comm cntt="Isto é um comentário presente no na enum1"/>
+			<comm cntt="Isto é um comentário presente no na enum1-2"/>
+			<const name="CONST1"/>
+			<const name="CONST2"/>
+			<const name="CONST3"/>
+		</enum>
+		<enum name="enum_name2" sloc="3">
+			<comm cntt="Isto é um comentário presente no na enum1"/>
+			<comm cntt="Isto é um comentário presente no na enum1-2"/>
+			<const name="CONST1"/>
+			<const name="CONST2"/>
+			<const name="CONST3"/>
+		</enum>
+		<union name="union1" sloc="2">
+			<comm cntt="Isto é um comentário presente na union 1"/>
+			<comm cntt="Isto é um comentário presente na union 1 - 2"/>
+			<field name="field1"/>
+			<field name="field2"/>
+		</union>
+		<union name="union2" sloc="2">
+			<comm cntt="Isto é um comentário presente na union 1"/>
+			<comm cntt="Isto é um comentário presente na union 1 - 2"/>
+			<field name="field1"/>
+			<field name="field2"/>
+		</union>
+		<strt name="struct1" sloc="2">
+			<comm cntt="Isto é um comentário presente na struct 1"/>
+			<comm cntt="Isto é um comentário presente na struct 1 - 2"/>
+			<field name="field1"/>
+			<field name="field2"/>
+		</strt>
+		<strt name="struct2" sloc="2">
+			<comm cntt="Isto é um comentário presente na struct 1"/>
+			<comm cntt="Isto é um comentário presente na struct 1 - 2"/>
+			<field name="field1"/>
+			<field name="field2"/>
+		</strt>
+		<func name="func1" access="const" storage="static" sloc="9">
+			<param name="param_name1"/>
+			<param name="param_name2"/>
+			<comm cntt="Isto é um comentário presente na func1"/>
+			<comm cntt="Isto é um comentário presente na func1-2"/>
+			<gvar name="variacel_global1" access="const" storage="auto" count="5"/>
+			<gvar name="variacel_global2" access="const" storage="static" count="9"/>
+			<lvar name="variacel_local1" access="" storage="auto" count="8"/>
+			<lvar name="variacel_local2" access="const" storage="auto" count="5"/>
+			<lit cntt="literal na func1" count="11"/>
+			<lit cntt="literal na func2" count="13"/>
+			<prttp name="prttp3" access="" storage="auto"/>
+			<prttp name="prttp4" access="const" storage="auto"/>
+			<call name="call1" count="4"/>
+			<call name="call2" count="5"/>
+			<enum name="enum_name3" sloc="3">
+				<comm cntt="Isto é um comentário presente no na enum1"/>
+				<comm cntt="Isto é um comentário presente no na enum1-2"/>
+				<const name="CONST1"/>
+				<const name="CONST2"/>
+				<const name="CONST3"/>
+			</enum>
+			<enum name="enum_name4" sloc="3">
+				<comm cntt="Isto é um comentário presente no na enum1"/>
+				<comm cntt="Isto é um comentário presente no na enum1-2"/>
+				<const name="CONST1"/>
+				<const name="CONST2"/>
+				<const name="CONST3"/>
+			</enum>
+			<union name="union3" sloc="2">
+				<comm cntt="Isto é um comentário presente na union 1"/>
+				<comm cntt="Isto é um comentário presente na union 1 - 2"/>
+				<field name="field1"/>
+				<field name="field2"/>
+			</union>
+			<union name="union4" sloc="2">
+				<comm cntt="Isto é um comentário presente na union 1"/>
+				<comm cntt="Isto é um comentário presente na union 1 - 2"/>
+				<field name="field1"/>
+				<field name="field2"/>
+			</union>
+			<strt name="struct3" sloc="2">
+				<comm cntt="Isto é um comentário presente na struct 1"/>
+				<comm cntt="Isto é um comentário presente na struct 1 - 2"/>
+				<field name="field1"/>
+				<field name="field2"/>
+			</strt>
+			<strt name="struct4" sloc="2">
+				<comm cntt="Isto é um comentário presente na struct 1"/>
+				<comm cntt="Isto é um comentário presente na struct 1 - 2"/>
+				<field name="field1"/>
+				<field name="field2"/>
+			</strt>
+			<class name="classIF1" abs="n" inn="n" sloc="2">
+			</class>
+			<class name="classIF2" abs="n" inn="n" sloc="2">
+			</class>
+			<func name="func1_interna1" access="const" storage="static" sloc="5">
+				<call name="call3" count="3"/>
+			</func>
+			<func name="func1_interna2" access="" storage="static" sloc="7">
+				<call name="call3" count="5"/>
+			</func>
+		</func>
+		<class name="class1" abs="y" inn="n" sloc="52">
+			<comm cntt="Isto é um comentário presente na class"/>
+			<comm cntt="Isto é um comentário presente na class"/>
+			<gvar name="variacel_global1" access="const" storage="auto" count="8"/>
+			<gvar name="variacel_global2" access="const" storage="static" count="8"/>
+			<call name="call1" count="5"/>
+			<call name="call2" count="5"/>
+			<field name="field1" access="const" storage="auto" visib="priv" count="5"/>
+			<field name="field1" access="const" storage="static" visib="pub" count="4"/>
+			<lit cntt="literal na class1" count="4"/>
+			<lit cntt="literal na class2" count="6"/>
+			<prttp name="prttp3" access="const" storage="auto"/>
+			<prttp name="prttp4" access="const" storage="static"/>
+			<enum name="enum_name5" sloc="3">
+				<comm cntt="Isto é um comentário presente no na enum1"/>
+				<comm cntt="Isto é um comentário presente no na enum1-2"/>
+				<const name="CONST1"/>
+				<const name="CONST2"/>
+				<const name="CONST3"/>
+			</enum>
+			<enum name="enum_name6" sloc="3">
+				<comm cntt="Isto é um comentário presente no na enum1"/>
+				<comm cntt="Isto é um comentário presente no na enum1-2"/>
+				<const name="CONST1"/>
+				<const name="CONST2"/>
+				<const name="CONST3"/>
+			</enum>
+			<union name="union5" sloc="2">
+				<comm cntt="Isto é um comentário presente na union 1"/>
+				<comm cntt="Isto é um comentário presente na union 1 - 2"/>
+				<field name="field1"/>
+				<field name="field2"/>
+			</union>
+			<union name="union6" sloc="2">
+				<comm cntt="Isto é um comentário presente na union 1"/>
+				<comm cntt="Isto é um comentário presente na union 1 - 2"/>
+				<field name="field1"/>
+				<field name="field2"/>
+			</union>
+			<strt name="struct5" sloc="2">
+				<comm cntt="Isto é um comentário presente na struct 1"/>
+				<comm cntt="Isto é um comentário presente na struct 1 - 2"/>
+				<field name="field1"/>
+				<field name="field2"/>
+			</strt>
+			<strt name="struct6" sloc="2">
+				<comm cntt="Isto é um comentário presente na struct 1"/>
+				<comm cntt="Isto é um comentário presente na struct 1 - 2"/>
+				<field name="field1"/>
+				<field name="field2"/>
+			</strt>
+			<class name="classIC1" abs="n" inn="y" sloc="2">
+			</class>
+			<class name="classIC2" abs="n" inn="y" sloc="2">
+			</class>
+			<func name="func1_class1" access="const" storage="auto" sloc="7">
+				<call name="call3" count="5"/>
+			</func>
+			<func name="func1_class2" access="" storage="static" sloc="7">
+				<call name="call3" count="5"/>
+			</func>
+			<mth name="methodo1" access="const" storage="auto" modifies="const" visib="pub" virtual="y" sloc="9">
+			<comm cntt="Isto é um comentário presente na class"/>
+			<comm cntt="Isto é um comentário presente na class"/>
+			<param name="param_name1"/>
+			<param name="param_name2"/>
+			<gvar name="variacel_global1" access="const" storage="auto" count="8"/>
+			<gvar name="variacel_global2" access="const" storage="static" count="9"/>
+			<lvar name="variacel_local1" access="" storage="auto" count="8"/>
+			<lvar name="variacel_local2" access="const" storage="auto" count="5"/>
+			<call name="call1" count="5"/>
+			<call name="call2" count="5"/>
+			<field name="field1" access="const" storage="auto" visib="priv" count="5"/>
+			<field name="field1" access="const" storage="static" visib="pub" count="4"/>
+			<lit cntt="literal na class1" count="5"/>
+			<lit cntt="literal na class2" count="4"/>
+			<prttp name="prttp3" access="const" storage="auto"/>
+			<prttp name="prttp4" access="const" storage="static"/>
+			<enum name="enum_name5" sloc="3">
+				<comm cntt="Isto é um comentário presente no na enum1"/>
+				<comm cntt="Isto é um comentário presente no na enum1-2"/>
+				<const name="CONST1"/>
+				<const name="CONST2"/>
+				<const name="CONST3"/>
+			</enum>
+			<enum name="enum_name6" sloc="2">
+				<comm cntt="Isto é um comentário presente no na enum1"/>
+				<comm cntt="Isto é um comentário presente no na enum1-2"/>
+				<const name="CONST1"/>
+				<const name="CONST2"/>
+				<const name="CONST3"/>
+			</enum>
+			<union name="union5" sloc="2">
+				<comm cntt="Isto é um comentário presente na union 1"/>
+				<comm cntt="Isto é um comentário presente na union 1 - 2"/>
+				<field name="field1"/>
+				<field name="field2"/>
+			</union>
+			<union name="union6" sloc="4946">
+				<comm cntt="Isto é um comentário presente na union 1"/>
+				<comm cntt="Isto é um comentário presente na union 1 - 2"/>
+				<field name="field1"/>
+				<field name="field2"/>
+			</union>
+			<strt name="struct5" sloc="2">
+				<comm cntt="Isto é um comentário presente na struct 1"/>
+				<comm cntt="Isto é um comentário presente na struct 1 - 2"/>
+				<field name="field1"/>
+				<field name="field2"/>
+			</strt>
+			<strt name="struct6" sloc="2">
+				<comm cntt="Isto é um comentário presente na struct 1"/>
+				<comm cntt="Isto é um comentário presente na struct 1 - 2"/>
+				<field name="field1"/>
+				<field name="field2"/>
+			</strt>
+			<class name="classIC3" abs="n" inn="n" sloc="2">
+			</class>
+			<class name="classIC4" abs="n" inn="n" sloc="2">
+			</class>
+			<func name="func1_class3" access="const" storage="auto" sloc="7">
+				<call name="call3" count="5"/>
+			</func>
+			<func name="func1_class4" access="" storage="static" sloc="6">
+				<call name="call3" count="4"/>
+			</func>
+			</mth>
+			<mth name="methodo2" access="const" storage="auto" modifies="const" visib="pub" virtual="y" sloc="2">
+			</mth>
+		</class>
+	</cpp-file>
+</cpp-project>

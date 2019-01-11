@@ -1,0 +1,84 @@
+,Entity's Name,LOC Count,Header Count,Inner Entities Lines,Total,Entity Type
+,funcaoDePreProcessador,12,0,0,12,FUNCTION
+,funcaoDeDeclaracaoDeVariaveisLocais,24,0,0,24,FUNCTION
+,funcaoDeUsoDeVariaveisGlobais,28,0,0,28,FUNCTION
+,funcaoDeUsoDeVariaveisLocaisEOperadores,51,0,0,51,FUNCTION
+,prompt,4,0,0,4,FUNCTION
+,readNum,4,0,0,4,FUNCTION
+,sqrNum,4,0,0,4,FUNCTION
+,funcaoDeUsoDeComandoDeControle,156,0,0,156,FUNCTION
+,funcaoDeMatriz,3,0,0,3,FUNCTION
+,funcaoDeMatriz2,3,0,0,3,FUNCTION
+,funcaoDeMatriz3,3,0,0,3,FUNCTION
+,funcaoUsandoMatrizes,22,0,0,22,FUNCTION
+,funcaoDePonteiro,3,0,0,3,FUNCTION
+,funcaoDePonteiro2,3,0,0,3,FUNCTION
+,funcaoUsandoPonteiros,26,0,0,26,FUNCTION
+,funcaoInterna,7,0,0,7,INNER_FUNCTION
+,funcao_principal,5,0,7,12,FUNCTION
+,funcaoInterna,7,0,0,7,INNER_FUNCTION
+,funcao1_1,5,0,7,12,FUNCTION
+,funcaoInterna,7,0,0,7,INNER_FUNCTION
+,funcao2,5,0,7,12,FUNCTION
+,funcaoInterna,7,0,0,7,INNER_FUNCTION
+,funcao3,6,0,7,13,FUNCTION
+,funcaoInterna,7,0,0,7,INNER_FUNCTION
+,funcao4,7,0,7,14,FUNCTION
+,funcao5,3,0,0,3,FUNCTION
+,estrutura1,6,0,0,6,STRUCT
+,estrutura2,6,0,0,6,STRUCT
+,,6,0,0,6,STRUCT
+,estrutura3,9,0,0,9,STRUCT
+,funcaoUsandoEstrutura,21,0,0,21,FUNCTION
+,funcaoDeMembroDeEstrutura,3,0,0,3,FUNCTION
+,funcaoDeEstrutura,4,0,0,4,FUNCTION
+,union_1,6,0,0,6,UNION
+,union2,6,0,0,6,UNION
+,,6,0,0,6,UNION
+,union3,9,0,0,9,UNION
+,funcaoUsandoUnion,21,0,0,21,FUNCTION
+,funcaoDeMembroDeUnion,3,0,0,3,FUNCTION
+,funcaoDeUnion,4,0,0,4,FUNCTION
+,enumeration,4,0,0,4,ENUM
+,funcaoUsandoEnum,11,0,0,11,FUNCTION
+,estrutura4,6,0,0,6,STRUCT
+,,6,0,0,6,STRUCT
+,funcaoUsandoTypedef,11,0,0,11,FUNCTION
+,main,12,0,0,12,FUNCTION
+,functionx,6,0,0,6,FUNCTION
+,.\Generic_Project\GenericFile.c,16,22,578,616,FILE
+,e,1,0,0,1,ENUM
+,func,5,0,0,5,FUNCTION
+,main,1,0,0,1,FUNCTION
+,.\Generic_Project\Outros Arquivos\c11-align-1.c,15,1,7,23,FILE
+,estrutura1,9,0,0,9,STRUCT
+,funcao_do_header,3,0,9,12,FUNCTION
+,vuncccc,6,0,0,6,FUNCTION
+,.\Generic_Project\Outros Arquivos\Header.h,3,12,18,33,FILE
+,.\Generic_Project\Outros Arquivos\limits-declparen.c,1,12,0,13,FILE
+,.\Generic_Project\Outros Arquivos\limits-exprparen.c,1,12,0,13,FILE
+,foo,6,0,0,6,FUNCTION
+,.\Generic_Project\Outros Arquivos\limits-ifs.c,3,4,6,13,FILE
+,s0,0,0,3,3,STRUCT
+,s1,0,0,3,3,STRUCT
+,s2,0,0,3,3,STRUCT
+,s3,0,0,3,3,STRUCT
+,s4,0,0,3,3,STRUCT
+,s5,0,0,3,3,STRUCT
+,s6,0,0,3,3,STRUCT
+,s7,0,0,3,3,STRUCT
+,s8,0,0,3,3,STRUCT
+,s9,3,0,0,3,STRUCT
+,dd,2,0,2,4,STRUCT
+,d,1,0,0,1,STRUCT
+,ff,1,0,0,1,ENUM
+,main,5,0,0,5,FUNCTION
+,.\Generic_Project\Outros Arquivos\limits-structnest.c,6,12,12,30,FILE
+,func_interna,6,0,0,6,INNER_FUNCTION
+,main,6,0,6,12,FUNCTION
+,funcaoUsandoPonteiros,26,0,0,26,FUNCTION
+,.\Generic_Project\Outros Arquivos\Teste.c,1,0,38,39,FILE
+,estrutura,4,0,0,4,STRUCT
+,main,14,0,4,18,FUNCTION
+,.\Generic_Project\ZZCFile.c,0,0,18,18,FILE
+Total,,723,75,760,798

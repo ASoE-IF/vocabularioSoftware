@@ -1,0 +1,8 @@
+﻿Terms Counter
+
+-prop ./files/termsCounter.properties -vxl ./files/termsCounterTest.vxl -csv ./files/teste.csv -txt ./files/teste.txt
+
+***************************************************************************************
+Vocabulary Extractor for CPP
+
+-n GenericProject -r 2.0.1 -d ./ProjetoGenerico -loc hi -vxl ./ProjetoGenerico/GenericProject.vxl -csv ./ProjetoGenerico/GenericProject.csv -func -file CH - msr

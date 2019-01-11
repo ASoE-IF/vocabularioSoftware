@@ -1,0 +1,60 @@
+----------- Terms x Entities -----------
+27 x 3 matrix
+3 0 0
+3 0 0
+2 0 0
+3 0 0
+3 0 0
+1 0 0
+2 0 0
+4 0 0
+1 0 0
+3 0 0
+1 0 0
+1 0 0
+5 0 0
+1 0 0
+2 0 0
+4 0 0
+2 0 0
+2 2 2
+5 0 0
+0 1 1
+0 1 1
+0 1 1
+0 1 1
+0 1 1
+0 1 1
+0 1 1
+0 1 1
+
+----------- Terms Frequencies -----------
+constant: 3.0
+b: 3.0
+param: 2.0
+gener: 3.0
+privat: 3.0
+test: 1.0
+variabl: 2.0
+paramet: 4.0
+return: 1.0
+class: 3.0
+javadoc: 1.0
+invoc: 1.0
+attribut: 5.0
+noth: 1.0
+valu: 2.0
+method: 4.0
+local: 2.0
+comment: 6.0
+public: 5.0
+look: 2.0
+red: 2.0
+blue: 2.0
+green: 2.0
+line: 2.0
+block: 2.0
+enum: 2.0
+insid: 2.0
+---------------- Summary ----------------
+Entities:3	Distinct_Terms:27	Total_Terms:68
