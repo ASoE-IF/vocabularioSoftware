@@ -87,8 +87,8 @@ public class LocPerEntityTest extends TestCase {
 			if (declaration instanceof IASTFunctionDefinition) {
 				counter = new LOCCountPerEntity((ASTNode) declaration, Arrays.asList(translationUnit.getComments()),
 						sourceCode);
-
-				if (counter.getLOC() != 4) {
+				
+				if (counter.getLOC() != 5) {
 					return false;
 				}
 			}

@@ -32,7 +32,7 @@
 ,funcaoUsandoEstrutura,21,0,0,21,FUNCTION
 ,funcaoDeMembroDeEstrutura,3,0,0,3,FUNCTION
 ,funcaoDeEstrutura,4,0,0,4,FUNCTION
-,union1,6,0,0,6,UNION
+,union_1,6,0,0,6,UNION
 ,union2,6,0,0,6,UNION
 ,,6,0,0,6,UNION
 ,union3,9,0,0,9,UNION
@@ -45,5 +45,5 @@
 ,,6,0,0,6,STRUCT
 ,funcaoUsandoTypedef,11,0,0,11,FUNCTION
 ,main,10,0,0,10,FUNCTION
-,GenericFile.c,16,21,570,607,FILE
+,.\Generic_Project\GenericFile.c,16,21,570,607,FILE
 Total,,586,21,605,607

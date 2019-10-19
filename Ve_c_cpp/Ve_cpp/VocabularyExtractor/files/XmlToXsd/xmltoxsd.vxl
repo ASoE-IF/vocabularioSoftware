@@ -25,9 +25,9 @@
 			<comm cntt="Fim da fun��o: funcaoDePreProcessador"/>
 			<gvar name="cout" access="" storage="" count="3"/>
 			<gvar name="endl" access="" storage="" count="3"/>
-			<lit cntt="&amp;quot;a constanteDefine n�o foi definida, no #else do ifdef\n&amp;quot;" count="1"/>
-			<lit cntt="&amp;quot;a constanteDefine n�o foi definida, no #ifdef\n&amp;quot;" count="1"/>
-			<lit cntt="&amp;quot;o valor � menor que 10, no #elif\n&amp;quot;" count="1"/>
+			<lit cntt="&amp;amp;quot;a constanteDefine n�o foi definida, no #else do ifdef\n&amp;amp;quot;" count="1"/>
+			<lit cntt="&amp;amp;quot;a constanteDefine n�o foi definida, no #ifdef\n&amp;amp;quot;" count="1"/>
+			<lit cntt="&amp;amp;quot;o valor � menor que 10, no #elif\n&amp;amp;quot;" count="1"/>
 		</func>
 		<func name="main" access="" storage="auto" sloc="2">
 		</func>
@@ -61,21 +61,21 @@
 			<call name="prompt" count="2"/>
 			<call name="readNum" count="1"/>
 			<call name="sqrNum" count="1"/>
-			<lit cntt="&amp;quot;Inicio do primeiro for&amp;quot;" count="5"/>
-			<lit cntt="&amp;quot;Inicio do primeiro while (interno)&amp;quot;" count="3"/>
-			<lit cntt="&amp;quot;Inicio do primeiro while&amp;quot;" count="3"/>
-			<lit cntt="&amp;quot;Inicio do segundo for (primeiro for interno&amp;quot;" count="2"/>
-			<lit cntt="&amp;quot;Inicio do terceiro for (primeiro for interno&amp;quot;" count="1"/>
-			<lit cntt="&amp;quot;Loop infinito&amp;quot;" count="4"/>
-			<lit cntt="&amp;quot;Printf abaixo do rotulo\n&amp;quot;" count="1"/>
-			<lit cntt="&amp;quot;fim do primeiro for&amp;quot;" count="5"/>
-			<lit cntt="&amp;quot;fim do primeiro while (interno)&amp;quot;" count="3"/>
-			<lit cntt="&amp;quot;fim do primeiro while&amp;quot;" count="3"/>
-			<lit cntt="&amp;quot;fim do segundo for (primeiro for interno&amp;quot;" count="2"/>
-			<lit cntt="&amp;quot;fim do terceiro for (primeiro for interno&amp;quot;" count="1"/>
-			<lit cntt="&amp;quot;variavelLocao1: %d\n&amp;quot;" count="4"/>
-			<lit cntt="&amp;quot;variavelLocao2: %d\n&amp;quot;" count="4"/>
-			<lit cntt="&amp;quot;variavelLocao3: %d\n&amp;quot;" count="3"/>
+			<lit cntt="&amp;amp;quot;Inicio do primeiro for&amp;amp;quot;" count="5"/>
+			<lit cntt="&amp;amp;quot;Inicio do primeiro while (interno)&amp;amp;quot;" count="3"/>
+			<lit cntt="&amp;amp;quot;Inicio do primeiro while&amp;amp;quot;" count="3"/>
+			<lit cntt="&amp;amp;quot;Inicio do segundo for (primeiro for interno&amp;amp;quot;" count="2"/>
+			<lit cntt="&amp;amp;quot;Inicio do terceiro for (primeiro for interno&amp;amp;quot;" count="1"/>
+			<lit cntt="&amp;amp;quot;Loop infinito&amp;amp;quot;" count="4"/>
+			<lit cntt="&amp;amp;quot;Printf abaixo do rotulo\n&amp;amp;quot;" count="1"/>
+			<lit cntt="&amp;amp;quot;fim do primeiro for&amp;amp;quot;" count="5"/>
+			<lit cntt="&amp;amp;quot;fim do primeiro while (interno)&amp;amp;quot;" count="3"/>
+			<lit cntt="&amp;amp;quot;fim do primeiro while&amp;amp;quot;" count="3"/>
+			<lit cntt="&amp;amp;quot;fim do segundo for (primeiro for interno&amp;amp;quot;" count="2"/>
+			<lit cntt="&amp;amp;quot;fim do terceiro for (primeiro for interno&amp;amp;quot;" count="1"/>
+			<lit cntt="&amp;amp;quot;variavelLocao1: %d\n&amp;amp;quot;" count="4"/>
+			<lit cntt="&amp;amp;quot;variavelLocao2: %d\n&amp;amp;quot;" count="4"/>
+			<lit cntt="&amp;amp;quot;variavelLocao3: %d\n&amp;amp;quot;" count="3"/>
 		</func>
 		<func name="main" access="" storage="auto" sloc="2">
 		</func>
@@ -87,7 +87,7 @@
 		<comm cntt="Abaixo fun��es para demonstrar o Uso de Fun��es em c++"/>
 		<include name="iostream"/>
 		<include name="string"/>
-		<lit cntt="&amp;quot;valor&amp;quot;" count="1"/>
+		<lit cntt="&amp;amp;quot;valor&amp;amp;quot;" count="1"/>
 		<prttp name="prototipo1" access="" storage="auto"/>
 		<prttp name="protoripo2" access="" storage="auto"/>
 		<prttp name="protoripo3" access="" storage="auto"/>
@@ -145,7 +145,7 @@
 			<lvar name="x" access="" storage="auto" count="5"/>
 			<lvar name="y" access="" storage="auto" count="4"/>
 			<call name="funcaoDeMatriz" count="1"/>
-			<lit cntt="&amp;quot;valor da string&amp;quot;" count="1"/>
+			<lit cntt="&amp;amp;quot;valor da string&amp;amp;quot;" count="1"/>
 		</func>
 		<func name="funcaoDePonteiro" access="" storage="auto" sloc="3">
 			<param name="p1"/>
@@ -278,7 +278,7 @@
 			<mth name="GenericClass1" access="" storage="auto" modifies="" visib="pub" virtual="n" sloc="5">
 				<field name="jogo" access="" storage="auto" visib="priv" count="1"/>
 				<field name="nome" access="" storage="auto" visib="priv" count="1"/>
-				<lit cntt="&amp;quot;&amp;quot;" count="2"/>
+				<lit cntt="&amp;amp;quot;&amp;amp;quot;" count="2"/>
 			</mth>
 			<mth name="GenericClass1" access="" storage="auto" modifies="" visib="pub" virtual="n" sloc="4">
 				<param name="name"/>
@@ -292,7 +292,7 @@
 				<field name="quantidade" access="" storage="auto" visib="priv" count="1"/>
 				<lvar name="name" access="" storage="auto" count="1"/>
 				<lvar name="quantidade1" access="" storage="auto" count="1"/>
-				<lit cntt="&amp;quot;valor&amp;quot;" count="1"/>
+				<lit cntt="&amp;amp;quot;valor&amp;amp;quot;" count="1"/>
 			</mth>
 			<mth name="setNome" access="" storage="auto" modifies="" visib="pub" virtual="n" sloc="4">
 				<param name="nome1"/>
@@ -367,7 +367,7 @@
 		</func>
 		<func name="GenericClass2::GenericClass2" access="" storage="auto" sloc="4">
 			<gvar name="nome" access="" storage="" count="1"/>
-			<lit cntt="&amp;quot;&amp;quot;" count="1"/>
+			<lit cntt="&amp;amp;quot;&amp;amp;quot;" count="1"/>
 		</func>
 		<func name="GenericClass2::GenericClass2" access="" storage="auto" sloc="4">
 			<param name="name"/>
@@ -393,8 +393,8 @@
 			<lvar name="obj1.nomePublico" access="" storage="auto" count="1"/>
 			<lvar name="obj2" access="" storage="auto" count="1"/>
 			<call name="obj1.setNome" count="2"/>
-			<lit cntt="&amp;quot;Nome publico&amp;quot;" count="1"/>
-			<lit cntt="&amp;quot;nome&amp;quot;" count="3"/>
+			<lit cntt="&amp;amp;quot;Nome publico&amp;amp;quot;" count="1"/>
+			<lit cntt="&amp;amp;quot;nome&amp;amp;quot;" count="3"/>
 			<prttp name="method" access="" storage="auto"/>
 			<prttp name="method2" access="" storage="auto"/>
 		</func>
@@ -548,7 +548,7 @@
 			<param name="estrutura"/>
 			<lvar name="estrutura.membro1" access="" storage="auto" count="1"/>
 			<call name="printf" count="1"/>
-			<lit cntt="&amp;quot;Valor do membro1 da estrutura: %d\n&amp;quot;" count="1"/>
+			<lit cntt="&amp;amp;quot;Valor do membro1 da estrutura: %d\n&amp;amp;quot;" count="1"/>
 		</func>
 		<func name="funcaoUsandoEstrutura" access="" storage="auto" sloc="20">
 			<gvar name="var1" access="" storage="" count="3"/>
@@ -576,7 +576,7 @@
 			<param name="union1"/>
 			<lvar name="union1.membro1" access="" storage="auto" count="1"/>
 			<call name="printf" count="1"/>
-			<lit cntt="&amp;quot;Valor do membro1 da union1: %d\n&amp;quot;" count="1"/>
+			<lit cntt="&amp;amp;quot;Valor do membro1 da union1: %d\n&amp;amp;quot;" count="1"/>
 		</func>
 		<func name="funcaoUsandoUnion" access="" storage="auto" sloc="20">
 			<gvar name="var10" access="" storage="" count="3"/>
@@ -612,7 +612,7 @@
 			<lvar name="varEnum2" access="" storage="auto" count="3"/>
 			<call name="funcaoUsandoEnum" count="2"/>
 			<call name="printf" count="1"/>
-			<lit cntt="&amp;quot;%d&amp;quot;" count="1"/>
+			<lit cntt="&amp;amp;quot;%d&amp;amp;quot;" count="1"/>
 		</func>
 		<func name="funcaoUsandoTypedef" access="" storage="auto" sloc="11">
 			<comm cntt="comentario da funcao"/>
@@ -659,7 +659,7 @@
 			<gvar name="cout" access="" storage="" count="1"/>
 			<lvar name="erroGerado" access="" storage="auto" count="1"/>
 			<lvar name="var" access="" storage="auto" count="3"/>
-			<lit cntt="&amp;quot;Erro Gereado&amp;quot;" count="1"/>
+			<lit cntt="&amp;amp;quot;Erro Gereado&amp;amp;quot;" count="1"/>
 		</func>
 	</cpp-file>
 	<cpp-file name=".\files\XmlToXsd\src\Classes\UsandoClassesEVariaveis.cpp" sloc="28">

@@ -190,9 +190,9 @@
 			<comm cntt="esta é a função que contem todas as instruções de preprocessador do C"/>
 			<comm cntt="Fim da função: funcaoDePreProcessador"/>
 			<call name="printf" count="3"/>
-			<lit cntt="&amp;quot;a constanteDefine não foi definida, no #else do ifdef\n&amp;quot;" count="1"/>
-			<lit cntt="&amp;quot;a constanteDefine não foi definida, no #ifdef\n&amp;quot;" count="1"/>
-			<lit cntt="&amp;quot;o valor é menor que 10, no #elif\n&amp;quot;" count="1"/>
+			<lit cntt="&amp;amp;quot;a constanteDefine não foi definida, no #else do ifdef\n&amp;amp;quot;" count="1"/>
+			<lit cntt="&amp;amp;quot;a constanteDefine não foi definida, no #ifdef\n&amp;amp;quot;" count="1"/>
+			<lit cntt="&amp;amp;quot;o valor é menor que 10, no #elif\n&amp;amp;quot;" count="1"/>
 		</func>
 		<func name="funcaoDeDeclaracaoDeVariaveisLocais" access="" storage="auto" inn="n" sloc="24">
 			<lvar name="varAutoExplicitaLocal" access="" storage="auto" count="4"/>
@@ -276,21 +276,21 @@
 			<call name="prompt" count="2"/>
 			<call name="readNum" count="1"/>
 			<call name="sqrNum" count="1"/>
-			<lit cntt="&amp;quot;Inicio do primeiro for&amp;quot;" count="5"/>
-			<lit cntt="&amp;quot;Inicio do primeiro while (interno)&amp;quot;" count="3"/>
-			<lit cntt="&amp;quot;Inicio do primeiro while&amp;quot;" count="3"/>
-			<lit cntt="&amp;quot;Inicio do segundo for (primeiro for interno&amp;quot;" count="2"/>
-			<lit cntt="&amp;quot;Inicio do terceiro for (primeiro for interno&amp;quot;" count="1"/>
-			<lit cntt="&amp;quot;Loop infinito&amp;quot;" count="4"/>
-			<lit cntt="&amp;quot;Printf abaixo do rotulo\n&amp;quot;" count="1"/>
-			<lit cntt="&amp;quot;fim do primeiro for&amp;quot;" count="5"/>
-			<lit cntt="&amp;quot;fim do primeiro while (interno)&amp;quot;" count="3"/>
-			<lit cntt="&amp;quot;fim do primeiro while&amp;quot;" count="3"/>
-			<lit cntt="&amp;quot;fim do segundo for (primeiro for interno&amp;quot;" count="2"/>
-			<lit cntt="&amp;quot;fim do terceiro for (primeiro for interno&amp;quot;" count="1"/>
-			<lit cntt="&amp;quot;variavelLocao1: %d\n&amp;quot;" count="4"/>
-			<lit cntt="&amp;quot;variavelLocao2: %d\n&amp;quot;" count="4"/>
-			<lit cntt="&amp;quot;variavelLocao3: %d\n&amp;quot;" count="3"/>
+			<lit cntt="&amp;amp;quot;Inicio do primeiro for&amp;amp;quot;" count="5"/>
+			<lit cntt="&amp;amp;quot;Inicio do primeiro while (interno)&amp;amp;quot;" count="3"/>
+			<lit cntt="&amp;amp;quot;Inicio do primeiro while&amp;amp;quot;" count="3"/>
+			<lit cntt="&amp;amp;quot;Inicio do segundo for (primeiro for interno&amp;amp;quot;" count="2"/>
+			<lit cntt="&amp;amp;quot;Inicio do terceiro for (primeiro for interno&amp;amp;quot;" count="1"/>
+			<lit cntt="&amp;amp;quot;Loop infinito&amp;amp;quot;" count="4"/>
+			<lit cntt="&amp;amp;quot;Printf abaixo do rotulo\n&amp;amp;quot;" count="1"/>
+			<lit cntt="&amp;amp;quot;fim do primeiro for&amp;amp;quot;" count="5"/>
+			<lit cntt="&amp;amp;quot;fim do primeiro while (interno)&amp;amp;quot;" count="3"/>
+			<lit cntt="&amp;amp;quot;fim do primeiro while&amp;amp;quot;" count="3"/>
+			<lit cntt="&amp;amp;quot;fim do segundo for (primeiro for interno&amp;amp;quot;" count="2"/>
+			<lit cntt="&amp;amp;quot;fim do terceiro for (primeiro for interno&amp;amp;quot;" count="1"/>
+			<lit cntt="&amp;amp;quot;variavelLocao1: %d\n&amp;amp;quot;" count="4"/>
+			<lit cntt="&amp;amp;quot;variavelLocao2: %d\n&amp;amp;quot;" count="4"/>
+			<lit cntt="&amp;amp;quot;variavelLocao3: %d\n&amp;amp;quot;" count="3"/>
 		</func>
 		<func name="funcaoDeMatriz" access="" storage="auto" inn="n" sloc="3">
 			<param name="vetor"/>
@@ -313,7 +313,7 @@
 			<lvar name="x" access="" storage="auto" count="5"/>
 			<lvar name="y" access="" storage="auto" count="4"/>
 			<call name="funcaoDeMatriz" count="1"/>
-			<lit cntt="&amp;quot;valor da string&amp;quot;" count="1"/>
+			<lit cntt="&amp;amp;quot;valor da string&amp;amp;quot;" count="1"/>
 		</func>
 		<func name="funcaoDePonteiro" access="" storage="auto" inn="n" sloc="3">
 			<param name="p1"/>
@@ -416,7 +416,7 @@
 			<param name="estrutura"/>
 			<lvar name="estrutura.membro1" access="" storage="auto" count="1"/>
 			<call name="printf" count="1"/>
-			<lit cntt="&amp;quot;Valor do membro1 da estrutura: %d\n&amp;quot;" count="1"/>
+			<lit cntt="&amp;amp;quot;Valor do membro1 da estrutura: %d\n&amp;amp;quot;" count="1"/>
 		</func>
 		<func name="funcaoUsandoUnion" access="" storage="auto" inn="n" sloc="21">
 			<gvar name="var10" access="" storage="" count="4"/>
@@ -445,7 +445,7 @@
 			<param name="union1"/>
 			<lvar name="union1.membro1" access="" storage="auto" count="1"/>
 			<call name="printf" count="1"/>
-			<lit cntt="&amp;quot;Valor do membro1 da union1: %d\n&amp;quot;" count="1"/>
+			<lit cntt="&amp;amp;quot;Valor do membro1 da union1: %d\n&amp;amp;quot;" count="1"/>
 		</func>
 		<func name="funcaoUsandoEnum" access="" storage="auto" inn="n" sloc="11">
 			<param name="paramEnum"/>
@@ -461,7 +461,7 @@
 			<lvar name="varEnum2" access="" storage="auto" count="3"/>
 			<call name="funcaoUsandoEnum" count="2"/>
 			<call name="printf" count="1"/>
-			<lit cntt="&amp;quot;%d&amp;quot;" count="1"/>
+			<lit cntt="&amp;amp;quot;%d&amp;amp;quot;" count="1"/>
 		</func>
 		<func name="funcaoUsandoTypedef" access="" storage="auto" inn="n" sloc="11">
 			<comm cntt="comentario da funcao"/>
@@ -487,9 +487,9 @@
 			<call name="funcaoDeDeclaracaoDeVariaveisLocais" count="1"/>
 			<call name="funcaoDePreProcessador" count="1"/>
 			<call name="printf" count="4"/>
-			<lit cntt="&amp;quot;%d %s\n&amp;quot;" count="1"/>
-			<lit cntt="&amp;quot;%d\n&amp;quot;" count="1"/>
-			<lit cntt="&amp;quot;\nvalor &amp;lt;&amp;lt; de xy = %d\n&amp;quot;" count="1"/>
+			<lit cntt="&amp;amp;quot;%d %s\n&amp;amp;quot;" count="1"/>
+			<lit cntt="&amp;amp;quot;%d\n&amp;amp;quot;" count="1"/>
+			<lit cntt="&amp;amp;quot;\nvalor &amp;amp;lt;&amp;amp;lt; de xy = %d\n&amp;amp;quot;" count="1"/>
 			<lit cntt="__FILE__" count="1"/>
 			<lit cntt="macroStr(palavra)" count="1"/>
 		</func>
@@ -527,7 +527,7 @@
 		<func name="main" access="" storage="auto" inn="n" sloc="1">
 		</func>
 	</c-file>
-	<c-file name=".\Generic_Project\Outros Arquivos\Header.h" sloc="33">
+	<c-file name=".\Generic_Project\Outros Arquivos\Header.h" sloc="29">
 		<comm cntt="Arquivo de header em C. Autor: Israel Gomes de Lima Data: 20 09 2017"/>
 		<macro name="PTR1"/>
 		<macro name="PTR2"/>
@@ -543,9 +543,11 @@
 		<macro name="RBR6"/>
 		<gvar name="q2_var" access="const" storage="auto" count="1"/>
 		<gvar name="x" access="" storage="auto" count="1"/>
-		<func name="funcao_do_header" access="" storage="auto" inn="n" sloc="12">
+		<func name="funcao_do_header" access="" storage="auto" inn="n" sloc="9">
+			<comm cntt="comentario4 de bloco da estrutura"/>
+			<comm cntt="comentario de bloco fora da estrutura"/>
 			<lvar name="varLo" access="" storage="auto" count="1"/>
-			<strt name="estrutura1" sloc="9">
+			<strt name="estrutura1" sloc="6">
 				<comm cntt="comentario de bloco da estrutura"/>
 				<comm cntt="comentario1 de bloco da estrutura"/>
 				<comm cntt="comentario2 de bloco da estrutura"/>
@@ -591,7 +593,7 @@
 		<gvar name="q5_var" access="" storage="auto" count="1"/>
 		<gvar name="x" access="" storage="" count="1"/>
 	</c-file>
-	<c-file name=".\Generic_Project\Outros Arquivos\limits-ifs.c" sloc="13">
+	<c-file name=".\Generic_Project\Outros Arquivos\limits-ifs.c" sloc="9">
 		<comm cntt="PR c 2161: parser stack overflow."/>
 		<comm cntt="{ dg-do compile }"/>
 		<comm cntt="{ dg-timeout-factor 4.0 }"/>
@@ -599,7 +601,7 @@
 		<macro name="TEN"/>
 		<macro name="HUN"/>
 		<macro name="THOU"/>
-		<func name="foo" access="" storage="auto" inn="n" sloc="6">
+		<func name="foo" access="" storage="auto" inn="n" sloc="5">
 			<comm cntt="11,000 else if&amp;apos;s."/>
 		</func>
 	</c-file>
@@ -698,7 +700,7 @@
 			<call name="malloc" count="2"/>
 		</func>
 	</c-file>
-	<c-file name=".\Generic_Project\ZZCFile.c" sloc="18">
+	<c-file name=".\Generic_Project\Outros Arquivos\ZZCFile.c" sloc="18">
 		<func name="main" access="" storage="auto" inn="n" sloc="18">
 			<gvar name="var2" access="" storage="" count="2"/>
 			<lvar name="matriz" access="" storage="auto" count="3"/>

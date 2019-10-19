@@ -51,14 +51,14 @@
 ,func,5,0,0,5,FUNCTION
 ,main,1,0,0,1,FUNCTION
 ,.\Generic_Project\Outros Arquivos\c11-align-1.c,15,1,7,23,FILE
-,estrutura1,9,0,0,9,STRUCT
-,funcao_do_header,3,0,9,12,FUNCTION
+,estrutura1,6,0,0,6,STRUCT
+,funcao_do_header,3,0,6,9,FUNCTION
 ,vuncccc,6,0,0,6,FUNCTION
-,.\Generic_Project\Outros Arquivos\Header.h,3,12,18,33,FILE
+,.\Generic_Project\Outros Arquivos\Header.h,2,12,15,29,FILE
 ,.\Generic_Project\Outros Arquivos\limits-declparen.c,1,12,0,13,FILE
 ,.\Generic_Project\Outros Arquivos\limits-exprparen.c,1,12,0,13,FILE
-,foo,6,0,0,6,FUNCTION
-,.\Generic_Project\Outros Arquivos\limits-ifs.c,3,4,6,13,FILE
+,foo,5,0,0,5,FUNCTION
+,.\Generic_Project\Outros Arquivos\limits-ifs.c,0,4,5,9,FILE
 ,s0,0,0,3,3,STRUCT
 ,s1,0,0,3,3,STRUCT
 ,s2,0,0,3,3,STRUCT
@@ -80,5 +80,5 @@
 ,.\Generic_Project\Outros Arquivos\Teste.c,1,0,38,39,FILE
 ,estrutura,4,0,0,4,STRUCT
 ,main,14,0,4,18,FUNCTION
-,.\Generic_Project\ZZCFile.c,0,0,18,18,FILE
-Total,,723,75,760,798
+,.\Generic_Project\Outros Arquivos\ZZCFile.c,0,0,18,18,FILE
+Total,,715,75,753,790

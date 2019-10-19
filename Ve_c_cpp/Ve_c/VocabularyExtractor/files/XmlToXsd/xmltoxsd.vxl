@@ -36,6 +36,7 @@
 		<comm cntt="comnetario de linha"/>
 		<comm cntt="comentario fora da funcao"/>
 		<comm cntt="comentario de lina"/>
+		<comm cntt="comentario fora"/>
 		<comm cntt="comentario de linha"/>
 		<comm cntt="Fim do arquivo"/>
 		<include name="stdio.h"/>
@@ -187,9 +188,9 @@
 			<comm cntt="esta é a função que contem todas as instruções de preprocessador do C"/>
 			<comm cntt="Fim da função: funcaoDePreProcessador"/>
 			<call name="printf" count="3"/>
-			<lit cntt="&amp;quot;a constanteDefine não foi definida, no #else do ifdef\n&amp;quot;" count="1"/>
-			<lit cntt="&amp;quot;a constanteDefine não foi definida, no #ifdef\n&amp;quot;" count="1"/>
-			<lit cntt="&amp;quot;o valor é menor que 10, no #elif\n&amp;quot;" count="1"/>
+			<lit cntt="&amp;amp;quot;a constanteDefine não foi definida, no #else do ifdef\n&amp;amp;quot;" count="1"/>
+			<lit cntt="&amp;amp;quot;a constanteDefine não foi definida, no #ifdef\n&amp;amp;quot;" count="1"/>
+			<lit cntt="&amp;amp;quot;o valor é menor que 10, no #elif\n&amp;amp;quot;" count="1"/>
 		</func>
 		<func name="funcaoDeDeclaracaoDeVariaveisLocais" access="" storage="auto" inn="n" sloc="24">
 			<lvar name="varAutoExplicitaLocal" access="" storage="auto" count="4"/>
@@ -273,21 +274,21 @@
 			<call name="prompt" count="2"/>
 			<call name="readNum" count="1"/>
 			<call name="sqrNum" count="1"/>
-			<lit cntt="&amp;quot;Inicio do primeiro for&amp;quot;" count="5"/>
-			<lit cntt="&amp;quot;Inicio do primeiro while (interno)&amp;quot;" count="3"/>
-			<lit cntt="&amp;quot;Inicio do primeiro while&amp;quot;" count="3"/>
-			<lit cntt="&amp;quot;Inicio do segundo for (primeiro for interno&amp;quot;" count="2"/>
-			<lit cntt="&amp;quot;Inicio do terceiro for (primeiro for interno&amp;quot;" count="1"/>
-			<lit cntt="&amp;quot;Loop infinito&amp;quot;" count="4"/>
-			<lit cntt="&amp;quot;Printf abaixo do rotulo\n&amp;quot;" count="1"/>
-			<lit cntt="&amp;quot;fim do primeiro for&amp;quot;" count="5"/>
-			<lit cntt="&amp;quot;fim do primeiro while (interno)&amp;quot;" count="3"/>
-			<lit cntt="&amp;quot;fim do primeiro while&amp;quot;" count="3"/>
-			<lit cntt="&amp;quot;fim do segundo for (primeiro for interno&amp;quot;" count="2"/>
-			<lit cntt="&amp;quot;fim do terceiro for (primeiro for interno&amp;quot;" count="1"/>
-			<lit cntt="&amp;quot;variavelLocao1: %d\n&amp;quot;" count="4"/>
-			<lit cntt="&amp;quot;variavelLocao2: %d\n&amp;quot;" count="4"/>
-			<lit cntt="&amp;quot;variavelLocao3: %d\n&amp;quot;" count="3"/>
+			<lit cntt="&amp;amp;quot;Inicio do primeiro for&amp;amp;quot;" count="5"/>
+			<lit cntt="&amp;amp;quot;Inicio do primeiro while (interno)&amp;amp;quot;" count="3"/>
+			<lit cntt="&amp;amp;quot;Inicio do primeiro while&amp;amp;quot;" count="3"/>
+			<lit cntt="&amp;amp;quot;Inicio do segundo for (primeiro for interno&amp;amp;quot;" count="2"/>
+			<lit cntt="&amp;amp;quot;Inicio do terceiro for (primeiro for interno&amp;amp;quot;" count="1"/>
+			<lit cntt="&amp;amp;quot;Loop infinito&amp;amp;quot;" count="4"/>
+			<lit cntt="&amp;amp;quot;Printf abaixo do rotulo\n&amp;amp;quot;" count="1"/>
+			<lit cntt="&amp;amp;quot;fim do primeiro for&amp;amp;quot;" count="5"/>
+			<lit cntt="&amp;amp;quot;fim do primeiro while (interno)&amp;amp;quot;" count="3"/>
+			<lit cntt="&amp;amp;quot;fim do primeiro while&amp;amp;quot;" count="3"/>
+			<lit cntt="&amp;amp;quot;fim do segundo for (primeiro for interno&amp;amp;quot;" count="2"/>
+			<lit cntt="&amp;amp;quot;fim do terceiro for (primeiro for interno&amp;amp;quot;" count="1"/>
+			<lit cntt="&amp;amp;quot;variavelLocao1: %d\n&amp;amp;quot;" count="4"/>
+			<lit cntt="&amp;amp;quot;variavelLocao2: %d\n&amp;amp;quot;" count="4"/>
+			<lit cntt="&amp;amp;quot;variavelLocao3: %d\n&amp;amp;quot;" count="3"/>
 		</func>
 		<func name="funcaoDeMatriz" access="" storage="auto" inn="n" sloc="3">
 			<param name="vetor"/>
@@ -310,7 +311,7 @@
 			<lvar name="x" access="" storage="auto" count="5"/>
 			<lvar name="y" access="" storage="auto" count="4"/>
 			<call name="funcaoDeMatriz" count="1"/>
-			<lit cntt="&amp;quot;valor da string&amp;quot;" count="1"/>
+			<lit cntt="&amp;amp;quot;valor da string&amp;amp;quot;" count="1"/>
 		</func>
 		<func name="funcaoDePonteiro" access="" storage="auto" inn="n" sloc="3">
 			<param name="p1"/>
@@ -413,7 +414,7 @@
 			<param name="estrutura"/>
 			<lvar name="estrutura.membro1" access="" storage="auto" count="1"/>
 			<call name="printf" count="1"/>
-			<lit cntt="&amp;quot;Valor do membro1 da estrutura: %d\n&amp;quot;" count="1"/>
+			<lit cntt="&amp;amp;quot;Valor do membro1 da estrutura: %d\n&amp;amp;quot;" count="1"/>
 		</func>
 		<func name="funcaoUsandoUnion" access="" storage="auto" inn="n" sloc="21">
 			<gvar name="var10" access="" storage="" count="4"/>
@@ -442,7 +443,7 @@
 			<param name="union1"/>
 			<lvar name="union1.membro1" access="" storage="auto" count="1"/>
 			<call name="printf" count="1"/>
-			<lit cntt="&amp;quot;Valor do membro1 da union1: %d\n&amp;quot;" count="1"/>
+			<lit cntt="&amp;amp;quot;Valor do membro1 da union1: %d\n&amp;amp;quot;" count="1"/>
 		</func>
 		<func name="funcaoUsandoEnum" access="" storage="auto" inn="n" sloc="11">
 			<param name="paramEnum"/>
@@ -458,7 +459,7 @@
 			<lvar name="varEnum2" access="" storage="auto" count="3"/>
 			<call name="funcaoUsandoEnum" count="2"/>
 			<call name="printf" count="1"/>
-			<lit cntt="&amp;quot;%d&amp;quot;" count="1"/>
+			<lit cntt="&amp;amp;quot;%d&amp;amp;quot;" count="1"/>
 		</func>
 		<func name="funcaoUsandoTypedef" access="" storage="auto" inn="n" sloc="11">
 			<comm cntt="comentario da funcao"/>
@@ -482,9 +483,9 @@
 			<call name="funcaoDeDeclaracaoDeVariaveisLocais" count="1"/>
 			<call name="funcaoDePreProcessador" count="1"/>
 			<call name="printf" count="4"/>
-			<lit cntt="&amp;quot;%d %s\n&amp;quot;" count="1"/>
-			<lit cntt="&amp;quot;%d\n&amp;quot;" count="1"/>
-			<lit cntt="&amp;quot;\nvalor de xy = %d\n&amp;quot;" count="1"/>
+			<lit cntt="&amp;amp;quot;%d %s\n&amp;amp;quot;" count="1"/>
+			<lit cntt="&amp;amp;quot;%d\n&amp;amp;quot;" count="1"/>
+			<lit cntt="&amp;amp;quot;\nvalor de xy = %d\n&amp;amp;quot;" count="1"/>
 			<lit cntt="__FILE__" count="1"/>
 			<lit cntt="macroStr(palavra)" count="1"/>
 		</func>

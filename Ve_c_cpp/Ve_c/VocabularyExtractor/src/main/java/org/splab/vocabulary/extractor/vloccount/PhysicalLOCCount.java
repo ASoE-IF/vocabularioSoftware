@@ -105,7 +105,7 @@ public class PhysicalLOCCount {
 		for(IASTComment c : commentList) {
 			loc += commentLOC(c);
 		}
-				
+		
 		
 		return loc;
 	}
@@ -130,7 +130,7 @@ public class PhysicalLOCCount {
 	private boolean isBeforeValidCode(int end) {
 		for(int i = end; i < sourceCode.length && sourceCode[i] != '\n'; i++) {
 			if(sourceCode[i] == '/') return false;
-			if(sourceCode[i] != ' ' && sourceCode[i] != '\t')
+			if(sourceCode[i] != ' ' && sourceCode[i] != '\t' &&  sourceCode[i] != 13)
 				return true;
 		}
 		return false;
@@ -158,7 +158,6 @@ public class PhysicalLOCCount {
 			}
 		}
 
-		
 		if(isAfterValidCode(begin)) {
 			loc--;
 		}

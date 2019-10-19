@@ -97,11 +97,16 @@ public class DeclarationList {
 					CPPASTSimpleDeclaration node = (CPPASTSimpleDeclaration) decl.getDeclaration();
 					IASTDeclSpecifier declarationSpecifier = node.getDeclSpecifier();
 
-					if ((declarationSpecifier instanceof CPPASTEnumerationSpecifier)
-							|| (declarationSpecifier instanceof CPPASTCompositeTypeSpecifier)) {
-						// Recupera uma declaração de classe, struct, union ou
-						// enum
-						statementList.add((ASTNode) decl.getDeclaration());
+					if (declarationSpecifier instanceof CPPASTEnumerationSpecifier) {
+						// Recupera uma declaração de enum
+						CPPASTEnumerationSpecifier enumeration = (CPPASTEnumerationSpecifier) declarationSpecifier;
+						statementList.add((ASTNode) enumeration);
+					}
+
+					if (declarationSpecifier instanceof CPPASTCompositeTypeSpecifier) {
+						// Recupera uma declaração de classe, struct ou union
+						CPPASTCompositeTypeSpecifier composite = (CPPASTCompositeTypeSpecifier) declarationSpecifier;
+						statementList.add((ASTNode) composite);
 					}
 				}
 			}

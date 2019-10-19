@@ -92,10 +92,16 @@ public class DeclarationList {
 					CASTSimpleDeclaration node = (CASTSimpleDeclaration) decl.getDeclaration();
 					IASTDeclSpecifier declarationSpecifier = node.getDeclSpecifier();
 
-					if ((declarationSpecifier instanceof CASTEnumerationSpecifier)
-							|| (declarationSpecifier instanceof CASTCompositeTypeSpecifier)) {
-						// Recupera uma declaração de struct, union ou enum
-						statementList.add((ASTNode) decl.getDeclaration());
+					if (declarationSpecifier instanceof CASTEnumerationSpecifier) {
+						// Recupera uma declaração de enum
+						CASTEnumerationSpecifier enumeration = (CASTEnumerationSpecifier) declarationSpecifier;
+						statementList.add((ASTNode) enumeration);
+					}
+
+					if (declarationSpecifier instanceof CASTCompositeTypeSpecifier) {
+						// Recupera uma declaração de struct ou union
+						CASTCompositeTypeSpecifier composite = (CASTCompositeTypeSpecifier) declarationSpecifier;
+						statementList.add((ASTNode) composite);
 					}
 				}
 			}

@@ -20,10 +20,10 @@
 
 int PTR1 q2_var RBR1 = 0;
 int x;
- void funcao_do_header()
- {
- 	struct estrutura1 /*comentario de bloco da estrutura*/
+void funcao_do_header()
 {
+ 	struct estrutura1 /*comentario de bloco da estrutura*/
+ 	{
 	/*comentario1 de bloco da estrutura*/
 	int membro1;
 	/*comentario2 de bloco da estrutura*/
@@ -31,7 +31,7 @@ int x;
 	double membroVetor[10];
 	/*comentario3 de bloco da estrutura*/
 }/*comentario4 de bloco da estrutura*/varLo;/*comentario de bloco fora da estrutura*/
- }
+}
  
  
 void vuncccc(){

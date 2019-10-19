@@ -300,7 +300,8 @@ public class FunctionProcessor {
 		Iterator<String> it_lit = lit.iterator();
 		while (it_lit.hasNext()) {
 			String identifier = it_lit.next();
-			vxlFragment.append(VxlManager.literal(identifier, literals.get(identifier), indentationLevel));
+			vxlFragment.append(VxlManager.literal(StringProcessor.processString(identifier), literals.get(identifier),
+					indentationLevel));
 		}
 	}
 

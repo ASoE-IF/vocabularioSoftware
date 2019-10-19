@@ -36,7 +36,10 @@ public class DirectoriesBrowser {
 			System.out.println(file.getAbsolutePath());
 
 			for (File containingFile : file.listFiles()) {
-				browseDirectory(directory, containingFile);
+				try {
+					browseDirectory(directory, containingFile);
+				} catch (NullPointerException e) {
+				}
 			}
 		} else {
 			if (LOCManager.locParameters.contains(LOCParameters.C_FILE)

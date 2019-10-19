@@ -285,7 +285,8 @@ public class ClassProcessor {
 			String storage = globalVariablesStorage.get(identifier);
 			int count = globalVariables.get(identifier);
 
-			allVxlFragment.append(VxlManager.globalVariable(identifier, access, storage, count, indentationLevel));
+			allVxlFragment.append(VxlManager.globalVariable(StringProcessor.processString(identifier), access, storage,
+					count, indentationLevel));
 		}
 	}
 
@@ -301,7 +302,8 @@ public class ClassProcessor {
 		Iterator<String> it_funcCall = funcCall.iterator();
 		while (it_funcCall.hasNext()) {
 			String identifier = it_funcCall.next();
-			allVxlFragment.append(VxlManager.functionCall(identifier, functionCall.get(identifier), indentationLevel));
+			allVxlFragment.append(VxlManager.functionCall(StringProcessor.processString(identifier),
+					functionCall.get(identifier), indentationLevel));
 		}
 	}
 
@@ -317,7 +319,8 @@ public class ClassProcessor {
 		Iterator<String> it_lit = lit.iterator();
 		while (it_lit.hasNext()) {
 			String identifier = it_lit.next();
-			allVxlFragment.append(VxlManager.literal(identifier, literals.get(identifier), indentationLevel));
+			allVxlFragment.append(VxlManager.literal(StringProcessor.processString(identifier),
+					literals.get(identifier), indentationLevel));
 		}
 	}
 

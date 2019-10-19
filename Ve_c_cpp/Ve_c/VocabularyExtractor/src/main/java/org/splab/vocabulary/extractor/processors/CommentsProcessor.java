@@ -38,13 +38,11 @@ public class CommentsProcessor {
 				if (c.getStartPosition() >= type.getOffset()
 						&& c.getStartPosition() < allDeclarations.get(0).getFileLocation().getNodeOffset()) {
 					vxlFragment.append(VxlManager.commentTag(c, entityIndentationLevel));
-					FileProcessor.sourceCodeComments.add(c);
 				}
 			} else {
 				if (c.getStartPosition() >= type.getOffset()
 						&& c.getEndPosition() < type.getOffset() + type.getLength()) {
 					vxlFragment.append(VxlManager.commentTag(c, entityIndentationLevel));
-					FileProcessor.sourceCodeComments.add(c);
 				}
 			}
 
@@ -57,9 +55,8 @@ public class CommentsProcessor {
 				int beginOfCurrentDeclaration = allDeclarations.get(i).getFileLocation().getNodeOffset();
 
 				if (c.getStartPosition() >= endOfPreviousDeclaration
-						&& c.getStartPosition() < beginOfCurrentDeclaration) {
+						&& c.getStartPosition() <= beginOfCurrentDeclaration) {
 					vxlFragment.append(VxlManager.commentTag(c, entityIndentationLevel));
-					FileProcessor.sourceCodeComments.add(c);
 				}
 			}
 
@@ -72,11 +69,11 @@ public class CommentsProcessor {
 						+ allDeclarations.get(allDeclarations.size() - 1).getFileLocation().getNodeLength();
 				int endOfFile = type.getOffset() + type.getLength();
 
-				if (c.getStartPosition() > endOfPreviousDeclaration && c.getStartPosition() < endOfFile) {
+				if (c.getStartPosition() >= endOfPreviousDeclaration && c.getStartPosition() <= endOfFile) {
 					vxlFragment.append(VxlManager.commentTag(c, entityIndentationLevel));
-					FileProcessor.sourceCodeComments.add(c);
 				}
 			}
+
 	}
 
 	/**

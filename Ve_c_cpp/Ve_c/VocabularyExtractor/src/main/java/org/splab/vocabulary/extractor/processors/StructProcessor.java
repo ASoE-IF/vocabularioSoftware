@@ -44,6 +44,8 @@ public class StructProcessor {
 		LOCCountPerEntity locCounter = new LOCCountPerEntity((ASTNode) compositeType,
 				CompilationUnitProcessor.commentList, CompilationUnitProcessor.sourceCode);
 		EntityLOCKeeper locKeeper = new EntityLOCKeeper(locCounter);
+		
+		
 
 		if (LOCManager.locParameters.contains(LOCParameters.LOC))
 			LOCManager.appendEntityLOCData(compositeType.getName().toString(), locKeeper, EntityType.STRUCT);

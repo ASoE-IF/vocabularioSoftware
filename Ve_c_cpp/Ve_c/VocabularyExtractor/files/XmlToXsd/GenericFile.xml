@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<c-project id="default" name="GenericProject" revision="2.0.1">
-	<c-file name="GenericFile.c" sloc="607">
+<c-project id="default" name="56" revision="0">
+	<c-file name=".\Generic_Project\GenericFile.c" sloc="607">
 		<comm cntt="Aplicativo completo com todas as entidades e estruturas de um Aplicativo em C. Autor: Israel Gomes de Lima Data: 20 09 2017"/>
 		<comm cntt="Includes e Defines"/>
 		<comm cntt="Variaveis globais"/>
@@ -36,6 +36,7 @@
 		<comm cntt="comnetario de linha"/>
 		<comm cntt="comentario fora da funcao"/>
 		<comm cntt="comentario de lina"/>
+		<comm cntt="comentario fora"/>
 		<comm cntt="comentario de linha"/>
 		<comm cntt="Fim do arquivo"/>
 		<include name="stdio.h"/>
@@ -56,39 +57,39 @@
 		<pragma message="Menssagem na pragma"/>
 		<gvar name="ptrGlobal" access="" storage="auto" count="1"/>
 		<gvar name="ptrParaPtrGlobal" access="" storage="auto" count="1"/>
-		<gvar name="var1" access="" storage="auto" count="7"/>
-		<gvar name="var10" access="" storage="auto" count="7"/>
-		<gvar name="var11" access="" storage="auto" count="3"/>
-		<gvar name="var12" access="" storage="auto" count="3"/>
+		<gvar name="var1" access="" storage="auto" count="1"/>
+		<gvar name="var10" access="" storage="auto" count="1"/>
+		<gvar name="var11" access="" storage="auto" count="1"/>
+		<gvar name="var12" access="" storage="auto" count="1"/>
 		<gvar name="var13" access="" storage="auto" count="1"/>
 		<gvar name="var14" access="" storage="auto" count="1"/>
 		<gvar name="var15" access="" storage="auto" count="1"/>
 		<gvar name="var16" access="" storage="auto" count="1"/>
 		<gvar name="var17" access="" storage="auto" count="1"/>
-		<gvar name="var18" access="" storage="auto" count="2"/>
+		<gvar name="var18" access="" storage="auto" count="1"/>
 		<gvar name="var19" access="" storage="auto" count="1"/>
-		<gvar name="var2" access="" storage="auto" count="3"/>
+		<gvar name="var2" access="" storage="auto" count="1"/>
 		<gvar name="var20" access="" storage="auto" count="1"/>
 		<gvar name="var21" access="" storage="auto" count="1"/>
 		<gvar name="var22" access="" storage="auto" count="1"/>
 		<gvar name="var23" access="" storage="auto" count="1"/>
 		<gvar name="var24" access="" storage="auto" count="1"/>
-		<gvar name="var3" access="" storage="auto" count="2"/>
+		<gvar name="var3" access="" storage="auto" count="1"/>
 		<gvar name="var4" access="" storage="auto" count="1"/>
 		<gvar name="var5" access="" storage="auto" count="1"/>
 		<gvar name="var6" access="" storage="auto" count="1"/>
-		<gvar name="var7" access="" storage="auto" count="2"/>
+		<gvar name="var7" access="" storage="auto" count="1"/>
 		<gvar name="var8" access="" storage="auto" count="1"/>
 		<gvar name="var9" access="" storage="auto" count="1"/>
-		<gvar name="varAutoImplicita" access="" storage="auto" count="3"/>
-		<gvar name="varCharComSignal" access="" storage="auto" count="3"/>
+		<gvar name="varAutoImplicita" access="" storage="auto" count="1"/>
+		<gvar name="varCharComSignal" access="" storage="auto" count="1"/>
 		<gvar name="varConst" access="const" storage="auto" count="1"/>
 		<gvar name="varExtern" access="" storage="extern" count="1"/>
-		<gvar name="varIntUnsigned" access="" storage="auto" count="2"/>
-		<gvar name="varLongDouble" access="" storage="auto" count="2"/>
-		<gvar name="varShortInt" access="" storage="auto" count="3"/>
-		<gvar name="varStatic" access="" storage="static" count="2"/>
-		<gvar name="varVolatil" access="volatile" storage="auto" count="2"/>
+		<gvar name="varIntUnsigned" access="" storage="auto" count="1"/>
+		<gvar name="varLongDouble" access="" storage="auto" count="1"/>
+		<gvar name="varShortInt" access="" storage="auto" count="1"/>
+		<gvar name="varStatic" access="" storage="static" count="1"/>
+		<gvar name="varVolatil" access="volatile" storage="auto" count="1"/>
 		<prttp name="prototipo1" access="" storage="auto"/>
 		<prttp name="protoripo2" access="" storage="auto"/>
 		<prttp name="protoripo3" access="" storage="auto"/>
@@ -151,7 +152,7 @@
 			<field name="membro2"/>
 			<field name="membroVetor"/>
 		</strt>
-		<union name="union1" sloc="6">
+		<union name="union_1" sloc="6">
 			<comm cntt="comentario de bloco na union"/>
 			<comm cntt="comentario1 de bloco na union"/>
 			<comm cntt="comentario2 de bloco na union"/>
@@ -187,9 +188,9 @@
 			<comm cntt="esta é a função que contem todas as instruções de preprocessador do C"/>
 			<comm cntt="Fim da função: funcaoDePreProcessador"/>
 			<call name="printf" count="3"/>
-			<lit cntt="&amp;quot;a constanteDefine não foi definida, no #else do ifdef\n&amp;quot;" count="1"/>
-			<lit cntt="&amp;quot;a constanteDefine não foi definida, no #ifdef\n&amp;quot;" count="1"/>
-			<lit cntt="&amp;quot;o valor é menor que 10, no #elif\n&amp;quot;" count="1"/>
+			<lit cntt="&amp;amp;quot;a constanteDefine não foi definida, no #else do ifdef\n&amp;amp;quot;" count="1"/>
+			<lit cntt="&amp;amp;quot;a constanteDefine não foi definida, no #ifdef\n&amp;amp;quot;" count="1"/>
+			<lit cntt="&amp;amp;quot;o valor é menor que 10, no #elif\n&amp;amp;quot;" count="1"/>
 		</func>
 		<func name="funcaoDeDeclaracaoDeVariaveisLocais" access="" storage="auto" inn="n" sloc="24">
 			<lvar name="varAutoExplicitaLocal" access="" storage="auto" count="4"/>
@@ -208,13 +209,13 @@
 			<comm cntt="Usando Váriaveis Globais"/>
 			<comm cntt="Usando novas váriveis locais que sobreescrevem as globais"/>
 			<comm cntt="Fim da função"/>
-			<gvar name="varAutoImplicita" access="" storage="auto" count="2"/>
-			<gvar name="varCharComSignal" access="" storage="auto" count="2"/>
-			<gvar name="varIntUnsigned" access="" storage="auto" count="1"/>
-			<gvar name="varLongDouble" access="" storage="auto" count="1"/>
-			<gvar name="varShortInt" access="" storage="auto" count="2"/>
-			<gvar name="varStatic" access="" storage="static" count="1"/>
-			<gvar name="varVolatil" access="volatile" storage="auto" count="1"/>
+			<gvar name="varAutoImplicita" access="" storage="" count="2"/>
+			<gvar name="varCharComSignal" access="" storage="" count="2"/>
+			<gvar name="varIntUnsigned" access="" storage="" count="1"/>
+			<gvar name="varLongDouble" access="" storage="" count="1"/>
+			<gvar name="varShortInt" access="" storage="" count="2"/>
+			<gvar name="varStatic" access="" storage="" count="1"/>
+			<gvar name="varVolatil" access="" storage="" count="1"/>
 			<lvar name="varAutoImplicita" access="" storage="auto" count="3"/>
 			<lvar name="varCharComSignal" access="" storage="auto" count="3"/>
 			<lvar name="varConst" access="const" storage="auto" count="1"/>
@@ -273,21 +274,21 @@
 			<call name="prompt" count="2"/>
 			<call name="readNum" count="1"/>
 			<call name="sqrNum" count="1"/>
-			<lit cntt="&amp;quot;Inicio do primeiro for&amp;quot;" count="5"/>
-			<lit cntt="&amp;quot;Inicio do primeiro while (interno)&amp;quot;" count="3"/>
-			<lit cntt="&amp;quot;Inicio do primeiro while&amp;quot;" count="3"/>
-			<lit cntt="&amp;quot;Inicio do segundo for (primeiro for interno&amp;quot;" count="2"/>
-			<lit cntt="&amp;quot;Inicio do terceiro for (primeiro for interno&amp;quot;" count="1"/>
-			<lit cntt="&amp;quot;Loop infinito&amp;quot;" count="4"/>
-			<lit cntt="&amp;quot;Printf abaixo do rotulo\n&amp;quot;" count="1"/>
-			<lit cntt="&amp;quot;fim do primeiro for&amp;quot;" count="5"/>
-			<lit cntt="&amp;quot;fim do primeiro while (interno)&amp;quot;" count="3"/>
-			<lit cntt="&amp;quot;fim do primeiro while&amp;quot;" count="3"/>
-			<lit cntt="&amp;quot;fim do segundo for (primeiro for interno&amp;quot;" count="2"/>
-			<lit cntt="&amp;quot;fim do terceiro for (primeiro for interno&amp;quot;" count="1"/>
-			<lit cntt="&amp;quot;variavelLocao1: %d\n&amp;quot;" count="4"/>
-			<lit cntt="&amp;quot;variavelLocao2: %d\n&amp;quot;" count="4"/>
-			<lit cntt="&amp;quot;variavelLocao3: %d\n&amp;quot;" count="3"/>
+			<lit cntt="&amp;amp;quot;Inicio do primeiro for&amp;amp;quot;" count="5"/>
+			<lit cntt="&amp;amp;quot;Inicio do primeiro while (interno)&amp;amp;quot;" count="3"/>
+			<lit cntt="&amp;amp;quot;Inicio do primeiro while&amp;amp;quot;" count="3"/>
+			<lit cntt="&amp;amp;quot;Inicio do segundo for (primeiro for interno&amp;amp;quot;" count="2"/>
+			<lit cntt="&amp;amp;quot;Inicio do terceiro for (primeiro for interno&amp;amp;quot;" count="1"/>
+			<lit cntt="&amp;amp;quot;Loop infinito&amp;amp;quot;" count="4"/>
+			<lit cntt="&amp;amp;quot;Printf abaixo do rotulo\n&amp;amp;quot;" count="1"/>
+			<lit cntt="&amp;amp;quot;fim do primeiro for&amp;amp;quot;" count="5"/>
+			<lit cntt="&amp;amp;quot;fim do primeiro while (interno)&amp;amp;quot;" count="3"/>
+			<lit cntt="&amp;amp;quot;fim do primeiro while&amp;amp;quot;" count="3"/>
+			<lit cntt="&amp;amp;quot;fim do segundo for (primeiro for interno&amp;amp;quot;" count="2"/>
+			<lit cntt="&amp;amp;quot;fim do terceiro for (primeiro for interno&amp;amp;quot;" count="1"/>
+			<lit cntt="&amp;amp;quot;variavelLocao1: %d\n&amp;amp;quot;" count="4"/>
+			<lit cntt="&amp;amp;quot;variavelLocao2: %d\n&amp;amp;quot;" count="4"/>
+			<lit cntt="&amp;amp;quot;variavelLocao3: %d\n&amp;amp;quot;" count="3"/>
 		</func>
 		<func name="funcaoDeMatriz" access="" storage="auto" inn="n" sloc="3">
 			<param name="vetor"/>
@@ -310,7 +311,7 @@
 			<lvar name="x" access="" storage="auto" count="5"/>
 			<lvar name="y" access="" storage="auto" count="4"/>
 			<call name="funcaoDeMatriz" count="1"/>
-			<lit cntt="&amp;quot;valor da string&amp;quot;" count="1"/>
+			<lit cntt="&amp;amp;quot;valor da string&amp;amp;quot;" count="1"/>
 		</func>
 		<func name="funcaoDePonteiro" access="" storage="auto" inn="n" sloc="3">
 			<param name="p1"/>
@@ -332,35 +333,35 @@
 			<call name="malloc" count="2"/>
 		</func>
 		<func name="funcao_principal" access="volatile" storage="static" inn="n" sloc="12">
-			<lvar name="variavelLocal" access="" storage="auto" count="3"/>
+			<lvar name="variavelLocal" access="" storage="auto" count="2"/>
 			<func name="funcaoInterna" access="" storage="auto" inn="y" sloc="7">
-				<gvar name="variavelLocal" access="" storage="auto" count="1"/>
+				<gvar name="variavelLocal" access="" storage="" count="1"/>
 				<lvar name="variavelLocal" access="" storage="auto" count="2"/>
 				<lvar name="variavelLocalDaFuncaoInterna" access="" storage="auto" count="2"/>
 			</func>
 		</func>
 		<func name="funcao1_1" access="" storage="auto" inn="n" sloc="12">
-			<lvar name="variavelLocal" access="" storage="auto" count="3"/>
+			<lvar name="variavelLocal" access="" storage="auto" count="2"/>
 			<func name="funcaoInterna" access="" storage="auto" inn="y" sloc="7">
-				<gvar name="variavelLocal" access="" storage="auto" count="1"/>
+				<gvar name="variavelLocal" access="" storage="" count="1"/>
 				<lvar name="variavelLocal" access="" storage="auto" count="2"/>
 				<lvar name="variavelLocalDaFuncaoInterna" access="" storage="auto" count="2"/>
 			</func>
 		</func>
 		<func name="funcao2" access="" storage="auto" inn="n" sloc="12">
-			<lvar name="variavelLocal" access="" storage="auto" count="3"/>
+			<lvar name="variavelLocal" access="" storage="auto" count="2"/>
 			<func name="funcaoInterna" access="" storage="auto" inn="y" sloc="7">
-				<gvar name="variavelLocal" access="" storage="auto" count="1"/>
+				<gvar name="variavelLocal" access="" storage="" count="1"/>
 				<lvar name="variavelLocal" access="" storage="auto" count="2"/>
 				<lvar name="variavelLocalDaFuncaoInterna" access="" storage="auto" count="2"/>
 			</func>
 		</func>
 		<func name="funcao3" access="" storage="auto" inn="n" sloc="13">
 			<param name="param1"/>
-			<lvar name="variavelLocal" access="" storage="auto" count="4"/>
+			<lvar name="variavelLocal" access="" storage="auto" count="3"/>
 			<func name="funcaoInterna" access="" storage="auto" inn="y" sloc="7">
 				<param name="param1"/>
-				<gvar name="variavelLocal" access="" storage="auto" count="1"/>
+				<gvar name="variavelLocal" access="" storage="" count="1"/>
 				<lvar name="param1" access="" storage="auto" count="1"/>
 				<lvar name="variavelLocal" access="" storage="auto" count="2"/>
 				<lvar name="variavelLocalDaFuncaoInterna" access="" storage="auto" count="2"/>
@@ -371,13 +372,13 @@
 			<param name="param2"/>
 			<lvar name="param2" access="" storage="auto" count="1"/>
 			<lvar name="paramPtr1" access="" storage="auto" count="1"/>
-			<lvar name="variavelLocal" access="" storage="auto" count="5"/>
+			<lvar name="variavelLocal" access="" storage="auto" count="4"/>
 			<call name="funcao3" count="3"/>
 			<call name="funcao4" count="1"/>
 			<call name="funcaoInterna" count="1"/>
 			<func name="funcaoInterna" access="" storage="auto" inn="y" sloc="7">
 				<param name="paramPtr1"/>
-				<gvar name="variavelLocal" access="" storage="auto" count="1"/>
+				<gvar name="variavelLocal" access="" storage="" count="1"/>
 				<lvar name="paramPtr1" access="" storage="auto" count="1"/>
 				<lvar name="variavelLocal" access="" storage="auto" count="2"/>
 				<lvar name="variavelLocalDaFuncaoInterna" access="" storage="auto" count="2"/>
@@ -388,21 +389,20 @@
 			<param name="param2"/>
 		</func>
 		<func name="funcaoUsandoEstrutura" access="" storage="auto" inn="n" sloc="21">
-			<gvar name="var1" access="" storage="auto" count="6"/>
-			<gvar name="var2" access="" storage="auto" count="2"/>
-			<gvar name="var3" access="" storage="auto" count="1"/>
-			<gvar name="var7" access="" storage="auto" count="1"/>
-			<lvar name="ponteiroStruct" access="" storage="auto" count="5"/>
-			<lvar name="ponteiroStruct->membro1" access="" storage="auto" count="3"/>
+			<gvar name="var1" access="" storage="" count="4"/>
+			<gvar name="var2" access="" storage="" count="2"/>
+			<gvar name="var3" access="" storage="" count="1"/>
+			<lvar name="ponteiroStruct" access="" storage="auto" count="2"/>
+			<lvar name="ponteiroStruct-&amp;gt;membro1" access="" storage="auto" count="3"/>
 			<lvar name="var1.membro1" access="" storage="auto" count="2"/>
 			<lvar name="var7.estruturaInterna" access="" storage="auto" count="1"/>
 			<lvar name="var7.estruturaInterna.membro1" access="" storage="auto" count="1"/>
-			<lvar name="varStruct1" access="" storage="auto" count="10"/>
-			<lvar name="varStruct1.membro1" access="" storage="auto" count="7"/>
+			<lvar name="varStruct1" access="" storage="auto" count="1"/>
+			<lvar name="varStruct1.membro1" access="" storage="auto" count="6"/>
 			<lvar name="varStruct1.membro2" access="" storage="auto" count="2"/>
-			<lvar name="varStruct2" access="" storage="auto" count="3"/>
+			<lvar name="varStruct2" access="" storage="auto" count="1"/>
 			<lvar name="varStruct2.membro1" access="" storage="auto" count="2"/>
-			<lvar name="varStruct3" access="" storage="auto" count="5"/>
+			<lvar name="varStruct3" access="" storage="auto" count="4"/>
 			<lvar name="varStruct3[varStruct1.membro1].membro1" access="" storage="auto" count="1"/>
 			<call name="funcaoDeEstrutura" count="1"/>
 			<call name="funcaoDeMembroDeEstrutura" count="1"/>
@@ -412,28 +412,26 @@
 		</func>
 		<func name="funcaoDeEstrutura" access="" storage="auto" inn="n" sloc="4">
 			<param name="estrutura"/>
-			<lvar name="estrutura" access="" storage="auto" count="1"/>
 			<lvar name="estrutura.membro1" access="" storage="auto" count="1"/>
 			<call name="printf" count="1"/>
-			<lit cntt="&amp;quot;Valor do membro1 da estrutura: %d\n&amp;quot;" count="1"/>
+			<lit cntt="&amp;amp;quot;Valor do membro1 da estrutura: %d\n&amp;amp;quot;" count="1"/>
 		</func>
 		<func name="funcaoUsandoUnion" access="" storage="auto" inn="n" sloc="21">
-			<gvar name="var10" access="" storage="auto" count="6"/>
-			<gvar name="var11" access="" storage="auto" count="2"/>
-			<gvar name="var12" access="" storage="auto" count="2"/>
-			<gvar name="var18" access="" storage="auto" count="1"/>
-			<lvar name="ponteiroUnion" access="" storage="auto" count="5"/>
-			<lvar name="ponteiroUnion->membro1" access="" storage="auto" count="3"/>
+			<gvar name="var10" access="" storage="" count="4"/>
+			<gvar name="var11" access="" storage="" count="2"/>
+			<gvar name="var12" access="" storage="" count="1"/>
+			<lvar name="ponteiroUnion" access="" storage="auto" count="2"/>
+			<lvar name="ponteiroUnion-&amp;gt;membro1" access="" storage="auto" count="3"/>
 			<lvar name="var10.membro1" access="" storage="auto" count="2"/>
-			<lvar name="var12->membro1" access="" storage="auto" count="1"/>
-			<lvar name="var18->unionInterna" access="" storage="auto" count="1"/>
-			<lvar name="var18->unionInterna.membro1" access="" storage="auto" count="1"/>
-			<lvar name="varUnion1" access="" storage="auto" count="10"/>
-			<lvar name="varUnion1.membro1" access="" storage="auto" count="7"/>
+			<lvar name="var12-&amp;gt;membro1" access="" storage="auto" count="1"/>
+			<lvar name="var18-&amp;gt;unionInterna" access="" storage="auto" count="1"/>
+			<lvar name="var18-&amp;gt;unionInterna.membro1" access="" storage="auto" count="1"/>
+			<lvar name="varUnion1" access="" storage="auto" count="1"/>
+			<lvar name="varUnion1.membro1" access="" storage="auto" count="6"/>
 			<lvar name="varUnion1.membro2" access="" storage="auto" count="2"/>
-			<lvar name="varUnion2" access="" storage="auto" count="3"/>
+			<lvar name="varUnion2" access="" storage="auto" count="1"/>
 			<lvar name="varUnion2.membro1" access="" storage="auto" count="2"/>
-			<lvar name="varUnion3" access="" storage="auto" count="5"/>
+			<lvar name="varUnion3" access="" storage="auto" count="4"/>
 			<lvar name="varUnion3[varUnion1.membro1].membro1" access="" storage="auto" count="1"/>
 			<call name="funcaoDeMembroDeUnion" count="1"/>
 			<call name="funcaoDeUnion" count="1"/>
@@ -443,10 +441,9 @@
 		</func>
 		<func name="funcaoDeUnion" access="" storage="auto" inn="n" sloc="4">
 			<param name="union1"/>
-			<lvar name="union1" access="" storage="auto" count="1"/>
 			<lvar name="union1.membro1" access="" storage="auto" count="1"/>
 			<call name="printf" count="1"/>
-			<lit cntt="&amp;quot;Valor do membro1 da union1: %d\n&amp;quot;" count="1"/>
+			<lit cntt="&amp;amp;quot;Valor do membro1 da union1: %d\n&amp;amp;quot;" count="1"/>
 		</func>
 		<func name="funcaoUsandoEnum" access="" storage="auto" inn="n" sloc="11">
 			<param name="paramEnum"/>
@@ -462,7 +459,7 @@
 			<lvar name="varEnum2" access="" storage="auto" count="3"/>
 			<call name="funcaoUsandoEnum" count="2"/>
 			<call name="printf" count="1"/>
-			<lit cntt="&amp;quot;%d&amp;quot;" count="1"/>
+			<lit cntt="&amp;amp;quot;%d&amp;amp;quot;" count="1"/>
 		</func>
 		<func name="funcaoUsandoTypedef" access="" storage="auto" inn="n" sloc="11">
 			<comm cntt="comentario da funcao"/>
@@ -473,7 +470,7 @@
 			<lvar name="num1" access="" storage="auto" count="3"/>
 			<lvar name="num2" access="" storage="auto" count="1"/>
 			<lvar name="tipo2" access="" storage="auto" count="2"/>
-			<lvar name="var1" access="" storage="auto" count="3"/>
+			<lvar name="var1" access="" storage="auto" count="2"/>
 			<lvar name="var1.membro1" access="" storage="auto" count="1"/>
 		</func>
 		<func name="main" access="" storage="auto" inn="n" sloc="10">
@@ -486,9 +483,9 @@
 			<call name="funcaoDeDeclaracaoDeVariaveisLocais" count="1"/>
 			<call name="funcaoDePreProcessador" count="1"/>
 			<call name="printf" count="4"/>
-			<lit cntt="&amp;quot;%d %s\n&amp;quot;" count="1"/>
-			<lit cntt="&amp;quot;%d\n&amp;quot;" count="1"/>
-			<lit cntt="&amp;quot;\nvalor de xy = %d\n&amp;quot;" count="1"/>
+			<lit cntt="&amp;amp;quot;%d %s\n&amp;amp;quot;" count="1"/>
+			<lit cntt="&amp;amp;quot;%d\n&amp;amp;quot;" count="1"/>
+			<lit cntt="&amp;amp;quot;\nvalor de xy = %d\n&amp;amp;quot;" count="1"/>
 			<lit cntt="__FILE__" count="1"/>
 			<lit cntt="macroStr(palavra)" count="1"/>
 		</func>

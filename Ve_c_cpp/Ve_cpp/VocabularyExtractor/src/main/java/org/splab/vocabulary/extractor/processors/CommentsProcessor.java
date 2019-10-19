@@ -69,7 +69,7 @@ public class CommentsProcessor {
 						+ allDeclarations.get(allDeclarations.size() - 1).getFileLocation().getNodeLength();
 				int endOfFile = type.getOffset() + type.getLength();
 
-				if (c.getStartPosition() > endOfPreviousDeclaration && c.getStartPosition() < endOfFile) {
+				if (c.getStartPosition() >= endOfPreviousDeclaration && c.getStartPosition() <= endOfFile) {
 					vxlFragment.append(VxlManager.commentTag(c, entityIndentationLevel));
 				}
 			}

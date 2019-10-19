@@ -143,7 +143,8 @@ public class FileProcessor {
 		Iterator<String> it_lit = lit.iterator();
 		while (it_lit.hasNext()) {
 			String identifier = it_lit.next();
-			vxlFragment.append(VxlManager.literal(identifier, literal.get(identifier), entityIndentationLevel));
+			vxlFragment.append(VxlManager.literal(StringProcessor.processString(identifier), literal.get(identifier),
+					entityIndentationLevel));
 		}
 	}
 
